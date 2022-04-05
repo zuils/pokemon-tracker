@@ -4,9 +4,21 @@ const CANVAS_HEIGHT = 900;
 let canvas; 
 let context;
 
+const LINKTYPE_WARP = "warp";
+const LINKTYPE_MARK = "mark";
+let locations;
+let warps;
+let marks;
+let progress;
+
 function init() {
     canvas  = document.getElementById('canvas');
     context = canvas.getContext('2d');
+
+    locations = emerald.locations;
+    warps     = emerald.warps;
+    marks     = emerald.marks;
+    progress  = emerald.progress;
 
     LoadImages();
     RegisterInputEvents();
