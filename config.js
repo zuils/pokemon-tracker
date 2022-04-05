@@ -1,8 +1,13 @@
+let config;
+let config_controls;
+let config_controlstoggle;
+let config_network;
+let config_networktoggle;
+
 function ShowConfig() {
     config.style.display = "block";
     HideConfigControls();
     HideConfigNetwork();
-    config_networktoggle.classList.add   ("config_hidden"); // WIP, hide it for now
 }
 function HideConfig() { config.style.display = "none"; }
 

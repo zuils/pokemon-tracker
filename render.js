@@ -37,9 +37,9 @@ var frame, settings;
 var images = [];
 function LoadImages() {
     // Get all images
-    var list = ["images/hoenn_map_frame.png", "images/frame.png", "images/settings.png"];
+    var list = ["images/emerald/map.png", "images/emerald/frame.png", "images/settings.png"];
     for (let key in locations) {
-        list.push("images/maps/" + key + ".png");
+        list.push("images/emerald/maps/" + key + ".png");
     }
 
     for (let row of marks) {
@@ -50,7 +50,7 @@ function LoadImages() {
 
     for (let row of progress) {
         for (let pair of row) {
-            if (pair[1] !== undefined) { list.push("images/progress/" + pair[0] + ".png") }
+            if (pair[1] !== undefined) { list.push("images/emerald/progress/" + pair[0] + ".png") }
         }
     }
 
@@ -64,7 +64,7 @@ function LoadImages() {
     }
 }
 function ImageLoaded() {
-    if (this.src.includes("hoenn_map")) {
+    if (this.src.includes("map.png")) {
         map = {
             image: this,
             x: 0, y: 0,
@@ -72,17 +72,24 @@ function ImageLoaded() {
             h: this.naturalHeight * MAP_SCALE
         }
     }
-    else if (this.src.includes("frame")) {
+    else if (this.src.includes("frame.png")) {
         frame = this;
     }
-    else if (this.src.includes("settings")) {
+    else if (this.src.includes("settings.png")) {
         settings = this;
     }
-    else if (this.src.includes("marks") || this.src.includes("progress")) {
+    else if (this.src.includes("/marks/") || this.src.includes("/progress/")) {
         images[GetNameImage(this.src)] = this;
     }
     else {
-        locations[GetNameImage(this.src)].image = this;
+        try {
+            locations[GetNameImage(this.src)].image = this;
+        }
+        catch(err) {
+            console.log(err);
+            console.log(this.src);
+        console.log(GetNameImage(this.src));
+        }
 
         // Get max width/height for later
         if (this.naturalWidth  > loading_process.max_width)  loading_process.max_width  = this.naturalWidth;

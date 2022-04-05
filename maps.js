@@ -459,11 +459,11 @@ var warps = {
 // if null, then we don't do tracking
 // if undefined, then we don't draw the mark
 var marks = [
-    [["unknown",     null], ["dead_end",     null], ["event",   0], ["center", 0], ["mart",     0], ["one_way", null]],
-    [["normal",         0], ["fighting",        0], ["flying",  0], ["poison", 0], ["ground",   0], ["rock",       0], ["bug",  0], ["ghost",   0]],
-    [["steel",          0], ["fire",            0], ["water",   0], ["grass",  0], ["electric", 0], ["psychic",    0], ["ice",  0], ["dragon",  0], ["dark", 0]],
-    [["1",              0], ["2",               0], ["3",       0], ["4",      0], ["5",        0], ["6",          0], ["7",    0], ["8",       0]],
-    [["breakable_rock", 0], ["movable_boulder", 0], ["surfing", 0], ["diving", 0], ["bike",     0], ["trainer",    0]],
+    [["unknown", null], ["dead_end", null], ["event",  0], ["center", 0], ["mart",     0], ["one_way", null]],
+    [["normal",     0], ["fighting",    0], ["flying", 0], ["poison", 0], ["ground",   0], ["rock",       0], ["bug",  0], ["ghost",   0]],
+    [["steel",      0], ["fire",        0], ["water",  0], ["grass",  0], ["electric", 0], ["psychic",    0], ["ice",  0], ["dragon",  0], ["dark", 0]],
+    [["1",          0], ["2",           0], ["3",      0], ["4",      0], ["5",        0], ["6",          0], ["7",    0], ["8",       0]],
+    [["e_rock",     0], ["e_boulder",   0], ["e_surf", 0], ["e_dive", 0], ["e_bike",   0], ["e_trainer",  0]],
 ];
 var progress = [
     [["stone_badge", 0], ["knuckle_badge", 0], ["dynamo_badge", 0], ["heat_badge", 0], ["balance_badge", 0], ["feather_badge", 0], ["mind_badge",    0], ["rain_badge",   0]],

@@ -3,7 +3,6 @@ const CANVAS_HEIGHT = 900;
 
 let canvas; 
 let context;
-let config, config_controls, config_controlstoggle, config_network, config_networktoggle;
 
 function init() {
     canvas  = document.getElementById('canvas');
