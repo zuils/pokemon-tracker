@@ -18,10 +18,19 @@ function OnContextMenu(event) { event.preventDefault(); return false; }
 
 function OnKeyDown(event) {
     switch (event.key) {
-        case "g": g_pressed = true; break;
-        case "3": if (g_pressed) game = emerald; break;
-        case "2": if (g_pressed) game = emerald; break;
+        //case "2": if (g_pressed) { game = crystal;  break; }
+        case "3": if (g_pressed) { game = emerald;  break; }
+        //case "4": if (g_pressed) { game = platinum; break; }
+
+        case "g": g_pressed = true;
+        default: return;
     }
+
+    current_state = STATE_DEFAULT;
+    left_click  = { down: false };
+    right_click = { down: false };
+    current_markcycle = undefined;
+
 }
 function OnKeyUp(event) { if (event.key == "g") g_pressed = false; }
 
@@ -32,7 +41,7 @@ const STATE_LINK1 = 1;
 const STATE_LINK2 = 2;
 let current_state = STATE_DEFAULT;
 let link_location, link_warp;
-let current_location = "oldale";
+let current_location;
 let left_click  = { down: false };
 let right_click = { down: false };
 let mouse_position = {x: 0, y: 0};

@@ -12,6 +12,7 @@ function init() {
     context = canvas.getContext('2d');
 
     game = emerald;
+    current_location = game.start_location;
     LoadImages();
     RegisterInputEvents();
 

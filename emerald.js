@@ -1,5 +1,6 @@
 var emerald = {
     name: "emerald",
+    start_location: "oldale",
     locations: {
         // Cities
         oldale:         {x: 40,  y: 88,  w: 8,  h: 8,  scale: 2, name: "Oldale Town"                                                  },
