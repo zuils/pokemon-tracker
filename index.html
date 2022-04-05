@@ -1,0 +1,76 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Pokémon Emerald Warp Randomizer Tracker</title>
+    <link rel="stylesheet" href="main.css"/>
+    <script src="main.js"></script>
+    <script src="render.js"></script>
+    <script src="input.js"></script>
+    <script src="maps.js"></script>
+    <script src="config.js"></script>
+    <meta name="viewport" content="width=device-width, initial-MAP_SCALE=1">
+    <link rel="icon" href="images/icon.png">
+    <!-- Social media metadata -->
+    <meta property="og:title" content="Pokémon Emerald Warp Randomizer Tracker"/>
+    <meta property="og:description" content="Tool to track Warps in Pokémon Emerald Warp Randomizer"/>
+    <meta property="og:image" content="https://sekii.gitlab.io/emerald-warp-tracker/images/hoenn_map.png"/>
+    <meta name="twitter:card" content="summary_large_image"></meta>
+  </head>
+
+  <body>
+    <article>
+      <canvas id="canvas">Your browser does not support canvas element.</canvas>
+      <div id="config" class="config">
+        <div class="config_content">
+          <span class="close" onclick="HideConfig()">&times;</span>
+          <button onclick="LoadFile()">Load</button>
+          <button onclick="SaveFile()">Save</button>
+          <p>To resize the tracker use your browser's built-in functionality to zoom in/out.</p>
+          <p id="config_controlstoggle" class="config_toggle" onclick="ShowConfigControls()">+ Show controls & explanation</p>
+          <div id="config_controls" class="config_hidden">
+            <hr>
+            <p class="config_toggle" onclick="HideConfigControls()">- Hide controls & explanation</p>
+            <p>This tracker assumes you're using <a href="https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of">Pointcrow</a>'s Pokémon Emerald Warp Randomizer.</p>
+            <p>The map uses a color code of red (city), green (route) and blue (other locations). <u>The progress tracker can be used to mark warps too</u>.</p>
+            Warp linking:
+            <ul>
+              <li><b>Left click</b> on a warp to start linking. On this state, you can <b>right click</b> to cancel it, change location, click a mark to set it or click another warp to create a link.</li>
+              <li><b>Right click</b> on any known warp to undo and mark it as unknown (if it's a link, it will mark the other end as unknown too).</li>
+            </ul>
+            <br>
+            Location changing:
+            <ul>
+              <li><b>Left click</b> on the map to change current location.</li>
+              <li><b>Left click twice</b> on a linked warp to change to the linked location.</li>
+            </ul>
+            <br>
+            Progress tracking:
+            <ul>
+              <li><b>Right click</b> on any highlighted mark to cycle through all the maps with the mark in it.</li>
+              <li><b>Left click</b> on the progress tracker to mark an objective as completed.</li>
+              <br>
+            </ul>
+          </div>
+          <p id="config_networktoggle" class="config_toggle" onclick="ShowConfigNetwork()">+ Show networking options (don't show on stream!)</p>
+          <div id="config_network" class="config_hidden">
+            <hr>
+            <p class="config_toggle" onclick="HideConfigNetwork()">- Hide networking options</p>
+            <p>WIP</p>
+          </div>
+          <p>
+            <hr>
+            Report any bugs at <b>sekiisc@gmail.com</b> (add a save file if possible)
+            <a class="social-media" href="https://twitter.com/srcSantana">  <img class="social-media-image" src="images/social-media/twitter-32x32.png"></a>
+            <a class="social-media" href="https://gitlab.com/SergioSantana"><img class="social-media-image" src="images/social-media/gitlab-32x32.png"></a>
+          </p>
+        </div>
+      </div>
+    </article>
+  </body>
+
+  <script type="text/javascript">init();</script>
+
+</html>
