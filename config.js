@@ -88,7 +88,7 @@ function SaveFile() {
 }
 
 function ResetButton() {
-    if (confirm ("Data will be deleted for you and ALL USERS connected to your session. Are you sure to continue?")) {
+    if (confirm ("Once deleted you'll lose all data. Are you sure to continue?")) {
         for (let location in game.warps) {
             for (let warp in game.warps[location]) {
                 let w = game.warps[location][warp];
