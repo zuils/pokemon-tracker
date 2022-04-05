@@ -470,4 +470,5 @@ var emerald = {
         [["e4_dark",     0], ["e4_ghost",      0], ["e4_ice",       0], ["e4_dragon",  0], ["champ_water",   0], ["",      undefined], ["",      undefined], ["steven_steel", 0]],
         [["hm1",         0], ["hm2",           0], ["hm3",          0], ["hm4",        0], ["hm5",           0], ["hm6",           0], ["hm7",           0], ["hm8",          0]],
     ],
+    obtained: new Set()
 };

@@ -244,7 +244,6 @@ function RenderLocation() {
     } context.restore();
 }
 
-let progress_obtained = new Set();
 function RenderMarks() {
     let v = {
         x: MARK_SEPARATION,
@@ -293,7 +292,7 @@ function RenderMarks() {
                         DrawBoxContextless(v, MARKFOUND_SIZE, MARKFOUND_COLOR);
                     }
                     
-                    context.filter = progress_obtained.has(name) ? "none" : UNCHECKED_FILTER;
+                    context.filter = game.obtained.has(name) ? "none" : UNCHECKED_FILTER;
                     DrawImage(images[name], v);
                 }
                 v.x += MARK_SIZE + MARK_SEPARATION;

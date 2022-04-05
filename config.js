@@ -36,7 +36,7 @@ function FileUploaded(event) {
     reader.onload = function() {
         let lines = reader.result.split("\n");
         for (let p of lines[0].split(",")) {
-            progress_obtained.add(p);
+            game.obtained.add(p);
         }
         lines.shift();
 
@@ -64,7 +64,7 @@ function FileUploaded(event) {
 
 function SaveFile() {
     var text = "";
-    for (var p of progress_obtained) {
+    for (var p of game.obtained) {
         text += p + ",";
     }
     text = text.substring(0, text.length-1);
@@ -94,4 +94,28 @@ function SaveFile() {
     a.href = window.URL.createObjectURL(new Blob([text], {type: "text/plain"}));
     a.download = d + "_emerald-map-tracker.txt";
     a.click();
+}
+
+function ResetButton() {
+    if (confirm ("Data will be deleted for you and ALL USERS connected to your session. Are you sure to continue?")) {
+        for (let location in game.warps) {
+            for (let warp in game.warps[location]) {
+                let w = game.warps[location][warp];
+                w.link_type     = undefined;
+                w.link          = undefined;
+                w.link_location = undefined;
+            }
+        }
+
+        for (let array of [game.marks, game.progress]) {
+            for (let row of array) {
+                for (let element of row) {
+                    if (element[1] !== undefined && element[1] !== null) {
+                        element[1] = 0;
+                    }
+                }
+            }
+        }
+        game.obtained = new Set();
+    }
 }

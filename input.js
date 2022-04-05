@@ -101,11 +101,11 @@ function OnMouseUp(event) {
                         } break;
                         case TYPE_PROGRESS: {
                             if (current_state == STATE_DEFAULT) {
-                                if (progress_obtained.has(info.target)) {
-                                    progress_obtained.delete(info.target);
+                                if (game.obtained.has(info.target)) {
+                                    game.obtained.delete(info.target);
                                 }
                                 else {
-                                    progress_obtained.add(info.target);
+                                    game.obtained.add(info.target);
                                 }
                             } 
                         }
