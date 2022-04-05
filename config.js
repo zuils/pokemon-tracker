@@ -147,8 +147,6 @@ function ShowConfigNetwork() {
         });
 
         current_peer.on("connection", function(connection) {
-            console.log("Connection: " + connection.peer);
-
             if (connected_to !== null) {
                 connected_to = null;
                 network_name.classList.add("config_hidden");
@@ -168,12 +166,17 @@ function ShowConfigNetwork() {
                     UpdateUsernames();
                 }
                 else {
-                    console.log("+Received data: " + data);
+                    // Send to everyone else
                     for (let c of connections) {
                         if (this.peer != c.connection.peer) {
                             c.connection.send(data);
                         }
                     }
+                    
+                    //Handle data
+                    console.log("+Received data: " + data);
+                    let f = data.split(",");
+                    ChangeWarpOffline(f[0], f[1], f[2], f[3], f[4]);
                 }
             });
             connections.push({ connection: connection, username: connection.peer });
@@ -208,7 +211,10 @@ function ConnectButton() {
         });
         
         connected_to.on("data", function(data) {
+            // Handle data
             console.log("-Received data: " + data);
+            let f = data.split(",");
+            ChangeWarpOffline(f[0], f[1], f[2], f[3], f[4]);
         });
     }
 }
