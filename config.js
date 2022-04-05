@@ -20,15 +20,6 @@ function HideConfigControls() {
     config_controlstoggle.classList.remove("config_hidden");
 }
 
-function ShowConfigNetwork() {
-    config_network      .classList.remove("config_hidden");
-    config_networktoggle.classList.add   ("config_hidden");
-}
-function HideConfigNetwork() {
-    config_network      .classList.add   ("config_hidden");
-    config_networktoggle.classList.remove("config_hidden");
-}
-
 function LoadFile() { file_selector.click(); }
 
 function FileUploaded(event) {
@@ -117,5 +108,86 @@ function ResetButton() {
             }
         }
         game.obtained = new Set();
+    }
+}
+
+/*********************************************************/
+
+let networkinput_name;
+let networkinput_id;
+let networkinput_connect;
+let networkinput_data;
+
+let current_peer;
+let connected_to;
+let current_id;
+let connections = [];
+function ShowConfigNetwork() {
+    if (!current_peer) {
+        networkinput_name = document.getElementById("network_name");
+        networkinput_name.value = "";
+        
+        networkinput_connect = document.getElementById("network_connect");
+        networkinput_connect.value = "";
+
+        networkinput_data = document.getElementById("network_data");
+        networkinput_data.value = "";
+        
+        networkinput_id = document.getElementById("network_id");
+        networkinput_id.value = "";
+
+        let current_date_time = new Date();
+        current_id = current_date_time.getTime().toString();
+
+        current_peer = new Peer(current_id);
+        current_peer.on("open", function(id) {
+            networkinput_id.value = id;
+            //console.log(current_peer);
+        });
+
+        current_peer.on("connection", function(connection) {
+            console.log("Connection: " + connection.peer);
+            
+            connection.on("data", function(data) {
+                console.log("+Received data: " + data);
+                for (let c of connections) {
+                    if (this.peer != c.peer) {
+                        c.send(data);
+                    }
+                }
+            });
+            connections.push(connection);
+        });
+    }
+
+    config_network      .classList.remove("config_hidden");
+    config_networktoggle.classList.add   ("config_hidden");
+}
+function HideConfigNetwork() {
+    config_network      .classList.add   ("config_hidden");
+    config_networktoggle.classList.remove("config_hidden");
+}
+
+function ConnectButton() {
+    if (networkinput_connect.value && networkinput_connect.value !== networkinput_id.value) {
+        connected_to = current_peer.connect(networkinput_connect.value);
+        connected_to.on("open", function(_) {
+            networkinput_id.value = networkinput_connect.value;
+        });
+        
+        connected_to.on("data", function(data) {
+            console.log("-Received data: " + data);
+        });
+    }
+}
+
+function SendButton() {
+    if (connected_to) {
+        connected_to.send(networkinput_data.value);
+    }
+    else {
+        for (let c of connections) {
+            c.send(networkinput_data.value);
+        }
     }
 }

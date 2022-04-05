@@ -6,11 +6,15 @@
     <meta charset="utf-8"/>
     <title>Pokémon Warp Tracker</title>
     <link rel="stylesheet" href="main.css"/>
+    
+    <script src="emerald.js"></script>
+
     <script src="main.js"></script>
     <script src="render.js"></script>
     <script src="input.js"></script>
-    <script src="emerald.js"></script>
     <script src="config.js"></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    
     <meta name="viewport" content="width=device-width, initial-MAP_SCALE=1">
     <link rel="icon" href="images/icon.png">
     <!-- Social media metadata -->
@@ -59,8 +63,12 @@
           <div id="config_network" class="config_hidden">
             <hr>
             <p class="config_toggle" onclick="HideConfigNetwork()">- Hide networking options</p>
-            <p>User Name: <input type="text" id="ignored_values" value="User1"></p>
-            <p>Session ID: <input type="text" id="ignored_values" value="1234"></p>
+            <p>User Name:  <input type="text" id="network_name"></p>
+            <p>Current ID:    <input type="text" id="network_id" readonly></p>
+            <p>Connect to ID: <input type="text" id="network_connect">
+              <button onclick="ConnectButton()">Connect</button></p>
+            <p>Send data: <input type="text" id="network_data">
+              <button onclick="SendButton()">Send</button></p>
           </div>
           <p>
             <hr>

@@ -16,6 +16,7 @@ function RegisterInputEvents() {
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
 
+let g_pressed = false;
 function OnKeyDown(event) {
     switch (event.key) {
         //case "2": if (g_pressed) { game = crystal;  break; }
