@@ -136,15 +136,16 @@ function RenderMap() {
         };
         let lines = location.name.split("\n");
         switch (lines.length) {
-            case 1:
+            case 1: {
                 context.fillText(lines[0], text_position.x, text_position.y);
-                break;
-            default:
+            } break;
+            default: {
                 console.error("ERROR: Text can have more than 2 lines! Only rendering the 2 first lines.");
-            case 2:
+            } // falldown
+            case 2: {
                 context.fillText(lines[0], text_position.x, text_position.y - LINE_BREAK_YOFFSET);
                 context.fillText(lines[1], text_position.x, text_position.y + LINE_BREAK_YOFFSET);
-                break;
+            } break;
         }
     } context.restore();
 

@@ -1,11 +1,11 @@
 const CANVAS_WIDTH  = 1200;
 const CANVAS_HEIGHT = 900;
-
 let canvas; 
 let context;
 
 const LINKTYPE_WARP = "warp";
 const LINKTYPE_MARK = "mark";
+
 let game;
 function init() {
     canvas  = document.getElementById('canvas');

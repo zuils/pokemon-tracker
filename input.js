@@ -22,7 +22,7 @@ function OnKeyDown(event) {
         case "3": if (g_pressed) { game = emerald;  break; }
         //case "4": if (g_pressed) { game = platinum; break; }
 
-        case "g": g_pressed = true;
+        case "g": g_pressed = true; // falldown
         default: return;
     }
 
@@ -51,7 +51,7 @@ function OnMouseDown(event) {
 
     let click = null;
     switch (event.which) {
-        case LEFT_CLICK:  click = left_click; break;
+        case LEFT_CLICK:  click = left_click;  break;
         case RIGHT_CLICK: click = right_click; break;
     }
     if (!click) return;
@@ -117,7 +117,7 @@ function OnMouseUp(event) {
                                     game.obtained.add(info.target);
                                 }
                             } 
-                        }
+                        } // falldown
                         case TYPE_MARK: {
                             if (current_state != STATE_DEFAULT) {
                                 let warp = game.warps[link_location][link_warp];
@@ -145,7 +145,7 @@ function OnMouseUp(event) {
                                         }
                                         break;
                                     }
-                                }
+                                } // falldown
                                 case STATE_LINK2: {
                                     let warp1 = game.warps[link_location][link_warp];
                                     if (warp1.link_type == LINKTYPE_MARK) { AddToMark(warp1.link, -1, link_location); }
