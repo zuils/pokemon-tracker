@@ -124,25 +124,21 @@ let current_id;
 let connections = [];
 function ShowConfigNetwork() {
     if (!current_peer) {
-        networkinput_name = document.getElementById("network_name");
-        networkinput_name.value = "";
-        
+        networkinput_name    = document.getElementById("network_name");
         networkinput_connect = document.getElementById("network_connect");
+        networkinput_data    = document.getElementById("network_data");
+        networkinput_id      = document.getElementById("network_id");
+        networkinput_name.value    = "";
         networkinput_connect.value = "";
-
-        networkinput_data = document.getElementById("network_data");
-        networkinput_data.value = "";
-        
-        networkinput_id = document.getElementById("network_id");
-        networkinput_id.value = "";
+        networkinput_data.value    = "";
+        networkinput_id.value      = "";
 
         let current_date_time = new Date();
-        current_id = current_date_time.getTime().toString();
+        current_id = Math.trunc(current_date_time.valueOf() / (Math.abs(current_date_time.getTimezoneOffset()) + 1) * (Math.random() % 10));
 
         current_peer = new Peer(current_id);
         current_peer.on("open", function(id) {
             networkinput_id.value = id;
-            //console.log(current_peer);
         });
 
         current_peer.on("connection", function(connection) {
