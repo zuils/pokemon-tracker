@@ -116,7 +116,7 @@ function ResetButton() {
 let networkinput_name;
 let networkinput_id;
 let networkinput_connect;
-let networkinput_data;
+let networkinput_data; // Test only
 
 let current_peer;
 let connected_to;

@@ -32,17 +32,18 @@
           <span class="close" onclick="HideConfig()">&times;</span>
           <button onclick="LoadFile()">Load</button>
           <button onclick="SaveFile()">Save</button>
-          <p>To resize the tracker use your browser's built-in functionality to zoom in/out.</p>
           <button onclick="ResetButton()">Reset Tracker</button>
+          <p>To resize the tracker use your browser's built-in functionality to zoom in/out.</p>
+          <p>Enable hardware acceleration on Chrome if it lags.</p>
           <p id="config_controlstoggle" class="config_toggle" onclick="ShowConfigControls()">+ Show controls & explanation</p>
           <div id="config_controls" class="config_hidden">
             <hr>
             <p class="config_toggle" onclick="HideConfigControls()">- Hide controls & explanation</p>
             <p>This tracker assumes you're using <a href="https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of">Pointcrow</a>'s Pokémon Emerald Warp Randomizer.</p>
-            <p>The map uses a color code of red (city), green (route) and blue (other locations). <u>The progress tracker can be used to mark warps too</u>.</p>
+            <p>The map is color coded: <b style="color:#ff3910;">cities</b>, <b style="color:#39ad08;">routes</b> and <b style="color:#6638ef;">dungeons</b>. <u>The progress tracker can be used to mark warps too</u>.</p>
             Warp linking:
             <ul>
-              <li><b>Left click</b> on a warp to start linking. On this state, you can <b>right click</b> to cancel it, change location, click a mark to set it or click another warp to create a link.</li>
+              <li><b>Left click</b> on a warp to start linking. Then, change location, click a mark to set it or another warp to create a link. <b>Right click</b> to cancel this state.</li>
               <li><b>Right click</b> on any known warp to undo and mark it as unknown (if it's a link, it will mark the other end as unknown too).</li>
             </ul>
             <br>
