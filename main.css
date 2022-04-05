@@ -99,6 +99,14 @@ button {
 button:hover {
     background-color: var(--color2);
 }
+input {
+    font-size: 16px;
+    font-family: "Avenir", serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    
+    margin-right: 10px;
+}
 
 .close {
     color: var(--color7);

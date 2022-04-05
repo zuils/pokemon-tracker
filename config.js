@@ -121,17 +121,22 @@ let networkinput_data; // Test only
 let current_peer;
 let connected_to;
 let current_id;
+let username;
 let connections = [];
 function ShowConfigNetwork() {
     if (!current_peer) {
-        networkinput_name    = document.getElementById("network_name");
-        networkinput_connect = document.getElementById("network_connect");
-        networkinput_data    = document.getElementById("network_data");
-        networkinput_id      = document.getElementById("network_id");
+        networkinput_name    = document.getElementById("networkinput_name");
+        networkinput_connect = document.getElementById("networkinput_connect");
+        networkinput_data    = document.getElementById("networkinput_data");
+        networkinput_id      = document.getElementById("networkinput_id");
         networkinput_name.value    = "";
         networkinput_connect.value = "";
         networkinput_data.value    = "";
         networkinput_id.value      = "";
+
+        network_connectto   = document.getElementById("network_connectto");
+        network_connections = document.getElementById("network_connections");
+        network_name        = document.getElementById("network_name");
 
         let current_date_time = new Date();
         current_id = Math.trunc(current_date_time.valueOf() / (Math.abs(current_date_time.getTimezoneOffset()) + 1) * (Math.random() % 10));
@@ -143,16 +148,36 @@ function ShowConfigNetwork() {
 
         current_peer.on("connection", function(connection) {
             console.log("Connection: " + connection.peer);
+
+            if (connected_to !== null) {
+                connected_to = null;
+                network_name.classList.add("config_hidden");
+                network_connectto.classList.add("config_hidden");
+                network_connections.classList.remove("config_hidden");
+            }
             
             connection.on("data", function(data) {
-                console.log("+Received data: " + data);
-                for (let c of connections) {
-                    if (this.peer != c.peer) {
-                        c.send(data);
+                if (data.startsWith("###")) {
+                    let name = data.slice(3);
+                    for (let c of connections) {
+                        if (this.peer == c.connection.peer) {
+                            c.username = name;
+                            break;
+                        }
+                    }
+                    UpdateUsernames();
+                }
+                else {
+                    console.log("+Received data: " + data);
+                    for (let c of connections) {
+                        if (this.peer != c.connection.peer) {
+                            c.connection.send(data);
+                        }
                     }
                 }
             });
-            connections.push(connection);
+            connections.push({ connection: connection, username: connection.peer });
+            UpdateUsernames();
         });
     }
 
@@ -164,11 +189,22 @@ function HideConfigNetwork() {
     config_networktoggle.classList.remove("config_hidden");
 }
 
+function UpdateUsernames() {
+    network_connections.innerHTML = "<u>Users connected</u> <br>";
+    for (let c of connections) {
+        network_connections.innerHTML += c.username + "<br>";
+    }
+}
+
 function ConnectButton() {
     if (networkinput_connect.value && networkinput_connect.value !== networkinput_id.value) {
         connected_to = current_peer.connect(networkinput_connect.value);
         connected_to.on("open", function(_) {
             networkinput_id.value = networkinput_connect.value;
+            network_connectto.classList.add("config_hidden");
+            network_connections.classList.remove("config_hidden");
+
+            if (username) { connected_to.send("###" + username); }
         });
         
         connected_to.on("data", function(data) {
@@ -183,7 +219,22 @@ function SendButton() {
     }
     else {
         for (let c of connections) {
-            c.send(networkinput_data.value);
+            c.connection.send(networkinput_data.value);
         }
+    }
+}
+
+function ChangeUsername(data) {
+    if (username != data) {
+        username = data;
+        if (connected_to) {
+            connected_to.send("###" + username);
+        }
+    }
+}
+
+function PressedEnter(key) {
+    if (key.keyCode == 13) { // if pressed enter
+        ChangeUsername(networkinput_name.value);
     }
 }
