@@ -10,8 +10,22 @@ function RegisterInputEvents() {
     canvas.addEventListener("mouseup",     OnMouseUp);
     canvas.addEventListener("mouseout",    OnMouseUp);
     canvas.addEventListener("contextmenu", OnContextMenu);
+
+    document.addEventListener("keydown", OnKeyDown);
+    document.addEventListener("keyup", OnKeyUp);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
+
+function OnKeyDown(event) {
+    switch (event.key) {
+        case "g": g_pressed = true; break;
+        case "3": if (g_pressed) game = emerald; break;
+        case "2": if (g_pressed) game = emerald; break;
+    }
+}
+function OnKeyUp(event) { if (event.key == "g") g_pressed = false; }
+
+/*********************************************************/
 
 const STATE_DEFAULT = 0;
 const STATE_LINK1 = 1;
@@ -97,7 +111,7 @@ function OnMouseUp(event) {
                         }
                         case TYPE_MARK: {
                             if (current_state != STATE_DEFAULT) {
-                                let warp = warps[link_location][link_warp];
+                                let warp = game.warps[link_location][link_warp];
                                 if (warp.link_type == LINKTYPE_MARK) { AddToMark(warp.link, -1, link_location); }
                                 AddToMark(info.target, 1, link_location);
                                 warp.link_type = LINKTYPE_MARK;
@@ -116,7 +130,7 @@ function OnMouseUp(event) {
                                 case STATE_LINK1: {
                                     if (current_location == link_location && info.target == link_warp) {
                                         current_state = STATE_DEFAULT;
-                                        let w = warps[current_location][info.target];
+                                        let w = game.warps[current_location][info.target];
                                         if (w.link_type && w.link_type == LINKTYPE_WARP) {
                                             current_location = w.link_location;
                                         }
@@ -124,13 +138,13 @@ function OnMouseUp(event) {
                                     }
                                 }
                                 case STATE_LINK2: {
-                                    let warp1 = warps[link_location][link_warp];
+                                    let warp1 = game.warps[link_location][link_warp];
                                     if (warp1.link_type == LINKTYPE_MARK) { AddToMark(warp1.link, -1, link_location); }
                                     warp1.link_type     = LINKTYPE_WARP;
                                     warp1.link          = info.target;
                                     warp1.link_location = current_location;
                                     
-                                    let warp2 = warps[current_location][info.target];
+                                    let warp2 = game.warps[current_location][info.target];
                                     if (warp2.link_type == LINKTYPE_MARK) { AddToMark(warp2.link, -1, current_location); }
                                     warp2.link_type     = LINKTYPE_WARP;
                                     warp2.link          = link_warp;
@@ -151,9 +165,9 @@ function OnMouseUp(event) {
                                 // Start new cycle if it doesn't exist or is not the same as before
                                 if (!current_markcycle || current_markcycle.name != info.target) {
                                     current_markcycle = { name: info.target, index: 0, locations: [] };
-                                    for (let location in warps) {
-                                        for (let name in warps[location]) {
-                                            let warp = warps[location][name];
+                                    for (let location in game.warps) {
+                                        for (let name in game.warps[location]) {
+                                            let warp = game.warps[location][name];
                                             if (warp.link_type && warp.link_type == LINKTYPE_MARK && warp.link == info.target) {
                                                 current_markcycle.locations.push(location);
                                                 break;
@@ -168,7 +182,7 @@ function OnMouseUp(event) {
                             }
                         } break;
                         case TYPE_WARP: {
-                            let warp = warps[current_location][info.target];
+                            let warp = game.warps[current_location][info.target];
                             if (!warp.link_type || (warp.link_type == LINKTYPE_MARK && warp.link == "unknown")) {
                                 if (warp.link_type == LINKTYPE_MARK) { AddToMark(warp.link, -1, current_location); }
                                 warp.link_type = LINKTYPE_MARK;
@@ -176,7 +190,7 @@ function OnMouseUp(event) {
                             }
                             else {
                                 if (warp.link_type == LINKTYPE_WARP) {
-                                    let warp2 = warps[warp.link_location][warp.link];
+                                    let warp2 = game.warps[warp.link_location][warp.link];
                                     if (warp2.link_type == LINKTYPE_WARP && warp2.link_location == current_location && warp2.link == info.target) {
                                         warp2.link_type = LINKTYPE_MARK;
                                         warp2.link      = "unknown";
@@ -229,8 +243,8 @@ function GetLocation(position) {
         x: position.x / MAP_SCALE,
         y: position.y / MAP_SCALE
     }
-    for (var key in locations) {
-        let location = locations[key];
+    for (var key in game.locations) {
+        let location = game.locations[key];
         if (p.x > location.x - HITBOX_OFFSET &&
             p.x < location.x + HITBOX_OFFSET + location.w  &&
             p.y > location.y - HITBOX_OFFSET &&
@@ -249,12 +263,12 @@ function GetMark(position) {
     }
 
     // Figure out if clicking marks or progress
-    let progress_yposition = marks.length * (MARK_SIZE + MARK_SEPARATION);
+    let progress_yposition = game.marks.length * (MARK_SIZE + MARK_SEPARATION);
     let type = TYPE_MARK;
-    let images = marks;
+    let images = game.marks;
     if (p.y > progress_yposition) {
         type = TYPE_PROGRESS;
-        images = progress;
+        images = game.progress;
         p.y -= progress_yposition + PROGRESS_YOFFSET;
     }
 
@@ -273,9 +287,9 @@ function GetMark(position) {
 }
 function GetWarp(position) {
     // Check all warps
-    let location = locations[current_location];
-    for (var key in warps[current_location]) {
-        let warp = warps[current_location][key];
+    let location = game.locations[current_location];
+    for (var key in game.warps[current_location]) {
+        let warp = game.warps[current_location][key];
         let info = GetWarpRenderInfo(location, warp);
 
         if (position.x > info.x &&
@@ -290,7 +304,7 @@ function GetWarp(position) {
 }
 
 function GetMarkByName(name_to_find) {
-    for (let images of [marks, progress]) {
+    for (let images of [game.marks, game.progress]) {
         for (let i = 0; i < images.length; ++i) {
             for (let j = 0; j < images[i].length; ++j) {
                 let name  = images[i][j][0];
@@ -326,8 +340,11 @@ function AddToMark (name, value, location) {
                 if (has_location) {
                     // Check if it's more than once in this location
                     let ocurrences = 0;
-                    for (let key in warps[location]) {
-                        if (warps[location][key].link_type && warps[location][key].link_type == LINKTYPE_MARK && warps[location][key].link == name) {
+                    for (let key in game.warps[location]) {
+                        if (game.warps[location][key].link_type &&
+                            game.warps[location][key].link_type == LINKTYPE_MARK &&
+                            game.warps[location][key].link == name)
+                        {
                             ocurrences += 1;
                         }
                     }

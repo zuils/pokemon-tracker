@@ -37,20 +37,20 @@ var frame, settings;
 var images = [];
 function LoadImages() {
     // Get all images
-    var list = ["images/emerald/map.png", "images/emerald/frame.png", "images/settings.png"];
-    for (let key in locations) {
-        list.push("images/emerald/maps/" + key + ".png");
+    var list = ["images/" + game.name + "/map.png", "images/" + game.name + "/frame.png", "images/settings.png"];
+    for (let key in game.locations) {
+        list.push("images/" + game.name + "/maps/" + key + ".png");
     }
 
-    for (let row of marks) {
+    for (let row of game.marks) {
         for (let pair of row) {
             if(pair[1] !== undefined) { list.push("images/marks/" + pair[0] + ".png") }
         }
     }
 
-    for (let row of progress) {
+    for (let row of game.progress) {
         for (let pair of row) {
-            if (pair[1] !== undefined) { list.push("images/emerald/progress/" + pair[0] + ".png") }
+            if (pair[1] !== undefined) { list.push("images/" + game.name + "/progress/" + pair[0] + ".png") }
         }
     }
 
@@ -83,7 +83,7 @@ function ImageLoaded() {
     }
     else {
         try {
-            locations[GetNameImage(this.src)].image = this;
+            game.locations[GetNameImage(this.src)].image = this;
         }
         catch(err) {
             console.log(err);
@@ -122,7 +122,7 @@ function RenderMap() {
     // ----- Draw main map -----
     DrawImage(map.image, map);
 
-    let location = locations[current_location];
+    let location = game.locations[current_location];
 
     // ----- Draw text -----
     context.save(); {
@@ -186,9 +186,9 @@ function GetWarpRenderInfo(location, warp) {
                 x: rendered_location.x + warp.x*location.scale,
                 y: rendered_location.y + warp.y*location.scale + WARP_LINE_YOFFSET
             }
-            info.text = locations[warp.link_location].name;
-            if (locations[warp.link_location].link_name) info.text = locations[warp.link_location].link_name;
-            if (warps[warp.link_location][warp.link].name) info.text = warps[warp.link_location][warp.link].name;
+            info.text = game.locations[warp.link_location].name;
+            if (game.locations[warp.link_location].link_name) info.text = game.locations[warp.link_location].link_name;
+            if (game.warps[warp.link_location][warp.link].name) info.text = game.warps[warp.link_location][warp.link].name;
         }
     }
 
@@ -212,7 +212,7 @@ function RenderLocation() {
     };
     DrawSquareContextless(background, BACKGROUND_COLOR);
 
-    let location = locations[current_location];
+    let location = game.locations[current_location];
 
     // ----- Render selected map -----
     rendered_location = {
@@ -229,8 +229,8 @@ function RenderLocation() {
         context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
         context.textAlign = "center";
         context.fillStyle = "#111111";
-        for (var key in warps[current_location]) {
-            let warp = warps[current_location][key];
+        for (var key in game.warps[current_location]) {
+            let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
             if (info.type == "image") {
                 DrawImage(info.image, info);
@@ -253,7 +253,7 @@ function RenderMarks() {
         h: MARK_SIZE
     };
     // ----- Render marks -----
-    for (let row of marks) {
+    for (let row of game.marks) {
         for (let pair of row) {
             let name  = pair[0];
             let count = pair[1];
@@ -276,14 +276,14 @@ function RenderMarks() {
     let background = {
         x: 0,
         y: v.y - MARK_SEPARATION,
-        w: Object.keys(progress[0]).length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
-        h: progress.length                 * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
+        w: game.progress[0].length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
+        h: game.progress.length    * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
     };
     DrawSquareContextless(background, BACKGROUND_COLOR);
 
     // ----- Render progress tracker -----
     context.save(); {
-        for (let row of progress) {
+        for (let row of game.progress) {
             for (let pair of row) {
                 let name  = pair[0];
                 let count = pair[1];
@@ -318,15 +318,15 @@ function RenderLine() {
     if (current_state != STATE_DEFAULT) {
         let info;
         if (current_state == STATE_LINK1) {
-            let location = locations[current_location];
-            let warp = warps[current_location][link_warp];
+            let location = game.locations[current_location];
+            let warp = game.warps[current_location][link_warp];
             info = {
                 x: rendered_location.x + warp.x*location.scale,
                 y: rendered_location.y + warp.y*location.scale
             }
         }
         else {
-            let location = locations[link_location];
+            let location = game.locations[link_location];
             info = {
                 x: (location.x + location.w/2) * MAP_SCALE,
                 y: (location.y + location.h/2) * MAP_SCALE

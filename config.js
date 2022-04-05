@@ -48,7 +48,7 @@ function FileUploaded(event) {
                 console.error("ERROR: Invalid line in save file: " + line);
                 continue;
             }
-            let warp = warps[f[0]][f[1]];
+            let warp = game.warps[f[0]][f[1]];
             warp.link_type     = f[2];
             warp.link          = f[4];
             warp.link_location = f[3];
@@ -70,10 +70,10 @@ function SaveFile() {
     text = text.substring(0, text.length-1);
     text += "\n";
 
-    for (var key_location in warps) {
-        for (var key_warp in warps[key_location]) {
+    for (var key_location in game.warps) {
+        for (var key_warp in game.warps[key_location]) {
             text += key_location + "," + key_warp + ",";
-            let warp = warps[key_location][key_warp];
+            let warp = game.warps[key_location][key_warp];
             if (warp.link_type) text += warp.link_type;
             text += ",";
             if (warp.link_location) text += warp.link_location;
