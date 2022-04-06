@@ -116,7 +116,6 @@ function ResetButton() {
 let networkinput_name;
 let networkinput_id;
 let networkinput_connect;
-let networkinput_data; // Test only
 
 let current_peer;
 let connected_to;
@@ -127,11 +126,9 @@ function ShowConfigNetwork() {
     if (!current_peer) {
         networkinput_name    = document.getElementById("networkinput_name");
         networkinput_connect = document.getElementById("networkinput_connect");
-        networkinput_data    = document.getElementById("networkinput_data");
         networkinput_id      = document.getElementById("networkinput_id");
         networkinput_name.value    = "";
         networkinput_connect.value = "";
-        networkinput_data.value    = "";
         networkinput_id.value      = "";
 
         network_connectto   = document.getElementById("network_connectto");
@@ -139,7 +136,7 @@ function ShowConfigNetwork() {
         network_name        = document.getElementById("network_name");
 
         let current_date_time = new Date();
-        current_id = Math.trunc(current_date_time.valueOf() / (Math.abs(current_date_time.getTimezoneOffset()) + 1) * (Math.random() % 10));
+        current_id = Math.trunc(current_date_time.valueOf() / (Math.abs(current_date_time.getTimezoneOffset())/10 + 1) * (Math.random() % 10)).toString();
 
         current_peer = new Peer(current_id);
         current_peer.on("open", function(id) {
@@ -216,17 +213,6 @@ function ConnectButton() {
             let f = data.split(",");
             ChangeWarpOffline(f[0], f[1], f[2], f[3], f[4]);
         });
-    }
-}
-
-function SendButton() {
-    if (connected_to) {
-        connected_to.send(networkinput_data.value);
-    }
-    else {
-        for (let c of connections) {
-            c.connection.send(networkinput_data.value);
-        }
     }
 }
 
