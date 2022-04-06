@@ -31,22 +31,16 @@ function FileUploaded(event) {
         }
         lines.shift();
 
-        for (let line of lines) {
-            if (line.length == 0) continue;
-
-            let f = line.split(",");
-            if (f.length != 5) {
-                console.error("ERROR: Invalid line in save file: " + line);
-                continue;
+        LinesToWarps(lines);
+        if (connected_to || connections.length > 0) {
+            let text = lines.join("\n");
+            if (connected_to) {
+                connected_to.send(text);
             }
-            let warp = game.warps[f[0]][f[1]];
-            warp.link_type     = f[2];
-            warp.link          = f[4];
-            warp.link_location = f[3];
-
-            if (warp.link_type == LINKTYPE_MARK) {
-                let info = GetMarkByName(warp.link);
-                if (info) info[1] += 1;
+            else {
+                for (let c of connections) {
+                    c.connection.send(text);
+                }
             }
         }
     }
@@ -63,14 +57,7 @@ function SaveFile() {
 
     for (var key_location in game.warps) {
         for (var key_warp in game.warps[key_location]) {
-            text += key_location + "," + key_warp + ",";
-            let warp = game.warps[key_location][key_warp];
-            if (warp.link_type) text += warp.link_type;
-            text += ",";
-            if (warp.link_location) text += warp.link_location;
-            text += ",";
-            if (warp.link) text += warp.link;
-            text += "\n";
+            text += WarpToText(key_location, key_warp) + "\n";
         }
     }
 
@@ -87,31 +74,86 @@ function SaveFile() {
     a.click();
 }
 
-function ResetButton() {
-    if (confirm ("Once deleted you'll lose all data. Are you sure to continue?")) {
-        for (let location in game.warps) {
-            for (let warp in game.warps[location]) {
-                let w = game.warps[location][warp];
-                w.link_type     = undefined;
-                w.link          = undefined;
-                w.link_location = undefined;
-            }
+function WarpsToText (warps) {
+    let text = "";
+    for (var key_location in warps) {
+        for (var key_warp in warps[key_location]) {
+            text += key_location + "," + key_warp + ",";
+            let warp = warps[key_location][key_warp];
+            if (warp.link_type) text += warp.link_type;
+            text += ",";
+            if (warp.link_location) text += warp.link_location;
+            text += ",";
+            if (warp.link) text += warp.link;
+            text += "\n";
         }
+    }
+    return text;
+}
+function LinesToWarps (lines) {
+    for (let line of lines) {
+        if (line.length == 0) continue;
 
-        for (let array of [game.marks, game.progress]) {
-            for (let row of array) {
-                for (let element of row) {
-                    if (element[1] !== undefined && element[1] !== null) {
-                        element[1] = 0;
-                    }
-                }
-            }
+        let f = line.split(",");
+        if (f.length != 5) {
+            console.error("ERROR: Invalid line in save file: " + line);
+            continue;
         }
-        game.obtained = new Set();
+        let warp = game.warps[f[0]][f[1]];
+        warp.link_type     = f[2];
+        warp.link          = f[4];
+        warp.link_location = f[3];
+
+        if (warp.link_type == LINKTYPE_MARK) {
+            let info = GetMarkByName(warp.link);
+            if (info) info[1] += 1;
+        }
     }
 }
 
+function ResetButton() {
+    if (confirm ("You and ALL connected users will lose all data. Are you sure to continue?")) {
+        ResetTracker();
+
+        if (connected_to || connections.length > 0) {
+            if (connected_to) {
+                connected_to.send(RESET_MESSAGE);
+            }
+            else {
+                for (let c of connections) {
+                    c.connection.send(RESET_MESSAGE);
+                }
+            }
+        }
+    }
+}
+
+function ResetTracker() {
+    for (let location in game.warps) {
+        for (let warp in game.warps[location]) {
+            let w = game.warps[location][warp];
+            w.link_type     = undefined;
+            w.link          = undefined;
+            w.link_location = undefined;
+        }
+    }
+
+    for (let array of [game.marks, game.progress]) {
+        for (let row of array) {
+            for (let element of row) {
+                if (element[1] !== undefined && element[1] !== null) {
+                    element[1] = 0;
+                }
+            }
+        }
+    }
+    game.obtained = new Set();
+}
+
 /*********************************************************/
+
+const RESET_MESSAGE = "-RESET-";
+const USERNAME_MESSAGE = "###";
 
 let networkinput_name;
 let network_id;
@@ -136,7 +178,7 @@ function ShowConfigNetwork() {
         network_name        = document.getElementById("network_name");
 
         let current_date_time = new Date();
-        current_id = Math.trunc(current_date_time.valueOf() / (Math.abs(current_date_time.getTimezoneOffset())/10 + 1) * (Math.random() % 10)).toString();
+        current_id = Math.trunc(current_date_time.valueOf() / ((Math.abs(current_date_time.getTimezoneOffset())/10 % 10) + 1) * (Math.random() % 10)).toString();
 
         current_peer = new Peer(current_id);
         current_peer.on("open", function(id) {
@@ -152,7 +194,7 @@ function ShowConfigNetwork() {
             }
             
             connection.on("data", function(data) {
-                if (data.startsWith("###")) {
+                if (data.startsWith(USERNAME_MESSAGE)) {
                     let name = data.slice(3);
                     for (let c of connections) {
                         if (this.peer == c.connection.peer) {
@@ -171,11 +213,19 @@ function ShowConfigNetwork() {
                     }
                     
                     //Handle data
-                    console.log("+Received data: " + data);
-                    let f = data.split(",");
-                    ChangeWarpOffline(f[0], f[1], f[2], f[3], f[4]);
+                    if (data == RESET_MESSAGE) {
+                        ResetTracker();
+                    } else {
+                        LinesToWarps(data.split("\n"));
+                    }
                 }
             });
+
+            connection.on("open", function(A) {
+                let text = WarpsToText(game.warps);
+                connection.send(text);
+            });
+
             connections.push({ connection: connection, username: connection.peer });
             UpdateUsernames();
         });
@@ -205,14 +255,19 @@ function ConnectButton() {
             network_connections.classList.remove("config_hidden");
             network_connections.innerHTML = "Connected to host: " + networkinput_connect.value;
 
-            if (username) { connected_to.send("###" + username); }
+            if (username) { connected_to.send(USERNAME_MESSAGE + username); }
         });
         
         connected_to.on("data", function(data) {
             // Handle data
-            console.log("-Received data: " + data);
-            let f = data.split(",");
-            ChangeWarpOffline(f[0], f[1], f[2], f[3], f[4]);
+            if (data == RESET_MESSAGE) {
+                //console.log("Received data: Reset Tracker");
+                ResetTracker();
+            }
+            else {
+                //console.log("-Received data: " + data);
+                LinesToWarps(data.split("\n"));
+            }
         });
     }
 }
@@ -221,7 +276,7 @@ function ChangeUsername(data) {
     if (username != data) {
         username = data;
         if (connected_to) {
-            connected_to.send("###" + username);
+            connected_to.send(USERNAME_MESSAGE + username);
         }
     }
 }
