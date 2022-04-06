@@ -54,12 +54,8 @@ function SaveFile() {
     }
     text = text.substring(0, text.length-1);
     text += "\n";
-
-    for (var key_location in game.warps) {
-        for (var key_warp in game.warps[key_location]) {
-            text += WarpToText(key_location, key_warp) + "\n";
-        }
-    }
+    
+    text += WarpsToText(game.warps);
 
     if (text.length == 0) {
         alert("There's nothing to save.");
