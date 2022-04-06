@@ -114,7 +114,7 @@ function ResetButton() {
 /*********************************************************/
 
 let networkinput_name;
-let networkinput_id;
+let network_id;
 let networkinput_connect;
 
 let current_peer;
@@ -126,10 +126,10 @@ function ShowConfigNetwork() {
     if (!current_peer) {
         networkinput_name    = document.getElementById("networkinput_name");
         networkinput_connect = document.getElementById("networkinput_connect");
-        networkinput_id      = document.getElementById("networkinput_id");
         networkinput_name.value    = "";
         networkinput_connect.value = "";
-        networkinput_id.value      = "";
+        network_id = document.getElementById("network_id");
+        network_id.innerHTML = "---";
 
         network_connectto   = document.getElementById("network_connectto");
         network_connections = document.getElementById("network_connections");
@@ -140,7 +140,7 @@ function ShowConfigNetwork() {
 
         current_peer = new Peer(current_id);
         current_peer.on("open", function(id) {
-            networkinput_id.value = id;
+            network_id.innerHTML = id;
         });
 
         current_peer.on("connection", function(connection) {
@@ -197,12 +197,13 @@ function UpdateUsernames() {
 }
 
 function ConnectButton() {
-    if (networkinput_connect.value && networkinput_connect.value !== networkinput_id.value) {
+    networkinput_connect.value = networkinput_connect.value.trim();
+    if (networkinput_connect.value && networkinput_connect.value !== network_id.innerHTML) {
         connected_to = current_peer.connect(networkinput_connect.value);
         connected_to.on("open", function(_) {
-            networkinput_id.value = networkinput_connect.value;
             network_connectto.classList.add("config_hidden");
             network_connections.classList.remove("config_hidden");
+            network_connections.innerHTML = "Connected to host: " + networkinput_connect.value;
 
             if (username) { connected_to.send("###" + username); }
         });
