@@ -145,7 +145,7 @@ var emerald = {
             top3:    {x: 408, y: 29 },
             top4:    {x: 521, y: 66 },
             mart:    {x: 79,  y: 225},
-            gym:     {x: 359, y: 148},
+            gym:     {x: 359, y: 148, name: "Fortree City (Gym)"},
             bottom1: {x: 199, y: 185},
             bottom2: {x: 599, y: 185},
         },
