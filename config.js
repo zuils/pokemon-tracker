@@ -99,15 +99,8 @@ function LinesToWarps (lines) {
             console.error("ERROR: Invalid line in save file: " + line);
             continue;
         }
-        let warp = game.warps[f[0]][f[1]];
-        warp.link_type     = f[2];
-        warp.link          = f[4];
-        warp.link_location = f[3];
-
-        if (warp.link_type == LINKTYPE_MARK) {
-            let info = GetMarkByName(warp.link);
-            if (info) info[1] += 1;
-        }
+        
+        ChangeWarpOffline(f[0], f[1], f[2], f[3], f[4]);
     }
 }
 
