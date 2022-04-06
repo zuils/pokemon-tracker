@@ -61,6 +61,12 @@ function OnMouseDown(event) {
     if (info) {
         click.down = true;
         click.info = info;
+        if (event.which == LEFT_CLICK && info.type == TYPE_WARP && current_state == STATE_DEFAULT) {
+            link_location = current_location;
+            link_warp     = info.target;
+            current_state = STATE_LINK1;
+            click.down = false;
+        }
     }
 }
 function OnMouseMove(event) {
@@ -86,6 +92,7 @@ function OnMouseUp(event) {
         } break;
     }
 
+    if (!click.down) return;
     click.down = false;
     let info = GetClicked(mouse_position);
     if (info) {
