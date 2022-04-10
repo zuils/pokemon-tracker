@@ -28,7 +28,8 @@ const MARKFOUND_COLOR = "#AAAAAA"
 
 let aux_canvas;
 let aux_context;
-let rerender = true;
+let rerender_all = true;
+let rerender_location = true;
 let last_rendered_location = "";
 
 var loading_process = {
@@ -236,7 +237,6 @@ function RenderLocation() {
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
-    console.log(game.warps[current_location]);
     aux_context.save(); {
         aux_context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
         aux_context.textAlign = "center";
@@ -429,14 +429,20 @@ function RenderLine() {
 }
 
 function Render() {
-    if (rerender || last_rendered_location != current_location) {
-        aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
+    if (rerender_all || rerender_location || last_rendered_location != current_location) {
+        if (rerender_all) {
+            aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
+            RenderMarks();
+        }
+        else {
+            //aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
+        }
         RenderMap();
         RenderLocation();
-        RenderMarks();
         RenderConfigButton();
 
-        rerender = false;
+        rerender_all = false;
+        rerender_location = false;
         last_rendered_location = current_location;
     }
 

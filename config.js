@@ -44,7 +44,7 @@ function FileUploaded(event) {
             }
         }
 
-        rerender = true;
+        rerender_all = true;
     }
     reader.readAsText(file_selector.files[0]);
 }
@@ -141,7 +141,7 @@ function ResetTracker() {
     }
     InitTrackerToUnknowns();
     game.obtained = new Set();
-    rerender = true;
+    rerender_all = true;
 }
 
 /*********************************************************/

@@ -124,7 +124,7 @@ function OnMouseUp(event) {
                                 else {
                                     game.obtained.add(info.target);
                                 }
-                                rerender = true;
+                                rerender_all = true;
                             } 
                         } // falldown
                         case TYPE_MARK: {
@@ -233,7 +233,7 @@ function ChangeWarpOffline(location, warp, link_type, link_location, link) {
     w.link_location = link_location;
     w.link          = link;
 
-    rerender = true;
+    rerender_location = true;
 }
 
 function EventToPosition(event) {
@@ -308,7 +308,7 @@ function GetMark(position) {
     // Check which mark is in cuadrant and return it
     if (type == TYPE_MARK || (cell.y < images.length && cell.x < images[cell.y].length)) {
         let result = images[cell.y][cell.x];
-        if (result && result[1] !== null && result[1] !== undefined) return { type: type, target: result[0], coords: cell };
+        if (result && result[1] !== undefined) return { type: type, target: result[0], coords: cell };
     }
     return null;
 }
@@ -353,7 +353,10 @@ function GetMarkByName(name_to_find) {
 function AddToMark (name, value, location) {
     let info = GetMarkByName(name);
     if (info) {
+        let old_value = info[1];
         info[1] += value;
+
+        rerender_all |= ((old_value >= 1 && info[1] <= 0) || (old_value <= 0 && info[1] >= 1));
 
         // Update current_markcycle if it's the same mark
         if (current_markcycle && current_markcycle.name == name) {
