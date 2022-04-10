@@ -13,13 +13,7 @@ function init() {
 
     game = emerald;
     current_location = game.start_location;
-    for (let key_location in game.warps) {
-        for (let key_warp in game.warps[key_location]) {
-            game.warps[key_location][key_warp].link_type = LINKTYPE_MARK;
-            game.warps[key_location][key_warp].link      = "unknown";
-            game.marks[0][0][1] += 1; // assumming game.marks[0][0] always is ["unknown", 0]
-        }
-    }
+    InitTrackerToUnknowns();
     LoadImages();
     RegisterInputEvents();
 

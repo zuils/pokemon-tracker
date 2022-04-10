@@ -26,6 +26,11 @@ const UNCHECKED_FILTER = "grayscale(100%) opacity(50%)";
 const MARKFOUND_SIZE  = 1;
 const MARKFOUND_COLOR = "#AAAAAA"
 
+let aux_canvas;
+let aux_context;
+let rerender = true;
+let last_rendered_location = "";
+
 var loading_process = {
     max_width:  0,
     max_height: 0,
@@ -88,7 +93,7 @@ function ImageLoaded() {
         catch(err) {
             console.log(err);
             console.log(this.src);
-        console.log(GetNameImage(this.src));
+            console.log(GetNameImage(this.src));
         }
 
         // Get max width/height for later
@@ -101,6 +106,11 @@ function ImageLoaded() {
         // Set canvas dimensions
         canvas.width  = map.w + loading_process.max_width + SELECTED_MAP_XOFFSET;
         canvas.height = loading_process.max_height;
+
+        aux_canvas = document.createElement("canvas");
+        aux_canvas.width  = canvas.width;
+        aux_canvas.height = canvas.height;
+        aux_context = aux_canvas.getContext("2d");
 
         requestAnimationFrame(GameLoop);
     }
@@ -115,9 +125,9 @@ function GetNameImage(path) {
 /*********************************************************/
 
 function RenderMap() {
-    context.webkitImageSmoothingEnabled = false;
-    context.mozImageSmoothingEnabled = false;
-    context.imageSmoothingEnabled = false;
+    aux_context.webkitImageSmoothingEnabled = false;
+    aux_context.mozImageSmoothingEnabled = false;
+    aux_context.imageSmoothingEnabled = false;
 
     // ----- Draw main map -----
     DrawImage(map.image, map);
@@ -125,10 +135,10 @@ function RenderMap() {
     let location = game.locations[current_location];
 
     // ----- Draw text -----
-    context.save(); {
-        context.font = "bold " + MAP_FONT_SIZE + "px Pokemon_Font";
-        context.textAlign = "center";
-        context.fillStyle = "#111111";
+    aux_context.save(); {
+        aux_context.font = "bold " + MAP_FONT_SIZE + "px Pokemon_Font";
+        aux_context.textAlign = "center";
+        aux_context.fillStyle = "#111111";
 
         var text_position = {
             x: map.w - (FRAME_WIDTH /2)*MAP_SCALE,
@@ -137,22 +147,22 @@ function RenderMap() {
         let lines = location.name.split("\n");
         switch (lines.length) {
             case 1: {
-                context.fillText(lines[0], text_position.x, text_position.y);
+                aux_context.fillText(lines[0], text_position.x, text_position.y);
             } break;
             default: {
                 console.error("ERROR: Text can have more than 2 lines! Only rendering the 2 first lines.");
             } // falldown
             case 2: {
-                context.fillText(lines[0], text_position.x, text_position.y - LINE_BREAK_YOFFSET);
-                context.fillText(lines[1], text_position.x, text_position.y + LINE_BREAK_YOFFSET);
+                aux_context.fillText(lines[0], text_position.x, text_position.y - LINE_BREAK_YOFFSET);
+                aux_context.fillText(lines[1], text_position.x, text_position.y + LINE_BREAK_YOFFSET);
             } break;
         }
-    } context.restore();
+    } aux_context.restore();
 
     // ----- Draw map mark -----
-    context.save(); {
-        context.lineWidth = MAP_MARK_WIDTH;
-        context.strokeStyle = LINE_COLOR;
+    aux_context.save(); {
+        aux_context.lineWidth = MAP_MARK_WIDTH;
+        aux_context.strokeStyle = LINE_COLOR;
         let v = {
             x: location.x*MAP_SCALE -   MAP_MARK_OFFSET,
             y: location.y*MAP_SCALE -   MAP_MARK_OFFSET,
@@ -160,7 +170,7 @@ function RenderMap() {
             h: location.h*MAP_SCALE + 2*MAP_MARK_OFFSET,
         };
         DrawBox(v);
-    } context.restore();
+    } aux_context.restore();
 }
 
 function GetWarpRenderInfo(location, warp) {
@@ -226,10 +236,10 @@ function RenderLocation() {
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
-    context.save(); {
-        context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
-        context.textAlign = "center";
-        context.fillStyle = "#111111";
+    aux_context.save(); {
+        aux_context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
+        aux_context.textAlign = "center";
+        aux_context.fillStyle = "#111111";
         for (var key in game.warps[current_location]) {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
@@ -238,11 +248,11 @@ function RenderLocation() {
             }
             else {
                 DrawImage(frame, info);
-                context.fillText(info.text, info.text_position.x, info.text_position.y);
+                aux_context.fillText(info.text, info.text_position.x, info.text_position.y);
             }
         }
 
-    } context.restore();
+    } aux_context.restore();
 }
 
 function RenderMarks() {
@@ -282,18 +292,18 @@ function RenderMarks() {
     DrawSquareContextless(background, BACKGROUND_COLOR);
 
     // ----- Render progress tracker -----
-    context.save(); {
+    aux_context.save(); {
         for (let row of game.progress) {
             for (let pair of row) {
                 let name  = pair[0];
                 let count = pair[1];
                 if (count !== undefined) {
                     if (count && count > 0) {
-                        context.filter = "none";
+                        aux_context.filter = "none";
                         DrawBoxContextless(v, MARKFOUND_SIZE, MARKFOUND_COLOR);
                     }
                     
-                    context.filter = game.obtained.has(name) ? "none" : UNCHECKED_FILTER;
+                    aux_context.filter = game.obtained.has(name) ? "none" : UNCHECKED_FILTER;
                     DrawImage(images[name], v);
                 }
                 v.x += MARK_SIZE + MARK_SEPARATION;
@@ -301,7 +311,7 @@ function RenderMarks() {
             v.y += MARK_SIZE + MARK_SEPARATION;
             v.x = MARK_SEPARATION;
         }
-    } context.restore();
+    } aux_context.restore();
 }
 
 function RenderConfigButton() {
@@ -344,37 +354,43 @@ function RenderLine() {
 }
 
 function Render() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (rerender || last_rendered_location != current_location) {
+        aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
+        RenderMap();
+        RenderLocation();
+        RenderMarks();
+        RenderConfigButton();
 
-    RenderMap();
-    RenderLocation();
-    RenderMarks();
-    RenderConfigButton();
+        rerender = false;
+        last_rendered_location = current_location;
+    }
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(aux_canvas, 0, 0);
     RenderLine();
 }
 
 function DrawSquareContextless(v, color) {
-    context.save(); {
-        context.fillStyle = color;
-        context.fillRect(v.x, v.y, v.w, v.h);
-    } context.restore();
+    aux_context.save(); {
+        aux_context.fillStyle = color;
+        aux_context.fillRect(v.x, v.y, v.w, v.h);
+    } aux_context.restore();
 }
 function DrawSquare(v) {
-    context.fillRect(v.x, v.y, v.w, v.h);
+    aux_context.fillRect(v.x, v.y, v.w, v.h);
 }
 
 function DrawBox(v) {
-    context.strokeRect(v.x, v.y, v.w, v.h);
+    aux_context.strokeRect(v.x, v.y, v.w, v.h);
 }
 function DrawBoxContextless(v, width, color) {
-    context.save(); {
-        context.lineWidth   = width;
-        context.strokeStyle = color;
-        context.strokeRect(v.x, v.y, v.w, v.h);
-
-    } context.restore();
+    aux_context.save(); {
+        aux_context.lineWidth   = width;
+        aux_context.strokeStyle = color;
+        aux_context.strokeRect(v.x, v.y, v.w, v.h);
+    } aux_context.restore();
 }
 
 function DrawImage(image, v) {
-    context.drawImage(image, v.x, v.y, v.w, v.h);
+    aux_context.drawImage(image, v.x, v.y, v.w, v.h);
 }

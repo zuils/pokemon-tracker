@@ -43,6 +43,8 @@ function FileUploaded(event) {
                 }
             }
         }
+
+        rerender = true;
     }
     reader.readAsText(file_selector.files[0]);
 }
@@ -117,16 +119,17 @@ function ResetButton() {
     }
 }
 
-function ResetTracker() {
-    for (let location in game.warps) {
-        for (let warp in game.warps[location]) {
-            let w = game.warps[location][warp];
-            w.link_type     = undefined;
-            w.link          = undefined;
-            w.link_location = undefined;
+
+function InitTrackerToUnknowns() {
+    for (let key_location in game.warps) {
+        for (let key_warp in game.warps[key_location]) {
+            game.warps[key_location][key_warp].link_type = LINKTYPE_MARK;
+            game.warps[key_location][key_warp].link      = "unknown";
+            game.marks[0][0][1] += 1; // assumming game.marks[0][0] always is ["unknown", 0]
         }
     }
-
+}
+function ResetTracker() {
     for (let array of [game.marks, game.progress]) {
         for (let row of array) {
             for (let element of row) {
@@ -136,7 +139,9 @@ function ResetTracker() {
             }
         }
     }
+    InitTrackerToUnknowns();
     game.obtained = new Set();
+    rerender = true;
 }
 
 /*********************************************************/
