@@ -236,6 +236,7 @@ function RenderLocation() {
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
+    console.log(game.warps[current_location]);
     aux_context.save(); {
         aux_context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
         aux_context.textAlign = "center";
@@ -255,6 +256,7 @@ function RenderLocation() {
     } aux_context.restore();
 }
 
+/*
 function RenderMarks() {
     let v = {
         x: MARK_SEPARATION,
@@ -310,6 +312,79 @@ function RenderMarks() {
             }
             v.y += MARK_SIZE + MARK_SEPARATION;
             v.x = MARK_SEPARATION;
+        }
+    } aux_context.restore();
+}
+*/
+function GetPositionCopy(v) { return { x: v.x, y: v.y, w: v.w, h: v.h }; }
+function RenderMarks() {
+    let unfiltered_marks = [];
+    let filtered_marks = [];
+    let boxes = [];
+    let v = {
+        x: MARK_SEPARATION,
+        y: map.h + MARKS_YOFFSET,
+        w: MARK_SIZE,
+        h: MARK_SIZE
+    };
+    // ----- Obtain marks -----
+    for (let row of game.marks) {
+        for (let pair of row) {
+            let name  = pair[0];
+            let count = pair[1];
+            if (count !== undefined) {
+                unfiltered_marks.push({ name: name, position: GetPositionCopy(v)});
+                if (count && count > 0) { boxes.push({ position: GetPositionCopy(v) }); }
+            }
+
+            v.x += MARK_SIZE + MARK_SEPARATION;
+        }
+        v.y += MARK_SIZE + MARK_SEPARATION;
+        v.x = MARK_SEPARATION;
+    }
+
+    // ----- Render background progress tracker -----
+    v.y += PROGRESS_YOFFSET;
+    let background = {
+        x: 0,
+        y: v.y - MARK_SEPARATION,
+        w: game.progress[0].length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
+        h: game.progress.length    * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
+    };
+    DrawSquareContextless(background, BACKGROUND_COLOR);
+
+    // ----- Obtain progress tracker -----
+    for (let row of game.progress) {
+        for (let pair of row) {
+            let name  = pair[0];
+            let count = pair[1];
+            if (count !== undefined) {
+                let m = { name: name, position: GetPositionCopy(v)};
+                if (game.obtained.has(name)) unfiltered_marks.push(m);
+                else filtered_marks.push(m);
+                if (count && count > 0) { boxes.push({ position: GetPositionCopy(v) }); }
+            }
+            v.x += MARK_SIZE + MARK_SEPARATION;
+        }
+        v.y += MARK_SIZE + MARK_SEPARATION;
+        v.x = MARK_SEPARATION;
+    }
+
+    // ----- Render everything in bulk -----
+    aux_context.save(); {
+        aux_context.lineWidth   = MARKFOUND_SIZE;
+        aux_context.strokeStyle = MARKFOUND_COLOR;
+        for (let b of boxes) {
+            DrawBox(b.position);
+        }
+
+        for (let m of unfiltered_marks) {
+            DrawImage(images[m.name], m.position);
+        }
+
+        aux_context.filter = UNCHECKED_FILTER;
+        for (let m of filtered_marks) {
+            DrawImage(images[m.name], m.position);
         }
     } aux_context.restore();
 }

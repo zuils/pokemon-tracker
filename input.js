@@ -308,7 +308,7 @@ function GetMark(position) {
     // Check which mark is in cuadrant and return it
     if (type == TYPE_MARK || (cell.y < images.length && cell.x < images[cell.y].length)) {
         let result = images[cell.y][cell.x];
-        if (result) return { type: type, target: result[0], coords: cell };
+        if (result && result[1] !== null && result[1] !== undefined) return { type: type, target: result[0], coords: cell };
     }
     return null;
 }
