@@ -256,66 +256,6 @@ function RenderLocation() {
     } aux_context.restore();
 }
 
-/*
-function RenderMarks() {
-    let v = {
-        x: MARK_SEPARATION,
-        y: map.h + MARKS_YOFFSET,
-        w: MARK_SIZE,
-        h: MARK_SIZE
-    };
-    // ----- Render marks -----
-    for (let row of game.marks) {
-        for (let pair of row) {
-            let name  = pair[0];
-            let count = pair[1];
-            if (count !== undefined) {
-                if (count && count > 0) {
-                    DrawBoxContextless(v, MARKFOUND_SIZE, MARKFOUND_COLOR);
-                }
-
-                DrawImage(images[name], v);
-            }
-
-            v.x += MARK_SIZE + MARK_SEPARATION;
-        }
-        v.y += MARK_SIZE + MARK_SEPARATION;
-        v.x = MARK_SEPARATION;
-    }
-
-    // ----- Render background progress tracker -----
-    v.y += PROGRESS_YOFFSET;
-    let background = {
-        x: 0,
-        y: v.y - MARK_SEPARATION,
-        w: game.progress[0].length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
-        h: game.progress.length    * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
-    };
-    DrawSquareContextless(background, BACKGROUND_COLOR);
-
-    // ----- Render progress tracker -----
-    aux_context.save(); {
-        for (let row of game.progress) {
-            for (let pair of row) {
-                let name  = pair[0];
-                let count = pair[1];
-                if (count !== undefined) {
-                    if (count && count > 0) {
-                        aux_context.filter = "none";
-                        DrawBoxContextless(v, MARKFOUND_SIZE, MARKFOUND_COLOR);
-                    }
-                    
-                    aux_context.filter = game.obtained.has(name) ? "none" : UNCHECKED_FILTER;
-                    DrawImage(images[name], v);
-                }
-                v.x += MARK_SIZE + MARK_SEPARATION;
-            }
-            v.y += MARK_SIZE + MARK_SEPARATION;
-            v.x = MARK_SEPARATION;
-        }
-    } aux_context.restore();
-}
-*/
 function GetPositionCopy(v) { return { x: v.x, y: v.y, w: v.w, h: v.h }; }
 function RenderMarks() {
     let unfiltered_marks = [];
@@ -433,13 +373,14 @@ function Render() {
         if (rerender_all) {
             aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
             RenderMarks();
+            RenderConfigButton();
         }
         else {
-            //aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
+            aux_context.clearRect(map.x, map.y, map.w, map.h);
+            aux_context.clearRect(map.w + SELECTED_MAP_XOFFSET, 0, loading_process.max_width, loading_process.max_height);
         }
         RenderMap();
         RenderLocation();
-        RenderConfigButton();
 
         rerender_all = false;
         rerender_location = false;
