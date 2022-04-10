@@ -124,6 +124,7 @@ function OnMouseUp(event) {
                                 else {
                                     game.obtained.add(info.target);
                                 }
+                                rerender = true;
                             } 
                         } // falldown
                         case TYPE_MARK: {
@@ -231,7 +232,7 @@ function ChangeWarpOffline(location, warp, link_type, link_location, link) {
     w.link_type     = link_type;
     w.link_location = link_location;
     w.link          = link;
-    
+
     rerender = true;
 }
 
