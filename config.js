@@ -149,6 +149,7 @@ function ResetTracker() {
 
 function ChangeStretch() {
     console.log("A");
+    rerender_location = true;
 }
 
 function ChangeSmooth() {

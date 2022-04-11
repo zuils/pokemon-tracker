@@ -192,15 +192,15 @@ function GetWarpRenderInfo(location, warp) {
         else {
             info.type = "text";
             // Draw location/warp
-            info.x = rendered_location.x + warp.x*location.scale - frame.naturalWidth/2 ;
-            info.y = rendered_location.y + warp.y*location.scale - frame.naturalHeight/2;
+            info.x = rendered_location.x + warp.x*rendered_location.scale  - frame.naturalWidth/2 ;
+            info.y = rendered_location.y + warp.y*rendered_location.scale - frame.naturalHeight/2;
             info.w = frame.naturalWidth;
             info.h = frame.naturalHeight;
             info.image = frame;
 
             info.text_position = {
-                x: rendered_location.x + warp.x*location.scale,
-                y: rendered_location.y + warp.y*location.scale + WARP_LINE_YOFFSET
+                x: rendered_location.x + warp.x*rendered_location.scale,
+                y: rendered_location.y + warp.y*rendered_location.scale + WARP_LINE_YOFFSET
             }
             info.text = game.locations[warp.link_location].name;
             if (game.locations[warp.link_location].link_name) info.text = game.locations[warp.link_location].link_name;
@@ -209,8 +209,8 @@ function GetWarpRenderInfo(location, warp) {
     }
 
     if (info.type == "image") {
-        info.x = rendered_location.x + warp.x*location.scale - info.image.naturalWidth/2;
-        info.y = rendered_location.y + warp.y*location.scale - info.image.naturalHeight/2;
+        info.x = rendered_location.x + warp.x*rendered_location.scale - info.image.naturalWidth/2;
+        info.y = rendered_location.y + warp.y*rendered_location.scale - info.image.naturalHeight/2;
         info.w = info.image.naturalWidth;
         info.h = info.image.naturalHeight;
     }
@@ -233,13 +233,39 @@ function RenderLocation() {
     let location = game.locations[current_location];
 
     // ----- Render selected map -----
-    rendered_location = {
+    if (checkbox_stretch.checked) {
+        let ratio = {
+            width:  background.w / location.image.naturalWidth,
+            height: background.h / location.image.naturalHeight
+        };
+        let scale;
+        let center = { x: 0, y: 0 };
+        if (ratio.height < ratio.width) {
+            scale = ratio.height;
+            center.x = (background.w - location.image.naturalWidth*scale) / 2;
+        }
+        else {
+            scale = ratio.width;
+            center.y = (background.h - location.image.naturalHeight*scale) / 2;
+        }
+        rendered_location = {
+            x: background.x + center.x,
+            y: background.y + center.y,
+            w: location.image.naturalWidth  * scale,
+            h: location.image.naturalHeight * scale,
+            scale: scale
+        };
+    }
+    else {
         // Center image
-        x: background.x + (background.w - location.image.naturalWidth *location.scale)/2,
-        y: background.y + (background.h - location.image.naturalHeight*location.scale)/2,
-        w: location.image.naturalWidth  * location.scale,
-        h: location.image.naturalHeight * location.scale
-    };
+        rendered_location = {
+            x: background.x + (background.w - location.image.naturalWidth *location.scale)/2,
+            y: background.y + (background.h - location.image.naturalHeight*location.scale)/2,
+            w: location.image.naturalWidth  * location.scale,
+            h: location.image.naturalHeight * location.scale,
+            scale: location.scale
+        };
+    }
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
@@ -356,8 +382,8 @@ function RenderLine() {
             let location = game.locations[current_location];
             let warp = game.warps[current_location][link_warp];
             info = {
-                x: rendered_location.x + warp.x*location.scale,
-                y: rendered_location.y + warp.y*location.scale
+                x: rendered_location.x + warp.x*rendered_location.scale,
+                y: rendered_location.y + warp.y*rendered_location.scale
             }
         }
         else {
@@ -387,7 +413,7 @@ function Render() {
         }
         else {
             aux_context.clearRect(map.x, map.y, map.w, map.h);
-            aux_context.clearRect(map.w + SELECTED_MAP_XOFFSET, 0, loading_process.max_width, loading_process.max_height);
+            aux_context.clearRect(map.w, 0, loading_process.max_width + SELECTED_MAP_XOFFSET, loading_process.max_height);
         }
         RenderMap();
         RenderLocation();
