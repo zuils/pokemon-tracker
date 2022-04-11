@@ -125,10 +125,14 @@ function GetNameImage(path) {
 
 /*********************************************************/
 
+function SetSmoothing(state) {
+    aux_context.webkitImageSmoothingEnabled = state;
+    aux_context.mozImageSmoothingEnabled    = state;
+    aux_context.imageSmoothingEnabled       = state;
+}
+
 function RenderMap() {
-    aux_context.webkitImageSmoothingEnabled = false;
-    aux_context.mozImageSmoothingEnabled = false;
-    aux_context.imageSmoothingEnabled = false;
+    SetSmoothing(false);
 
     // ----- Draw main map -----
     DrawImage(map.image, map);
@@ -215,6 +219,8 @@ function GetWarpRenderInfo(location, warp) {
 }
 let rendered_location = {};
 function RenderLocation() {
+    SetSmoothing(checkbox_smooth.checked);
+
     // ----- Render drawing space -----
     let background = {
         x: map.w + SELECTED_MAP_XOFFSET,
@@ -258,6 +264,8 @@ function RenderLocation() {
 
 function GetPositionCopy(v) { return { x: v.x, y: v.y, w: v.w, h: v.h }; }
 function RenderMarks() {
+    SetSmoothing(true);
+
     let unfiltered_marks = [];
     let filtered_marks = [];
     let boxes = [];
@@ -340,6 +348,8 @@ function RenderConfigButton() {
 }
 
 function RenderLine() {
+    SetSmoothing(false);
+
     if (current_state != STATE_DEFAULT) {
         let info;
         if (current_state == STATE_LINK1) {

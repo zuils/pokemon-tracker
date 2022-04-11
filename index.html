@@ -33,8 +33,10 @@
           <button onclick="LoadFile()">Load</button>
           <button onclick="SaveFile()">Save</button>
           <button onclick="ResetButton()">Reset Tracker</button>
+          <label><input type="checkbox" id="checkbox_stretch" onclick="ChangeStretch()">Stretch images to fit canvas</label>
+          <label><input type="checkbox" id="checkbox_smooth"  onclick="ChangeSmooth()" >Smooth images</label>
           <p>To resize the tracker use your browser's built-in functionality to zoom in/out.</p>
-          <p>Enable hardware acceleration on Chrome if it lags.</p>
+          <p>Chrome users: enable hardware acceleration to increase performance.</p>
           <p id="config_controlstoggle" class="config_toggle" onclick="ShowConfigControls()">+ Show controls & explanation</p>
           <div id="config_controls" class="config_hidden">
             <hr>

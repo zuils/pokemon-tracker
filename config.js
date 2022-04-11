@@ -4,6 +4,9 @@ let config_controlstoggle;
 let config_network;
 let config_networktoggle;
 
+let checkbox_stretch;
+let checkbox_smooth;
+
 function ShowConfig() {
     config.style.display = "block";
     HideConfigControls();
@@ -142,6 +145,15 @@ function ResetTracker() {
     InitTrackerToUnknowns();
     game.obtained = new Set();
     rerender_all = true;
+}
+
+function ChangeStretch() {
+    console.log("A");
+}
+
+function ChangeSmooth() {
+    console.log("B");
+    rerender_location = true;
 }
 
 /*********************************************************/

@@ -108,6 +108,14 @@ input {
     margin-right: 10px;
 }
 
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+label {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
 .close {
     color: var(--color7);
     float: right;
