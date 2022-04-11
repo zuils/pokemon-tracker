@@ -16,6 +16,7 @@ function init() {
     InitTrackerToUnknowns();
     LoadImages();
     RegisterInputEvents();
+    document.fonts.onloadingdone = FontReady;
 
     config                = document.getElementById("config");
     config_controls       = document.getElementById("config_controls");
@@ -39,3 +40,5 @@ function GameLoop() {
     Render();
     requestAnimationFrame(GameLoop);
 }
+
+function FontReady() { rerender_location = true; }
