@@ -1,4 +1,5 @@
 var emerald = {
+    ready: false,
     name: "emerald",
     start_location: "oldale",
     locations: {

@@ -28,10 +28,13 @@ function OnKeyDown(event) {
     }
 
     current_state = STATE_DEFAULT;
+    current_location = game.start_location;
     left_click  = { down: false };
     right_click = { down: false };
     current_markcycle = undefined;
 
+    rerender_all = true;
+    if (!game.ready) { LoadImages(); }
 }
 function OnKeyUp(event) { if (event.key == "g") g_pressed = false; }
 

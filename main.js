@@ -7,6 +7,7 @@ const LINKTYPE_WARP = "warp";
 const LINKTYPE_MARK = "mark";
 
 let game;
+let tracker_ready = false;
 function init() {
     canvas  = document.getElementById('canvas');
     context = canvas.getContext('2d');
@@ -37,8 +38,10 @@ function init() {
 }
 
 function GameLoop() {
-    Render();
-    requestAnimationFrame(GameLoop);
+    if (game.ready) {
+        Render();
+        requestAnimationFrame(GameLoop);
+    }
 }
 
 function FontReady() { rerender_location = true; }

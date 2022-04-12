@@ -113,6 +113,7 @@ function ImageLoaded() {
         aux_canvas.height = canvas.height;
         aux_context = aux_canvas.getContext("2d");
 
+        game.ready = true;
         requestAnimationFrame(GameLoop);
     }
 }
