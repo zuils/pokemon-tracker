@@ -6,7 +6,6 @@ const LINE_COLOR     = "#00FFFF";
 
 const MAP_MARK_OFFSET = 1;
 const MAP_MARK_WIDTH  = 3;
-const MAP_FONT_SIZE = 22; //in px
 
 const FRAME_WIDTH  = 167;
 const FRAME_HEIGHT = 47;
@@ -152,7 +151,7 @@ function RenderMap() {
 
     // ----- Draw text -----
     aux_context.save(); {
-        aux_context.font = "bold " + MAP_FONT_SIZE + "px Pokemon_Font";
+        aux_context.font = "bold " + game.font_size + " " + game.font;
         aux_context.textAlign = "center";
         aux_context.fillStyle = "#111111";
 

@@ -2,6 +2,8 @@ var emerald = {
     ready: false,
     name: "emerald",
     start_location: "oldale",
+    font: "Pokemon_Font",
+    font_size: "22px",
     locations: {
         // Cities
         oldale:         {x: 40,  y: 88,  w: 8,  h: 8,  scale: 3, name: "Oldale Town"                                                  },
@@ -462,14 +464,14 @@ var emerald = {
     // if undefined, then we don't draw the mark
     marks: [
         [["unknown", 0], ["dead_end", null], ["event",  0], ["center", 0], ["mart",     0], ["one_way", null]],
-        [["normal",  0], ["fighting",    0], ["flying", 0], ["poison", 0], ["ground",   0], ["rock",       0], ["bug",  0], ["ghost",   0]],
-        [["steel",   0], ["fire",        0], ["water",  0], ["grass",  0], ["electric", 0], ["psychic",    0], ["ice",  0], ["dragon",  0], ["dark", 0]],
+        [["normal",  0], ["fighting",    0], ["flying", 0], ["poison", 0], ["ground",   0], ["rock",       0], ["bug",  0], ["ghost",   0], ["fairy", 0]],
+        [["steel",   0], ["fire",        0], ["water",  0], ["grass",  0], ["electric", 0], ["psychic",    0], ["ice",  0], ["dragon",  0], ["dark",  0]],
         [["1",       0], ["2",           0], ["3",      0], ["4",      0], ["5",        0], ["6",          0], ["7",    0], ["8",       0]],
         [["e_rock",  0], ["e_boulder",   0], ["e_surf", 0], ["e_dive", 0], ["e_bike",   0], ["e_trainer",  0]],
     ],
     progress: [
         [["stone_badge", 0], ["knuckle_badge", 0], ["dynamo_badge", 0], ["heat_badge",   0], ["balance_badge", 0], ["feather_badge", 0], ["mind_badge",    0], ["rain_badge",   0]],
-        [["e4_dark",     0], ["e4_ghost",      0], ["e4_ice",       0], ["e4_dragon",    0], ["champ_water",   0], ["",      undefined], ["",      undefined], ["steven_steel", 0]],
+        [["e4_dark",     0], ["e4_ghost",      0], ["e4_ice",       0], ["e4_dragon",    0], ["e_champion",    0], ["",      undefined], ["",      undefined], ["steven_steel", 0]],
         [["hm_cut",      0], ["hm_fly",        0], ["hm_surf",      0], ["hm_strength",  0], ["hm_flash",      0], ["hm_rocksmash",  0], ["hm_waterfall",  0], ["hm_dive",      0]],
         [["bike",        0], ["storage_key",   0], ["magma_emblem", 0], ["go_goggles",   0], ["devon_scope",   0]],
     ],

@@ -35,10 +35,12 @@ function OnKeyDown(event) {
     current_markcycle = undefined;
 
     rerender_all = true;
+    rerender_location = true;
     if (!game.ready) {
         LoadImages();
     }
     else {
+        InitTrackerToUnknowns();
         SetCanvasDimensions();
     }
 }

@@ -30,6 +30,11 @@
     src: url(fonts/PKMN_RBYGSC.ttf)
 }
 
+@font-face {
+    font-family: NDS_Font;
+    src: url(fonts/ndsbios_memesbruh03.ttf)
+}
+
 html {
     font-size: 18px;
     font-family: "Avenir", serif;
