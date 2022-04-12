@@ -38,29 +38,36 @@ var loading_process = {
     loaded: 0,
     to_load: 9999, //needs to be set up
 }
-var map = {};
-var frame, settings;
+var settings;
 var images = [];
 function LoadImages() {
+    loading_process.loaded = 0;
     // Get all images
-    var list = ["images/" + game.name + "/map.png", "images/" + game.name + "/frame.png", "images/settings.png"];
+    var list = ["images/" + game.name + "/map.png", "images/" + game.name + "/frame.png"];
+    if (!settings) { list.push("images/settings.png"); }
+
     for (let key in game.locations) {
         list.push("images/" + game.name + "/maps/" + key + ".png");
     }
 
     for (let row of game.marks) {
         for (let pair of row) {
-            if(pair[1] !== undefined) { list.push("images/marks/" + pair[0] + ".png") }
+            if(pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/marks/" + pair[0] + ".png") }
         }
     }
 
     for (let row of game.progress) {
         for (let pair of row) {
-            if (pair[1] !== undefined) { list.push("images/" + game.name + "/progress/" + pair[0] + ".png") }
+            if (pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/" + game.name + "/progress/" + pair[0] + ".png") }
         }
     }
 
     // Start loading them
+    if (list.length == 0) {
+        game.ready = true;
+        return;
+    }
+
     loading_process.to_load = list.length;
     for (let path of list) {
         const image = new Image();
@@ -71,7 +78,7 @@ function LoadImages() {
 }
 function ImageLoaded() {
     if (this.src.includes("map.png")) {
-        map = {
+        game.map = {
             image: this,
             x: 0, y: 0,
             w: this.naturalWidth  * MAP_SCALE,
@@ -79,7 +86,7 @@ function ImageLoaded() {
         }
     }
     else if (this.src.includes("frame.png")) {
-        frame = this;
+        game.frame = this;
     }
     else if (this.src.includes("settings.png")) {
         settings = this;
@@ -105,16 +112,12 @@ function ImageLoaded() {
     loading_process.loaded += 1;
     if (loading_process.loaded == loading_process.to_load) {
         // Set canvas dimensions
-        canvas.width  = map.w + loading_process.max_width + SELECTED_MAP_XOFFSET;
-        canvas.height = loading_process.max_height;
+        game.max_width  = loading_process.max_width;
+        game.max_height = loading_process.max_height;
 
-        aux_canvas = document.createElement("canvas");
-        aux_canvas.width  = canvas.width;
-        aux_canvas.height = canvas.height;
-        aux_context = aux_canvas.getContext("2d");
+        SetCanvasDimensions();
 
         game.ready = true;
-        requestAnimationFrame(GameLoop);
     }
 }
 function ImageError() { console.error("ERROR: Couldn't load " + this.src); }
@@ -122,6 +125,13 @@ function ImageError() { console.error("ERROR: Couldn't load " + this.src); }
 function GetNameImage(path) {
     let array = path.split("/");
     return array[array.length-1].split(".")[0];
+}
+
+function SetCanvasDimensions() {
+    canvas.width  = game.max_width + game.map.w + SELECTED_MAP_XOFFSET;
+    canvas.height = game.max_height;
+    aux_canvas.width  = canvas.width;
+    aux_canvas.height = canvas.height;
 }
 
 /*********************************************************/
@@ -136,7 +146,7 @@ function RenderMap() {
     SetSmoothing(false);
 
     // ----- Draw main map -----
-    DrawImage(map.image, map);
+    DrawImage(game.map.image, game.map);
 
     let location = game.locations[current_location];
 
@@ -147,8 +157,8 @@ function RenderMap() {
         aux_context.fillStyle = "#111111";
 
         var text_position = {
-            x: map.w - (FRAME_WIDTH /2)*MAP_SCALE,
-            y: map.h - (FRAME_HEIGHT/2)*MAP_SCALE + LINE_YOFFSET
+            x: game.map.w - (FRAME_WIDTH /2)*MAP_SCALE,
+            y: game.map.h - (FRAME_HEIGHT/2)*MAP_SCALE + LINE_YOFFSET
         };
         let lines = location.name.split("\n");
         switch (lines.length) {
@@ -193,11 +203,11 @@ function GetWarpRenderInfo(location, warp) {
         else {
             info.type = "text";
             // Draw location/warp
-            info.x = rendered_location.x + warp.x*rendered_location.scale  - frame.naturalWidth/2 ;
-            info.y = rendered_location.y + warp.y*rendered_location.scale - frame.naturalHeight/2;
-            info.w = frame.naturalWidth;
-            info.h = frame.naturalHeight;
-            info.image = frame;
+            info.x = rendered_location.x + warp.x*rendered_location.scale - game.frame.naturalWidth/2 ;
+            info.y = rendered_location.y + warp.y*rendered_location.scale - game.frame.naturalHeight/2;
+            info.w = game.frame.naturalWidth;
+            info.h = game.frame.naturalHeight;
+            info.image = game.frame;
 
             info.text_position = {
                 x: rendered_location.x + warp.x*rendered_location.scale,
@@ -224,10 +234,10 @@ function RenderLocation() {
 
     // ----- Render drawing space -----
     let background = {
-        x: map.w + SELECTED_MAP_XOFFSET,
+        x: game.map.w + SELECTED_MAP_XOFFSET,
         y: 0,
-        w: loading_process.max_width,
-        h: loading_process.max_height
+        w: game.max_width,
+        h: game.max_height
     };
     DrawSquareContextless(background, BACKGROUND_COLOR);
 
@@ -281,7 +291,7 @@ function RenderLocation() {
                 DrawImage(info.image, info);
             }
             else {
-                DrawImage(frame, info);
+                DrawImage(game.frame, info);
                 aux_context.fillText(info.text, info.text_position.x, info.text_position.y);
             }
         }
@@ -298,7 +308,7 @@ function RenderMarks() {
     let boxes = [];
     let v = {
         x: MARK_SEPARATION,
-        y: map.h + MARKS_YOFFSET,
+        y: game.map.h + MARKS_YOFFSET,
         w: MARK_SIZE,
         h: MARK_SIZE
     };
@@ -413,8 +423,8 @@ function Render() {
             RenderConfigButton();
         }
         else {
-            aux_context.clearRect(map.x, map.y, map.w, map.h);
-            aux_context.clearRect(map.w, 0, loading_process.max_width + SELECTED_MAP_XOFFSET, loading_process.max_height);
+            aux_context.clearRect(game.map.x, game.map.y, game.map.w, game.map.h);
+            aux_context.clearRect(game.map.w, 0, game.max_width + SELECTED_MAP_XOFFSET, game.max_height);
         }
         RenderMap();
         RenderLocation();

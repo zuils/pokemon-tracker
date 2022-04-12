@@ -11,6 +11,8 @@ let tracker_ready = false;
 function init() {
     canvas  = document.getElementById('canvas');
     context = canvas.getContext('2d');
+    aux_canvas = document.createElement("canvas");
+    aux_context = aux_canvas.getContext("2d");
 
     game = emerald;
     current_location = game.start_location;
@@ -35,13 +37,13 @@ function init() {
     file_selector.type = "file";
     file_selector.multiple = false;
     file_selector.onchange = function(e) { FileUploaded(e); };
+
+    requestAnimationFrame(GameLoop);
 }
 
 function GameLoop() {
-    if (game.ready) {
-        Render();
-        requestAnimationFrame(GameLoop);
-    }
+    if (game.ready) { Render(); }
+    requestAnimationFrame(GameLoop);
 }
 
 function FontReady() { rerender_location = true; }

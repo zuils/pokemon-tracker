@@ -21,11 +21,12 @@ function OnKeyDown(event) {
     switch (event.key) {
         //case "2": if (g_pressed) { game = crystal;  break; }
         case "3": if (g_pressed) { game = emerald;  break; }
-        //case "4": if (g_pressed) { game = platinum; break; }
+        case "4": if (g_pressed) { game = platinum; break; }
 
         case "g": g_pressed = true; // falldown
         default: return;
     }
+    g_pressed = false;
 
     current_state = STATE_DEFAULT;
     current_location = game.start_location;
@@ -34,7 +35,12 @@ function OnKeyDown(event) {
     current_markcycle = undefined;
 
     rerender_all = true;
-    if (!game.ready) { LoadImages(); }
+    if (!game.ready) {
+        LoadImages();
+    }
+    else {
+        SetCanvasDimensions();
+    }
 }
 function OnKeyUp(event) { if (event.key == "g") g_pressed = false; }
 
@@ -262,8 +268,8 @@ function GetClicked(position) {
     }
 
     // Check everything else
-    if (position.x < map.w) {
-        if (position.y < map.h) { return GetLocation(position); }
+    if (position.x < game.map.w) {
+        if (position.y < game.map.h) { return GetLocation(position); }
         else                    { return GetMark(position); }
     }
     else { return GetWarp(position); }
@@ -289,7 +295,7 @@ function GetMark(position) {
     // Start position below map
     let p = {
         x: position.x - MARK_SEPARATION,
-        y: position.y - map.h - MARKS_YOFFSET
+        y: position.y - game.map.h - MARKS_YOFFSET
     }
 
     // Figure out if clicking marks or progress

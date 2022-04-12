@@ -148,12 +148,10 @@ function ResetTracker() {
 }
 
 function ChangeStretch() {
-    console.log("A");
     rerender_location = true;
 }
 
 function ChangeSmooth() {
-    console.log("B");
     rerender_location = true;
 }
 
