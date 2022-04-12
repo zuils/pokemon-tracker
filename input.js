@@ -37,10 +37,10 @@ function OnKeyDown(event) {
     rerender_all = true;
     rerender_location = true;
     if (!game.ready) {
+        InitTrackerToUnknowns();
         LoadImages();
     }
     else {
-        InitTrackerToUnknowns();
         SetCanvasDimensions();
     }
 }
@@ -65,6 +65,15 @@ function OnMouseDown(event) {
     switch (event.which) {
         case LEFT_CLICK:  click = left_click;  break;
         case RIGHT_CLICK: click = right_click; break;
+        case MIDDLE_CLICK: {
+            /*mouse_position.x /= MAP_SCALE;
+            mouse_position.y /= MAP_SCALE;
+            let text = "x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y);
+            console.log("Copied to clipboard -> " + text);
+            navigator.clipboard.writeText(text);*/
+            return;
+        }
+        default: return;
     }
     if (!click) return;
 
@@ -101,6 +110,7 @@ function OnMouseUp(event) {
             click = right_click;
             current_state = STATE_DEFAULT;
         } break;
+        default: return;
     }
 
     if (!click.down) return;

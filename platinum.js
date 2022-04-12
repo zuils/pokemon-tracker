@@ -1,17 +1,33 @@
 var platinum = {
     ready: false,
     name: "platinum",
-    start_location: "departmentstore",
+    start_location: "sandgem",
     font: "NDS_Font",
     font_size: "38px",
     locations: {
         // Cities
-        //slateport_r109: {x: 72,  y: 96,  w: 8,  h: 16, scale: 1, name: "Slateport City\nRoute 109", link_name: "Slateport City"       },
+        sandgem:      {x: 36,  y: 143, w: 8,  h: 8,  scale: 1, name: "Sandgem Town"   },
+        jubilife:     {x: 29,  y: 122, w: 15, h: 15, scale: 1, name: "Jubilife City"  },
+        oreburgh:     {x: 57,  y: 122, w: 15, h: 15, scale: 1, name: "Oreburgh City"  },
+        floaroma:     {x: 36,  y: 94,  w: 8,  h: 15, scale: 1, name: "Floaroma Town"  },
+        eterna:       {x: 64,  y: 73,  w: 15, h: 15, scale: 1, name: "Eterna City"    },
+        hearthome:    {x: 99,  y: 108, w: 15, h: 15, scale: 1, name: "Hearthome City" },
+        solaceon:     {x: 120, y: 101, w: 15, h: 8,  scale: 1, name: "Solaceon Town"  },
+        veilstone:    {x: 148, y: 87,  w: 15, h: 15, scale: 1, name: "Veilstone City" },
+        pastoria:     {x: 127, y: 136, w: 15, h: 15, scale: 1, name: "Pastoria City"  },
+        celestic:     {x: 100, y: 73,  w: 8,  h: 8,  scale: 1, name: "Celestic Town"  },
+        canalave:     {x: 8,   y: 115, w: 8,  h: 15, scale: 1, name: "Canalave City"  },
+        snowpoint:    {x: 78,  y: 3,   w: 8,  h: 15, scale: 1, name: "Snowpoint City" },
+        sunyshore:    {x: 183, y: 122, w: 15, h: 15, scale: 1, name: "Sunyshore City" },
+        league:       {x: 183, y: 80,  w: 8,  h: 8,  scale: 1, name: "Pokémon League" },
+        fightarea:    {x: 134, y: 52,  w: 15, h: 8,  scale: 1, name: "Fight Area"     },
+        survivalarea: {x: 141, y: 31,  w: 8,  h: 8,  scale: 1, name: "Survival Area"  },
+        resortarea:   {x: 176, y: 59,  w: 8,  h: 8,  scale: 1, name: "Resort Area"    },
         
         // Routes
         
         // Important locations
-        departmentstore: {x: 30,  y: 120,  w: 16,  h: 16, scale: 1, name: "Department Store\nTest" },
+        departmentstore: {x: 1, y: 1,  w: 30,  h: 30, scale: 1, name: "Department Store\nTest" },
     },
 
     // Undefined fields:

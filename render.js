@@ -25,22 +25,18 @@ const UNCHECKED_FILTER = "grayscale(100%) opacity(50%)";
 const MARKFOUND_SIZE  = 1;
 const MARKFOUND_COLOR = "#AAAAAA"
 
+const CONFIG_YOFFSET = 5;
+
 let aux_canvas;
 let aux_context;
 let rerender_all = true;
 let rerender_location = true;
 let last_rendered_location = "";
 
-var loading_process = {
-    max_width:  0,
-    max_height: 0,
-    loaded: 0,
-    to_load: 9999, //needs to be set up
-}
+var loading_process = {};
 var settings;
 var images = [];
 function LoadImages() {
-    loading_process.loaded = 0;
     // Get all images
     var list = ["images/" + game.name + "/map.png", "images/" + game.name + "/frame.png"];
     if (!settings) { list.push("images/settings.png"); }
@@ -49,13 +45,16 @@ function LoadImages() {
         list.push("images/" + game.name + "/maps/" + key + ".png");
     }
 
+    loading_process.row_count =  0;
     for (let row of game.marks) {
+        loading_process.row_count += 1;
         for (let pair of row) {
             if(pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/marks/" + pair[0] + ".png") }
         }
     }
 
     for (let row of game.progress) {
+        loading_process.row_count += 1;
         for (let pair of row) {
             if (pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/" + game.name + "/progress/" + pair[0] + ".png") }
         }
@@ -67,6 +66,9 @@ function LoadImages() {
         return;
     }
 
+    loading_process.max_width  = 0;
+    loading_process.max_height = 0;
+    loading_process.loaded = 0;
     loading_process.to_load = list.length;
     for (let path of list) {
         const image = new Image();
@@ -83,12 +85,24 @@ function ImageLoaded() {
             w: this.naturalWidth  * MAP_SCALE,
             h: this.naturalHeight * MAP_SCALE
         }
+
+        loading_process.map_loaded = true;
+        if (loading_process.settings_loaded) {
+            let h = GetLeftSideHeight();
+            if (h > loading_process.max_height) loading_process.max_height = h;
+        }
     }
     else if (this.src.includes("frame.png")) {
         game.frame = this;
     }
     else if (this.src.includes("settings.png")) {
         settings = this;
+
+        loading_process.settings_loaded = true;
+        if (loading_process.map_loaded) {
+            let h = GetLeftSideHeight();
+            if (h > loading_process.max_height) loading_process.max_height = h;
+        }
     }
     else if (this.src.includes("/marks/") || this.src.includes("/progress/")) {
         images[GetNameImage(this.src)] = this;
@@ -131,6 +145,14 @@ function SetCanvasDimensions() {
     canvas.height = game.max_height;
     aux_canvas.width  = canvas.width;
     aux_canvas.height = canvas.height;
+}
+
+function GetLeftSideHeight() {
+    return (
+        game.map.h +
+        MARKS_YOFFSET + PROGRESS_YOFFSET + loading_process.row_count*(MARK_SIZE+MARK_SEPARATION) +
+        CONFIG_YOFFSET + settings.naturalHeight
+    );
 }
 
 /*********************************************************/
