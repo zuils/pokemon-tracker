@@ -71,7 +71,7 @@ function SaveFile() {
     var d = time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + "_" + time.getHours() + "." + time.getMinutes() + "." + time.getSeconds();
     var a = document.createElement("a");
     a.href = window.URL.createObjectURL(new Blob([text], {type: "text/plain"}));
-    a.download = d + "_emerald-map-tracker.txt";
+    a.download = d + "_" + game.name + "_pokemon-tracker.txt";
     a.click();
 }
 

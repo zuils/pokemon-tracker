@@ -26,9 +26,14 @@
 }
 
 @font-face {
-    font-family: Pokemon_Font;
+    font-family: GameBoy_Font;
     src: url(fonts/PKMN_RBYGSC.ttf)
 }
+
+/*@font-face {
+    font-family: GameBoyAdvance_Font;
+    src: url(fonts/pokemon_fire_red.ttf)
+}*/
 
 @font-face {
     font-family: NDS_Font;

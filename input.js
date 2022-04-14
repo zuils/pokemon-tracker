@@ -19,7 +19,7 @@ function OnContextMenu(event) { event.preventDefault(); return false; }
 let g_pressed = false;
 function OnKeyDown(event) {
     switch (event.key) {
-        //case "2": if (g_pressed) { game = crystal;  break; }
+        case "2": if (g_pressed) { game = crystal;  break; }
         case "3": if (g_pressed) { game = emerald;  break; }
         case "4": if (g_pressed) { game = platinum; break; }
 

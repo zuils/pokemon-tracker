@@ -2,7 +2,7 @@ var emerald = {
     ready: false,
     name: "emerald",
     start_location: "oldale",
-    font: "Pokemon_Font",
+    font: "GameBoy_Font",
     font_size: "22px",
     locations: {
         // Cities
