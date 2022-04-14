@@ -6,7 +6,7 @@ var crystal = {
     font_size: "22px",
     locations: {
         // Cities
-        cherrygrove: {x: 83,  y: 72, w: 8,  h: 8,  scale: 1, name: "Cherrygrove City\nTest" },
+        cherrygrove: {x: 83,  y: 72, w: 8,  h: 8,  scale: 1, name: "Cherrygrove City\nTest", link_name: "Cherrygrove City" },
         
         // Routes
         
