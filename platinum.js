@@ -25,9 +25,19 @@ var platinum = {
         resortarea:   {x: 176, y: 59,  w: 8,  h: 8,  scale: 1, name: "Resort Area"    },
         
         // Routes
+        route204:       {x: 36,  y: 111, w: 8,  h: 8,  scale: 1, name: "Route 204" },
+        route214:       {x: 155, y: 108, w: 8,  h: 8,  scale: 1, name: "Route 214" },
+        valorlakefront: {x: 148, y: 122, w: 15, h: 15, scale: 1, name: "Valor Lakefront\nRoute 213" },
+        route222:       {x: 170, y: 129, w: 8,  h: 8,  scale: 1, name: "Route 222" },
         
         // Important locations
-        departmentstore: {x: 1, y: 1,  w: 30,  h: 30, scale: 1, name: "Department Store\nTest" },
+        jubilifetv_poketch: {x: 24,  y: 111, w: 8, h: 8, scale: 1, name: "Jubilife TV\nPokétch Company" },
+        eternagalactic:     {x: 64,  y: 60,  w: 8, h: 8, scale: 1, name: "Galactic Eterna"              },
+        solaceonruins:      {x: 138, y: 103, w: 8, h: 8, scale: 1, name: "Solaceon Ruins"               },
+        departmentstore:    {x: 145, y: 74,  w: 8, h: 8, scale: 1, name: "Department Store"             },
+        galactichq:         {x: 158, y: 74,  w: 8, h: 8, scale: 1, name: "Team Galactic HQ"             },
+        ironisland:         {x: 22,  y: 66,  w: 8, h: 8, scale: 1, name: "Iron Island"                  },
+        victoryroad:        {x: 183, y: 92,  w: 8, h: 8, scale: 1, name: "Victory Road"                 },
     },
 
     // Undefined fields:
