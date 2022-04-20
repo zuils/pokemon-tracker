@@ -25,10 +25,20 @@ var platinum = {
         resortarea:   {x: 176, y: 59,  w: 8,  h: 8,  scale: 1, name: "Resort Area"    },
         
         // Routes
-        route204:       {x: 36,  y: 111, w: 8,  h: 8,  scale: 1, name: "Route 204" },
-        route214:       {x: 155, y: 108, w: 8,  h: 8,  scale: 1, name: "Route 214" },
-        valorlakefront: {x: 148, y: 122, w: 15, h: 15, scale: 1, name: "Valor Lakefront\nRoute 213" },
-        route222:       {x: 170, y: 129, w: 8,  h: 8,  scale: 1, name: "Route 222" },
+        route201:          {x: 22,  y: 143, w: 8,  h: 8,  scale: 1, name: "Route 201"                        },
+        oreburghgate_r203: {x: 47,  y: 122, w: 8,  h: 8,  scale: 1, name: "Oreburgh Gate\nRoute 203"         },
+        route204:          {x: 36,  y: 111, w: 8,  h: 8,  scale: 1, name: "Route 204"                        },
+        windworks:         {x: 50,  y: 101, w: 8,  h: 8,  scale: 1, name: "Valley Windworks"                 },
+        ironworks_meadow:  {x: 36,  y: 81,  w: 8,  h: 8,  scale: 1, name: "Fuego Ironworks\nFloaroma Meadow" },
+        r212_mansion:      {x: 99,  y: 136, w: 15, h: 15, scale: 1, name: "Route 212\nPokémon Mansion"       },
+        route214:          {x: 155, y: 108, w: 8,  h: 8,  scale: 1, name: "Route 214"                        },
+        valorlakefront:    {x: 148, y: 122, w: 15, h: 15, scale: 1, name: "Valor Lakefront\nRoute 213"       },
+        route216_route217: {x: 64,  y: 18,  w: 8,  h: 15, scale: 1, name: "Route 216\nRoute 217"             },
+        route221:          {x: 49,  y: 157, w: 15, h: 8,  scale: 1, name: "Route 221"                        },
+        route222:          {x: 170, y: 129, w: 8,  h: 8,  scale: 1, name: "Route 222"                        },
+        route225:          {x: 134, y: 41,  w: 8,  h: 8,  scale: 1, name: "Route 225"                        },
+        route226_route227: {x: 162, y: 24,  w: 8,  h: 15, scale: 1, name: "Route 226\nRoute 227"             },
+        route228:          {x: 169, y: 45,  w: 8,  h: 8,  scale: 1, name: "Route 228"                        },
         
         // Important locations
         jubilifetv_poketch: {x: 24,  y: 111, w: 8, h: 8, scale: 1, name: "Jubilife TV\nPokétch Company" },
@@ -38,6 +48,7 @@ var platinum = {
         galactichq:         {x: 158, y: 74,  w: 8, h: 8, scale: 1, name: "Team Galactic HQ"             },
         ironisland:         {x: 22,  y: 66,  w: 8, h: 8, scale: 1, name: "Iron Island"                  },
         victoryroad:        {x: 183, y: 92,  w: 8, h: 8, scale: 1, name: "Victory Road"                 },
+        eternaforest_r205:  {x: 50,  y: 73,  w: 8, h: 8, scale: 1, name: "Eterna Forest\nRoute 205"     }
     },
 
     // Undefined fields:
