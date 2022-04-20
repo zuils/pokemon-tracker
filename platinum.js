@@ -33,6 +33,11 @@ var platinum = {
         r212_mansion:      {x: 99,  y: 136, w: 15, h: 15, scale: 1, name: "Route 212\nPokémon Mansion"       },
         route214:          {x: 155, y: 108, w: 8,  h: 8,  scale: 1, name: "Route 214"                        },
         valorlakefront:    {x: 148, y: 122, w: 15, h: 15, scale: 1, name: "Valor Lakefront\nRoute 213"       },
+        route206:          {x: 64,  y: 94,  w: 8,  h: 15, scale: 1, name: "Route 206"                        },
+        route207_route208: {x: 78,  y: 115, w: 8,  h: 8,  scale: 1, name: "Route 207\nRoute 208"             },
+        route209:          {x: 120, y: 115, w: 8,  h: 8,  scale: 1, name: "Route 209"                        },
+        route210_route215: {x: 120, y: 80,  w: 15, h: 15, scale: 1, name: "Route 210\nRoute 215"             },
+        route211:          {x: 85 , y: 73,  w: 8,  h: 8,  scale: 1, name: "Route 211"                        },
         route216_route217: {x: 64,  y: 18,  w: 8,  h: 15, scale: 1, name: "Route 216\nRoute 217"             },
         route221:          {x: 49,  y: 157, w: 15, h: 8,  scale: 1, name: "Route 221"                        },
         route222:          {x: 170, y: 129, w: 8,  h: 8,  scale: 1, name: "Route 222"                        },
@@ -41,14 +46,16 @@ var platinum = {
         route228:          {x: 169, y: 45,  w: 8,  h: 8,  scale: 1, name: "Route 228"                        },
         
         // Important locations
-        jubilifetv_poketch: {x: 24,  y: 111, w: 8, h: 8, scale: 1, name: "Jubilife TV\nPokétch Company" },
-        eternagalactic:     {x: 64,  y: 60,  w: 8, h: 8, scale: 1, name: "Galactic Eterna"              },
-        solaceonruins:      {x: 138, y: 103, w: 8, h: 8, scale: 1, name: "Solaceon Ruins"               },
-        departmentstore:    {x: 145, y: 74,  w: 8, h: 8, scale: 1, name: "Department Store"             },
-        galactichq:         {x: 158, y: 74,  w: 8, h: 8, scale: 1, name: "Team Galactic HQ"             },
-        ironisland:         {x: 22,  y: 66,  w: 8, h: 8, scale: 1, name: "Iron Island"                  },
-        victoryroad:        {x: 183, y: 92,  w: 8, h: 8, scale: 1, name: "Victory Road"                 },
-        eternaforest_r205:  {x: 50,  y: 73,  w: 8, h: 8, scale: 1, name: "Eterna Forest\nRoute 205"     }
+        jubilifetv_poketch: {x: 24,  y: 111, w: 8, h: 8,  scale: 1, name: "Jubilife TV\nPokétch Company" },
+        eternagalactic:     {x: 64,  y: 60,  w: 8, h: 8,  scale: 1, name: "Galactic Eterna"              },
+        coronet:            {x: 78,  y: 94,  w: 8, h: 15, scale: 1, name: "Mt. Coronet"                  },
+        solaceonruins:      {x: 138, y: 103, w: 8, h: 8,  scale: 1, name: "Solaceon Ruins"               },
+        departmentstore:    {x: 145, y: 74,  w: 8, h: 8,  scale: 1, name: "Department Store"             },
+        galactichq:         {x: 158, y: 74,  w: 8, h: 8,  scale: 1, name: "Team Galactic HQ"             },
+        coronetsummit:      {x: 85,  y: 52,  w: 8, h: 15, scale: 1, name: "Mt. Coronet Summit"           },
+        ironisland:         {x: 22,  y: 66,  w: 8, h: 8,  scale: 1, name: "Iron Island"                  },
+        victoryroad:        {x: 183, y: 92,  w: 8, h: 8,  scale: 1, name: "Victory Road"                 },
+        eternaforest_r205:  {x: 50,  y: 73,  w: 8, h: 8,  scale: 1, name: "Eterna Forest\nRoute 205"     },
     },
 
     // Undefined fields:
