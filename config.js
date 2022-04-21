@@ -4,7 +4,6 @@ let config_controlstoggle;
 let config_network;
 let config_networktoggle;
 
-let checkbox_stretch;
 let checkbox_smooth;
 
 function ShowConfig() {
@@ -147,13 +146,7 @@ function ResetTracker() {
     rerender_all = true;
 }
 
-function ChangeStretch() {
-    rerender_location = true;
-}
-
-function ChangeSmooth() {
-    rerender_location = true;
-}
+function ChangeSmooth() { rerender_location = true; }
 
 /*********************************************************/
 

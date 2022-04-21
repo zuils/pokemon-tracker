@@ -15,6 +15,7 @@ function init() {
     aux_context = aux_canvas.getContext("2d");
 
     game = emerald;
+    //game = platinum;
     current_location = game.start_location;
     InitTrackerToUnknowns();
     LoadImages();
@@ -27,10 +28,8 @@ function init() {
     config_network        = document.getElementById("config_network");
     config_networktoggle  = document.getElementById("config_networktoggle");
 
-    checkbox_stretch = document.getElementById("checkbox_stretch");
-    checkbox_smooth  = document.getElementById("checkbox_smooth");
-    checkbox_stretch.checked = true;
-    checkbox_smooth.checked  = false;
+    checkbox_smooth = document.getElementById("checkbox_smooth");
+    checkbox_smooth.checked = true;
 
     // Create reader to load files (just in case)
     file_selector = document.createElement("input");

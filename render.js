@@ -265,39 +265,27 @@ function RenderLocation() {
     let location = game.locations[current_location];
 
     // ----- Render selected map -----
-    if (checkbox_stretch.checked) {
-        let ratio = {
-            width:  background.w / location.image.naturalWidth,
-            height: background.h / location.image.naturalHeight
-        };
-        let scale;
-        let center = { x: 0, y: 0 };
-        if (ratio.height < ratio.width) {
-            scale = ratio.height;
-            center.x = (background.w - location.image.naturalWidth*scale) / 2;
-        }
-        else {
-            scale = ratio.width;
-            center.y = (background.h - location.image.naturalHeight*scale) / 2;
-        }
-        rendered_location = {
-            x: background.x + center.x,
-            y: background.y + center.y,
-            w: location.image.naturalWidth  * scale,
-            h: location.image.naturalHeight * scale,
-            scale: scale
-        };
+    let ratio = {
+        width:  background.w / location.image.naturalWidth,
+        height: background.h / location.image.naturalHeight
+    };
+    let scale;
+    let center = { x: 0, y: 0 };
+    if (ratio.height < ratio.width) {
+        scale = ratio.height;
+        center.x = (background.w - location.image.naturalWidth*scale) / 2;
     }
     else {
-        // Center image
-        rendered_location = {
-            x: background.x + (background.w - location.image.naturalWidth *location.scale)/2,
-            y: background.y + (background.h - location.image.naturalHeight*location.scale)/2,
-            w: location.image.naturalWidth  * location.scale,
-            h: location.image.naturalHeight * location.scale,
-            scale: location.scale
-        };
+        scale = ratio.width;
+        center.y = (background.h - location.image.naturalHeight*scale) / 2;
     }
+    rendered_location = {
+        x: background.x + center.x,
+        y: background.y + center.y,
+        w: location.image.naturalWidth  * scale,
+        h: location.image.naturalHeight * scale,
+        scale: scale
+    };
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
