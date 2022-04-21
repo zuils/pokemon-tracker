@@ -286,6 +286,15 @@ function RenderLocation() {
         h: location.image.naturalHeight * scale,
         scale: scale
     };
+    if (game.name == platinum.name) {
+        rendered_location = {
+            x: background.x,
+            y: background.y,
+            w: location.image.naturalWidth,
+            h: location.image.naturalHeight,
+            scale: 1
+        };
+    }
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
@@ -296,6 +305,16 @@ function RenderLocation() {
         for (var key in game.warps[current_location]) {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
+            // DEBUG
+            if (game.name == platinum.name) {
+                warp.link_type = LINKTYPE_WARP;
+                warp.link = key;
+                warp.link_location = current_location;
+                let info = GetWarpRenderInfo(location, warp);
+                DrawImage(game.frame, info);
+                aux_context.fillText(key, info.text_position.x, info.text_position.y);
+                continue;
+            }
             if (info.type == "image") {
                 DrawImage(info.image, info);
             }

@@ -48,6 +48,9 @@ function OnKeyUp(event) { if (event.key == "g") g_pressed = false; }
 
 /*********************************************************/
 
+let debug_text = "";
+let entry = 0;
+
 const STATE_DEFAULT = 0;
 const STATE_LINK1 = 1;
 const STATE_LINK2 = 2;
@@ -66,11 +69,11 @@ function OnMouseDown(event) {
         case LEFT_CLICK:  click = left_click;  break;
         case RIGHT_CLICK: click = right_click; break;
         case MIDDLE_CLICK: {
-            /*mouse_position.x /= MAP_SCALE;
-            mouse_position.y /= MAP_SCALE;
-            let text = "x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y);
-            console.log("Copied to clipboard -> " + text);
-            navigator.clipboard.writeText(text);*/
+            mouse_position.x -= game.map.w + SELECTED_MAP_XOFFSET;
+            debug_text += "\t\t\taaaa" + entry + ":                                 {x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + "},\n";
+            entry += 1;
+            console.log("Copied to clipboard\n***\n" + debug_text);
+            navigator.clipboard.writeText(debug_text);
             return;
         }
         default: return;

@@ -29,7 +29,7 @@ function init() {
     config_networktoggle  = document.getElementById("config_networktoggle");
 
     checkbox_smooth = document.getElementById("checkbox_smooth");
-    checkbox_smooth.checked = true;
+    checkbox_smooth.checked = false;
 
     // Create reader to load files (just in case)
     file_selector = document.createElement("input");
