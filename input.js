@@ -12,7 +12,7 @@ function RegisterInputEvents() {
     canvas.addEventListener("contextmenu", OnContextMenu);
 
     document.addEventListener("keydown", OnKeyDown);
-    document.addEventListener("keyup", OnKeyUp);
+    document.addEventListener("keyup",   OnKeyUp);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
 
@@ -48,6 +48,7 @@ function OnKeyUp(event) { if (event.key == "g") g_pressed = false; }
 
 /*********************************************************/
 
+//DEBUG
 let debug_text = "";
 let entry = 0;
 
@@ -62,6 +63,7 @@ let right_click = { down: false };
 let mouse_position = {x: 0, y: 0};
 let current_markcycle;
 function OnMouseDown(event) {
+    if (!game.ready) return;
     mouse_position = EventToPosition(event);
 
     let click = null;
@@ -69,6 +71,7 @@ function OnMouseDown(event) {
         case LEFT_CLICK:  click = left_click;  break;
         case RIGHT_CLICK: click = right_click; break;
         case MIDDLE_CLICK: {
+            // DEBUG
             mouse_position.x -= game.map.w + SELECTED_MAP_XOFFSET;
             debug_text += "\t\t\taaaa" + entry + ":                                 {x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + "},\n";
             entry += 1;
@@ -93,9 +96,11 @@ function OnMouseDown(event) {
     }
 }
 function OnMouseMove(event) {
+    if (!game.ready) return;
     mouse_position = EventToPosition(event);
 }
 function OnMouseUp(event) {
+    if (!game.ready) return;
     if (event.type == "mouseout") {
         left_click.down  = false;
         right_click.down = false;
