@@ -71,8 +71,11 @@ function OnMouseDown(event) {
         case LEFT_CLICK:  click = left_click;  break;
         case RIGHT_CLICK: click = right_click; break;
         case MIDDLE_CLICK: {
+            if (game.name == emerald.name) return;
             // DEBUG
             mouse_position.x -= game.map.w + SELECTED_MAP_XOFFSET;
+            //mouse_position.x /= MAP_SCALE;
+            //mouse_position.y /= MAP_SCALE;
             debug_text += "\t\t\taaaa" + entry + ":                                 {x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + "},\n";
             entry += 1;
             console.log("Copied to clipboard\n***\n" + debug_text);

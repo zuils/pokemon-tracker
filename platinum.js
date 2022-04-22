@@ -169,19 +169,77 @@ var platinum = {
 			center_bot:  {x: 182, y: 357, name: "Solaceon (Center)" },
         },
         veilstone: {
-
+			route215:      {x: 126, y: 273                             },
+			route214:      {x: 753, y: 751                             },
+			warehouse:     {x: 469, y: 154                             },
+			department:    {x: 469, y: 309                             },
+			galacticleft:  {x: 678, y: 97                              },
+			galactigmid:   {x: 728, y: 167                             },
+			galacticright: {x: 776, y: 98                              },
+			centerupleft:  {x: 631, y: 295                             },
+			centerupright: {x: 727, y: 296                             },
+			center:        {x: 726, y: 411                             },
+			rightcasino:   {x: 713, y: 549                             },
+			casino:        {x: 552, y: 543                             },
+			leftcasino1:   {x: 391, y: 555                             },
+			leftcasino2:   {x: 295, y: 620                             },
+			gym:           {x: 202, y: 397                             },
+			center_up:     {x: 81, y: 111 , name: "Veilstone (Center)" },
+			center_mid:    {x: 160, y: 147, name: "Veilstone (Center)" },
+			center_bot:    {x: 240, y: 104, name: "Veilstone (Center)" },
         },
         pastoria: {
+            route:      {x: 952, y: 187                            },
+			leftroute:  {x: 749, y: 255                            },
+			center:     {x: 370, y: 199                            },
+			rightgym:   {x: 368, y: 310                            },
+			gym:        {x: 193, y: 354                            },
+			upmart:     {x: 382, y: 454                            },
+			rightmart:  {x: 542, y: 452                            },
+			mart:       {x: 388, y: 559                            },
+			leftmart:   {x: 191, y: 554                            },
+			center_up:  {x: 653, y: 618, name: "Pastoria (Center)" },
+			center_mid: {x: 750, y: 663, name: "Pastoria (Center)" },
+			center_bot: {x: 847, y: 613, name: "Pastoria (Center)" },
+
 
         },
         celestic: {
-
+            topleft:     {x: 39, y: 76                             },
+			topmid:      {x: 246, y: 82                            },
+			topright:    {x: 407, y: 77                            },
+			cave:        {x: 245, y: 180                           },
+			botleft:     {x: 101, y: 364                           },
+			center:      {x: 390, y: 365                           },
+			center_up:   {x: 541, y: 106, name: "Celestic (Center)"},
+			center_mid:  {x: 638, y: 144, name: "Celestic (Center)"},
+			center_bot:  {x: 721, y: 105, name: "Celestic (Center)"},
         },
         canalave: {
-
+            route:      {x: 472, y: 512                           },
+			left1:      {x: 75,  y: 96                            },
+			gym:        {x: 98,  y: 214                           },
+			left2:      {x: 84,  y: 304                           },
+			left3:      {x: 100, y: 378                           },
+			right1:     {x: 334, y: 49                            },
+			center:     {x: 335, y: 128                           },
+			right2:     {x: 271, y: 229                           },
+			mart:       {x: 279, y: 305                           },
+			right3:     {x: 289, y: 381                           },
+			center_up:  {x: 421, y: 354, name: "Canalave (Center)"},
+			center_mid: {x: 509, y: 394, name: "Canalave (Center)"},
+			center_bot: {x: 605, y: 346, name: "Canalave (Center)"},
         },
         snowpoint: {
-
+            mart:       {x: 31,  y: 523                            },
+			center:     {x: 440, y: 536                            },
+			gym:        {x: 246, y: 396                            },
+			left:       {x: 27,  y: 230                            },
+			right:      {x: 447, y: 233                            },
+			temple:     {x: 240, y: 85                             },
+			center_up:  {x: 407, y: 426, name: "Snowpoint (Center)"},
+			center_mid: {x: 493, y: 466, name: "Snowpoint (Center)"},
+			center_bot: {x: 584, y: 418, name: "Snowpoint (Center)"},
         },
         sunyshore: {
 
@@ -198,24 +256,106 @@ var platinum = {
         resortarea: {
 
         },
-        /*lavaridge: {
-            center:      {x: 100, y: 78 , name: "Lavaridge (Outside)"},
-            mart:        {x: 199, y: 61 , name: "Lavaridge (Outside)"},
-            gym:         {x: 42,  y: 218, name: "Lavaridge (Outside)"},
-            herbs:       {x: 140, y: 215, name: "Lavaridge (Outside)"},
-            house:       {x: 230, y: 215, name: "Lavaridge (Outside)"},
-            center_top:  {x: 325, y: 24 , name: "Lavaridge (Center)" },
-            center_left: {x: 313, y: 99 , name: "Lavaridge (Center)" },
-            center_bot:  {x: 398, y: 149, name: "Lavaridge (Center)" },
-        },*/
 
         // Routes
+        route201:          {
+
+        },
+        oreburghgate_r203: {
+
+        },
+        route204:          {
+
+        },
+        windworks:         {
+
+        },
+        ironworks_meadow:  {
+
+        },
+        r212_mansion:      {
+
+        },
+        route214:          {
+
+        },
+        valorlakefront:    {
+
+        },
+        route206:          {
+
+        },
+        route207_route208: {
+
+        },
+        route209:          {
+
+        },
+        route210_route215: {
+
+        },
+        route211:          {
+
+        },
+        route216_route217: {
+
+        },
+        route221:          {
+
+        },
+        route222:          {
+
+        },
+        route225:          {
+
+        },
+        route226_route227: {
+
+        },
+        route228:          {
+
+        },
 
         // Important locations
+        jubilifetv_poketch: {
+
+        },
+        eternagalactic:     {
+
+        },
+        coronet:            {
+
+        },
+        solaceonruins:      {
+
+        },
         departmentstore: {
-            one:   {x: 100, y: 50  },
-            two:   {x: 100, y: 100 },
-            three: {x: 100, y: 150 },
+            bf1_stairs:  {x: 169, y: 447 },
+			f1_left:     {x: 133, y: 260 },
+			f1_right:    {x: 260, y: 288 },
+			f1_entrance: {x: 204, y: 336 },
+			f2_left:     {x: 143, y: 94  },
+			f2_right:    {x: 261, y: 124 },
+			f3_left:     {x: 473, y: 446 },
+			f3_right:    {x: 611, y: 502 },
+			f4_left:     {x: 477, y: 256 },
+			f4_right:    {x: 607, y: 313 },
+			f5_stairs:   {x: 479, y: 86  },
+        },
+        galactichq:         {
+
+        },
+        coronetsummit:      {
+
+        },
+        ironisland:         {
+
+        },
+        victoryroad:        {
+
+        },
+        eternaforest_r205:  {
+
         },
     },
 

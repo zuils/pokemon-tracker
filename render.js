@@ -315,7 +315,7 @@ function RenderLocation() {
                 aux_context.fillText(key, info.text_position.x, info.text_position.y);
                 continue;
             }
-            
+
             if (info.type == "image") {
                 DrawImage(info.image, info);
             }

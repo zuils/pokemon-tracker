@@ -2,11 +2,30 @@ var crystal = {
     ready: false,
     name: "crystal",
     start_location: "cherrygrove",
-    font: "Gameboy_Font",
+    font: "GameBoy_Font",
     font_size: "22px",
     locations: {
         // Cities
-        cherrygrove: {x: 83,  y: 72, w: 8,  h: 8, name: "Cherrygrove City\nTest", link_name: "Cherrygrove City" },
+        cherrygrove: {x: 83,  y: 72, w: 8, h: 8, name: "Cherrygrove City" },
+        violet:      {x: 67,  y: 32, w: 8, h: 8, name: "Violet City"      },
+        azalea:      {x: 51,  y: 96, w: 8, h: 8, name: "Azalea Town"      },
+        goldenrod:   {x: 35,  y: 64, w: 8, h: 8, name: "Goldenrod City"   },
+        ecruteak:    {x: 51,  y: 16, w: 8, h: 8, name: "Ecruteak City"    },
+        olivine:     {x: 19,  y: 32, w: 8, h: 8, name: "Olivine City"     },
+        cianwood:    {x: 3,   y: 72, w: 8, h: 8, name: "Cianwood City"    },
+        mahogany:    {x: 91,  y: 16, w: 8, h: 8, name: "Mahogany Town"    },
+        blackthorn:  {x: 115, y: 16, w: 8, h: 8, name: "Blackthorn City"  },
+
+        pallet:      {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"     },
+        viridian:    {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City"   },
+        pewter:      {x: 179, y: 24,  w: 8, h: 8, name: "Pewter City"     },
+        cerulean:    {x: 227, y: 24,  w: 8, h: 8, name: "Cerulean City"   },
+        vermillion:  {x: 227, y: 56,  w: 8, h: 8, name: "Vermillion City" },
+        lavender:    {x: 259, y: 40,  w: 8, h: 8, name: "Lavender Town"   },
+        celadon:     {x: 203, y: 40,  w: 8, h: 8, name: "Celadon City"    },
+        saffron:     {x: 227, y: 40,  w: 8, h: 8, name: "Saffron City"    },
+        fuchsia:     {x: 219, y: 88,  w: 8, h: 8, name: "Fuchsia City"    },
+        cinnabar:    {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island" },
         
         // Routes
         
@@ -19,32 +38,16 @@ var crystal = {
     // - link_location: location_name / <garbage>
     warps: {
         // Cities
-        /*oldale: {
-            left:   {x: 88,  y: 99 },
-            mart:   {x: 232, y: 82 },
-            center: {x: 103, y: 243},
-            right:  {x: 248, y: 242},
-        },*/
-
-        /*lavaridge: {
-            center:      {x: 100, y: 78 , name: "Lavaridge (Outside)"},
-            mart:        {x: 199, y: 61 , name: "Lavaridge (Outside)"},
-            gym:         {x: 42,  y: 218, name: "Lavaridge (Outside)"},
-            herbs:       {x: 140, y: 215, name: "Lavaridge (Outside)"},
-            house:       {x: 230, y: 215, name: "Lavaridge (Outside)"},
-            center_top:  {x: 325, y: 24 , name: "Lavaridge (Center)" },
-            center_left: {x: 313, y: 99 , name: "Lavaridge (Center)" },
-            center_bot:  {x: 398, y: 149, name: "Lavaridge (Center)" },
-        },*/
-
-        // Routes
-
-        // Important locations
         cherrygrove: {
             one:   {x: 100, y: 50  },
             two:   {x: 100, y: 100 },
             three: {x: 100, y: 150 },
         },
+
+        // Routes
+
+        // Important locations
+        
     },
 
     // Numbers are meant to be to check if exist any marks/progress in the maps
