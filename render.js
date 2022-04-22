@@ -306,12 +306,12 @@ function RenderLocation() {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
 
-            if (game.name == platinum.name) { // DEBUG
+            /*if (game.name == crystal.name) { // DEBUG
                 warp.link_type = LINKTYPE_WARP;
                 warp.link = key;
                 warp.link_location = current_location;
                 info = GetWarpRenderInfo(location, warp);
-            }
+            }*/
 
             if (info.type == "image") {
                 DrawImage(info.image, info);
