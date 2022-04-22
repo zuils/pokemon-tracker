@@ -30,16 +30,16 @@ var platinum = {
         route204:          {x: 36,  y: 111, w: 8,  h: 8,  name: "Route 204"                        },
         windworks:         {x: 50,  y: 101, w: 8,  h: 8,  name: "Valley Windworks"                 },
         ironworks_meadow:  {x: 36,  y: 81,  w: 8,  h: 8,  name: "Fuego Ironworks\nFloaroma Meadow" },
-        r212_mansion:      {x: 99,  y: 136, w: 15, h: 15, name: "Route 212\nPokémon Mansion"       },
-        route214:          {x: 155, y: 108, w: 8,  h: 8,  name: "Route 214"                        },
-        valorlakefront:    {x: 148, y: 122, w: 15, h: 15, name: "Valor Lakefront\nRoute 213"       },
         route206:          {x: 64,  y: 94,  w: 8,  h: 15, name: "Route 206"                        },
         route207_route208: {x: 78,  y: 115, w: 8,  h: 8,  name: "Route 207\nRoute 208"             },
         route209:          {x: 120, y: 115, w: 8,  h: 8,  name: "Route 209"                        },
         route210_route215: {x: 120, y: 80,  w: 15, h: 15, name: "Route 210\nRoute 215"             },
+        route214:          {x: 155, y: 108, w: 8,  h: 8,  name: "Route 214"                        },
+        valorlakefront:    {x: 148, y: 122, w: 15, h: 15, name: "Valor Lakefront\nRoute 213"       },
+        r212_mansion:      {x: 99,  y: 136, w: 15, h: 15, name: "Route 212\nPokémon Mansion"       },
+        route221:          {x: 49,  y: 157, w: 15, h: 8,  name: "Route 221"                        },
         route211:          {x: 85 , y: 73,  w: 8,  h: 8,  name: "Route 211"                        },
         route216_route217: {x: 64,  y: 18,  w: 8,  h: 15, name: "Route 216\nRoute 217"             },
-        route221:          {x: 49,  y: 157, w: 15, h: 8,  name: "Route 221"                        },
         route222:          {x: 170, y: 129, w: 8,  h: 8,  name: "Route 222"                        },
         route225:          {x: 134, y: 41,  w: 8,  h: 8,  name: "Route 225"                        },
         route226_route227: {x: 162, y: 24,  w: 8,  h: 15, name: "Route 226\nRoute 227"             },
@@ -47,6 +47,7 @@ var platinum = {
         
         // Important locations
         jubilifetv_poketch: {x: 24,  y: 111, w: 8, h: 8,  name: "Jubilife TV\nPokétch Company" },
+        eternaforest_r205:  {x: 50,  y: 73,  w: 8, h: 8,  name: "Eterna Forest\nRoute 205"     },
         eternagalactic:     {x: 64,  y: 60,  w: 8, h: 8,  name: "Galactic Eterna"              },
         coronet:            {x: 78,  y: 94,  w: 8, h: 15, name: "Mt. Coronet"                  },
         solaceonruins:      {x: 138, y: 103, w: 8, h: 8,  name: "Solaceon Ruins"               },
@@ -55,7 +56,6 @@ var platinum = {
         coronetsummit:      {x: 85,  y: 52,  w: 8, h: 15, name: "Mt. Coronet Summit"           },
         ironisland:         {x: 22,  y: 66,  w: 8, h: 8,  name: "Iron Island"                  },
         victoryroad:        {x: 183, y: 92,  w: 8, h: 8,  name: "Victory Road"                 },
-        eternaforest_r205:  {x: 50,  y: 73,  w: 8, h: 8,  name: "Eterna Forest\nRoute 205"     },
     },
 
     // Undefined fields:
@@ -205,129 +205,302 @@ var platinum = {
 
         },
         celestic: {
-            topleft:     {x: 39, y: 76                             },
-			topmid:      {x: 246, y: 82                            },
-			topright:    {x: 407, y: 77                            },
-			cave:        {x: 245, y: 180                           },
-			botleft:     {x: 101, y: 364                           },
-			center:      {x: 390, y: 365                           },
-			center_up:   {x: 541, y: 106, name: "Celestic (Center)"},
-			center_mid:  {x: 638, y: 144, name: "Celestic (Center)"},
-			center_bot:  {x: 721, y: 105, name: "Celestic (Center)"},
+            topleft:     {x: 39, y: 76                              },
+			topmid:      {x: 246, y: 82                             },
+			topright:    {x: 407, y: 77                             },
+			cave:        {x: 245, y: 180                            },
+			botleft:     {x: 101, y: 364                            },
+			center:      {x: 390, y: 365                            },
+			center_up:   {x: 541, y: 106, name: "Celestic (Center)" },
+			center_mid:  {x: 638, y: 144, name: "Celestic (Center)" },
+			center_bot:  {x: 721, y: 105, name: "Celestic (Center)" },
         },
         canalave: {
-            route:      {x: 472, y: 512                           },
-			left1:      {x: 75,  y: 96                            },
-			gym:        {x: 98,  y: 214                           },
-			left2:      {x: 84,  y: 304                           },
-			left3:      {x: 100, y: 378                           },
-			right1:     {x: 334, y: 49                            },
-			center:     {x: 335, y: 128                           },
-			right2:     {x: 271, y: 229                           },
-			mart:       {x: 279, y: 305                           },
-			right3:     {x: 289, y: 381                           },
-			center_up:  {x: 421, y: 354, name: "Canalave (Center)"},
-			center_mid: {x: 509, y: 394, name: "Canalave (Center)"},
-			center_bot: {x: 605, y: 346, name: "Canalave (Center)"},
-        },
+            route:      {x: 472, y: 512                            },
+			left1:      {x: 75,  y: 96                             },
+			gym:        {x: 98,  y: 214                            },
+			left2:      {x: 84,  y: 304                            },
+			left3:      {x: 100, y: 378                            },
+			right1:     {x: 334, y: 49                             },
+			center:     {x: 335, y: 128                            },
+			right2:     {x: 271, y: 229                            },
+			mart:       {x: 279, y: 305                            },
+			right3:     {x: 289, y: 381                            },
+			center_up:  {x: 421, y: 354, name: "Canalave (Center)" },
+			center_mid: {x: 509, y: 394, name: "Canalave (Center)" },
+			center_bot: {x: 605, y: 346, name: "Canalave (Center)" },
+        }, 
         snowpoint: {
-            mart:       {x: 31,  y: 523                            },
-			center:     {x: 440, y: 536                            },
-			gym:        {x: 246, y: 396                            },
-			left:       {x: 27,  y: 230                            },
-			right:      {x: 447, y: 233                            },
-			temple:     {x: 240, y: 85                             },
-			center_up:  {x: 407, y: 426, name: "Snowpoint (Center)"},
-			center_mid: {x: 493, y: 466, name: "Snowpoint (Center)"},
-			center_bot: {x: 584, y: 418, name: "Snowpoint (Center)"},
+            mart:       {x: 31,  y: 523                             },
+			center:     {x: 440, y: 536                             },
+			gym:        {x: 246, y: 396                             },
+			left:       {x: 27,  y: 230                             },
+			right:      {x: 447, y: 233                             },
+			temple:     {x: 240, y: 85                              },
+			center_up:  {x: 407, y: 426, name: "Snowpoint (Center)" },
+			center_mid: {x: 493, y: 466, name: "Snowpoint (Center)" },
+			center_bot: {x: 584, y: 418, name: "Snowpoint (Center)" },
         },
         sunyshore: {
-
+			gym:        {x: 213, y: 91                              },
+			topleft:    {x: 694, y: 47                              },
+			topright:   {x: 828, y: 106                             },
+			market:     {x: 287, y: 312                             },
+			leftmart:   {x: 214, y: 393                             },
+			mart:       {x: 354, y: 444                             },
+			center:     {x: 458, y: 595                             },
+			route:      {x: 80,  y: 693                             },
+			lighthouse: {x: 869, y: 623                             },
+			toplight:   {x: 903, y: 400                             },
+			center_up:  {x: 786, y: 266, name: "Sunyshore (Center)" },
+			center_mid: {x: 881, y: 310, name: "Sunyshore (Center)" },
+			center_bot: {x: 965, y: 267, name: "Sunyshore (Center)" },
         },
         league: {
-
+            entrance:    {x: 311, y: 111, name: "Victory Entrance"          },
+			center:      {x: 167, y: 115, name: "Victory Entrance"          },
+			center_up:   {x: 16,  y: 264, name: "Victory Entrance (Center)" },
+			center_mid:  {x: 105, y: 310, name: "Victory Entrance (Center)" },
+			center_bot:  {x: 196, y: 265, name: "Victory Entrance (Center)" },
+			league_door: {x: 681, y: 232                                    },
+			league_e4:   {x: 683, y: 111                                    },
+			league_top:  {x: 546, y: 229                                    },
+			league_bot:  {x: 599, y: 277                                    },
         },
         fightarea: {
-
+            route:      {x: 49,  y: 64                               },
+			center:     {x: 310, y: 146                              },
+			mart:       {x: 526, y: 145                              },
+			up:         {x: 433, y: 254                              },
+			bot:        {x: 431, y: 324                              },
+			center_up:  {x: 56,  y: 369, name: "Fight Area (Center)" },
+			center_mid: {x: 140, y: 415, name: "Fight Area (Center)" },
+			center_bot: {x: 236, y: 374, name: "Fight Area (Center)" },
         },
         survivalarea: {
-
+			up:         {x: 285, y: 68                                  },
+			bar:        {x: 220, y: 261                                 },
+			center:     {x: 334, y: 311                                 },
+			mart:       {x: 409, y: 263                                 },
+			bot:        {x: 271, y: 432                                 },
+			center_up:  {x: 383, y: 122, name: "Survival Area (Center)" },
+			center_mid: {x: 477, y: 171, name: "Survival Area (Center)" },
+			center_bot: {x: 564, y: 118, name: "Survival Area (Center)" },
         },
         resortarea: {
+			house:      {x: 168, y: 119                               },
+			center:     {x: 33,  y: 319                               },
+			center_up:  {x: 544, y: 102, name: "Resort Area (Center)" },
+			center_mid: {x: 641, y: 182, name: "Resort Area (Center)" },
+			center_bot: {x: 741, y: 106, name: "Resort Area (Center)" },
 
         },
 
         // Routes
-        route201:          {
-
+        route201: {
+			lake: {x: 128, y: 63},
         },
         oreburghgate_r203: {
-
+            route203:   {x: 100, y: 167, name: "Route 203"     },
+			gate_left:  {x: 191, y: 292, name: "Oreburgh Gate" },
+			gate_top:   {x: 593, y: 305, name: "Oreburgh Gate" },
+			gate_right: {x: 468, y: 88,  name: "Oreburgh Gate" },
         },
-        route204:          {
-
+        route204: {
+			bot: {x: 56,  y: 162, name: "Route 204 (Jubilife)" },
+			top: {x: 200, y: 52,  name: "Route 204 (Floaroma)" },
         },
-        windworks:         {
-
+        windworks: {
+			house: {x: 311, y: 187 },
         },
-        ironworks_meadow:  {
-
+        ironworks_meadow: {
+			works_house:     {x: 156, y: 98,  name: "Fuego Ironworks (Building)" },
+			works_meadow:    {x: 336, y: 386, name: "Fuego Ironworks (Meadow)"   },
+			meadow_exit:     {x: 106, y: 443, name: "Floaroma Meadow (Top)"      },
+			meadow_entrance: {x: 107, y: 574, name: "Floaroma Meadow (Bottom)"   },
+			meadow_house:    {x: 306, y: 598, name: "Floaroma Meadow (Bottom)"   },
         },
-        r212_mansion:      {
-
-        },
-        route214:          {
-
-        },
-        valorlakefront:    {
-
-        },
-        route206:          {
-
+        route206: {
+            exit:      {x: 194, y: 341 },
+			caveleft:  {x: 189, y: 111 },
+			caveright: {x: 319, y: 44  },
         },
         route207_route208: {
-
+			r207:       {x: 178, y: 106, name: "Route 207" },
+			r208_cave:  {x: 314, y: 66,  name: "Route 208" },
+			r208_house: {x: 562, y: 81,  name: "Route 208" },
+            r208_city:  {x: 634, y: 209, name: "Route 208" },
         },
-        route209:          {
-
+        route209: {
+            entrance: {x: 37,  y: 95  },
+			tower:    {x: 239, y: 166 },
         },
         route210_route215: {
+			r210_cafe:    {x: 132, y: 239, name: "Route 210 (Café)"    },
+			r210_grandma: {x: 122, y: 67,  name: "Route 210 (Grandma)" },
+			r215:         {x: 338, y: 184, name: "Route 215"           },
+        },
+        route214: {
+			top:    {x: 113, y: 62 },
+			cave:   {x: 87,  y: 188},
+			forest: {x: 377, y: 142},
+        },
+        valorlakefront: {
+			r213_city:          {x: 104, y: 117, name: "Route 213"       },
+			r213_hotel:         {x: 298, y: 41,  name: "Route 213"       },
+			r213_house:         {x: 264, y: 227, name: "Route 213"       },
+			lakefront_topleft:  {x: 70,  y: 356, name: "Valor Lakefront" },
+			lakefront_topmid:   {x: 324, y: 371, name: "Valor Lakefront" },
+			lakefront_topright: {x: 466, y: 279, name: "Valor Lakefront" },
+			lakefront_midleft:  {x: 246, y: 556, name: "Valor Lakefront" },
+			lakefront_midtop:   {x: 420, y: 547, name: "Valor Lakefront" },
+			lakefront_midbot:   {x: 387, y: 643, name: "Valor Lakefront" },
+			lakefront_hotel:    {x: 326, y: 686, name: "Valor Lakefront" },
+			lakefront_lake:     {x: 527, y: 57,  name: "Valor Lakefront" },
+        },
+        r212_mansion: {
+			r212_city:     {x: 275, y: 315, name: "Route 212 (Garden)" },
+			r212_mansion:  {x: 531, y: 348, name: "Route 212 (Garden)" },
+			r212_house:    {x: 525, y: 529, name: "Route 212 (Marsh)"  },
+			mansion_left1: {x: 85,  y: 64,  name: "Blacklot's Mansion" },
+			mansion_left2: {x: 214, y: 63,  name: "Blacklot's Mansion" },
+			mansion_left3: {x: 346, y: 63,  name: "Blacklot's Mansion" },
+			mansion_top:   {x: 534, y: 28,  name: "Blacklot's Mansion" },
+			mansion_right: {x: 777, y: 70,  name: "Blacklot's Mansion" },
+			mansion_door:  {x: 532, y: 199, name: "Blacklot's Mansion" },
 
         },
-        route211:          {
-
+        route221: {
+			house:   {x: 124, y: 107 },
+			palpark: {x: 399, y: 82  },
+        },
+        route211: {
+			left:  {x: 71,  y: 63, name: "Route 211 (Eterna)"   },
+			right: {x: 245, y: 63, name: "Route 211 (Celestic)" },
         },
         route216_route217: {
+			r216_cave:  {x: 277, y: 381, name: "Route 216"        },
+			r216_house: {x: 67,  y: 357, name: "Route 216"        },
+			r217_right: {x: 262, y: 230, name: "Route 217"        },
+			r217_left:  {x: 73,  y: 231, name: "Route 217"        },
+			r217_lake:  {x: 134, y: 92,  name: "Route 217 (Lake)" },
 
         },
-        route221:          {
-
+        route222: {
+			left:  {x: 70,  y: 70  },
+			right: {x: 169, y: 108 },
+			city:  {x: 348, y: 99  },
         },
-        route222:          {
-
-        },
-        route225:          {
-
+        route225: {
+			entrance: {x: 238, y: 127 },
+			house:    {x: 67,  y: 78  },
         },
         route226_route227: {
-
+			r226_house: {x: 109, y: 240, name: "Route 226 (Meister)" },
+			r226_gate:  {x: 282, y: 267, name: "Route 226 (Gate)"    },
+			r227_house: {x: 273, y: 82,  name: "Route 227 (Heal)"    },
+			r227_stark: {x: 123, y: 62,  name: "Route 227 (Stark)"   },
         },
-        route228:          {
-
+        route228: {
+			gate:  {x: 104, y: 86  },
+			left:  {x: 71,  y: 228 },
+			right: {x: 290, y: 244 },
         },
 
         // Important locations
         jubilifetv_poketch: {
+			poketch_left:   {x: 233, y: 634, name: "Pokétch Company" },
+			poketch_right:  {x: 444, y: 635, name: "Pokétch Company" },
+			poketch_stairs: {x: 286, y: 535, name: "Pokétch Company" },
+			tv_f1_entrance: {x: 142, y: 443, name: "Jubilife TV"     },
+			tv_f1_stairs:   {x: 237, y: 287, name: "Jubilife TV"     },
+			tv_f2_door:     {x: 44,  y: 43,  name: "Jubilife TV"     },
+            tv_f2_down:     {x: 123, y: 67,  name: "Jubilife TV"     },
+			tv_f2_up:       {x: 229, y: 40,  name: "Jubilife TV"     },
+			tv_f3_left:     {x: 371, y: 306, name: "Jubilife TV"     },
+			tv_f3_right:    {x: 420, y: 262, name: "Jubilife TV"     },
+			tv_f3_down:     {x: 475, y: 329, name: "Jubilife TV"     },
+			tv_f3_up:       {x: 551, y: 330, name: "Jubilife TV"     },
+			tv_f4_stairs:   {x: 475, y: 101, name: "Jubilife TV"     },
 
         },
-        eternagalactic:     {
-
+        eternaforest_r205: {
+			r205_house:            {x: 233, y: 625, name: "Route 205 (Floaroma)"        },
+			r205_entrance:         {x: 107, y: 513, name: "Route 205 (Floaroma)"        },
+			r205_exit:             {x: 573, y: 537, name: "Route 205 (Eterna)"          },
+			forest_entrance:       {x: 143, y: 372, name: "Eterna Forest (Entrance)"    },
+			forest_chateau:        {x: 129, y: 206, name: "Eterna Forest (Old Chateau)" },
+			forest_exit:           {x: 402, y: 521, name: "Eterna Forest (Exit)"        },
+			chateau_hub_entrance:  {x: 463, y: 318, name: "Old Chateau (Hub)"           },
+			chateau_hub_left:      {x: 338, y: 188, name: "Old Chateau (Hub)"           },
+			chateau_hub_right:     {x: 599, y: 185, name: "Old Chateau (Hub)"           },
+			chateau_hub_middle:    {x: 465, y: 218, name: "Old Chateau (Hub)"           },
+			chateau_hub_top:       {x: 463, y: 143, name: "Old Chateau (Hub)"           },
+			chateau_line_entrance: {x: 305, y: 94,  name: "Old Chateau (Corridor)"      },
+			chateau_line_door1:    {x: 67,  y: 55,  name: "Old Chateau (Corridor)"      },
+			chateau_line_door2:    {x: 178, y: 57,  name: "Old Chateau (Corridor)"      },
+			chateau_line_door3:    {x: 306, y: 54,  name: "Old Chateau (Corridor)"      },
+			chateau_line_door4:    {x: 436, y: 50,  name: "Old Chateau (Corridor)"      },
+			chateau_line_door5:    {x: 546, y: 54,  name: "Old Chateau (Corridor)"      },
         },
-        coronet:            {
-
+        eternagalactic: {
+			f1_entrance: {x: 170, y: 364, name: "Galactic Eterna (F1)" },
+			f1_door:     {x: 30,  y: 227, name: "Galactic Eterna (F1)" },
+			f1_stairs1:  {x: 220, y: 239, name: "Galactic Eterna (F1)" },
+			f1_stairs2:  {x: 317, y: 238, name: "Galactic Eterna (F1)" },
+			f2_stairs1:  {x: 132, y: 71,  name: "Galactic Eterna (F2)" },
+			f2_stairs2:  {x: 222, y: 33,  name: "Galactic Eterna (F2)" },
+			f2_stairs3:  {x: 331, y: 70,  name: "Galactic Eterna (F2)" },
+			f3_stairs1:  {x: 420, y: 283, name: "Galactic Eterna (F3)" },
+			f3_stairs2:  {x: 580, y: 236, name: "Galactic Eterna (F3)" },
+			f3_stairs3:  {x: 696, y: 289, name: "Galactic Eterna (F3)" },
         },
-        solaceonruins:      {
-
+        coronet: {
+			f1_entrance: {x: 44,  y: 372, name: "Mt. Coronet (F1)"    },
+			f1_exit:     {x: 291, y: 472, name: "Mt. Coronet (F1)"    },
+			f1_stairs:   {x: 279, y: 321, name: "Mt. Coronet (F1)"    },
+			f2_left:     {x: 19,  y: 250, name: "Mt. Coronet (F2)"    },
+			f2_top:      {x: 62,  y: 34,  name: "Mt. Coronet (F2)"    },
+			f2_right:    {x: 225, y: 190, name: "Mt. Coronet (F2)"    },
+			f3_entrance: {x: 388, y: 255, name: "Mt. Coronet (∩)"     },
+			f3_left:     {x: 468, y: 238, name: "Mt. Coronet (∩)"     },
+			f3_right:    {x: 544, y: 286, name: "Mt. Coronet (∩)"     },
+			f4_left:     {x: 72,  y: 776, name: "Mt. Coronet (Water)" },
+			f4_right:    {x: 350, y: 769, name: "Mt. Coronet (Water)" },
+			f4_top:      {x: 407, y: 630, name: "Mt. Coronet (Water)" },
+			f4_water:    {x: 174, y: 595, name: "Mt. Coronet (Water)" },
+			upf1_bot:    {x: 735, y: 690, name: "Mt. Coronet (Rocks)" },
+			upf1_left:   {x: 450, y: 452, name: "Mt. Coronet (Rocks)" },
+			upf1_right:  {x: 862, y: 360, name: "Mt. Coronet (Rocks)" },
+			upf1_top:    {x: 587, y: 80,  name: "Mt. Coronet (Rocks)" },
+			upf12_left:  {x: 317, y: 42,  name: "Mt. Coronet (⊃)"     },
+			upf12_top:   {x: 446, y: 9,   name: "Mt. Coronet (⊃)"     },
+			upf12_bot:   {x: 372, y: 150, name: "Mt. Coronet (⊃)"     },
+        },
+        solaceonruins: {
+			entrance_door:     {x: 92,  y: 197, name: "Solaceon Ruins (Entrance)"    },
+			entrance_botright: {x: 148, y: 143, name: "Solaceon Ruins (Entrance)"    },
+			entrance_topleft:  {x: 148, y: 63,  name: "Solaceon Ruins (Entrance)"    },
+			entrance_topright: {x: 34,  y: 61,  name: "Solaceon Ruins (Entrance)"    },
+			bf1_botleft:       {x: 235, y: 150, name: "Solaceon Ruins (Hiker)"       },
+			bf1_botright:      {x: 349, y: 153, name: "Solaceon Ruins (Hiker)"       },
+			bf1_topleft:       {x: 237, y: 42,  name: "Solaceon Ruins (Hiker)"       },
+			bf1_topright:      {x: 347, y: 42,  name: "Solaceon Ruins (Hiker)"       },
+			bf2_botleft:       {x: 434, y: 149, name: "Solaceon Ruins (Karl)"        },
+			bf2_botright:      {x: 546, y: 141, name: "Solaceon Ruins (Karl)"        },
+			bf2_topleft:       {x: 434, y: 61,  name: "Solaceon Ruins (Karl)"        },
+			bf2_topright:      {x: 549, y: 63,  name: "Solaceon Ruins (Karl)"        },
+			bf3_botleft:       {x: 34,  y: 347, name: "Solaceon Ruins (stairs down)" },
+			bf3_botright:      {x: 146, y: 336, name: "Solaceon Ruins (stairs down)" },
+			bf3_topleft:       {x: 34,  y: 256, name: "Solaceon Ruins (stairs down)" },
+			bf3_topright:      {x: 149, y: 259, name: "Solaceon Ruins (stairs down)" },
+			bf32_botleft:      {x: 235, y: 326, name: "Solaceon Ruins (3warp)"       },
+			bf32_botright:     {x: 350, y: 343, name: "Solaceon Ruins (3warp)"       },
+			bf32_topleft:      {x: 233, y: 260, name: "Solaceon Ruins (3warp)"       },
+			bf4_botleft:       {x: 403, y: 327, name: "Solaceon Ruins (stairs up)"   },
+			bf4_botright:      {x: 548, y: 345, name: "Solaceon Ruins (stairs up)"   },
+			bf4_topleft:       {x: 403, y: 242, name: "Solaceon Ruins (stairs up)"   },
+			bf4_topright:      {x: 548, y: 247, name: "Solaceon Ruins (stairs up)"   },
         },
         departmentstore: {
             bf1_stairs:  {x: 169, y: 447 },
@@ -342,21 +515,24 @@ var platinum = {
 			f4_right:    {x: 607, y: 313 },
 			f5_stairs:   {x: 479, y: 86  },
         },
-        galactichq:         {
+        galactichq: {
 
         },
-        coronetsummit:      {
+        coronetsummit: {
+			bot:      {x: 96,  y: 656, name: "Mt. Coronet Summit (Bottom)" },
+			botleft:  {x: 80,  y: 435, name: "Mt. Coronet Summit (Bottom)" },
+			botright: {x: 446, y: 455, name: "Mt. Coronet Summit (Bottom)" },
+			topleft:  {x: 469, y: 273, name: "Mt. Coronet Summit (Top)"    },
+			topright: {x: 547, y: 182, name: "Mt. Coronet Summit (Top)"    },
+			top:      {x: 133, y: 62,  name: "Mt. Coronet Summit (Top)"    },
+        },
+        ironisland: {
 
         },
-        ironisland:         {
+        victoryroad: {
 
         },
-        victoryroad:        {
-
-        },
-        eternaforest_r205:  {
-
-        },
+        
     },
 
     // Numbers are meant to be to check if exist any marks/progress in the maps
