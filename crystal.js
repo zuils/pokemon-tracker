@@ -39,9 +39,11 @@ var crystal = {
     warps: {
         // Cities
         cherrygrove: {
-            one:   {x: 100, y: 50  },
-            two:   {x: 100, y: 100 },
-            three: {x: 100, y: 150 },
+            mart:   {x: 474, y: 50  },
+			center: {x: 377, y: 83  },
+			house1: {x: 280, y: 112 },
+			house2: {x: 409, y: 147 },
+			house3: {x: 504, y: 177 },
         },
 
         // Routes
