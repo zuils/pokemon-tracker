@@ -36,14 +36,12 @@
           <button onclick="SaveFile()">Save</button>
           <button onclick="ResetButton()">Reset Tracker</button>
           <label><input type="checkbox" id="checkbox_smooth"  onclick="ChangeSmooth()" >Smooth images</label>
-          <p>To resize the tracker use your browser's built-in functionality to zoom in/out (Ctrl + Scroll Wheel).</p>
-          <p>Chrome users: enable hardware acceleration to increase performance.</p>
           <p id="config_controlstoggle" class="config_toggle" onclick="ShowConfigControls()">+ Show controls & explanation</p>
           <div id="config_controls" class="config_hidden">
             <hr>
             <p class="config_toggle" onclick="HideConfigControls()">- Hide controls & explanation</p>
             <p>This tracker assumes <a href="https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of">Pointcrow</a>'s Pokémon Warp Randomizer is being used. Warps and most assets are taken from the original tracker by <a href="https://github.com/SaltContainer/PokemonEmeraldMapRandoTracker/releases">SaltContainer</a>.</p>
-            <p>The map is color coded: <b style="color:#ff3910;">cities</b>, <b style="color:#39ad08;">routes</b> and <b style="color:#6638ef;">dungeons</b>. <u>The progress tracker can be used to mark warps too</u>.</p>
+            <p>The map is color coded: <b style="color:#ff3910;">cities</b>, <b style="color:#39ad08;">routes</b> and <b style="color:#6638ef;">dungeons</b>. <u>The progress tracker can be used to mark warps too</u>. To resize the tracker use your browser's built-in functionality to zoom in/out (Ctrl + Scroll Wheel).</p>
             Warp linking:
             <ul>
               <li><b>Left click</b> on a warp to start linking. Then, change location, click a mark to set it or another warp to create a link. <b>Right click</b> to cancel this state.</li>
@@ -62,6 +60,7 @@
               <li><b>Left click</b> on the progress tracker to mark an objective as completed.</li>
               <br>
             </ul>
+            Chrome users: enable hardware acceleration to increase performance.
           </div>
           <p id="config_networktoggle" class="config_toggle" onclick="ShowConfigNetwork()">+ Show network options (don't show on stream)</p>
           <div id="config_network" class="config_hidden">
