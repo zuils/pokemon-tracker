@@ -68,7 +68,10 @@ function ShowConfigNetwork() {
             });
 
             connection.on("open", function(A) {
-                let text = WarpsToText(game.warps);
+                let text = "";
+                for (let key_game in games) {
+                    text += WarpsToText(games[key_game]);
+                }
                 connection.send(text);
             });
 

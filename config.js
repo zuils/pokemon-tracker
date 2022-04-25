@@ -28,10 +28,15 @@ function FileUploaded(event) {
     var reader = new FileReader();
     reader.onload = function() {
         let lines = reader.result.split("\n");
-        for (let p of lines[0].split(",")) {
-            game.obtained.add(p);
+        while (lines[0].startsWith("#")) { // Parse all progress trackers
+            let fields = lines[0].split(",");
+            let current_game = games[fields[0].substring(1, fields[0].length)];
+            fields.shift;
+            for (let p of fields) {
+                current_game.obtained.add(p);
+            }
+            lines.shift();
         }
-        lines.shift();
 
         LinesToWarps(lines);
         if (connected_to || connections.length > 0) {
@@ -52,14 +57,23 @@ function FileUploaded(event) {
 }
 
 function SaveFile() {
-    var text = "";
-    for (var p of game.obtained) {
-        text += p + ",";
+    let text = "";
+    for (let key_game in games) {
+        if (!games[key_game].ready) { continue; }
+        
+        text += "#" + games[key_game].name + ",";
+        for (var p of games[key_game].obtained) {
+            text += p + ",";
+        }
+        text = text.substring(0, text.length-1);
+        text += "\n";
     }
-    text = text.substring(0, text.length-1);
-    text += "\n";
-    
-    text += WarpsToText(game.warps);
+    for (let key_game in games) {
+        if (!games[key_game].ready) { continue; }
+
+        text += WarpsToText(games[key_game]);
+    }
+
 
     if (text.length == 0) {
         alert("There's nothing to save.");
@@ -70,16 +84,16 @@ function SaveFile() {
     var d = time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + "_" + time.getHours() + "." + time.getMinutes() + "." + time.getSeconds();
     var a = document.createElement("a");
     a.href = window.URL.createObjectURL(new Blob([text], {type: "text/plain"}));
-    a.download = d + "_" + game.name + "_pokemon-tracker.txt";
+    a.download = d + "_pokemon-tracker.txt";
     a.click();
 }
 
-function WarpsToText (warps) {
+function WarpsToText (current_game) {
     let text = "";
-    for (var key_location in warps) {
-        for (var key_warp in warps[key_location]) {
-            text += key_location + "," + key_warp + ",";
-            let warp = warps[key_location][key_warp];
+    for (let key_location in current_game.warps) {
+        for (let key_warp in current_game.warps[key_location]) {
+            text += current_game.name + "," + key_location + "," + key_warp + ",";
+            let warp = current_game.warps[key_location][key_warp];
             if (warp.link_type) text += warp.link_type;
             text += ",";
             if (warp.link_location) text += warp.link_location;
@@ -95,12 +109,12 @@ function LinesToWarps (lines) {
         if (line.length == 0) continue;
 
         let f = line.split(",");
-        if (f.length != 5) {
+        if (f.length != 6) {
             console.error("ERROR: Invalid line in save file: " + line);
             continue;
         }
         
-        ChangeWarpOffline(f[0], f[1], f[2], f[3], f[4]);
+        ChangeWarpOffline(games[f[0]], f[1], f[2], f[3], f[4], f[5]);
     }
 }
 
@@ -123,26 +137,31 @@ function ResetButton() {
 
 
 function InitTrackerToUnknowns() {
-    for (let key_location in game.warps) {
-        for (let key_warp in game.warps[key_location]) {
-            game.warps[key_location][key_warp].link_type = LINKTYPE_MARK;
-            game.warps[key_location][key_warp].link      = "unknown";
-            game.marks[0][0][1] += 1; // assumming game.marks[0][0] always is ["unknown", 0]
+    for (let key_game in games) {
+        games[key_game].marks[0][0][1] = 0; // assuming unknowns are always being tracked
+        for (let key_location in games[key_game].warps) {
+            for (let key_warp in games[key_game].warps[key_location]) {
+                games[key_game].warps[key_location][key_warp].link_type = LINKTYPE_MARK;
+                games[key_game].warps[key_location][key_warp].link      = "unknown";
+                games[key_game].marks[0][0][1] += 1;
+            }
         }
     }
 }
 function ResetTracker() {
-    for (let array of [game.marks, game.progress]) {
-        for (let row of array) {
-            for (let element of row) {
-                if (element[1] !== undefined && element[1] !== null) {
-                    element[1] = 0;
+    for (let key_game in games) {
+        for (let array of [games[key_game].marks, games[key_game].progress]) {
+            for (let row of array) {
+                for (let element of row) {
+                    if (element[1] !== undefined && element[1] !== null) {
+                        element[1] = 0;
+                    }
                 }
             }
         }
+        games[key_game].obtained = new Set();
     }
     InitTrackerToUnknowns();
-    game.obtained = new Set();
     rerender_all = true;
 }
 
@@ -163,7 +182,6 @@ function ChangeGame(new_game) {
     rerender_all = true;
     rerender_location = true;
     if (!game.ready) {
-        InitTrackerToUnknowns();
         LoadImages();
     }
     else {

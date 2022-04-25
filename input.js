@@ -128,7 +128,7 @@ function OnMouseUp(event) {
                         } // falldown
                         case TYPE_MARK: {
                             if (current_state != STATE_DEFAULT) {
-                                ChangeWarp(link_location, link_warp, LINKTYPE_MARK, "", info.target);
+                                ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target);
                                 current_state = STATE_DEFAULT;
                             }
                         } break;
@@ -151,8 +151,8 @@ function OnMouseUp(event) {
                                     }
                                 } // falldown
                                 case STATE_LINK2: {
-                                    ChangeWarp(link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target);
-                                    ChangeWarp(current_location, info.target, LINKTYPE_WARP, link_location,    link_warp);
+                                    ChangeWarp(game, link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target);
+                                    ChangeWarp(game, current_location, info.target, LINKTYPE_WARP, link_location,    link_warp);
 
                                     current_state = STATE_DEFAULT;
                                 } break;
@@ -164,7 +164,7 @@ function OnMouseUp(event) {
                     switch (info.type) {
                         case TYPE_MARK:
                         case TYPE_PROGRESS: {
-                            let m = GetMarkByName(info.target);
+                            let m = GetMarkByName(info.target, game);
                             if (m && m[1] > 0) {
                                 // Start new cycle if it doesn't exist or is not the same as before
                                 if (!current_markcycle || current_markcycle.name != info.target) {
@@ -188,16 +188,16 @@ function OnMouseUp(event) {
                         case TYPE_WARP: {
                             let warp = game.warps[current_location][info.target];
                             if (!warp.link_type || (warp.link_type == LINKTYPE_MARK && warp.link == "unknown")) {
-                                ChangeWarp(current_location, info.target, LINKTYPE_MARK, "", "dead_end");
+                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "dead_end");
                             }
                             else {
                                 if (warp.link_type == LINKTYPE_WARP) {
                                     let warp2 = game.warps[warp.link_location][warp.link];
                                     if (warp2.link_type == LINKTYPE_WARP && warp2.link_location == current_location && warp2.link == info.target) {
-                                        ChangeWarp(warp.link_location, warp.link, LINKTYPE_MARK, "", "unknown");
+                                        ChangeWarp(game, warp.link_location, warp.link, LINKTYPE_MARK, "", "unknown");
                                     }
                                 }
-                                ChangeWarp(current_location, info.target, LINKTYPE_MARK, "", "unknown");
+                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "unknown");
                             }
                             
                         } break;
@@ -209,11 +209,11 @@ function OnMouseUp(event) {
 }
 
 // Change the warp and send info to server if connected
-function ChangeWarp(location, warp, link_type, link_location, link) {
-    ChangeWarpOffline(location, warp, link_type, link_location, link);
+function ChangeWarp(current_game, location, warp, link_type, link_location, link) {
+    ChangeWarpOffline(current_game, location, warp, link_type, link_location, link);
 
     if (connected_to || connections.length > 0) {
-        let text = location + "," + warp + "," + link_type + "," + link_location + "," + link;
+        let text = current_game.name + "," + location + "," + warp + "," + link_type + "," + link_location + "," + link;
         if (connected_to) {
             connected_to.send(text);
         }
@@ -224,11 +224,12 @@ function ChangeWarp(location, warp, link_type, link_location, link) {
         }
     }
 }
-function ChangeWarpOffline(location, warp, link_type, link_location, link) {
-    if (!game.warps[location] || !game.warps[location][warp]) { return; }
-    let w = game.warps[location][warp];
-    if (w.link_type == LINKTYPE_MARK) { AddToMark(w.link, -1, location); }
-    if (link_type == LINKTYPE_MARK)   { AddToMark(link,    1, location); }
+function ChangeWarpOffline(current_game, location, warp, link_type, link_location, link) {
+    if (!current_game.warps[location] || !current_game.warps[location][warp]) { return; }
+
+    let w = current_game.warps[location][warp];
+    if (w.link_type == LINKTYPE_MARK) { AddToMark(current_game, w.link, -1, location); }
+    if (link_type == LINKTYPE_MARK)   { AddToMark(current_game, link,    1, location); }
     w.link_type     = link_type;
     w.link_location = link_location;
     w.link          = link;
@@ -330,8 +331,8 @@ function GetWarp(position) {
     return null;
 }
 
-function GetMarkByName(name_to_find) {
-    for (let images of [game.marks, game.progress]) {
+function GetMarkByName(name_to_find, current_game) {
+    for (let images of [current_game.marks, current_game.progress]) {
         for (let i = 0; i < images.length; ++i) {
             for (let j = 0; j < images[i].length; ++j) {
                 let name  = images[i][j][0];
@@ -350,12 +351,14 @@ function GetMarkByName(name_to_find) {
     return null;
 }
 
-function AddToMark (name, value, location) {
-    let info = GetMarkByName(name);
+function AddToMark (current_game, name, value, location) {
+    let info = GetMarkByName(name, current_game);
     if (!info) { return; }
 
     let old_value = info[1];
     info[1] += value;
+
+    if (current_game.name != game.name) { return; }
 
     rerender_all |= ((old_value >= 1 && info[1] <= 0) || (old_value <= 0 && info[1] >= 1));
 
