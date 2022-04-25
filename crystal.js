@@ -67,7 +67,7 @@ var crystal = {
         [["boulder_badge", 0], ["cascade_badge", 0], ["thunder_badge", 0], ["rainbow_badge", 0], ["soul_badge",  0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
         [["c_will",        0], ["c_koga",        0], ["c_bruno",       0], ["c_karen",       0], ["c_lance",     0]],
         [["hm_cut",        0], ["hm_fly",        0], ["hm_surf",       0], ["hm_strength",   0], ["hm_flash",    0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
-        [["bike",          0]],
+        [["bike",          0], ["squirt_bottle", 0], ["basement_key",  0], ["card_key",      0], ["pass",        0], ["ss_ticket",     0]],
     ],
     obtained: new Set()
 };
