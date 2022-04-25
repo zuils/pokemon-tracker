@@ -9,6 +9,11 @@ const LINKTYPE_MARK = "mark";
 const GAME_LOADED_CACHE = "last-game-loaded";
 
 let game;
+let games = {
+    crystal:  crystal,
+    emerald:  emerald,
+    platinum: platinum,
+}
 var loading_game_text;
 function init() {
     // Get UI elements
