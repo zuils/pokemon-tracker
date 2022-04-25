@@ -109,6 +109,13 @@ button {
 button:hover {
     background-color: var(--color2);
 }
+button:disabled,
+button[disabled]{
+  border: 1px solid var(--color3);
+  background-color: var(--color2);
+  color: var(--color4);
+  cursor: auto;
+}
 input {
     font-size: 16px;
     font-family: "Avenir", serif;

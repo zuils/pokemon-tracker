@@ -36,11 +36,20 @@
           <button onclick="SaveFile()">Save</button>
           <button onclick="ResetButton()">Reset Tracker</button>
           <label><input type="checkbox" id="checkbox_smooth"  onclick="ChangeSmooth()" >Smooth images</label>
+          <p>
+            <button id="crystal_button" onclick="ChangeGame(crystal)">Load</button> Pokémon Crystal (work in progress...) <!--(4 warps so far)-->
+            <br>
+            <button id="emerald_button" onclick="ChangeGame(emerald)">Load</button> Pokémon Emerald by <a href="https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of">Pointcrow</a> (344 warps)
+            <br>
+            <button id="platinum_button" onclick="ChangeGame(platinum)">Load</button> Pokémon Platinum (work in progress...) <!--(411 warps so far)-->
+            <br>
+            <p id="loading_game_text">Loading game...</p>
+          </p>
           <p id="config_controlstoggle" class="config_toggle" onclick="ShowConfigControls()">+ Show controls & explanation</p>
           <div id="config_controls" class="config_hidden">
             <hr>
             <p class="config_toggle" onclick="HideConfigControls()">- Hide controls & explanation</p>
-            <p>This tracker assumes <a href="https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of">Pointcrow</a>'s Pokémon Warp Randomizer is being used. Warps and most assets are taken from the original tracker by <a href="https://github.com/SaltContainer/PokemonEmeraldMapRandoTracker/releases">SaltContainer</a>.</p>
+            <p>Warps and most assets are taken from the original tracker by <a href="https://github.com/SaltContainer/PokemonEmeraldMapRandoTracker/releases">SaltContainer</a>.</p>
             <p>The map is color coded: <b style="color:#ff3910;">cities</b>, <b style="color:#39ad08;">routes</b> and <b style="color:#6638ef;">dungeons</b>. <u>The progress tracker can be used to mark warps too</u>. To resize the tracker use your browser's built-in functionality to zoom in/out (Ctrl + Scroll Wheel).</p>
             Warp linking:
             <ul>

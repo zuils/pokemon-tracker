@@ -27,6 +27,8 @@ const MARKFOUND_COLOR = "#AAAAAA"
 
 const CONFIG_YOFFSET = 5;
 
+const LOADING_TEXT = "Loading map...";
+
 let aux_canvas;
 let aux_context;
 let rerender_all = true;
@@ -66,6 +68,7 @@ function LoadImages() {
         return;
     }
 
+    loading_game_text.innerHTML = LOADING_TEXT;
     loading_process.max_width  = 0;
     loading_process.max_height = 0;
     loading_process.loaded = 0;
@@ -130,8 +133,12 @@ function ImageLoaded() {
 
         SetCanvasDimensions();
 
+        loading_game_text.innerHTML = "";
         game.ready = true;
+        return;
     }
+
+    loading_game_text.innerHTML = LOADING_TEXT + " (" + Math.floor(loading_process.loaded*100/loading_process.to_load) + "%)";
 }
 function ImageError() { console.error("ERROR: Couldn't load " + this.src); }
 

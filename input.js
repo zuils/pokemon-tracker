@@ -10,41 +10,8 @@ function RegisterInputEvents() {
     canvas.addEventListener("mouseup",     OnMouseUp);
     canvas.addEventListener("mouseout",    OnMouseUp);
     canvas.addEventListener("contextmenu", OnContextMenu);
-
-    document.addEventListener("keydown", OnKeyDown);
-    document.addEventListener("keyup",   OnKeyUp);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
-
-let g_pressed = false;
-function OnKeyDown(event) {
-    switch (event.key) {
-        case "2": if (g_pressed) { game = crystal;  break; }
-        case "3": if (g_pressed) { game = emerald;  break; }
-        case "4": if (g_pressed) { game = platinum; break; }
-
-        case "g": g_pressed = true; // falldown
-        default: return;
-    }
-    g_pressed = false;
-
-    current_state = STATE_DEFAULT;
-    current_location = game.start_location;
-    left_click  = { down: false };
-    right_click = { down: false };
-    current_markcycle = undefined;
-
-    rerender_all = true;
-    rerender_location = true;
-    if (!game.ready) {
-        InitTrackerToUnknowns();
-        LoadImages();
-    }
-    else {
-        SetCanvasDimensions();
-    }
-}
-function OnKeyUp(event) { if (event.key == "g") g_pressed = false; }
 
 /*********************************************************/
 

@@ -148,6 +148,29 @@ function ResetTracker() {
 
 function ChangeSmooth() { rerender_location = true; }
 
+function ChangeGame(new_game) {
+    game.button.disabled = false;
+    game = new_game;
+    game.button.disabled = true;
+    localStorage.setItem(GAME_LOADED_CACHE, game.name);
+
+    current_state = STATE_DEFAULT;
+    current_location = game.start_location;
+    left_click  = { down: false };
+    right_click = { down: false };
+    current_markcycle = undefined;
+
+    rerender_all = true;
+    rerender_location = true;
+    if (!game.ready) {
+        InitTrackerToUnknowns();
+        LoadImages();
+    }
+    else {
+        SetCanvasDimensions();
+    }
+}
+
 /*********************************************************/
 
 const RESET_MESSAGE = "-RESET-";
