@@ -225,6 +225,7 @@ function ChangeWarp(location, warp, link_type, link_location, link) {
     }
 }
 function ChangeWarpOffline(location, warp, link_type, link_location, link) {
+    if (!game.warps[location] || !game.warps[location][warp]) { return; }
     let w = game.warps[location][warp];
     if (w.link_type == LINKTYPE_MARK) { AddToMark(w.link, -1, location); }
     if (link_type == LINKTYPE_MARK)   { AddToMark(link,    1, location); }
@@ -351,51 +352,51 @@ function GetMarkByName(name_to_find) {
 
 function AddToMark (name, value, location) {
     let info = GetMarkByName(name);
-    if (info) {
-        let old_value = info[1];
-        info[1] += value;
+    if (!info) { return; }
 
-        rerender_all |= ((old_value >= 1 && info[1] <= 0) || (old_value <= 0 && info[1] >= 1));
+    let old_value = info[1];
+    info[1] += value;
 
-        // Update current_markcycle if it's the same mark
-        if (current_markcycle && current_markcycle.name == name) {
-            let has_location = current_markcycle.locations.includes(location);
-            if (value > 0) {
-                if (!has_location) {
-                    current_markcycle.locations.push(location);
-                }
+    rerender_all |= ((old_value >= 1 && info[1] <= 0) || (old_value <= 0 && info[1] >= 1));
+
+    // Update current_markcycle if it's the same mark
+    if (current_markcycle && current_markcycle.name == name) {
+        let has_location = current_markcycle.locations.includes(location);
+        if (value > 0) {
+            if (!has_location) {
+                current_markcycle.locations.push(location);
             }
-            else if (value < 0) {
-                if (has_location) {
-                    // Check if it's more than once in this location
-                    let ocurrences = 0;
-                    for (let key in game.warps[location]) {
-                        if (game.warps[location][key].link_type &&
-                            game.warps[location][key].link_type == LINKTYPE_MARK &&
-                            game.warps[location][key].link == name)
-                        {
-                            ocurrences += 1;
-                        }
+        }
+        else if (value < 0) {
+            if (has_location) {
+                // Check if it's more than once in this location
+                let ocurrences = 0;
+                for (let key in game.warps[location]) {
+                    if (game.warps[location][key].link_type &&
+                        game.warps[location][key].link_type == LINKTYPE_MARK &&
+                        game.warps[location][key].link == name)
+                    {
+                        ocurrences += 1;
                     }
-
-                    // We are removing the location AFTER calling this function, so
-                    // if it's in here once, then there won't be any more after this
-                    // and we can safely delete it from the list
-                    if (ocurrences == 1) {
-                        let i = current_markcycle.locations.indexOf(location);
-                        if (i >= 0) {
-                            current_markcycle.locations.splice(i, 1);
-                            if (current_markcycle.index > 0 && current_markcycle.index > i) {
-                                current_markcycle.index -= 1;
-                            }
-                        }
-                        else {
-                            // just in case, not necessary, we know it's in there
-                            console.error("Location not found in mark cycle!");
-                        }
-                    }
-
                 }
+
+                // We are removing the location AFTER calling this function, so
+                // if it's in here once, then there won't be any more after this
+                // and we can safely delete it from the list
+                if (ocurrences == 1) {
+                    let i = current_markcycle.locations.indexOf(location);
+                    if (i >= 0) {
+                        current_markcycle.locations.splice(i, 1);
+                        if (current_markcycle.index > 0 && current_markcycle.index > i) {
+                            current_markcycle.index -= 1;
+                        }
+                    }
+                    else {
+                        // just in case, not necessary, we know it's in there
+                        console.error("Location not found in mark cycle!");
+                    }
+                }
+
             }
         }
     }
