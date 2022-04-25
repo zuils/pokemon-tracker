@@ -470,9 +470,9 @@ var emerald = {
         [["e_rock",  0], ["e_boulder",   0], ["e_surf", 0], ["e_dive", 0], ["e_bike",   0], ["e_trainer",  0]],
     ],
     progress: [
-        [["stone_badge", 0], ["knuckle_badge", 0], ["dynamo_badge", 0], ["heat_badge",   0], ["balance_badge", 0], ["feather_badge", 0], ["mind_badge",    0], ["rain_badge",   0]],
-        [["e4_dark",     0], ["e4_ghost",      0], ["e4_ice",       0], ["e4_dragon",    0], ["e_champion",    0], ["",      undefined], ["",      undefined], ["steven_steel", 0]],
-        [["hm_cut",      0], ["hm_fly",        0], ["hm_surf",      0], ["hm_strength",  0], ["hm_flash",      0], ["hm_rocksmash",  0], ["hm_waterfall",  0], ["hm_dive",      0]],
+        [["stone_badge", 0], ["knuckle_badge", 0], ["dynamo_badge", 0], ["heat_badge",   0], ["balance_badge", 0], ["feather_badge", 0], ["mind_badge",    0], ["rain_badge", 0]],
+        [["e_sidney",    0], ["e_phoebe",      0], ["e_glacia",     0], ["e_drake",      0], ["e_wallace",     0], ["",      undefined], ["",      undefined], ["e_steven",   0]],
+        [["hm_cut",      0], ["hm_fly",        0], ["hm_surf",      0], ["hm_strength",  0], ["hm_flash",      0], ["hm_rocksmash",  0], ["hm_waterfall",  0], ["hm_dive",    0]],
         [["bike",        0], ["storage_key",   0], ["magma_emblem", 0], ["go_goggles",   0], ["devon_scope",   0]],
     ],
     obtained: new Set()

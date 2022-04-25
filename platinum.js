@@ -613,7 +613,7 @@ var platinum = {
     ],
     progress: [
         [["coal_badge", 0], ["forest_badge", 0], ["cobble_badge", 0], ["fen_badge",   0], ["relic_badge", 0], ["mine_badge",   0], ["icicle_badge", 0], ["beacon_badge", 0]],
-        [["e4_bug",     0], ["e4_ground",    0], ["e4_fire",      0], ["e4_psychic",  0], ["p_champion",  0]],
+        [["p_aaron",    0], ["p_bertha",     0], ["p_flint",      0], ["p_lucian",    0], ["p_cynthia",   0]],
         [["hm_cut",     0], ["hm_fly",       0], ["hm_surf",      0], ["hm_strength", 0], ["hm_defog",    0], ["hm_rocksmash", 0], ["hm_waterfall", 0], ["hm_rockclimb", 0]],
         [["bike",       0]],
     ],
