@@ -56,11 +56,11 @@ var crystal = {
     // if null, then we don't do tracking
     // if undefined, then we don't draw the mark
     marks: [
-        [["unknown", 0], ["dead_end", null], ["event",     0], ["center",      0], ["mart",        0], ["one_way", null]],
-        [["normal",  0], ["fighting",    0], ["flying",    0], ["poison",      0], ["ground",      0], ["rock",       0], ["bug",         0], ["ghost",     0], ["fairy", 0]],
-        [["steel",   0], ["fire",        0], ["water",     0], ["grass",       0], ["electric",    0], ["psychic",    0], ["ice",         0], ["dragon",    0], ["dark",  0]],
-        [["1",       0], ["2",           0], ["3",         0], ["4",           0], ["5",           0], ["6",          0], ["7",           0], ["8",         0]],
-        [["c_bush",  0], ["c_surf",      0], ["c_boulder", 0], ["c_whirlpool", 0], ["c_waterfall", 0], ["c_rock",     0], ["bike_needed", 0], ["c_trainer", 0]],
+        [["unknown", 0], ["dead_end", null], ["event",     0], ["center",      0], ["mart",        0], ["one_way",  null]],
+        [["normal",  0], ["fighting",    0], ["flying",    0], ["poison",      0], ["ground",      0], ["rock",        0], ["bug",    0], ["ghost",       0], ["fairy",     0]],
+        [["steel",   0], ["fire",        0], ["water",     0], ["grass",       0], ["electric",    0], ["psychic",     0], ["ice",    0], ["dragon",      0], ["dark",      0]],
+        [["1",       0], ["2",           0], ["3",         0], ["4",           0], ["5",           0], ["6",           0], ["7",      0], ["8",           0]],
+        [["c_bush",  0], ["c_surf",      0], ["c_boulder", 0], ["c_darkness",  0], ["c_whirlpool", 0], ["c_waterfall", 0], ["c_rock", 0], ["bike_needed", 0], ["c_trainer", 0]],
     ],
     progress: [
         [["zephyr_badge",  0], ["hive_badge",    0], ["plain_badge",   0], ["fog_badge",     0], ["storm_badge", 0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
