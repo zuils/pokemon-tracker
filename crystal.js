@@ -35,7 +35,7 @@ var crystal = {
         r35_r36:       {x: 35,  y: 32, w: 14, h: 8,  name: "Route 35\nRoute 36"      },
 
         // Important locations
-        darkcave:               {x: 96, y: 44, w: 8, h: 8, name: "Dark Cave"              },
+        darkcave:               {x: 96, y: 44, w: 8, h: 8, name: "Dark Cave"                },
         unioncave:              {x: 67, y: 96, w: 8, h: 8, name: "Union Cave"               },
         departmentstore:        {x: 46, y: 57, w: 8, h: 8, name: "Department Store"         },
         radiotower_underground: {x: 46, y: 71, w: 8, h: 8, name: "Radio Tower\nUnderground" },
