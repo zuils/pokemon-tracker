@@ -165,7 +165,10 @@ function ResetTracker() {
     rerender_all = true;
 }
 
-function ChangeSmooth() { rerender_location = true; }
+function ChangeSmooth() {
+    localStorage.setItem(SMOOTH_IMAGES_CACHE, checkbox_smooth.checked);
+    rerender_location = true;
+}
 
 function ChangeGame(new_game) {
     game.button.disabled = false;

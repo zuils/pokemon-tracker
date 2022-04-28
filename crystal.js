@@ -49,10 +49,10 @@ var crystal = {
         // Cities
         cherrygrove: {
             mart:   {x: 474, y: 50  },
-			center: {x: 377, y: 83  },
-			house1: {x: 280, y: 112 },
-			house2: {x: 409, y: 147 },
-			house3: {x: 504, y: 177 },
+			center: {x: 377, y: 84  },
+			house1: {x: 280, y: 122 },
+			house2: {x: 409, y: 157 },
+			house3: {x: 504, y: 195 },
         },
 
         // Routes

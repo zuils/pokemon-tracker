@@ -6,7 +6,8 @@ let context;
 const LINKTYPE_WARP = "warp";
 const LINKTYPE_MARK = "mark";
 
-const GAME_LOADED_CACHE = "last-game-loaded";
+const GAME_LOADED_CACHE   = "last-game-loaded";
+const SMOOTH_IMAGES_CACHE = "smooth-images";
 
 let game;
 let games = {
@@ -23,8 +24,9 @@ function init() {
     config_network        = document.getElementById("config_network");
     config_networktoggle  = document.getElementById("config_networktoggle");
 
+    let smooth_images = (localStorage.getItem(SMOOTH_IMAGES_CACHE) == "true") ? true : false;
     checkbox_smooth = document.getElementById("checkbox_smooth");
-    checkbox_smooth.checked = false;
+    checkbox_smooth.checked = smooth_images;
 
     crystal.button  = document.getElementById("crystal_button");
     emerald.button  = document.getElementById("emerald_button");
