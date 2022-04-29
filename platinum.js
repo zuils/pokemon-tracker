@@ -1,5 +1,4 @@
 var platinum = {
-    ready: false,
     name: "platinum",
     start_location: "sandgem",
     font: "NDS_Font",
@@ -617,5 +616,4 @@ var platinum = {
         [["hm_cut",     0], ["hm_fly",       0], ["hm_surf",      0], ["hm_strength", 0], ["hm_defog",    0], ["hm_rocksmash", 0], ["hm_waterfall", 0], ["hm_rockclimb", 0]],
         [["bike",       0], ["works_key",    0], ["galactic_key", 0]],
     ],
-    obtained: new Set()
 };

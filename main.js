@@ -24,9 +24,8 @@ function init() {
     config_network        = document.getElementById("config_network");
     config_networktoggle  = document.getElementById("config_networktoggle");
 
-    let smooth_images = (localStorage.getItem(SMOOTH_IMAGES_CACHE) == "true") ? true : false;
     checkbox_smooth = document.getElementById("checkbox_smooth");
-    checkbox_smooth.checked = smooth_images;
+    checkbox_smooth.checked = (localStorage.getItem(SMOOTH_IMAGES_CACHE) == "true") ? true : false;
 
     crystal.button  = document.getElementById("crystal_button");
     emerald.button  = document.getElementById("emerald_button");
@@ -50,6 +49,10 @@ function init() {
     }
     game.button.disabled = true;
     current_location = game.start_location;
+    for (let key_game in games) {
+        games[key_game].ready = false;
+        games[key_game].obtained = new Set();
+    }
     InitTrackerToUnknowns();
     LoadImages();
     RegisterInputEvents();

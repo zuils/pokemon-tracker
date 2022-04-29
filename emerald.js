@@ -1,5 +1,4 @@
 var emerald = {
-    ready: false,
     name: "emerald",
     start_location: "oldale",
     font: "GameBoy_Font",
@@ -475,5 +474,4 @@ var emerald = {
         [["hm_cut",      0], ["hm_fly",        0], ["hm_surf",      0], ["hm_strength",  0], ["hm_flash",      0], ["hm_rocksmash",  0], ["hm_waterfall",  0], ["hm_dive",    0]],
         [["bike",        0], ["storage_key",   0], ["magma_emblem", 0], ["go_goggles",   0], ["devon_scope",   0]],
     ],
-    obtained: new Set()
 };

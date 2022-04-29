@@ -1,5 +1,4 @@
 var crystal = {
-    ready: false,
     name: "crystal",
     start_location: "cherrygrove",
     font: "GameBoy_Font",
@@ -78,5 +77,4 @@ var crystal = {
         [["hm_cut",        0], ["hm_fly",        0], ["hm_surf",       0], ["hm_strength",   0], ["hm_flash",    0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
         [["bike",          0], ["squirt_bottle", 0], ["basement_key",  0], ["card_key",      0], ["pass",        0], ["ss_ticket",     0]],
     ],
-    obtained: new Set()
 };
