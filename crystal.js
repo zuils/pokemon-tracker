@@ -33,6 +33,7 @@ var crystal = {
         r34:           {x: 35,  y: 81, w: 8,  h: 8,  name: "Route 34"                },
         r35_r36:       {x: 35,  y: 32, w: 14, h: 8,  name: "Route 35\nRoute 36"      },
         r38_r39:       {x: 26,  y: 16, w: 8,  h: 8,  name: "Route 38\nRoute 39"      },
+        ragelake_r43:  {x: 91,  y: 0, w: 8,  h: 8,  name: "Lake of Rage\nRoute 43"  },
 
         // Important locations
         darkcave:               {x: 96, y: 44, w: 8, h: 8, name: "Dark Cave"                },
@@ -40,6 +41,7 @@ var crystal = {
         departmentstore:        {x: 46, y: 57, w: 8, h: 8, name: "Department Store"         },
         radiotower_underground: {x: 46, y: 71, w: 8, h: 8, name: "Radio Tower\nUnderground" },
         tintower:               {x: 51, y: 6,  w: 8, h: 8, name: "Tin Tower"                },
+        mtmortar_r42:           {x: 67, y: 16, w: 8, h: 8, name: "Mt. Mortar\nRoute 42"     },
     },
 
     // Undefined fields:
