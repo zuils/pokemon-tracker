@@ -17,8 +17,8 @@ const SELECTED_MAP_XOFFSET = 10;
 const WARP_LINE_YOFFSET = 5;
 const WARP_FONT_SIZE    = 13;
 
-const MARKS_YOFFSET    = 20;
-const PROGRESS_YOFFSET = MARKS_YOFFSET*2;
+const MARKS_YOFFSET    = 15;
+const PROGRESS_YOFFSET = 10;
 const MARK_SIZE        = 32;
 const MARK_SEPARATION  = 5;
 const UNCHECKED_FILTER = "grayscale(100%) opacity(50%)";
