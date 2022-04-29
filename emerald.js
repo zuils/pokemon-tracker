@@ -216,14 +216,14 @@ var emerald = {
 
         // Routes
         petalburgwoods_r104: {
-            briney:         {x: 392, y: 510, name: "Route 104 (Bottom)"},
-            woodsentrance:  {x: 289, y: 362, name: "Route 104 (Bottom)"},
-            woodsbotexit:   {x: 641, y: 417, name: "Route 104 (Bottom)"},
-            woods_entrance: {x: 111, y: 691, name: "Petalburg Woods"   },
-            woods_botexit:  {x: 431, y: 691, name: "Petalburg Woods"   },
-            woods_topexit:  {x: 79,  y: 216, name: "Petalburg Woods"   },
-            woodstopexit:   {x: 420, y: 207, name: "Route 104 (Top)"   },
-            flowers:        {x: 332, y: 89 , name: "Route 104 (Top)"   },
+            briney:         {x: 392, y: 510, name: "Route 104 (Petalburg)"},
+            woodsentrance:  {x: 289, y: 362, name: "Route 104 (Petalburg)"},
+            woodsbotexit:   {x: 641, y: 417, name: "Route 104 (Petalburg)"},
+            woods_entrance: {x: 111, y: 691, name: "Petalburg Woods"      },
+            woods_botexit:  {x: 431, y: 691, name: "Petalburg Woods"      },
+            woods_topexit:  {x: 79,  y: 216, name: "Petalburg Woods"      },
+            woodstopexit:   {x: 420, y: 207, name: "Route 104 (Rustboro)" },
+            flowers:        {x: 332, y: 89 , name: "Route 104 (Rustboro)" },
         },
         rusturftunnel_r116:  {
             house:       {x: 197, y: 70 , name: "Route 116"     },

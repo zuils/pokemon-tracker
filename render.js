@@ -120,9 +120,13 @@ function ImageLoaded() {
             console.log(GetNameImage(this.src));
         }
 
+        //if (this.naturalWidth  > loading_process.max_width)  console.log(this.src);
+        //if (this.naturalHeight > loading_process.max_height) console.log(this.src);
+
         // Get max width/height for later
         if (this.naturalWidth  > loading_process.max_width)  loading_process.max_width  = this.naturalWidth;
         if (this.naturalHeight > loading_process.max_height) loading_process.max_height = this.naturalHeight;
+
     }
 
     loading_process.loaded += 1;
