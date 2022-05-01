@@ -171,6 +171,7 @@ function ChangeSmooth() {
 }
 
 function ChangeGame(new_game) {
+    if (!game.ready) return; // Return if game is being loaded
     game.button.disabled = false;
     game = new_game;
     game.button.disabled = true;

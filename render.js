@@ -29,8 +29,8 @@ const CONFIG_YOFFSET = 5;
 
 const LOADING_TEXT = "Loading map...";
 
-let debug_widths  = [];
-let debug_heights = [];
+/*let debug_widths  = [];
+let debug_heights = [];*/
 
 let aux_canvas;
 let aux_context;
@@ -123,8 +123,8 @@ function ImageLoaded() {
             console.log(GetNameImage(this.src));
         }
 
-        debug_heights.push({ value: this.naturalHeight, name: this.src});
-        debug_widths.push ({ value: this.naturalWidth , name: this.src});
+        //debug_heights.push({ value: this.naturalHeight, name: this.src});
+        //debug_widths.push ({ value: this.naturalWidth , name: this.src});
 
         //if (this.naturalWidth  > loading_process.max_width)  console.log(this.src);
         //if (this.naturalHeight > loading_process.max_height) console.log(this.src);
@@ -137,12 +137,13 @@ function ImageLoaded() {
 
     loading_process.loaded += 1;
     if (loading_process.loaded == loading_process.to_load) {
-        debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
-        debug_widths.sort ((a, b) => (a.value > b.value) ? 1 : -1);
+        //debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
+        //console.log("Height:");
+        //console.log(debug_heights);
 
-        console.log(debug_heights);
-        console.log(debug_widths);
-
+        //debug_widths.sort ((a, b) => (a.value > b.value) ? 1 : -1);
+        //console.log("Width:");
+        //console.log(debug_widths);
 
         // Set canvas dimensions
         game.max_width  = loading_process.max_width;
@@ -310,7 +311,7 @@ function RenderLocation() {
         h: location.image.naturalHeight * scale,
         scale: scale
     };
-    /*if (game.name == crystal.name) { // DEBUG
+    /*if (game.name == emerald.name) { // DEBUG
         rendered_location = {
             x: background.x,
             y: background.y,
