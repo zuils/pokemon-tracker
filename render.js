@@ -132,7 +132,6 @@ function ImageLoaded() {
         // Get max width/height for later
         if (this.naturalWidth  > loading_process.max_width)  loading_process.max_width  = this.naturalWidth;
         if (this.naturalHeight > loading_process.max_height) loading_process.max_height = this.naturalHeight;
-
     }
 
     loading_process.loaded += 1;
@@ -311,7 +310,7 @@ function RenderLocation() {
         h: location.image.naturalHeight * scale,
         scale: scale
     };
-    /*if (game.name == emerald.name) { // DEBUG
+    /*if (game.name == crystal.name) { // DEBUG
         rendered_location = {
             x: background.x,
             y: background.y,
