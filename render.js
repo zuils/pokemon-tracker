@@ -29,6 +29,9 @@ const CONFIG_YOFFSET = 5;
 
 const LOADING_TEXT = "Loading map...";
 
+let debug_widths  = [];
+let debug_heights = [];
+
 let aux_canvas;
 let aux_context;
 let rerender_all = true;
@@ -120,6 +123,9 @@ function ImageLoaded() {
             console.log(GetNameImage(this.src));
         }
 
+        debug_heights.push({ value: this.naturalHeight, name: this.src});
+        debug_widths.push ({ value: this.naturalWidth , name: this.src});
+
         //if (this.naturalWidth  > loading_process.max_width)  console.log(this.src);
         //if (this.naturalHeight > loading_process.max_height) console.log(this.src);
 
@@ -131,6 +137,13 @@ function ImageLoaded() {
 
     loading_process.loaded += 1;
     if (loading_process.loaded == loading_process.to_load) {
+        debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
+        debug_widths.sort ((a, b) => (a.value > b.value) ? 1 : -1);
+
+        console.log(debug_heights);
+        console.log(debug_widths);
+
+
         // Set canvas dimensions
         game.max_width  = loading_process.max_width;
         game.max_height = loading_process.max_height;

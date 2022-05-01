@@ -164,7 +164,7 @@ var emerald = {
             hall:         {x: 243, y: 354, name: "Lilycove City"          },
             motel:        {x: 469, y: 356, name: "Lilycove City"          },
             harbor:       {x: 82,  y: 485, name: "Lilycove City"          },
-            aqua:         {x: 968, y: 53 , name: "Lilycove (Aqua Hideout)"},
+            aqua:         {x: 758, y: 53 , name: "Lilycove (Aqua Hideout)"},
             hall_left:    {x: 487, y: 482, name: "Lilycove (Contest Hall)"},
             hall_right:   {x: 677, y: 480, name: "Lilycove (Contest Hall)"},
             hall_bot:     {x: 571, y: 587, name: "Lilycove (Contest Hall)"},
