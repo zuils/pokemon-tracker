@@ -16,16 +16,16 @@ var crystal = {
         blackthorn:    {x: 115, y: 16, w: 8, h: 8, name: "Blackthorn City"         },
         indigoplateau: {x: 155, y: 8,  w: 8, h: 8, name: "Indigo Plateau"          },
 
-        pallet:      {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"          },
-        viridian:    {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City"        },
-        pewter:      {x: 179, y: 24,  w: 8, h: 8, name: "Pewter City"          },
-        cerulean:    {x: 227, y: 24,  w: 8, h: 8, name: "Cerulean City"        },
-        vermillion:  {x: 227, y: 56,  w: 8, h: 8, name: "Vermillion City"      },
-        lavender:    {x: 259, y: 40,  w: 8, h: 8, name: "Lavender Town"        },
-        celadon:     {x: 203, y: 40,  w: 8, h: 8, name: "Celadon City"         },
-        saffron:     {x: 227, y: 40,  w: 8, h: 8, name: "Saffron City"         },
-        fuchsia:     {x: 219, y: 88,  w: 8, h: 8, name: "Fuchsia City"         },
-        cinnabar:    {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"      },
+        pallet:       {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"             },
+        viridian_r22: {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City\nRoute 22" },
+        pewter:       {x: 179, y: 24,  w: 8, h: 8, name: "Pewter City"             },
+        cerulean:     {x: 227, y: 24,  w: 8, h: 8, name: "Cerulean City"           },
+        vermillion:   {x: 227, y: 56,  w: 8, h: 8, name: "Vermillion City"         },
+        lavender:     {x: 259, y: 40,  w: 8, h: 8, name: "Lavender Town"           },
+        celadon:      {x: 203, y: 40,  w: 8, h: 8, name: "Celadon City"            },
+        saffron:      {x: 227, y: 40,  w: 8, h: 8, name: "Saffron City"            },
+        fuchsia:      {x: 219, y: 88,  w: 8, h: 8, name: "Fuchsia City"            },
+        cinnabar:     {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"         },
         
         // Routes
         r29_r45_r46:   {x: 107, y: 48,  w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
@@ -38,7 +38,9 @@ var crystal = {
         ragelake_r43:  {x: 91,  y: 0,   w: 8,  h: 8,  name: "Lake of Rage\nRoute 43"  },
         r26_r27:       {x: 149, y: 66,  w: 14, h: 14, name: "Route 26\nRoute 27"      },
         
+        r2:            {x: 179, y: 35,  w: 8,  h: 8,  name: "Route 2"                 },
         r19_r20:       {x: 195, y: 104, w: 8,  h: 8,  name: "Route 19\nRoute 20"      },
+        r25:           {x: 243, y: 8,   w: 8,  h: 8,  name: "Route 25"                },
 
         // Important locations
         darkcave:               {x: 96,  y: 44, w: 8, h: 8,  name: "Dark Cave"                      },
@@ -53,7 +55,8 @@ var crystal = {
         whirlislands:           {x: 11,  y: 64, w: 8, h: 8,  name: "Whirl Islands"                  },
         victoryroad_reception:  {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
         
-        mtsilver_r28:           {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver\nRoute 28"           },
+        mtmoon_r3_r4:           {x: 203, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
+        mtsilver_r28:           {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver\nRoute 28"            },
 
     },
 
