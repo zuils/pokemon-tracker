@@ -28,15 +28,17 @@ var crystal = {
         cinnabar:    {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"      },
         
         // Routes
-        r29_r45_r46:   {x: 107,  y: 48, w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
-        r30_r31:       {x: 83,   y: 44, w: 8,  h: 14, name: "Route 30\nRoute 31"      },
-        alphruins_r32: {x: 67,   y: 67, w: 8,  h: 14, name: "Ruins of Alph\nRoute 32" },
-        r34:           {x: 35,   y: 81, w: 8,  h: 8,  name: "Route 34"                },
-        r35_r36:       {x: 35,   y: 32, w: 14, h: 8,  name: "Route 35\nRoute 36"      },
-        r38_r39:       {x: 26,   y: 16, w: 8,  h: 8,  name: "Route 38\nRoute 39"      },
-        r41:           {x: 11,   y: 52, w: 8,  h: 8,  name: "Route 41"                },
-        ragelake_r43:  {x: 91,   y: 0,  w: 8,  h: 8,  name: "Lake of Rage\nRoute 43"  },
-        r26_r27:       {x: 149,  y: 66, w: 14, h: 14, name: "Route 26\nRoute 27"      },
+        r29_r45_r46:   {x: 107, y: 48,  w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
+        r30_r31:       {x: 83,  y: 44,  w: 8,  h: 14, name: "Route 30\nRoute 31"      },
+        alphruins_r32: {x: 67,  y: 67,  w: 8,  h: 14, name: "Ruins of Alph\nRoute 32" },
+        r34:           {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34"                },
+        r35_r36:       {x: 35,  y: 32,  w: 14, h: 8,  name: "Route 35\nRoute 36"      },
+        r38_r39:       {x: 26,  y: 16,  w: 8,  h: 8,  name: "Route 38\nRoute 39"      },
+        r41:           {x: 11,  y: 52,  w: 8,  h: 8,  name: "Route 41"                },
+        ragelake_r43:  {x: 91,  y: 0,   w: 8,  h: 8,  name: "Lake of Rage\nRoute 43"  },
+        r26_r27:       {x: 149, y: 66,  w: 14, h: 14, name: "Route 26\nRoute 27"      },
+        
+        r19_r20:       {x: 195, y: 104, w: 8,  h: 8,  name: "Route 19\nRoute 20"      },
 
         // Important locations
         darkcave:               {x: 96,  y: 44, w: 8, h: 8,  name: "Dark Cave"                      },
@@ -50,6 +52,9 @@ var crystal = {
         ssaqua:                 {x: 213, y: 66, w: 8, h: 8,  name: "S.S. Aqua"                      },
         whirlislands:           {x: 11,  y: 64, w: 8, h: 8,  name: "Whirl Islands"                  },
         victoryroad_reception:  {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
+        
+        mtsilver_r28:           {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver\nRoute 28"           },
+
     },
 
     // Undefined fields:
