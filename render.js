@@ -342,6 +342,10 @@ function RenderLocation() {
             }
             else {
                 DrawImage(game.frame, info);
+                /*if (game.name == crystal.name) { // DEBUG
+                    aux_context.fillText(key, info.text_position.x, info.text_position.y);
+                    continue;
+                }*/
                 aux_context.fillText(info.text, info.text_position.x, info.text_position.y);
             }
         }
