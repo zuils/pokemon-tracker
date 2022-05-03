@@ -91,9 +91,13 @@ function SaveFile() {
 function WarpsToText (current_game) {
     let text = "";
     for (let key_location in current_game.warps) {
+        if (!current_game.warps[key_location]) continue;
+
         for (let key_warp in current_game.warps[key_location]) {
-            text += current_game.name + "," + key_location + "," + key_warp + ",";
             let warp = current_game.warps[key_location][key_warp];
+            if (!warp) continue;
+
+            text += current_game.name + "," + key_location + "," + key_warp + ",";
             if (warp.link_type) text += warp.link_type;
             text += ",";
             if (warp.link_location) text += warp.link_location;
