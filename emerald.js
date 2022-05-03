@@ -233,12 +233,10 @@ var emerald = {
             cave_right:  {x: 472, y: 486, name: "Rusturf Tunnel"},
         },
         r110:                {
-            topcycle_left:  {x: 72,  y: 104, name: "R110 (Top Cycle Out)"},
-            topcycle_right: {x: 119, y: 62 , name: "R110 (Top Cycle In)" },
-            powerplant:     {x: 279, y: 88 , name: "R110 (Power Plant)"  },
-            trickhouse:     {x: 71,  y: 251, name: "R110 (Trick House)"  },
-            botcycle_left:  {x: 230, y: 360, name: "R110 (Bot Cycle Out)"},
-            botcycle_right: {x: 279, y: 318, name: "R110 (Bot Cycle In)" },
+            topcycle:   {x: 72,  y: 104, name: "Route 110 (Mauville)"    },
+            powerplant: {x: 279, y: 88 , name: "Route 110 (Power Plant)" },
+            trickhouse: {x: 71,  y: 251, name: "Route 110 (Trick House)" },
+            botcycle:   {x: 230, y: 360, name: "Route 110 (Slateport)"   },
         },
         r111_r112:           {
             jaggedentrance:  {x: 79,  y: 181, name: "Route 111 (Jagged Entr.)"},

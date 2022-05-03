@@ -207,17 +207,17 @@ var crystal = {
 			gate:       {x: 238, y: 474 },
         },
         vermillion_r6: {
-			fish:    {x: 72,  y: 149 },
-			center:  {x: 137, y: 208 },
-			club:    {x: 105, y: 273 },
-			trade:   {x: 202, y: 338 },
-			mart:    {x: 331, y: 277 },
-			gym:     {x: 124, y: 371 },
-			botmart: {x: 331, y: 402 },
-			seaport: {x: 303, y: 572 },
-			digglet: {x: 534, y: 191 },
-            gate:    {x: 233, y: 46  },
-			tunnel:  {x: 409, y: 19  },
+			fish:    {x: 72,  y: 149                              },
+			center:  {x: 137, y: 208                              },
+			club:    {x: 105, y: 273                              },
+			trade:   {x: 202, y: 338                              },
+			mart:    {x: 331, y: 277                              },
+			gym:     {x: 124, y: 371                              },
+			botmart: {x: 331, y: 402                              },
+			seaport: {x: 303, y: 572                              },
+			digglet: {x: 534, y: 191                              },
+            gate:    {x: 233, y: 46, name: "Route 6 (Vermillion)" },
+			tunnel:  {x: 409, y: 19, name: "Route 6 (Vermillion)" },
 
         },
         celadon_r7: {
@@ -355,10 +355,9 @@ var crystal = {
 			gate: {x: 76, y: 77 },
         },
         r16_r18: {
-			topgate: {x: 261, y: 104, name: "Route 16 (Cerulean)" },
-			house:   {x: 66,  y: 35,  name: "Route 16"            },
-			botgate: {x: 59,  y: 250, name: "Route 18"            },
-
+			topgate: {x: 240, y: 104, name: "Route 16 (Cerulean)" },
+			house:   {x: 56,  y: 40,  name: "Route 16"            },
+			botgate: {x: 55,  y: 250, name: "Route 18 (Fuchsia)"  },
         },
         r9_r10: {
 			rocktunnel: {x: 136, y: 66,  name: "Route 9"          },

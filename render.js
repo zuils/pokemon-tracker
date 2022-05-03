@@ -346,7 +346,8 @@ function RenderLocation() {
                     aux_context.fillText(key, info.text_position.x, info.text_position.y);
                     continue;
                 }*/
-                aux_context.fillText(info.text, info.text_position.x, info.text_position.y);
+                let text = info.text.split("\n");
+                aux_context.fillText(text[0], info.text_position.x, info.text_position.y);
             }
         }
 
