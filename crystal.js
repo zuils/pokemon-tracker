@@ -16,16 +16,16 @@ var crystal = {
         blackthorn:    {x: 115, y: 16, w: 8, h: 8, name: "Blackthorn City"         },
         indigoplateau: {x: 155, y: 8,  w: 8, h: 8, name: "Indigo Plateau"          },
 
-        pallet:       {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"             },
-        viridian_r22: {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City\nRoute 22" },
-        pewter:       {x: 179, y: 24,  w: 8, h: 8, name: "Pewter City"             },
-        cerulean:     {x: 227, y: 24,  w: 8, h: 8, name: "Cerulean City"           },
-        vermillion:   {x: 227, y: 56,  w: 8, h: 8, name: "Vermillion City"         },
-        lavender:     {x: 259, y: 40,  w: 8, h: 8, name: "Lavender Town"           },
-        celadon:      {x: 203, y: 40,  w: 8, h: 8, name: "Celadon City"            },
-        saffron:      {x: 227, y: 40,  w: 8, h: 8, name: "Saffron City"            },
-        fuchsia:      {x: 219, y: 88,  w: 8, h: 8, name: "Fuchsia City"            },
-        cinnabar:     {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"         },
+        pallet:        {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"              },
+        viridian_r22:  {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City\nRoute 22"  },
+        pewter:        {x: 179, y: 24,  w: 8, h: 8, name: "Pewter City"              },
+        cerulean_r5:   {x: 227, y: 24,  w: 8, h: 8, name: "Cerulean City\nRoute 5"   },
+        vermillion_r6: {x: 227, y: 56,  w: 8, h: 8, name: "Vermillion City\nRoute 6" },
+        celadon_r7:    {x: 203, y: 40,  w: 8, h: 8, name: "Celadon City\nRoute 7"    },
+        lavender_r8:   {x: 259, y: 40,  w: 8, h: 8, name: "Lavender Town\nRoute 8"   },
+        saffron:       {x: 227, y: 40,  w: 8, h: 8, name: "Saffron City"             },
+        fuchsia:       {x: 219, y: 88,  w: 8, h: 8, name: "Fuchsia City"             },
+        cinnabar:      {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"          },
         
         // Routes
         r29_r45_r46:   {x: 107, y: 48,  w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
@@ -38,9 +38,13 @@ var crystal = {
         ragelake_r43:  {x: 91,  y: 0,   w: 8,  h: 8,  name: "Lake of Rage\nRoute 43"  },
         r26_r27:       {x: 149, y: 66,  w: 14, h: 14, name: "Route 26\nRoute 27"      },
         
-        r2:            {x: 179, y: 35,  w: 8,  h: 8,  name: "Route 2"                 },
+        r2:            {x: 179, y: 36,  w: 8,  h: 8,  name: "Route 2"                 },
         r19_r20:       {x: 195, y: 104, w: 8,  h: 8,  name: "Route 19\nRoute 20"      },
         r25:           {x: 243, y: 8,   w: 8,  h: 8,  name: "Route 25"                },
+        r12:           {x: 259, y: 56,  w: 8,  h: 8,  name: "Route 12"                },
+        r15:           {x: 230, y: 88,  w: 8,  h: 8,  name: "Route 15"                },
+        r16_r18:       {x: 195, y: 57,  w: 8,  h: 14, name: "Route 16\nRoute 18"      },
+        r9_r10:        {x: 259, y: 24,  w: 8,  h: 8,  name: "Route 9\nRoute 10"       },
 
         // Important locations
         darkcave:               {x: 96,  y: 44, w: 8, h: 8,  name: "Dark Cave"                      },
@@ -91,10 +95,11 @@ var crystal = {
         [["c_bush",  0], ["c_surf",      0], ["c_boulder", 0], ["c_darkness",  0], ["c_whirlpool", 0], ["c_waterfall", 0], ["c_rock", 0], ["bike_needed", 0], ["c_trainer", 0]],
     ],
     progress: [
-        [["zephyr_badge",  0], ["hive_badge",    0], ["plain_badge",   0], ["fog_badge",     0], ["storm_badge", 0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
-        [["boulder_badge", 0], ["cascade_badge", 0], ["thunder_badge", 0], ["rainbow_badge", 0], ["soul_badge",  0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
-        [["c_will",        0], ["c_koga",        0], ["c_bruno",       0], ["c_karen",       0], ["c_lance",     0]],
-        [["hm_cut",        0], ["hm_fly",        0], ["hm_surf",       0], ["hm_strength",   0], ["hm_flash",    0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
-        [["bike",          0], ["squirt_bottle", 0], ["basement_key",  0], ["card_key",      0], ["pass",        0], ["ss_ticket",     0]],
+        [["zephyr_badge",  0], ["hive_badge",     0], ["plain_badge",   0], ["fog_badge",     0], ["storm_badge", 0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
+        [["boulder_badge", 0], ["cascade_badge",  0], ["thunder_badge", 0], ["rainbow_badge", 0], ["soul_badge",  0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
+        [["c_will",        0], ["c_koga",         0], ["c_bruno",       0], ["c_karen",       0], ["c_lance",     0]],
+        [["hm_cut",        0], ["hm_fly",         0], ["hm_surf",       0], ["hm_strength",   0], ["hm_flash",    0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
+        [["radio_card",    0], ["expansion_card", 0], ["squirt_bottle", 0], ["secret_potion", 0], ["card_key",    0], ["ss_ticket",     0], ["pass",          0]],
+        [["bike",          0], ["clear_bell",     0], ["rainbow_wing",  0], ["basement_key",  0]],
     ],
 };
