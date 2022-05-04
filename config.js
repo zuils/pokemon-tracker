@@ -150,6 +150,7 @@ function InitTrackerToUnknowns() {
                 games[key_game].marks[0][0][1] += 1;
             }
         }
+        //console.log(key_game + " -> " + games[key_game].marks[0][0][1] + " warps");
     }
 }
 function ResetTracker() {
