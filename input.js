@@ -10,8 +10,26 @@ function RegisterInputEvents() {
     canvas.addEventListener("mouseup",     OnMouseUp);
     canvas.addEventListener("mouseout",    OnMouseUp);
     canvas.addEventListener("contextmenu", OnContextMenu);
+
+    document.addEventListener("keydown", OnKeyDown);
+    document.addEventListener("keyup",   OnKeyUp);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
+
+let g_pressed = false;
+function OnKeyDown(event) {
+    if (event.key == "g") {
+        g_pressed = true;
+    }
+    if (g_pressed && event.key == "6") {
+        ChangeGame(hgss);
+    }
+}
+function OnKeyUp(event) {
+    if (event.key == "g") {
+        g_pressed = false;
+    }
+}
 
 /*********************************************************/
 

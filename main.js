@@ -14,6 +14,7 @@ let games = {
     crystal:  crystal,
     emerald:  emerald,
     platinum: platinum,
+    hgss:     hgss,
 }
 var loading_game_text;
 function init() {
@@ -30,6 +31,7 @@ function init() {
     crystal.button  = document.getElementById("crystal_button");
     emerald.button  = document.getElementById("emerald_button");
     platinum.button = document.getElementById("platinum_button");
+    hgss.button = document.getElementById("hgss_button");
     loading_game_text = document.getElementById("loading_game_text");
     loading_game_text.innerHTML = "";
 
