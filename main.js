@@ -45,11 +45,10 @@ function init() {
 
     // Get last loaded game and load it
     let last_game = localStorage.getItem(GAME_LOADED_CACHE);
-    switch (last_game) {
-        case "crystal":  game = crystal;  break;
-        case "platinum": game = platinum; break;
-        default:
-        case "emerald":  game = emerald; break;
+    last_game = "test";
+    game = emerald;
+    if (last_game && games[last_game]) {
+        game = games[last_game];
     }
     game.button.disabled = true;
     current_location = game.start_location;
