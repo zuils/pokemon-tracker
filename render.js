@@ -322,7 +322,7 @@ function RenderLocation() {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
 
-            if (DEBUG_MODE && DEBUG_WARP_TO_SELF) { // DEBUG
+            if (DEBUG_MODE && DEBUG_WARP_TO_SELF) {
                 warp.link_type = LINKTYPE_WARP;
                 warp.link = key;
                 warp.link_location = current_location;
