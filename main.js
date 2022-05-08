@@ -1,7 +1,8 @@
-const DEBUG_MODE = false; // Never commit this with it set to true!
+let DEBUG_MODE = false; // Never commit this with it set to true!
 const DEBUG_WARP_TO_SELF = true;
 const DEBUG_PRINT_KEY = false;
 const DEBUG_REMEMBER_LOCATION = true;
+const DEBUG_IMAGE_DIMENSIONS = false;
 
 let canvas; 
 let context;
@@ -22,6 +23,10 @@ let games = {
 }
 var loading_game_text;
 function init() {
+    if (!document.URL.startsWith("file:///")) { // Just in case I push with the setting set on
+        DEBUG_MODE = false;
+    }
+
     // Get UI elements
     config                = document.getElementById("config");
     config_controls       = document.getElementById("config_controls");

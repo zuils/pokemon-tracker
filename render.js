@@ -135,7 +135,7 @@ function ImageLoaded() {
 
     loading_process.loaded += 1;
     if (loading_process.loaded == loading_process.to_load) {
-        if (DEBUG_MODE) {
+        if (DEBUG_MODE && DEBUG_IMAGE_DIMENSIONS) {
             debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
             console.log("Height:");
             console.log(debug_heights);
