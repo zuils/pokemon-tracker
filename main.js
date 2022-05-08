@@ -53,7 +53,7 @@ function init() {
     }
     game.button.disabled = true;
     current_location = game.start_location;
-    if (DEBUG_REMEMBER_LOCATION) {
+    if (DEBUG_MODE && DEBUG_REMEMBER_LOCATION) {
         let last_location = localStorage.getItem(CACHE_DEBUG_LOCATION);
         if (last_location) current_location = last_location;
 

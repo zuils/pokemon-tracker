@@ -140,7 +140,7 @@ function OnMouseUp(event) {
                                 } // falldown
                                 case STATE_DEFAULT: {
                                     current_location = info.target;
-                                    if (DEBUG_REMEMBER_LOCATION) {
+                                    if (DEBUG_MODE && DEBUG_REMEMBER_LOCATION) {
                                         localStorage.setItem(CACHE_DEBUG_LOCATION, current_location);
                                     }
                                 } break;
