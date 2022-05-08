@@ -29,8 +29,8 @@ const CONFIG_YOFFSET = 5;
 
 const LOADING_TEXT = "Loading map...";
 
-/*let debug_widths  = [];
-let debug_heights = [];*/
+let debug_widths  = [];
+let debug_heights = [];
 
 let aux_canvas;
 let aux_context;
@@ -123,11 +123,10 @@ function ImageLoaded() {
             console.log(GetNameImage(this.src));
         }
 
-        //debug_heights.push({ value: this.naturalHeight, name: this.src});
-        //debug_widths.push ({ value: this.naturalWidth , name: this.src});
-
-        //if (this.naturalWidth  > loading_process.max_width)  console.log(this.src);
-        //if (this.naturalHeight > loading_process.max_height) console.log(this.src);
+        if (DEBUG_MODE){
+            debug_heights.push({ value: this.naturalHeight, name: this.src});
+            debug_widths.push ({ value: this.naturalWidth , name: this.src});
+        }
 
         // Get max width/height for later
         if (this.naturalWidth  > loading_process.max_width)  loading_process.max_width  = this.naturalWidth;
@@ -136,13 +135,15 @@ function ImageLoaded() {
 
     loading_process.loaded += 1;
     if (loading_process.loaded == loading_process.to_load) {
-        //debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
-        //console.log("Height:");
-        //console.log(debug_heights);
-
-        //debug_widths.sort ((a, b) => (a.value > b.value) ? 1 : -1);
-        //console.log("Width:");
-        //console.log(debug_widths);
+        if (DEBUG_MODE) {
+            debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
+            console.log("Height:");
+            console.log(debug_heights);
+            
+            debug_widths.sort ((a, b) => (a.value > b.value) ? 1 : -1);
+            console.log("Width:");
+            console.log(debug_widths);
+        }
 
         // Set canvas dimensions
         game.max_width  = loading_process.max_width;
@@ -310,7 +311,7 @@ function RenderLocation() {
         h: location.image.naturalHeight * scale,
         scale: scale
     };
-    /*if (game.name == crystal.name) { // DEBUG
+    if (DEBUG_MODE) {
         rendered_location = {
             x: background.x,
             y: background.y,
@@ -318,7 +319,7 @@ function RenderLocation() {
             h: location.image.naturalHeight,
             scale: 1
         };
-    }*/
+    }
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
@@ -330,22 +331,22 @@ function RenderLocation() {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
 
-            /*if (game.name == crystal.name) { // DEBUG
+            if (DEBUG_MODE) { // DEBUG
                 warp.link_type = LINKTYPE_WARP;
                 warp.link = key;
                 warp.link_location = current_location;
                 info = GetWarpRenderInfo(location, warp);
-            }*/
+            }
 
             if (info.type == "image") {
                 DrawImage(info.image, info);
             }
             else {
                 DrawImage(game.frame, info);
-                /*if (game.name == crystal.name) { // DEBUG
+                if (DEBUG_MODE) {
                     aux_context.fillText(key, info.text_position.x, info.text_position.y);
                     continue;
-                }*/
+                }
                 let text = info.text.split("\n");
                 aux_context.fillText(text[0], info.text_position.x, info.text_position.y);
             }

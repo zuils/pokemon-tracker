@@ -1,5 +1,5 @@
-const CANVAS_WIDTH  = 1200;
-const CANVAS_HEIGHT = 900;
+const DEBUG_MODE = false;
+
 let canvas; 
 let context;
 

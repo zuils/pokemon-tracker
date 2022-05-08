@@ -33,9 +33,8 @@ function OnKeyUp(event) {
 
 /*********************************************************/
 
-//DEBUG
 let debug_text = "";
-let entry = 0;
+let debug_entry = 0;
 
 const STATE_DEFAULT = 0;
 const STATE_LINK1 = 1;
@@ -56,19 +55,25 @@ function OnMouseDown(event) {
         case LEFT_CLICK:  click = left_click;  break;
         case RIGHT_CLICK: click = right_click; break;
         case MIDDLE_CLICK: {
-            if (game.name != crystal.name) return;
-            // DEBUG
-            mouse_position.x -= game.map.w + SELECTED_MAP_XOFFSET;
-            //mouse_position.x /= MAP_SCALE;
-            //mouse_position.y /= MAP_SCALE;
-            debug_text += "\t\t\taaaa" + entry + ":                                 {x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + "},\n";
-            entry += 1;
+            if (!DEBUG_MODE) return;
+
+            if (mouse_position.x < game.map.w + SELECTED_MAP_XOFFSET/2) {
+                mouse_position.x /= MAP_SCALE;
+                mouse_position.y /= MAP_SCALE;
+            }
+            else {
+                mouse_position.x -= game.map.w + SELECTED_MAP_XOFFSET;
+            }
+
+            debug_text += "\t\t\taaaa" + debug_entry + ":\t\t\t\t\t\t{x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + "},\n";
+            debug_entry += 1;
             console.log("Copied to clipboard\n***\n" + debug_text);
             navigator.clipboard.writeText(debug_text);
             return;
         }
         default: return;
     }
+
     if (!click) return;
 
     let info = GetClicked(mouse_position);
