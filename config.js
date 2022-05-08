@@ -171,7 +171,7 @@ function ResetTracker() {
 }
 
 function ChangeSmooth() {
-    localStorage.setItem(SMOOTH_IMAGES_CACHE, checkbox_smooth.checked);
+    localStorage.setItem(CACHE_SMOOTH_IMAGES, checkbox_smooth.checked);
     rerender_location = true;
 }
 
@@ -180,7 +180,7 @@ function ChangeGame(new_game) {
     game.button.disabled = false;
     game = new_game;
     game.button.disabled = true;
-    localStorage.setItem(GAME_LOADED_CACHE, game.name);
+    localStorage.setItem(CACHE_GAME_LOADED, game.name);
 
     current_state = STATE_DEFAULT;
     current_location = game.start_location;

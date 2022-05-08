@@ -134,13 +134,15 @@ function OnMouseUp(event) {
                         } break;
                         case TYPE_LOCATION: {
                             switch (current_state) {
-                                case STATE_DEFAULT: {
-                                    current_location = info.target;
-                                } break;
                                 case STATE_LINK1:
                                 case STATE_LINK2: {
                                     current_state = (info.target == link_location) ? STATE_LINK1 : STATE_LINK2;
+                                } // falldown
+                                case STATE_DEFAULT: {
                                     current_location = info.target;
+                                    if (DEBUG_REMEMBER_LOCATION) {
+                                        localStorage.setItem(CACHE_DEBUG_LOCATION, current_location);
+                                    }
                                 } break;
                             }
                         } break;

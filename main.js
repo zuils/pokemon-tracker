@@ -1,6 +1,7 @@
 const DEBUG_MODE = false; // Never commit this with it set to true!
 const DEBUG_WARP_TO_SELF = true;
-const DEBUG_PRINT_KEY = true;
+const DEBUG_PRINT_KEY = false;
+const DEBUG_REMEMBER_LOCATION = true;
 
 let canvas; 
 let context;
@@ -8,8 +9,9 @@ let context;
 const LINKTYPE_WARP = "warp";
 const LINKTYPE_MARK = "mark";
 
-const GAME_LOADED_CACHE   = "last-game-loaded";
-const SMOOTH_IMAGES_CACHE = "smooth-images";
+const CACHE_GAME_LOADED   = "last-game-loaded";
+const CACHE_SMOOTH_IMAGES = "smooth-images";
+const CACHE_DEBUG_LOCATION = "debug-location"
 
 let game;
 let games = {
@@ -28,7 +30,7 @@ function init() {
     config_networktoggle  = document.getElementById("config_networktoggle");
 
     checkbox_smooth = document.getElementById("checkbox_smooth");
-    checkbox_smooth.checked = (localStorage.getItem(SMOOTH_IMAGES_CACHE) == "true") ? true : false;
+    checkbox_smooth.checked = (localStorage.getItem(CACHE_SMOOTH_IMAGES) == "true") ? true : false;
 
     crystal.button  = document.getElementById("crystal_button");
     emerald.button  = document.getElementById("emerald_button");
@@ -44,14 +46,18 @@ function init() {
     aux_context = aux_canvas.getContext("2d");
 
     // Get last loaded game and load it
-    let last_game = localStorage.getItem(GAME_LOADED_CACHE);
-    last_game = "test";
+    let last_game = localStorage.getItem(CACHE_GAME_LOADED);
     game = emerald;
     if (last_game && games[last_game]) {
         game = games[last_game];
     }
     game.button.disabled = true;
     current_location = game.start_location;
+    if (DEBUG_REMEMBER_LOCATION) {
+        let last_location = localStorage.getItem(CACHE_DEBUG_LOCATION);
+        if (last_location) current_location = last_location;
+
+    }
     for (let key_game in games) {
         games[key_game].ready = false;
         games[key_game].obtained = new Set();

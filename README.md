@@ -12,3 +12,4 @@ I've also added some debug tools that I use while creating the maps. They are al
 - DEBUG_MODE: with this enabled, more info will be printed to the console. Besides, middle clicking on the map or a location will give you the coordinates for the mouse and copy them into your clipboard (which then can be copypasted in your own game js file)
 - DEBUG_WARP_TO_SELF: all warps will always link to themselves, this way you can check how big the text box is for a given location and the name the current map has
 - DEBUG_PRINT_KEY: instead of printing the name of the location, the key name of the linked warp will be printed. Helpful to identify different warps while adjusting their positions
+- DEBUG_REMEMBER_LOCATIOn: it will save in cache the last location it was open, so you can refresh the page and quickly check changes
