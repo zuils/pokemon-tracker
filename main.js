@@ -1,4 +1,6 @@
-const DEBUG_MODE = false;
+const DEBUG_MODE = false; // Never commit this with it set to true!
+const DEBUG_WARP_TO_SELF = true;
+const DEBUG_PRINT_KEY = true;
 
 let canvas; 
 let context;

@@ -311,15 +311,6 @@ function RenderLocation() {
         h: location.image.naturalHeight * scale,
         scale: scale
     };
-    if (DEBUG_MODE) {
-        rendered_location = {
-            x: background.x,
-            y: background.y,
-            w: location.image.naturalWidth,
-            h: location.image.naturalHeight,
-            scale: 1
-        };
-    }
     DrawImage(location.image, rendered_location);
 
     // ----- Render warps -----
@@ -331,7 +322,7 @@ function RenderLocation() {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
 
-            if (DEBUG_MODE) { // DEBUG
+            if (DEBUG_MODE && DEBUG_WARP_TO_SELF) { // DEBUG
                 warp.link_type = LINKTYPE_WARP;
                 warp.link = key;
                 warp.link_location = current_location;
@@ -343,7 +334,7 @@ function RenderLocation() {
             }
             else {
                 DrawImage(game.frame, info);
-                if (DEBUG_MODE) {
+                if (DEBUG_MODE && DEBUG_PRINT_KEY) {
                     aux_context.fillText(key, info.text_position.x, info.text_position.y);
                     continue;
                 }

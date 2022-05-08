@@ -62,7 +62,13 @@ function OnMouseDown(event) {
                 mouse_position.y /= MAP_SCALE;
             }
             else {
-                mouse_position.x -= game.map.w + SELECTED_MAP_XOFFSET;
+                mouse_position.x = (mouse_position.x - rendered_location.x) / rendered_location.scale;
+                mouse_position.y = (mouse_position.y - rendered_location.y) / rendered_location.scale;
+                game.warps[current_location]["aaaa"+debug_entry] = {
+                    x: mouse_position.x,
+                    y: mouse_position.y,
+                };
+                rerender_location = true;
             }
 
             debug_text += "\t\t\taaaa" + debug_entry + ":\t\t\t\t\t\t{x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + "},\n";
