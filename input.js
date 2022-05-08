@@ -35,6 +35,7 @@ function OnKeyUp(event) {
 
 let debug_text = "";
 let debug_entry = 0;
+const debug_whitespace = "                                                      ";
 
 const STATE_DEFAULT = 0;
 const STATE_LINK1 = 1;
@@ -71,7 +72,7 @@ function OnMouseDown(event) {
                 rerender_location = true;
             }
 
-            debug_text += "\t\t\taaaa" + debug_entry + ":\t\t\t\t\t\t{x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + "},\n";
+            debug_text += "\t\t\taaaa" + debug_entry + ":" + debug_whitespace + "{x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + " },\n";
             debug_entry += 1;
             console.log("Copied to clipboard\n***\n" + debug_text);
             navigator.clipboard.writeText(debug_text);
