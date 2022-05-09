@@ -1,6 +1,6 @@
 let DEBUG_MODE = false; // Never commit this with it set to true!
 const DEBUG_WARP_TO_SELF = true;
-const DEBUG_PRINT_KEY = false;
+const DEBUG_PRINT_KEY = true;
 const DEBUG_REMEMBER_LOCATION = true;
 const DEBUG_IMAGE_DIMENSIONS = false;
 
@@ -60,7 +60,7 @@ function init() {
     current_location = game.start_location;
     if (DEBUG_MODE && DEBUG_REMEMBER_LOCATION) {
         let last_location = localStorage.getItem(CACHE_DEBUG_LOCATION);
-        if (last_location) current_location = last_location;
+        if (last_location && game.locations[last_location]) current_location = last_location;
 
     }
     for (let key_game in games) {
