@@ -539,6 +539,8 @@ var crystal = {
 			f4_down: {x: 440, y: 316, name: "Celadon Store" },
 			f5_up:   {x: 485, y: 134, name: "Celadon Store" },
 			f5_down: {x: 440, y: 176, name: "Celadon Store" },
+			f6_up:   {x: 485, y: -5,  name: "Celadon Store" },
+			f6_down: {x: 440, y: 40,  name: "Celadon Store" },
         },
     },
 
