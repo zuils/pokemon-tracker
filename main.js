@@ -14,18 +14,26 @@ const CACHE_GAME_LOADED   = "last-game-loaded";
 const CACHE_SMOOTH_IMAGES = "smooth-images";
 const CACHE_DEBUG_LOCATION = "debug-location"
 
+let ordered_games = [ // Games will be shown in the settings in order
+    crystal,
+    emerald,
+    platinum,
+    hgss,
+];
 let game;
-let games = {
-    crystal:  crystal,
-    emerald:  emerald,
-    platinum: platinum,
-    hgss:     hgss,
-}
+let games = {};
 var loading_game_text;
 function init() {
-    if (!document.URL.startsWith("file:///")) { // Just in case I push with the setting set on
-        DEBUG_MODE = false;
+    // Just in case I push with the setting enabled
+    if (!document.URL.startsWith("file:///")) { DEBUG_MODE = false; }
+
+    // Init some stuff
+    for (let g of ordered_games) {
+        if (!g.debug || (g.debug && DEBUG_MODE)) {
+            games[g.name] = g;
+        }
     }
+    InitTrackerToUnknowns();
 
     // Get UI elements
     config                = document.getElementById("config");
@@ -37,12 +45,57 @@ function init() {
     checkbox_smooth = document.getElementById("checkbox_smooth");
     checkbox_smooth.checked = (localStorage.getItem(CACHE_SMOOTH_IMAGES) == "true") ? true : false;
 
-    crystal.button  = document.getElementById("crystal_button");
-    emerald.button  = document.getElementById("emerald_button");
-    platinum.button = document.getElementById("platinum_button");
-    hgss.button = document.getElementById("hgss_button");
     loading_game_text = document.getElementById("loading_game_text");
     loading_game_text.innerHTML = "";
+
+    let game_buttons = document.getElementById("game_buttons");
+    for (let g of ordered_games) {
+        if (!games[g.name]) continue;
+
+        let div = document.createElement("div");
+
+            g.button = document.createElement("button");
+                g.button.className = "load_button";
+                g.button.id = g.name + "_button";
+                g.button.onclick = function() { ChangeGame(g); };
+                g.button.innerHTML = "Load";
+            div.appendChild(g.button);
+
+            let text = document.createElement("div");
+                text.innerHTML = g.config_name;
+                
+                if (g.config_randomizer_author) {
+                    text.innerHTML += " for "
+                    if (g.config_randomizer_link) {
+                        let link = document.createElement("a");
+                            link.href = g.config_randomizer_link;
+                            link.innerHTML = g.config_randomizer_author;
+                        text.appendChild(link);
+                    }
+                    else {
+                        text.innerHTML += g.config_randomizer_author;
+                    }
+                    text.innerHTML += "'s randomizer"
+                }
+
+                if (g.config_tracker_author) {
+                    text.innerHTML += " by "
+                    if (g.config_tracker_link) {
+                        let link = document.createElement("a");
+                            link.href = g.config_tracker_link;
+                            link.innerHTML = g.config_tracker_author;
+                        text.appendChild(link);
+                    }
+                    else {
+                        text.innerHTML += g.config_tracker_author;
+                    }
+                }
+
+                text.innerHTML += " (" + g.marks[0][0][1] + " warps)";
+
+            div.appendChild(text);
+        game_buttons.appendChild(div);
+    }
 
     // Create canvas
     canvas  = document.getElementById('canvas');
@@ -67,7 +120,6 @@ function init() {
         games[key_game].ready = false;
         games[key_game].obtained = new Set();
     }
-    InitTrackerToUnknowns();
     LoadImages();
     RegisterInputEvents();
     document.fonts.onloadingdone = FontReady;

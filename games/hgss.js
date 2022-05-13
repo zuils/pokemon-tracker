@@ -1,8 +1,18 @@
 var hgss = {
+	debug: true,
     name: "hgss",
     start_location: "newbark",
     font: "NDS_Font",
     font_size: "38px",
+
+    // Config texts
+	config_name: "HeatGold/SoulSilver",
+	config_randomizer_author: "Adrienn Tindall",
+	config_randomizer_link: "https://github.com/adrienntindall/hgss-map-randomizer/releases",
+	//config_tracker_author: "", 
+	//config_tracker_link: "",
+
+	// Tracker information
     locations: {
         // Cities
         newbark: {x: 155, y: 93, w: 12, h: 12, name: "New Bark Town\nTest" },
@@ -18,6 +28,10 @@ var hgss = {
     // - link_location: location_name / <garbage>
     warps: {
         // Cities
+        newbark: {
+			left:  {x: 114, y: 234 },
+			right: {x: 292, y: 324 },
+        },
 
         // Routes
 

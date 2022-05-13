@@ -1,8 +1,18 @@
 var crystal = {
+	debug: false,
     name: "crystal",
     start_location: "cherrygrove",
     font: "GameBoy_Font",
     font_size: "22px",
+
+	// Config texts
+	config_name: "Crystal",
+	config_randomizer_author: "iFatRain",
+	config_randomizer_link: "",
+	//config_tracker_author: "", 
+	//config_tracker_link: "",
+
+	// Tracker information
     locations: {
         // Cities
         cherrygrove:   {x: 83,  y: 72, w: 8, h: 8, name: "Cherrygrove City"        },

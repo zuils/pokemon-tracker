@@ -98,6 +98,10 @@ li, ul {
     text-decoration: none;
     cursor: pointer;
 }
+button.load_button {
+    float: left;
+    margin-right: 5px;
+}
 
 button {
     background-color: var(--color1);

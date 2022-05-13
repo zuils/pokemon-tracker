@@ -1,8 +1,18 @@
 var emerald = {
+	debug: false,
     name: "emerald",
     start_location: "oldale",
     font: "GameBoy_Font",
     font_size: "22px",
+
+    // Config texts
+	config_name: "Emerald",
+	config_randomizer_author: "Pointcrow",
+	config_randomizer_link: "https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of/",
+	//config_tracker_author: "", 
+	//config_tracker_link: "",
+
+	// Tracker information
     locations: {
         // Cities
         oldale:         {x: 40,  y: 88,  w: 8,  h: 8,  name: "Oldale Town"                                                  },
