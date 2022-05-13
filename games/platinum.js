@@ -465,32 +465,28 @@ var platinum = {
 			f3_stairs3:  {x: 670, y: 290, name: "Galactic Eterna (F3)" },
         },
         coronet: {
-			f1_entrance: {x: 62,  y: 400, name: "Mt. Coronet (F1)"    },
+			f1_entrance: {x: 80,  y: 400, name: "Mt. Coronet (F1)"    },
 			f1_exit:     {x: 291, y: 490, name: "Mt. Coronet (F1)"    },
 			f1_stairs:   {x: 279, y: 340, name: "Mt. Coronet (F1)"    },
 
-			f2_left:     {x: 62,  y: 270, name: "Mt. Coronet (F2)"    },
-			f2_top:      {x: 62,  y: 50,  name: "Mt. Coronet (F2)"    },
+			f2_left:     {x: 80,  y: 270, name: "Mt. Coronet (F2)"    },
+			f2_top:      {x: 80,  y: 50,  name: "Mt. Coronet (F2)"    },
 			f2_right:    {x: 225, y: 190, name: "Mt. Coronet (F2)"    },
 
 			f3_entrance: {x: 380, y: 286, name: "Mt. Coronet (∩)"     },
 			f3_left:     {x: 468, y: 238, name: "Mt. Coronet (∩)"     },
 			f3_right:    {x: 550, y: 286, name: "Mt. Coronet (∩)"     },
 
-			f4_left:     {x: 72,  y: 776, name: "Mt. Coronet (Water)" },
-			f4_right:    {x: 350, y: 769, name: "Mt. Coronet (Water)" },
-			f4_top:      {x: 407, y: 630, name: "Mt. Coronet (Water)" },
-			f4_water:    {x: 174, y: 595, name: "Mt. Coronet (Water)" },
-
 			upf1_bot:    {x: 735, y: 730, name: "Mt. Coronet (Rocks)" },
 			upf1_left:   {x: 450, y: 440, name: "Mt. Coronet (Rocks)" },
-			upf1_right:  {x: 840, y: 360, name: "Mt. Coronet (Rocks)" },
+			upf1_right:  {x: 820, y: 360, name: "Mt. Coronet (Rocks)" },
 			upf1_top:    {x: 587, y: 80,  name: "Mt. Coronet (Rocks)" },
 
 			upf12_left:  {x: 317, y: 50,  name: "Mt. Coronet (⊃)"     },
 			upf12_top:   {x: 446, y: 15,  name: "Mt. Coronet (⊃)"     },
 			upf12_bot:   {x: 372, y: 150, name: "Mt. Coronet (⊃)"     },
         },
+
         solaceonruins: {
 			entrance_door:     {x: 92,  y: 190, name: "Solaceon Ruins (Entrance)" },
 			entrance_botright: {x: 156, y: 135, name: "Solaceon Ruins (Entrance)" },
