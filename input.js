@@ -257,8 +257,25 @@ function ChangeWarp(current_game, location, warp, link_type, link_location, link
     }
 }
 function ChangeWarpOffline(current_game, location, warp, link_type, link_location, link) {
-    if (!current_game.warps[location] || !current_game.warps[location][warp]) { return; }
+    // Check both ends of the link exist in case we are loading an old save file
+    if (!current_game.warps[location] || !current_game.warps[location][warp]) {
+        let error_text = "\"" + location + " (" + warp + ")\" doesn't exist. ";
+        if (link_type == LINKTYPE_MARK) {
+            error_text += "It was marked as \"" + link + "\".";
+        }
+        else {
+            error_text += "It lead to \"" + link_location + " (" + link + ")\"."
+        }
+        console.info(error_text);
+        return;
+    }
+    if (link_type == LINKTYPE_WARP && (!current_game.warps[link_location] || !current_game.warps[link_location][link])) {
+        let error_text = "\"" + location + " (" + warp + ")\" links to a warp which doesn't exist -> \"" + link_location + " (" + link + ")\"."
+        console.info(error_text);
+        return;
+    }
 
+    // Save the warp
     let w = current_game.warps[location][warp];
     if (w.link_type == LINKTYPE_MARK) { AddToMark(current_game, w.link, -1, location); }
     if (link_type == LINKTYPE_MARK)   { AddToMark(current_game, link,    1, location); }
