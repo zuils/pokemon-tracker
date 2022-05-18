@@ -608,11 +608,12 @@ var crystalg = {
         [["c_bush",      0], ["c_surf",      0], ["c_boulder",   0], ["c_darkness",  0], ["c_whirlpool", 0], ["c_waterfall", 0], ["c_rock", 0]],
     ],
     progress: [
-        [["zephyr_badge",  0], ["hive_badge",     0], ["plain_badge",   0], ["fog_badge",     0], ["storm_badge", 0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
-        [["boulder_badge", 0], ["cascade_badge",  0], ["thunder_badge", 0], ["rainbow_badge", 0], ["soul_badge",  0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
-        [["c_will",        0], ["c_koga",         0], ["c_bruno",       0], ["c_karen",       0], ["c_lance",     0], ["",      undefined], ["",      undefined], ["c_red",        0]],
-        [["hm_cut",        0], ["hm_fly",         0], ["hm_surf",       0], ["hm_strength",   0], ["hm_flash",    0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
-        [["radio_card",    0], ["expansion_card", 0], ["squirt_bottle", 0], ["secret_potion", 0], ["card_key",    0], ["ss_ticket",     0], ["pass",          0]],
-        [["bike",          0], ["clear_bell",     0], ["rainbow_wing",  0], ["basement_key",  0]],
+        [["zephyr_badge",  0], ["hive_badge",    0], ["plain_badge",    0], ["fog_badge",     0], ["storm_badge",   0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
+        [["boulder_badge", 0], ["cascade_badge", 0], ["thunder_badge",  0], ["rainbow_badge", 0], ["soul_badge",    0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
+        [["c_will",        0], ["c_koga",        0], ["c_bruno",        0], ["c_karen",       0], ["c_lance",       0], ["",      undefined], ["",      undefined], ["c_red",        0]],
+        [["hm_cut",        0], ["hm_fly",        0], ["hm_surf",        0], ["hm_strength",   0], ["hm_flash",      0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
+        [["pokegear",      0], ["radio_card",    0], ["expansion_card", 0], ["squirt_bottle", 0], ["secret_potion", 0], ["card_key",      0], ["ss_ticket",     0], ["pass",         0]],
+        [["machine_part",  0], ["clear_bell",    0], ["rainbow_wing",   0], ["silver_wing",   0], ["basement_key",  0], ["lost_item",     0], ["red_scale",     0], ["mystery_egg",  0]],
+        [["pokedex",       0], ["bike",          0], ["blue_card",      0], ["coin_case",     0], ["itemfinder",    0], ["old_rod",       0], ["good_rod",      0], ["super_rod",    0]],
     ],
 };
