@@ -73,6 +73,7 @@ var crystalg = {
         mtmoon_r3_r4:           {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
         mtsilver_r28:           {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver\nRoute 28"            },
         celadonstore:           {x: 203, y: 31, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
+		sabrina:                {x: 236, y: 32, w: 8, h: 8, name: "Sabrina's Gym"                   },
     },
 
     // Undefined fields:
@@ -557,6 +558,42 @@ var crystalg = {
 			f5_down: {x: 440, y: 176, name: "Celadon Store" },
 			f6_up:   {x: 485, y: -5,  name: "Celadon Store" },
         },
+		sabrina: {
+			nw_nw: {x: 33,  y: 44,  name: "Sabrina's Gym (NW)" },
+			nw_ne: {x: 95,  y: 62,  name: "Sabrina's Gym (NW)" },
+			nw_sw: {x: 33,  y: 79,  name: "Sabrina's Gym (NW)" },
+			nw_se: {x: 95,  y: 95,  name: "Sabrina's Gym (NW)" },
+
+			n_nw:  {x: 151, y: 44,  name: "Sabrina's Gym (N)"  },
+			n_ne:  {x: 184, y: 62,  name: "Sabrina's Gym (N)"  },
+			n_sw:  {x: 151, y: 79,  name: "Sabrina's Gym (N)"  },
+			n_se:  {x: 184, y: 95,  name: "Sabrina's Gym (N)"  },
+
+			ne_nw: {x: 240, y: 44,  name: "Sabrina's Gym (NE)" },
+			ne_ne: {x: 302, y: 62,  name: "Sabrina's Gym (NE)" },
+			ne_sw: {x: 240, y: 79,  name: "Sabrina's Gym (NE)" },
+			ne_se: {x: 302, y: 95,  name: "Sabrina's Gym (NE)" },
+
+			w_nw:  {x: 33,  y: 140, name: "Sabrina's Gym (W)"  },
+			w_ne:  {x: 95,  y: 157, name: "Sabrina's Gym (W)"  },
+			w_sw:  {x: 33,  y: 174, name: "Sabrina's Gym (W)"  },
+			w_se:  {x: 95,  y: 191, name: "Sabrina's Gym (W)"  },
+
+			e_nw:  {x: 240, y: 140, name: "Sabrina's Gym (E)"  },
+			e_ne:  {x: 302, y: 157, name: "Sabrina's Gym (E)"  },
+			e_sw:  {x: 240, y: 174, name: "Sabrina's Gym (E)"  },
+			e_se:  {x: 302, y: 191, name: "Sabrina's Gym (E)"  },
+
+			sw_nw: {x: 33,  y: 236, name: "Sabrina's Gym (SW)" },
+			sw_ne: {x: 95,  y: 253, name: "Sabrina's Gym (SW)" },
+			sw_sw: {x: 33,  y: 270, name: "Sabrina's Gym (SW)" },
+			sw_se: {x: 95,  y: 287, name: "Sabrina's Gym (SW)" },
+
+			se_nw: {x: 240, y: 236, name: "Sabrina's Gym (SE)" },
+			se_ne: {x: 302, y: 253, name: "Sabrina's Gym (SE)" },
+			se_sw: {x: 240, y: 270, name: "Sabrina's Gym (SE)" },
+			se_se: {x: 302, y: 287, name: "Sabrina's Gym (SE)" },
+		},
     },
 
     // Numbers are meant to be to check if exist any marks/progress in the maps

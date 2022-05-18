@@ -43,7 +43,7 @@ var settings;
 var images = [];
 function LoadImages() {
     // Obtain map and frame
-    var list = ["images/" + game.folder + "/map.png", "images/" + game.folder + "/frame.png"];
+    var list = ["images/" + game.folder + "/" + game.name + ".png", "images/" + game.folder + "/frame.png"];
     if (!settings) { list.push("images/settings.png"); }
 
     // Check if same game has been already been loaded
@@ -110,7 +110,7 @@ function LoadImages() {
     }
 }
 function ImageLoaded() {
-    if (this.src.includes("map.png")) {
+    if (this.src.includes(game.name + ".png")) {
         game.map = {
             image: this,
             x: 0, y: 0,
