@@ -1,6 +1,7 @@
 var hgss = {
 	debug: true,
     name: "hgss",
+    folder: "hgss",
     start_location: "newbark",
     font: "NDS_Font",
     font_size: "38px",

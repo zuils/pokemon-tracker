@@ -42,14 +42,41 @@ var loading_process = {};
 var settings;
 var images = [];
 function LoadImages() {
-    // Get all images
-    var list = ["images/" + game.name + "/map.png", "images/" + game.name + "/frame.png"];
+    // Obtain map and frame
+    var list = ["images/" + game.folder + "/map.png", "images/" + game.folder + "/frame.png"];
     if (!settings) { list.push("images/settings.png"); }
 
-    for (let key in game.locations) {
-        list.push("images/" + game.name + "/maps/" + key + ".png");
+    // Check if same game has been already been loaded
+    // this way we avoid loading the same image twice
+    let similar_loaded_games = [];
+    for (let g of ordered_games) {
+        if (g.ready && g.folder == game.folder) {
+            similar_loaded_games.push(g);
+        }
     }
 
+    loading_process.max_width  = 0;
+    loading_process.max_height = 0;
+    // Get location images
+    loop:
+    for (let key in game.locations) {
+        for (g of similar_loaded_games) {
+            if (g.locations[key]) {
+                let i = g.locations[key].image;
+                game.locations[key].image = i;
+                
+                if (i.naturalWidth  > loading_process.max_width)  loading_process.max_width  = i.naturalWidth;
+                if (i.naturalHeight > loading_process.max_height) loading_process.max_height = i.naturalHeight;
+
+                continue loop;
+            }
+        }
+
+        list.push("images/" + game.folder + "/maps/" + key + ".png");
+    }
+    console.log(list);
+
+    // Get marks images
     loading_process.row_count =  0;
     for (let row of game.marks) {
         loading_process.row_count += 1;
@@ -58,22 +85,21 @@ function LoadImages() {
         }
     }
 
+    // Get progress tracker items
     for (let row of game.progress) {
         loading_process.row_count += 1;
         for (let pair of row) {
-            if (pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/" + game.name + "/progress/" + pair[0] + ".png") }
+            if (pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/" + game.folder + "/progress/" + pair[0] + ".png") }
         }
     }
 
-    // Start loading them
+    // Load all images
     if (list.length == 0) {
         game.ready = true;
         return;
     }
 
     loading_game_text.innerHTML = LOADING_TEXT;
-    loading_process.max_width  = 0;
-    loading_process.max_height = 0;
     loading_process.loaded = 0;
     loading_process.to_load = list.length;
     for (let path of list) {
@@ -123,7 +149,7 @@ function ImageLoaded() {
             console.log(GetNameImage(this.src));
         }
 
-        if (DEBUG_MODE){
+        if (DEBUG_MODE) {
             debug_heights.push({ value: this.naturalHeight, name: this.src});
             debug_widths.push ({ value: this.naturalWidth , name: this.src});
         }

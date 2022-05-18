@@ -1,6 +1,7 @@
 var platinum = {
 	debug: false,
     name: "platinum",
+    folder: "platinum",
     start_location: "sandgem",
     font: "NDS_Font",
     font_size: "38px",

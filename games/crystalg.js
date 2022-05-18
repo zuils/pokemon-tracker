@@ -1,6 +1,6 @@
-var crystal = {
+var crystalg = {
 	debug: false,
-    name: "crystal",
+    name: "crystalg",
 	folder: "crystal",
     start_location: "cherrygrove",
     font: "GameBoy_Font",
@@ -8,7 +8,7 @@ var crystal = {
 
 	// Config texts
 	config_name: "Crystal",
-	config_randomizer_author: "iFatRain",
+	config_randomizer_author: "G-Meister",
 	config_randomizer_link: "",
 	//config_tracker_author: "", 
 	//config_tracker_link: "",
@@ -58,21 +58,21 @@ var crystal = {
         r9_r10:        {x: 259, y: 24,  w: 8,  h: 8,  name: "Route 9\nRoute 10"       },
 
         // Important locations
-        darkcave:              {x: 96,  y: 44, w: 8, h: 8,  name: "Dark Cave"                      },
-        puzzlechambers:        {x: 58,  y: 42, w: 8, h: 8,  name: "Puzzle Chambers"                },
-        unioncave:             {x: 67,  y: 96, w: 8, h: 8,  name: "Union Cave"                     },
-        goldenrodstore:        {x: 46,  y: 57, w: 8, h: 8,  name: "Goldenrod\nDepartment Store"    },
-        underground:           {x: 46,  y: 71, w: 8, h: 8,  name: "Underground"                    },
-        tintower:              {x: 51,  y: 6,  w: 8, h: 8,  name: "Tin Tower"                      },
-        mtmortar_r42:          {x: 67,  y: 16, w: 8, h: 8,  name: "Mt. Mortar\nRoute 42"           },
-        lighthouse:            {x: 22,  y: 44, w: 8, h: 8,  name: "Olivine's Lighthouse"           },
-        ssaqua:                {x: 213, y: 66, w: 8, h: 8,  name: "S.S. Aqua"                      },
-        whirlislands:          {x: 11,  y: 64, w: 8, h: 8,  name: "Whirl Islands"                  },
-        victoryroad_reception: {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
+        darkcave:               {x: 96,  y: 44, w: 8, h: 8,  name: "Dark Cave"                      },
+        puzzlechambers:         {x: 58,  y: 42, w: 8, h: 8,  name: "Puzzle Chambers"                },
+        unioncave:              {x: 67,  y: 96, w: 8, h: 8,  name: "Union Cave"                     },
+        goldenrodstore:         {x: 46,  y: 57, w: 8, h: 8,  name: "Goldenrod\nDepartment Store"    },
+        radiotower_underground: {x: 46,  y: 71, w: 8, h: 8,  name: "Radio Tower\nUnderground"       },
+        tintower:               {x: 51,  y: 6,  w: 8, h: 8,  name: "Tin Tower"                      },
+        mtmortar_r42:           {x: 67,  y: 16, w: 8, h: 8,  name: "Mt. Mortar\nRoute 42"           },
+        lighthouse:             {x: 22,  y: 44, w: 8, h: 8,  name: "Olivine's Lighthouse"           },
+        ssaqua:                 {x: 213, y: 66, w: 8, h: 8,  name: "S.S. Aqua"                      },
+        whirlislands:           {x: 11,  y: 64, w: 8, h: 8,  name: "Whirl Islands"                  },
+        victoryroad_reception:  {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
         
-        mtmoon_r3_r4:          {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
-        mtsilver_r28:          {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver\nRoute 28"            },
-        celadonstore:          {x: 203, y: 31, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
+        mtmoon_r3_r4:           {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
+        mtsilver_r28:           {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver\nRoute 28"            },
+        celadonstore:           {x: 203, y: 31, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
     },
 
     // Undefined fields:
@@ -414,10 +414,13 @@ var crystal = {
 			f6_down: {x: 440, y: 40,  name: "Goldenrod Store" },
 			b1f:     {x: 389, y: 487, name: "Goldenrod Store" },
         },
-        underground: {
-			top:      {x: 31,  y: 72  },
-			basement: {x: 264, y: 130 },
-			bot:      {x: 31,  y: 188 },
+        radiotower_underground: {
+			tunnel_top:      {x: 31,  y: 72,  name: "Underground" },
+			tunnel_basement: {x: 264, y: 130, name: "Underground" },
+			tunnel_bot:      {x: 31,  y: 188, name: "Underground" },
+			radio_left:      {x: 31,  y: 280, name: "Radio Tower" },
+			radio_mid:       {x: 130, y: 245, name: "Radio Tower" },
+			radio_right:     {x: 264, y: 282, name: "Radio Tower" },
         },
         tintower: {
 			tinL_left:       {x: 335, y: 192, name: "Tin Tower (L)"         },

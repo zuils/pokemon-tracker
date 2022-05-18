@@ -1,6 +1,7 @@
 var emerald = {
 	debug: false,
     name: "emerald",
+    folder: "emerald",
     start_location: "oldale",
     font: "GameBoy_Font",
     font_size: "22px",
