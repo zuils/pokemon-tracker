@@ -74,7 +74,6 @@ function LoadImages() {
 
         list.push("images/" + game.folder + "/maps/" + key + ".png");
     }
-    console.log(list);
 
     // Get marks images
     loading_process.row_count =  0;
