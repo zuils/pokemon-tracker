@@ -28,20 +28,26 @@ var hgss = {
         blackthorn:    {x: 145, y: 41,  w: 8,  h: 8,  name: "Blackthorn City"   },
         indigoplateau: {x: 190, y: 40,  w: 8,  h: 8,  name: "Indigo Plateau"    },
 
-        pallet:    {x: 215, y: 105, w: 8,  h: 8,  name: "Pallet Town"     },
-        viridian:  {x: 215, y: 78,  w: 8,  h: 15, name: "Viridian City"   },
-        pewter:    {x: 215, y: 49,  w: 15, h: 15, name: "Pewter City"     },
-        cerulean:  {x: 295, y: 41,  w: 8,  h: 8,  name: "Cerulean City"   },
-        vermilion: {x: 295, y: 89,  w: 8,  h: 8,  name: "Vermilion City"  },
-        lavender:  {x: 327, y: 65,  w: 8,  h: 8,  name: "Lavender Town"   },
-        celadon:   {x: 271, y: 65,  w: 8,  h: 8,  name: "Celadon City"    },
-        saffron:   {x: 291, y: 63,  w: 15, h: 15, name: "Saffron City"    },
-        fuchsia:   {x: 279, y: 113, w: 8,  h: 8,  name: "Fuchsia City"    },
-        cinnabar:  {x: 215, y: 129, w: 8,  h: 8,  name: "Cinnabar Island" },
+        pallet:     {x: 215, y: 105, w: 8,  h: 8,  name: "Pallet Town"     },
+        viridian:   {x: 215, y: 78,  w: 8,  h: 15, name: "Viridian City"   },
+        pewter:     {x: 215, y: 49,  w: 15, h: 15, name: "Pewter City"     },
+        cerulean:   {x: 295, y: 41,  w: 8,  h: 8,  name: "Cerulean City"   },
+        vermillion: {x: 295, y: 89,  w: 8,  h: 8,  name: "Vermilion City"  },
+        lavender:   {x: 327, y: 65,  w: 8,  h: 8,  name: "Lavender Town"   },
+        celadon:    {x: 271, y: 65,  w: 8,  h: 8,  name: "Celadon City"    },
+        saffron:    {x: 291, y: 63,  w: 15, h: 15, name: "Saffron City"    },
+        fuchsia:    {x: 279, y: 113, w: 8,  h: 8,  name: "Fuchsia City"    },
+        cinnabar:   {x: 215, y: 129, w: 8,  h: 8,  name: "Cinnabar Island" },
 
         // Routes
-        
+        r30_r31:      {x: 114, y: 78, w: 8, h: 16, name: "Route 30\nRoute 31"     },
+		ragelake_r43: {x: 117, y: 8,  w: 8, h: 8,  name: "Lake of Rage\nRoute 43" },
+
         // Important locations
+		goldenrodstore: {x: 75, y: 86, w: 8, h: 8, name: "Goldenrod\nDepartment Store" },
+
+		ceruleancave: {x: 284, y: 30, w: 8, h:8, name: "Cerulean Cave" },
+		celadonstore: {x: 271, y: 53, w: 8, h:8, name: "Celadon\nDepartment Store" },
     },
 
     // Undefined fields:
@@ -55,11 +61,11 @@ var hgss = {
 			right: {x: 292, y: 324 },
         },
         cherrygrove: {
-            mart:   {x: 474, y: 22  },
-			center: {x: 377, y: 84  },
-			house1: {x: 280, y: 142 },
-			house2: {x: 409, y: 177 },
-			house3: {x: 504, y: 215 },
+			mart:   {x: 175, y: 48  },
+			center: {x: 307, y: 48  },
+			house1: {x: 43,  y: 152 },
+			house2: {x: 214, y: 176 },
+			house3: {x: 357, y: 232 },
         },
         violet: {
             sprout:   {x: 383, y: 52  },
@@ -157,9 +163,9 @@ var hgss = {
         },
 
         pallet: {
-			main:  {x: 88,  y: 50  },
-			rival: {x: 221, y: 50  },
-			lab:   {x: 197, y: 143 },
+			main:  {x: 125, y: 98  },
+			rival: {x: 301, y: 98  },
+			lab:   {x: 305, y: 224 },
         },
         viridian: {
 			gate:   {x: 88,  y: 181 },
@@ -247,12 +253,62 @@ var hgss = {
 			botgate:   {x: 127, y: 539 },
         },
         cinnabar: {
-			center: {x: 186, y: 151},
+			center: {x: 238, y: 304 },
         },
 
         // Routes
+		r30_r31: {
+			berry:    {x: 142, y: 297, name: "Route 30" },
+			lab:      {x: 460, y: 274, name: "Route 30" },
+			darkcave: {x: 408, y: 74,  name: "Route 31" },
+			gate:     {x: 101, y: 92,  name: "Route 31" },
+		},
+		ragelake_r43: {
+			water:    {x: 79,  y: 117, name: "Lake of Rage"    },
+			land:     {x: 275, y: 124, name: "Lake of Rage"    },
+			entrance: {x: 74,  y: 336, name: "Route 43 (Lake)" },
+			gatetop:  {x: 276, y: 223, name: "Route 43 (Lake)" },
+			gatebot:  {x: 278, y: 370, name: "Route 43 (Lake)" },
+        },
 
         // Important locations
+		goldenrodstore: {
+			f1_door: {x: 193, y: 555, name: "Goldenrod Store" },
+			f1_up:   {x: 186, y: 460, name: "Goldenrod Store" },
+			f2_up:   {x: 186, y: 260, name: "Goldenrod Store" },
+			f2_down: {x: 296, y: 340, name: "Goldenrod Store" },
+			f3_up:   {x: 186, y: 55,  name: "Goldenrod Store" },
+			f3_down: {x: 296, y: 135, name: "Goldenrod Store" },
+			f4_up:   {x: 587, y: 470, name: "Goldenrod Store" },
+			f4_down: {x: 702, y: 535, name: "Goldenrod Store" },
+			f5_up:   {x: 587, y: 260, name: "Goldenrod Store" },
+			f5_down: {x: 702, y: 340, name: "Goldenrod Store" },
+			f6_down: {x: 702, y: 135, name: "Goldenrod Store" },
+			bf1:     {x: 373, y: 624, name: "Goldenrod Store" },
+		},
+
+		ceruleancave: {
+			main_right1:   {x: 604, y: 23  },
+			main_right2:   {x: 602, y: 195 },
+			main_entrance: {x: 505, y: 441 },
+			main_mid1:     {x: 444, y: 202 },
+			main_mid2:     {x: 269, y: 253 },
+			main_left1:    {x: 150, y: 331 },
+			main_left2:    {x: 74,  y: 460 },
+		},
+		celadonstore: {
+			f1_door: {x: 193, y: 555, name: "Celadon Store" },
+			f1_up:   {x: 100, y: 484, name: "Celadon Store" },
+			f2_up:   {x: 100, y: 282, name: "Celadon Store" },
+			f2_down: {x: 180, y: 359, name: "Celadon Store" },
+			f3_up:   {x: 100, y: 76,  name: "Celadon Store" },
+			f3_down: {x: 180, y: 155, name: "Celadon Store" },
+			f4_up:   {x: 473, y: 484, name: "Celadon Store" },
+			f4_down: {x: 574, y: 555, name: "Celadon Store" },
+			f5_up:   {x: 473, y: 282, name: "Celadon Store" },
+			f5_down: {x: 574, y: 359, name: "Celadon Store" },
+			f6_down: {x: 574, y: 155, name: "Celadon Store" },
+		},
     },
 
     // Numbers are meant to be to check if exist any marks/progress in the maps

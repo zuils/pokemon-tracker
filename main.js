@@ -10,8 +10,8 @@ let context;
 const LINKTYPE_WARP = "warp";
 const LINKTYPE_MARK = "mark";
 
-const CACHE_GAME_LOADED   = "last-game-loaded";
-const CACHE_SMOOTH_IMAGES = "smooth-images";
+const CACHE_GAME_LOADED    = "last-game-loaded";
+const CACHE_SMOOTH_IMAGES  = "smooth-images";
 const CACHE_DEBUG_LOCATION = "debug-location"
 
 let ordered_games = [ // Games will be shown in the settings in order
