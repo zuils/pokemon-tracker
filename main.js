@@ -2,7 +2,7 @@ let DEBUG_MODE = true; // Never commit this with it set to true!
 const DEBUG_WARP_TO_SELF = false;
 const DEBUG_PRINT_KEY = false;
 const DEBUG_REMEMBER_LOCATION = true;
-const DEBUG_IMAGE_DIMENSIONS = false;
+const DEBUG_IMAGE_DIMENSIONS = true;
 
 let canvas; 
 let context;
