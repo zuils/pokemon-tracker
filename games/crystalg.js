@@ -306,7 +306,7 @@ var crystalg = {
 			union:     {x: 443, y: 408, name: "Route 32"            },
         },
         r34: {
-			daycare: {x: 200, y: 69  },
+			daycare: {x: 166, y: 74  },
 			gate:    {x: 221, y: 442 },
         },
         r35_r36: {
