@@ -32,7 +32,7 @@ var hgss = {
         viridian:   {x: 215, y: 78,  w: 8,  h: 15, name: "Viridian City"   },
         pewter:     {x: 215, y: 49,  w: 15, h: 15, name: "Pewter City"     },
         cerulean:   {x: 295, y: 41,  w: 8,  h: 8,  name: "Cerulean City"   },
-        vermillion: {x: 295, y: 89,  w: 8,  h: 8,  name: "Vermilion City"  },
+        vermilion:  {x: 295, y: 89,  w: 8,  h: 8,  name: "Vermilion City"  },
         lavender:   {x: 327, y: 65,  w: 8,  h: 8,  name: "Lavender Town"   },
         celadon:    {x: 271, y: 65,  w: 8,  h: 8,  name: "Celadon City"    },
         saffron:    {x: 291, y: 63,  w: 15, h: 15, name: "Saffron City"    },
@@ -193,7 +193,7 @@ var hgss = {
 			tunnel:     {x: 378, y: 436 },
 			gate:       {x: 238, y: 474 },
         },
-        vermillion: {
+        vermilion: {
 			fish:    {x: 72,  y: 149                              },
 			center:  {x: 137, y: 208                              },
 			club:    {x: 105, y: 273                              },
@@ -203,8 +203,8 @@ var hgss = {
 			botmart: {x: 331, y: 402                              },
 			seaport: {x: 303, y: 572                              },
 			digglet: {x: 528, y: 192                              },
-            gate:    {x: 233, y: 46, name: "Route 6 (Vermillion)" },
-			tunnel:  {x: 409, y: 19, name: "Route 6 (Vermillion)" },
+            gate:    {x: 233, y: 46, name: "Route 6 (Vermilion)" },
+			tunnel:  {x: 409, y: 19, name: "Route 6 (Vermilion)" },
         },
         celadon: {
 			mart:       {x: 62,  y: 119 },

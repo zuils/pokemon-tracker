@@ -27,16 +27,16 @@ var crystal = {
         blackthorn:    {x: 115, y: 16, w: 8, h: 8, name: "Blackthorn City"         },
         indigoplateau: {x: 155, y: 8,  w: 8, h: 8, name: "Indigo Plateau"          },
 
-        pallet:        {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"              },
-        viridian_r22:  {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City\nRoute 22"  },
-        pewter:        {x: 179, y: 24,  w: 8, h: 8, name: "Pewter City"              },
-        cerulean_r5:   {x: 227, y: 24,  w: 8, h: 8, name: "Cerulean City\nRoute 5"   },
-        vermillion_r6: {x: 227, y: 56,  w: 8, h: 8, name: "Vermillion City\nRoute 6" },
-        celadon_r7:    {x: 203, y: 40,  w: 8, h: 8, name: "Celadon City\nRoute 7"    },
-        lavender_r8:   {x: 259, y: 40,  w: 8, h: 8, name: "Lavender Town\nRoute 8"   },
-        saffron:       {x: 227, y: 40,  w: 8, h: 8, name: "Saffron City"             },
-        fuchsia:       {x: 219, y: 88,  w: 8, h: 8, name: "Fuchsia City"             },
-        cinnabar:      {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"          },
+        pallet:        {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"             },
+        viridian_r22:  {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City\nRoute 22" },
+        pewter:        {x: 179, y: 24,  w: 8, h: 8, name: "Pewter City"             },
+        cerulean_r5:   {x: 227, y: 24,  w: 8, h: 8, name: "Cerulean City\nRoute 5"  },
+        vermilion_r6:  {x: 227, y: 56,  w: 8, h: 8, name: "Vermilion City\nRoute 6" },
+        celadon_r7:    {x: 203, y: 40,  w: 8, h: 8, name: "Celadon City\nRoute 7"   },
+        lavender_r8:   {x: 259, y: 40,  w: 8, h: 8, name: "Lavender Town\nRoute 8"  },
+        saffron:       {x: 227, y: 40,  w: 8, h: 8, name: "Saffron City"            },
+        fuchsia:       {x: 219, y: 88,  w: 8, h: 8, name: "Fuchsia City"            },
+        cinnabar:      {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"         },
         
         // Routes
         r29_r45_r46:   {x: 107, y: 48,  w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
@@ -214,7 +214,7 @@ var crystal = {
 			tunnel:     {x: 378, y: 436 },
 			gate:       {x: 238, y: 474 },
         },
-        vermillion_r6: {
+        vermilion_r6: {
 			fish:    {x: 72,  y: 149                              },
 			center:  {x: 137, y: 208                              },
 			club:    {x: 105, y: 273                              },
@@ -224,8 +224,8 @@ var crystal = {
 			botmart: {x: 331, y: 402                              },
 			seaport: {x: 303, y: 572                              },
 			digglet: {x: 528, y: 192                              },
-            gate:    {x: 233, y: 46, name: "Route 6 (Vermillion)" },
-			tunnel:  {x: 409, y: 19, name: "Route 6 (Vermillion)" },
+            gate:    {x: 233, y: 46, name: "Route 6 (Vermilion)" },
+			tunnel:  {x: 409, y: 19, name: "Route 6 (Vermilion)" },
         },
         celadon_r7: {
 			mart:       {x: 62,  y: 119 },
