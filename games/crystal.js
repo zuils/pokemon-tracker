@@ -42,7 +42,7 @@ var crystal = {
         r29_r45_r46:   {x: 107, y: 48,  w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
         r30_r31:       {x: 83,  y: 44,  w: 8,  h: 14, name: "Route 30\nRoute 31"      },
         alphruins_r32: {x: 67,  y: 67,  w: 8,  h: 14, name: "Ruins of Alph\nRoute 32" },
-        r34:           {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34"                },
+        r34_ilex:      {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34\nIlex Forest"   },
         r35_r36:       {x: 35,  y: 32,  w: 14, h: 8,  name: "Route 35\nRoute 36"      },
         r38_r39:       {x: 26,  y: 16,  w: 8,  h: 8,  name: "Route 38\nRoute 39"      },
         r41:           {x: 11,  y: 52,  w: 8,  h: 8,  name: "Route 41"                },
@@ -68,6 +68,7 @@ var crystal = {
         lighthouse:            {x: 22,  y: 44, w: 8, h: 8,  name: "Olivine's Lighthouse"           },
         ssaqua:                {x: 213, y: 66, w: 8, h: 8,  name: "S.S. Aqua"                      },
         whirlislands:          {x: 11,  y: 64, w: 8, h: 8,  name: "Whirl Islands"                  },
+        icepath:               {x: 115, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
         victoryroad_reception: {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
         
         mtmoon_r3_r4:          {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
@@ -302,9 +303,11 @@ var crystal = {
 			center:    {x: 529, y: 249, name: "Route 32"            },
 			union:     {x: 443, y: 408, name: "Route 32"            },
         },
-        r34: {
-			daycare: {x: 166, y: 74  },
-			gate:    {x: 221, y: 442 },
+        r34_ilex: {
+			r34_gate:    {x: 102, y: 420, name: "Route 34"    },
+			r34_daycare: {x: 62,  y: 40,  name: "Route 34"    },
+			ilext_top:   {x: 264, y: 62,  name: "Ilex Forest" },
+			ilext_bot:   {x: 297, y: 390, name: "Ilex Forest" },
         },
         r35_r36: {
 			botgate: {x: 158, y: 452, name: "Route 35"          },
@@ -431,7 +434,7 @@ var crystal = {
 			tinloop_sw:      {x: 53,  y: 469, name: "Tin Tower (Loop)"      },
 			tinsquare_mid:   {x: 145, y: 270, name: "Tin Tower (Square)"    },
 			tinsquare_left:  {x: 53,  y: 216, name: "Tin Tower (Square)"    },
-			tinsquare_top:   {x: 53,  y: 39,  name: "Tin Tower (Square)"    },
+			tinsquare_top:   {x: 53,  y: 100, name: "Tin Tower (Square)"    },
 			tinsquare_right: {x: 243, y: 225, name: "Tin Tower (Square)"    },
         },
         mtmortar_r42: {
@@ -504,6 +507,14 @@ var crystal = {
 			main_botright:   {x: 607, y: 614, name: "Whirl (Main)"      },
 			main_cave:       {x: 316, y: 365, name: "Whirl (Main)"      },
         },
+		icepath: {
+			stairsleft:   {x: 56,  y: 267 },
+			holebotleft:  {x: 88,  y: 217 },
+			holebotright: {x: 200, y: 234 },
+			holetopleft:  {x: 71,  y: 135 },
+			holetopright: {x: 183, y: 56  },
+			stairsup:     {x: 280, y: 73  },
+		},
         victoryroad_reception: {
 			reception_bot:   {x: 323, y: 646, name: "League Reception"  },
 			reception_left:  {x: 194, y: 405, name: "League Reception"  },
@@ -557,10 +568,10 @@ var crystal = {
         [["c_bush",      0], ["c_surf",      0], ["c_boulder",   0], ["c_darkness",  0], ["c_whirlpool", 0], ["c_waterfall", 0], ["c_rock", 0]],
     ],
     progress: [
-        [["zephyr_badge",  0], ["hive_badge",     0], ["plain_badge",   0], ["fog_badge",     0], ["storm_badge", 0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
-        [["boulder_badge", 0], ["cascade_badge",  0], ["thunder_badge", 0], ["rainbow_badge", 0], ["soul_badge",  0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
-        [["c_will",        0], ["c_koga",         0], ["c_bruno",       0], ["c_karen",       0], ["c_lance",     0], ["",      undefined], ["",      undefined], ["c_red",        0]],
-        [["hm_cut",        0], ["hm_fly",         0], ["hm_surf",       0], ["hm_strength",   0], ["hm_flash",    0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
+        [["zephyr_badge",  0], ["hive_badge",    0], ["plain_badge",    0], ["fog_badge",     0], ["storm_badge",   0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
+        [["boulder_badge", 0], ["cascade_badge", 0], ["thunder_badge",  0], ["rainbow_badge", 0], ["soul_badge",    0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
+        [["c_will",        0], ["c_koga",        0], ["c_bruno",        0], ["c_karen",       0], ["c_lance",       0], ["",      undefined], ["",      undefined], ["c_red",        0]],
+        [["hm_cut",        0], ["hm_fly",        0], ["hm_surf",        0], ["hm_strength",   0], ["hm_flash",      0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
         [["pokegear",      0], ["radio_card",    0], ["expansion_card", 0], ["squirt_bottle", 0], ["secret_potion", 0], ["card_key",      0], ["ss_ticket",     0], ["pass",         0]],
         [["machine_part",  0], ["clear_bell",    0], ["rainbow_wing",   0], ["silver_wing",   0], ["basement_key",  0], ["lost_item",     0], ["red_scale",     0], ["mystery_egg",  0]],
         [["pokedex",       0], ["bike",          0], ["blue_card",      0], ["coin_case",     0], ["itemfinder",    0], ["old_rod",       0], ["good_rod",      0], ["super_rod",    0]],

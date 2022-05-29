@@ -42,7 +42,7 @@ var crystalg = {
         r29_r45_r46:   {x: 107, y: 48,  w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
         r30_r31:       {x: 83,  y: 44,  w: 8,  h: 14, name: "Route 30\nRoute 31"      },
         alphruins_r32: {x: 67,  y: 67,  w: 8,  h: 14, name: "Ruins of Alph\nRoute 32" },
-        r34:           {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34"                },
+        r34_ilex:      {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34\nIlex Forest"   },
         r35_r36:       {x: 35,  y: 32,  w: 14, h: 8,  name: "Route 35\nRoute 36"      },
         r38_r39:       {x: 26,  y: 16,  w: 8,  h: 8,  name: "Route 38\nRoute 39"      },
         r41:           {x: 11,  y: 52,  w: 8,  h: 8,  name: "Route 41"                },
@@ -68,6 +68,7 @@ var crystalg = {
         lighthouse:             {x: 22,  y: 44, w: 8, h: 8,  name: "Olivine's Lighthouse"           },
         ssaqua:                 {x: 213, y: 66, w: 8, h: 8,  name: "S.S. Aqua"                      },
         whirlislands:           {x: 11,  y: 64, w: 8, h: 8,  name: "Whirl Islands"                  },
+        icepath:                {x: 115, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
         victoryroad_reception:  {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
         
         mtmoon_r3_r4:           {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
@@ -305,9 +306,11 @@ var crystalg = {
 			center:    {x: 529, y: 249, name: "Route 32"            },
 			union:     {x: 443, y: 408, name: "Route 32"            },
         },
-        r34: {
-			daycare: {x: 166, y: 74  },
-			gate:    {x: 221, y: 442 },
+        r34_ilex: {
+			r34_gate:    {x: 102, y: 420, name: "Route 34"    },
+			r34_daycare: {x: 62,  y: 40,  name: "Route 34"    },
+			ilext_top:   {x: 264, y: 62,  name: "Ilex Forest" },
+			ilext_bot:   {x: 297, y: 390, name: "Ilex Forest" },
         },
         r35_r36: {
 			botgate: {x: 158, y: 452, name: "Route 35"          },
@@ -440,7 +443,7 @@ var crystalg = {
 			tinloop_sw:      {x: 53,  y: 469, name: "Tin Tower (Loop)"      },
 			tinsquare_mid:   {x: 145, y: 270, name: "Tin Tower (Square)"    },
 			tinsquare_left:  {x: 53,  y: 216, name: "Tin Tower (Square)"    },
-			tinsquare_top:   {x: 53,  y: 39,  name: "Tin Tower (Square)"    },
+			tinsquare_top:   {x: 53,  y: 100, name: "Tin Tower (Square)"    },
 			tinsquare_right: {x: 243, y: 225, name: "Tin Tower (Square)"    },
         },
         mtmortar_r42: {
@@ -513,6 +516,14 @@ var crystalg = {
 			main_botright:   {x: 607, y: 614, name: "Whirl (Main)"      },
 			main_cave:       {x: 316, y: 365, name: "Whirl (Main)"      },
         },
+		icepath: {
+			stairsleft:   {x: 56,  y: 267 },
+			holebotleft:  {x: 88,  y: 217 },
+			holebotright: {x: 200, y: 234 },
+			holetopleft:  {x: 71,  y: 135 },
+			holetopright: {x: 183, y: 56  },
+			stairsup:     {x: 280, y: 73  },
+		},
         victoryroad_reception: {
 			reception_bot:   {x: 323, y: 646, name: "League Reception"  },
 			reception_left:  {x: 194, y: 405, name: "League Reception"  },

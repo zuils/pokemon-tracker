@@ -1,6 +1,6 @@
-let DEBUG_MODE = true; // Never commit this with it set to true!
-const DEBUG_WARP_TO_SELF = false;
-const DEBUG_PRINT_KEY = false;
+let DEBUG_MODE = false; // Never commit this with it set to true!
+const DEBUG_WARP_TO_SELF = true;
+const DEBUG_PRINT_KEY = true;
 const DEBUG_REMEMBER_LOCATION = true;
 const DEBUG_IMAGE_DIMENSIONS = true;
 
