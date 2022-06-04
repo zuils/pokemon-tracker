@@ -349,7 +349,6 @@ var hgss = {
 			center:		{x: 295, y: 60,  name: "Route 10" 		     },
 			cave_10:	{x: 180, y: 93,  name: "Route 10" 		     },
 			cave_lav:	{x: 86,  y: 666, name: "Route 10 (Lavender)" },
-			power:		{x: 246, y: 356, name: "Power Plant"	     },
 		},
 		r11_r12_r15: {
 			cave:		{x: 164, y: 88 , name: "Route 11" 	},
