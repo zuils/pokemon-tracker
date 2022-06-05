@@ -405,9 +405,9 @@ var hgss = {
 			r34_ilex:	{x: 237, y: 93,  name: "Route 34" 	 },
 		},
 		r35_athlon_r36: {
-			athlon_entry: {x: 265, y: 275, name: "Pokéathlon"      },
-			athlon_up:    {x: 155, y: 15,  name: "Pokéathlon"      },
-			athlon_down:  {x: 350, y: 15,  name: "Pokéathlon"      },
+			athlon_entry: {x: 265, y: 275, name: "Pokéathlon Dome" },
+			athlon_up:    {x: 155, y: 15,  name: "Pokéathlon Dome" },
+			athlon_down:  {x: 350, y: 15,  name: "Pokéathlon Dome" },
 			gate_left:    {x: 63,  y: 384, name: "Pokéathlon Gate" },
 			gate_up:      {x: 400, y: 384, name: "Pokéathlon Gate" },
 			gate_down:    {x: 400, y: 442, name: "Pokéathlon Gate" },
