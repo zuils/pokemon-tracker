@@ -141,11 +141,11 @@ var emerald = {
         },
 
         lavaridge: {
-            center:      {x: 100, y: 80 , name: "Lavaridge (Outside)"},
-            mart:        {x: 199, y: 60 , name: "Lavaridge (Outside)"},
-            gym:         {x: 52,  y: 215, name: "Lavaridge (Outside)"},
-            herbs:       {x: 140, y: 270, name: "Lavaridge (Outside)"},
-            house:       {x: 230, y: 215, name: "Lavaridge (Outside)"},
+            center:      {x: 100, y: 80 , name: "Lavaridge Town"     },
+            mart:        {x: 199, y: 60 , name: "Lavaridge Town"     },
+            gym:         {x: 52,  y: 215, name: "Lavaridge Town"     },
+            herbs:       {x: 140, y: 270, name: "Lavaridge Town"     },
+            house:       {x: 230, y: 215, name: "Lavaridge Town"     },
             center_top:  {x: 325, y: 24 , name: "Lavaridge (Center)" },
             center_left: {x: 313, y: 99 , name: "Lavaridge (Center)" },
             center_bot:  {x: 398, y: 149, name: "Lavaridge (Center)" },
@@ -250,7 +250,7 @@ var emerald = {
             botcycle:   {x: 230, y: 360, name: "Route 110 (Slateport)"   },
         },
         r111_r112:           {
-            jaggedentrance:  {x: 79,  y: 181, name: "Route 111 (Jagged Entr.)"},
+            jaggedentrance:  {x: 79,  y: 181, name: "Route 111 (Lavaridge)"   },
             fieryentrance:   {x: 152, y: 73 , name: "Route 111 (Fiery Entr.)" },
             fieryexit:       {x: 295, y: 59 , name: "Route 111 (Fiery Exit)"  },
             cablecar:        {x: 398, y: 274, name: "Route 111 (Cable Car)"   },
@@ -260,9 +260,9 @@ var emerald = {
             desert_regirock: {x: 358, y: 398, name: "Route 112 (Regirock)"    },
         },
         r114:                {
-            fossilmaniac: {x: 264, y: 66 , name: "Route 114 (Dig TM)"      },
-            lanette:      {x: 247, y: 190, name: "Route 114 (Lanette)"     },
-            meteorfalls:  {x: 87,  y: 187, name: "Route 114 (Meteor Falls)"},
+            fossilmaniac: {x: 264, y: 66 , name: "Route114 (Fossil Maniac)" },
+            lanette:      {x: 247, y: 190, name: "Route 114 (Lanette)"      },
+            meteorfalls:  {x: 87,  y: 187, name: "Route 114 (Meteor Falls)" },
         },
         r119_r123:           {
             r119_house:       {x: 166, y: 287, name: "Route 119 (House)"  },
