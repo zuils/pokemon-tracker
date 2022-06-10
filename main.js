@@ -1,4 +1,4 @@
-let DEBUG_MODE = false;
+let DEBUG_MODE = true;
 const DEBUG_WARP_TO_SELF      = false;
 const DEBUG_PRINT_KEY         = false;
 const DEBUG_REMEMBER_LOCATION = false;
@@ -17,6 +17,7 @@ const CACHE_DEBUG_LOCATION = "debug-location"
 let ordered_games = [ // Games will be shown in the settings in order
     crystal,
     crystalg,
+    frlg,
     emerald,
     platinum,
     hgss,
