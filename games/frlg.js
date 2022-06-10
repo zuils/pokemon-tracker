@@ -1,5 +1,5 @@
 var frlg = {
-	debug: true,
+	debug: false,
     name: "frlg",
     folder: "frlg",
     start_location: "viridian",
