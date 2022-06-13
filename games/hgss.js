@@ -29,16 +29,16 @@ var hgss = {
 		
         indigoplateau: {x: 191, y: 40,  w: 8,  h: 8,  name: "Indigo Plateau"			},
 
-        pallet:     {x: 215, y: 95 , w: 8,  h: 18, name: "Pallet Town"     },
-        viridian:   {x: 215, y: 78,  w: 8,  h: 15, name: "Viridian City"   },
-        pewter:     {x: 215, y: 49,  w: 15, h: 15, name: "Pewter City"     },
-        cerulean:   {x: 295, y: 41,  w: 8,  h: 8,  name: "Cerulean City"   },
-        vermilion:  {x: 295, y: 89,  w: 8,  h: 8,  name: "Vermilion City"  },
-        lavender:   {x: 327, y: 65,  w: 8,  h: 8,  name: "Lavender Town"   },
-        celadon:    {x: 271, y: 65,  w: 8,  h: 8,  name: "Celadon City"    },
-        saffron:    {x: 291, y: 63,  w: 15, h: 15, name: "Saffron City"    },
-        fuchsia:    {x: 279, y: 113, w: 8,  h: 8,  name: "Fuchsia City"    },
-        cinnabar:   {x: 215, y: 129, w: 8,  h: 8,  name: "Cinnabar Island" },
+        pallet:     {x: 215, y: 95 , w: 8,  h: 18, name: "Pallet Town\nRoute 1" },
+        viridian:   {x: 215, y: 78,  w: 8,  h: 15, name: "Viridian City"        },
+        pewter:     {x: 215, y: 49,  w: 15, h: 15, name: "Pewter City"          },
+        cerulean:   {x: 295, y: 41,  w: 8,  h: 8,  name: "Cerulean City"        },
+        vermilion:  {x: 295, y: 89,  w: 8,  h: 8,  name: "Vermilion City"       },
+        lavender:   {x: 327, y: 65,  w: 8,  h: 8,  name: "Lavender Town"        },
+        celadon:    {x: 271, y: 65,  w: 8,  h: 8,  name: "Celadon City"         },
+        saffron:    {x: 291, y: 63,  w: 15, h: 15, name: "Saffron City"         },
+        fuchsia:    {x: 279, y: 113, w: 8,  h: 8,  name: "Fuchsia City"         },
+        cinnabar:   {x: 215, y: 129, w: 8,  h: 8,  name: "Cinnabar Island"      },
 
         // Routes
         r30_r31:      	{x: 114, y: 78 , w: 8, h: 16, name: "Route 30\nRoute 31"     			},
