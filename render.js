@@ -498,6 +498,14 @@ function Render() {
             aux_context.clearRect(game.map.x, game.map.y, game.map.w, game.map.h);
             aux_context.clearRect(game.map.w, 0, game.max_width + SELECTED_MAP_XOFFSET, game.max_height);
         }
+
+        // Check for a bug I'm not able to reproduce, but it will prevent a hard crash.
+        // This situation should never happen, since the user can only set locations that exist
+        if (!game.locations[current_location]) {
+            console.info("This location could not be retrieved: " + current_location + "\nSwitching to default location.");
+            current_location = game.start_location;
+        }
+
         RenderMap();
         RenderLocation();
 
