@@ -9,7 +9,7 @@ var crystal = {
 	// Config texts
 	config_name: "Crystal",
 	config_randomizer_author: "iFatRain",
-	config_randomizer_link: "",
+	config_randomizer_link: "https://github.com/iFatRain/pokemon-crystal-map-randomizer",
 	//config_tracker_author: "", 
 	//config_tracker_link: "",
 
