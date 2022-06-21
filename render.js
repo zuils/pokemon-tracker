@@ -270,7 +270,6 @@ function GetWarpRenderInfo(location, warp) {
                 y: rendered_location.y + warp.y*rendered_location.scale + WARP_LINE_YOFFSET
             }
             info.text = game.locations[warp.link_location].name;
-            if (game.locations[warp.link_location].link_name) info.text = game.locations[warp.link_location].link_name;
             if (game.warps[warp.link_location][warp.link].name) info.text = game.warps[warp.link_location][warp.link].name;
         }
     }
