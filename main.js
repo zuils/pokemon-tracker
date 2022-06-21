@@ -1,6 +1,6 @@
-let DEBUG_MODE = true;
-const DEBUG_WARP_TO_SELF      = true;
-const DEBUG_PRINT_KEY         = false;
+let DEBUG_MODE = false;
+const DEBUG_WARP_TO_SELF      = false;
+const DEBUG_PRINT_KEY         = true;
 const DEBUG_REMEMBER_LOCATION = true;
 const DEBUG_IMAGE_DIMENSIONS  = false;
 
