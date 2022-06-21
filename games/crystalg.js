@@ -25,7 +25,7 @@ var crystalg = {
         cianwood:        {x: 3,   y: 72, w: 8, h: 8, name: "Cianwood City"              },
         mahogany_r44:    {x: 91,  y: 16, w: 8, h: 8, name: "Mahogany Town\nRoute 44"    },
         blackthorn:      {x: 115, y: 16, w: 8, h: 8, name: "Blackthorn City"            },
-        indigoplateau:   {x: 155, y: 8,  w: 8, h: 8, name: "Indigo Plateau"             },
+        indigo_e4:       {x: 155, y: 8,  w: 8, h: 8, name: "Indigo Plateau\nElite 4"    },
 
         pallet:        {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"             },
         viridian_r22:  {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City\nRoute 22" },
@@ -185,10 +185,18 @@ var crystalg = {
 			rightcenter: {x: 472, y: 354 },
 
         },
-        indigoplateau: {
-			entrance: {x: 95, y: 232 },
-			left:	  {x: 30, y: 196 },
-			top:	  {x: 229, y: 74 },
+        indigo_e4: {
+			center_left:     {x: 40,  y: 490, name: "Indigo Plateau"   },
+			center_entrance: {x: 132, y: 490, name: "Indigo Plateau"    },
+			center_top:      {x: 269, y: 376, name: "Indigo Plateau"    },
+			will_top:        {x: 80,  y: 20,  name: "E4 Member (Will)"  },
+			will_bot:        {x: 80,  y: 128, name: "E4 Member (Will)"  },
+			koga_top:        {x: 245, y: 20,  name: "E4 Member (Koga)"  },
+			koga_bot:        {x: 245, y: 128, name: "E4 Member (Koga)"  },
+			bruno_top:       {x: 80,  y: 165, name: "E4 Member (Bruno)" },
+			bruno_bot:       {x: 80,  y: 279, name: "E4 Member (Bruno)" },
+			karen_top:       {x: 245, y: 165, name: "E4 Member (Karen)" },
+			karen_bot:       {x: 245, y: 279, name: "E4 Member (Karen)" },
         },
 
         pallet: {
