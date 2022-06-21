@@ -2,7 +2,7 @@ var crystal = {
 	debug: false,
     name: "crystal",
 	folder: "crystal",
-    start_location: "cherrygrove",
+    start_location: "cherrygrove_r29",
     font: "GameBoy_Font",
     font_size: "22px",
 
@@ -16,16 +16,16 @@ var crystal = {
 	// Tracker information
     locations: {
         // Cities
-        cherrygrove:   {x: 83,  y: 72, w: 8, h: 8, name: "Cherrygrove City"           },
-        violet:        {x: 67,  y: 32, w: 8, h: 8, name: "Violet City"                },
-        azalea_well:   {x: 51,  y: 96, w: 8, h: 8, name: "Azalea Town\nSlowpoke Well" },
-        goldenrod:     {x: 35,  y: 64, w: 8, h: 8, name: "Goldenrod City"             },
-        ecruteak:      {x: 51,  y: 16, w: 8, h: 8, name: "Ecruteak City"              },
-        olivine_r40:   {x: 19,  y: 32, w: 8, h: 8, name: "Olivine City\nRoute 40"     },
-        cianwood:      {x: 3,   y: 72, w: 8, h: 8, name: "Cianwood City"              },
-        mahogany_r44:  {x: 91,  y: 16, w: 8, h: 8, name: "Mahogany Town\nRoute 44"    },
-        blackthorn:    {x: 115, y: 16, w: 8, h: 8, name: "Blackthorn City"            },
-        indigoplateau: {x: 155, y: 8,  w: 8, h: 8, name: "Indigo Plateau"             },
+        cherrygrove_r29: {x: 83,  y: 72, w: 8, h: 8, name: "Cherrygrove City\nRoute 29" },
+        violet:          {x: 67,  y: 32, w: 8, h: 8, name: "Violet City"                },
+        azalea_well:     {x: 51,  y: 96, w: 8, h: 8, name: "Azalea Town\nSlowpoke Well" },
+        goldenrod:       {x: 35,  y: 64, w: 8, h: 8, name: "Goldenrod City"             },
+        ecruteak:        {x: 51,  y: 16, w: 8, h: 8, name: "Ecruteak City"              },
+        olivine_r40:     {x: 19,  y: 32, w: 8, h: 8, name: "Olivine City\nRoute 40"     },
+        cianwood:        {x: 3,   y: 72, w: 8, h: 8, name: "Cianwood City"              },
+        mahogany_r44:    {x: 91,  y: 16, w: 8, h: 8, name: "Mahogany Town\nRoute 44"    },
+        blackthorn:      {x: 115, y: 16, w: 8, h: 8, name: "Blackthorn City"            },
+        indigoplateau:   {x: 155, y: 8,  w: 8, h: 8, name: "Indigo Plateau"             },
 
         pallet:        {x: 179, y: 80,  w: 8, h: 8, name: "Pallet Town"             },
         viridian_r22:  {x: 179, y: 48,  w: 8, h: 8, name: "Viridian City\nRoute 22" },
@@ -39,7 +39,7 @@ var crystal = {
         cinnabar:      {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"         },
         
         // Routes
-        r29_r45_r46:   {x: 107, y: 48,  w: 8,  h: 14, name: "Route 29\nRoute 45 / 46" },
+        r29_r45_r46:   {x: 107, y: 34,  w: 16, h: 28, name: "Route 29\nRoute 45 / 46" },
         r30_r31:       {x: 83,  y: 44,  w: 8,  h: 14, name: "Route 30\nRoute 31"      },
         alphruins_r32: {x: 67,  y: 67,  w: 8,  h: 14, name: "Ruins of Alph\nRoute 32" },
         r34_ilex:      {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34\nIlex Forest"   },
@@ -81,12 +81,13 @@ var crystal = {
     // - link_location: location_name / <garbage>
     warps: {
         // Cities
-        cherrygrove: {
-            mart:   {x: 474, y: 22  },
-			center: {x: 377, y: 84  },
-			house1: {x: 280, y: 142 },
-			house2: {x: 409, y: 177 },
-			house3: {x: 504, y: 215 },
+        cherrygrove_r29: {
+			r29_gate: {x: 423, y: 78, name: "R29 (Cherrygrove)" },
+			mart:     {x: 216, y: 80                            },
+			center:   {x: 312, y: 36                            },
+			house1:   {x: 118, y: 140                           },
+			house2:   {x: 247, y: 170                           },
+			house3:   {x: 342, y: 202                           },
         },
         violet: {
             sprout:        {x: 383, y: 52  },
@@ -283,10 +284,9 @@ var crystal = {
 
         // Routes
         r29_r45_r46: {
-            botgate:     {x: 120, y: 496, name: "Route 29 (Bottom)" },
-			topgate:     {x: 120, y: 374, name: "Route 29 (Top)"    },
-			botdarkcave: {x: 233, y: 268, name: "Route 45"          },
-			topdarkcave: {x: 55,  y: 61,  name: "Route 46"          },
+			gate:        {x: 129, y: 385, name: "Route 29" },
+			botdarkcave: {x: 233, y: 268, name: "Route 45" },
+			topdarkcave: {x: 55,  y: 61,  name: "Route 46" },
         },
         r30_r31: {
 			gate:     {x: 103, y: 133, name: "Route 31" },
@@ -303,7 +303,7 @@ var crystal = {
 			left:      {x: 70,  y: 464, name: "Ruins of Alph (Bot)" },
 			top:       {x: 104, y: 375, name: "Ruins of Alph (Bot)" },
 			right:     {x: 264, y: 477, name: "Ruins of Alph (Bot)" },
-			rightgate: {x: 312, y: 335, name: "Route 32"            },
+			rightgate: {x: 312, y: 335, name: "Route 32 (Violet)"   },
 			center:    {x: 529, y: 249, name: "Route 32"            },
 			union:     {x: 443, y: 408, name: "Route 32"            },
         },
@@ -553,12 +553,12 @@ var crystal = {
     // if null, then we don't do tracking
     // if undefined, then we don't draw the mark
     marks: [
-        [["unknown",     0], ["dead_end", null], ["event",     0], ["center",      0], ["mart",        0], ["one_way",  null]],
-        [["normal",      0], ["fighting",    0], ["flying",    0], ["poison",      0], ["ground",      0], ["rock",        0], ["bug",     0], ["ghost",       0], ["fairy",     0]],
-        [["steel",       0], ["fire",        0], ["water",     0], ["grass",       0], ["electric",    0], ["psychic",     0], ["ice",     0], ["dragon",      0], ["dark",      0]],
-        [["1",           0], ["2",           0], ["3",         0], ["4",           0], ["5",           0], ["6",           0], ["7",       0], ["8",           0]],
-		[["team_rocket", 0], ["c_rival",     0], ["",  undefined], ["c_legendary", 0], ["c_oak",       0], ["c_kurt",      0], ["c_unown", 0], ["c_train",     0]],
-        [["c_bush",      0], ["c_surf",      0], ["c_boulder", 0], ["c_darkness",  0], ["c_whirlpool", 0], ["c_waterfall", 0], ["c_rock",  0], ["bike_needed", 0], ["c_trainer", 0]],
+        [["unknown",     0], ["dead_end", null], ["event",      0], ["center",      0], ["mart",        0], ["one_way",   null]],
+        [["normal",      0], ["fighting",    0], ["flying",     0], ["poison",      0], ["ground",      0], ["rock",         0], ["bug",    0], ["ghost",       0], ["fairy",     0]],
+        [["steel",       0], ["fire",        0], ["water",      0], ["grass",       0], ["electric",    0], ["psychic",      0], ["ice",    0], ["dragon",      0], ["dark",      0]],
+        [["1",           0], ["2",           0], ["3",          0], ["4",           0], ["5",           0], ["6",            0], ["7",      0], ["8",           0]],
+		[["team_rocket", 0], ["c_rival",     0], ["c_gyarados", 0], ["",    undefined], ["c_legendary", 0], ["burned_tower", 0], ["c_oak",  0], ["c_kurt",      0], ["c_unown",   0], ["c_train",   0], ["dratini", 0]],
+        [["c_bush",      0], ["c_surf",      0], ["c_boulder",  0], ["c_darkness",  0], ["c_whirlpool", 0], ["c_waterfall",  0], ["c_rock", 0], ["bike_needed", 0], ["c_trainer", 0]],
     ],
     progress: [
         [["zephyr_badge",  0], ["hive_badge",    0], ["plain_badge",    0], ["fog_badge",     0], ["storm_badge",   0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],

@@ -1,4 +1,4 @@
-let DEBUG_MODE = true;
+let DEBUG_MODE = false;
 const DEBUG_WARP_TO_SELF      = true;
 const DEBUG_PRINT_KEY         = false;
 const DEBUG_REMEMBER_LOCATION = true;
