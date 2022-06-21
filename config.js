@@ -1,26 +1,25 @@
 let config;
-let config_controls;
-let config_controlstoggle;
 let config_network;
 let config_networktoggle;
 
 let checkbox_smooth;
 
 function ShowConfig() {
-    config.style.display = "block";
-    HideConfigControls();
+    //config.style.display = "block";
+    config_window.classList.remove("window_hidden");
     HideConfigNetwork();
 }
-function HideConfig() { config.style.display = "none"; }
+function HideConfig() {
+    config_window.classList.add("window_hidden");
+    //config.style.display = "none";
+}
+function ShowHelp() {
+    help_window.classList.remove("window_hidden");
+}
+function HideHelp() {
+    help_window.classList.add("window_hidden");
+}
 
-function ShowConfigControls() {
-    config_controls      .classList.remove("config_hidden");
-    config_controlstoggle.classList.add   ("config_hidden");
-}
-function HideConfigControls() {
-    config_controls      .classList.add   ("config_hidden");
-    config_controlstoggle.classList.remove("config_hidden");
-}
 
 function LoadFile() { file_selector.click(); }
 

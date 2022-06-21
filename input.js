@@ -130,8 +130,13 @@ function OnMouseUp(event) {
                 case LEFT_CLICK: {
                     switch (info.type) {
                         case TYPE_CONFIG: {
+                            if (info.target == "settings") {
+                                ShowConfig();
+                            }
+                            else {
+                                ShowHelp();
+                            }
                             current_state = STATE_DEFAULT;
-                            ShowConfig();
                         } break;
                         case TYPE_LOCATION: {
                             switch (current_state) {
@@ -301,11 +306,17 @@ const TYPE_CONFIG   = "config";
 function GetClicked(position) {
     // Check if config button
     if (position.x >= 0 &&
-        position.x <= settings.naturalWidth &&
+        position.x <= game.map.w &&
         position.y >= canvas.height - settings.naturalHeight &&
         position.y <  canvas.height)
     {
-        return { type: TYPE_CONFIG, target: "button" };
+        if (position.x <= settings.naturalWidth) {
+            return { type: TYPE_CONFIG, target: "settings" };
+        }
+        else if (position.x <= settings.naturalWidth + CONFIG_XOFFSET + help.naturalWidth) {
+            return { type: TYPE_CONFIG, target: "help" };
+        }
+        return null;
     }
 
     // Check everything else
