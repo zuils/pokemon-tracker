@@ -39,7 +39,7 @@ var crystal = {
         cinnabar:      {x: 179, y: 104, w: 8, h: 8, name: "Cinnabar Island"         },
         
         // Routes
-        r29_r45_r46:   {x: 107, y: 34,  w: 16, h: 28, name: "Route 29\nRoute 45 / 46" },
+        r45_r46:       {x: 107, y: 34,  w: 16, h: 28, name: "Route 45\nRoute 46"      },
         r30_r31:       {x: 83,  y: 44,  w: 8,  h: 14, name: "Route 30\nRoute 31"      },
         alphruins_r32: {x: 67,  y: 67,  w: 8,  h: 14, name: "Ruins of Alph\nRoute 32" },
         r34_ilex:      {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34\nIlex Forest"   },
@@ -291,10 +291,10 @@ var crystal = {
         },
 
         // Routes
-        r29_r45_r46: {
-			gate:        {x: 129, y: 385, name: "Route 29" },
-			botdarkcave: {x: 233, y: 268, name: "Route 45" },
-			topdarkcave: {x: 55,  y: 61,  name: "Route 46" },
+        r45_r46: {
+			gate:        {x: 129, y: 385, name: "Route 45 (Gate)" },
+			botdarkcave: {x: 233, y: 268, name: "Route 45 (Cave)" },
+			topdarkcave: {x: 55,  y: 61,  name: "Route 46"        },
         },
         r30_r31: {
 			gate:     {x: 103, y: 133, name: "Route 31" },
