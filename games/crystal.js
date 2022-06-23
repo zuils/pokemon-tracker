@@ -465,8 +465,6 @@ var crystal = {
 			mortarwater_waterfall:  {x: 482, y: 51,  name: "Mt. Mortar (Water)"  },
         },
         lighthouse: {
-			f1_entrance:  {x: 173, y: 840, name: "Lighthouse (F1)"  },
-			f1_stairs:    {x: 60,  y: 748, name: "Lighthouse (F1)"  },
 			f2_entrance:  {x: 60,  y: 510, name: "Lighthouse (F2)"  },
 			f2_hole:      {x: 272, y: 546, name: "Lighthouse (F2)"  },
 			f2_stairs:    {x: 84,  y: 327, name: "Lighthouse (F2)"  },
@@ -485,7 +483,6 @@ var crystal = {
 			top_hole:     {x: 592, y: 53,  name: "Lighthouse (Top)" },
         },
         ssaqua: {
-			entrance: {x: 250, y: 52  },
 			top3:     {x: 213, y: 121 },
 			top4:     {x: 280, y: 155 },
 			bot1:     {x: 85,  y: 231 },
