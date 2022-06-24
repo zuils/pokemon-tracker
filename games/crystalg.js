@@ -353,12 +353,12 @@ var crystalg = {
 			tm_top:   {x: 310, y: 140, name: "Gate R43 (Rockets)" },
         },
         r26_r27: {
-			left:      {x: 57,  y: 59,  name: "Route 26" },
-			right:     {x: 216, y: 60,  name: "Route 26" },
-			house1:    {x: 169, y: 144, name: "Route 26" },
-			house2:    {x: 356, y: 157, name: "Route 27" },
-			house3:    {x: 485, y: 158, name: "Route 27" },
-			reception: {x: 421, y: 52,  name: "Route 27" },
+			left:      {x: 57,  y: 59,  name: "Route 27" },
+			right:     {x: 216, y: 60,  name: "Route 27" },
+			house1:    {x: 169, y: 144, name: "Route 27" },
+			house2:    {x: 356, y: 157, name: "Route 26" },
+			house3:    {x: 485, y: 158, name: "Route 26" },
+			reception: {x: 421, y: 52,  name: "Route 26" },
         },
 
         r2: {
