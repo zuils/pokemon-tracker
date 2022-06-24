@@ -195,6 +195,15 @@ function OnMouseUp(event) {
                                 } break;
                             }
                         }
+
+                        case TYPE_MODIFIER: {
+                            if (current_state != STATE_DEFAULT) {
+                                game.warps[link_location][link_warp].modifier = info.target;
+                                rerender_location = true;
+                                //ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target);
+                                current_state = STATE_DEFAULT;
+                            }
+                        } break;
                     }
                 } break;
                 case RIGHT_CLICK: {
@@ -310,6 +319,7 @@ const TYPE_PROGRESS = "progress";
 const TYPE_LOCATION = "location";
 const TYPE_WARP     = "warp";
 const TYPE_CONFIG   = "config";
+const TYPE_MODIFIER = "modifier";
 function GetClicked(position) {
     // Check if config button
     if (position.x >= 0 &&
@@ -329,7 +339,14 @@ function GetClicked(position) {
     // Check everything else
     if (position.x < game.map.w) {
         if (position.y < game.map.h) { return GetLocation(position); }
-        else                    { return GetMark(position); }
+        else {
+            if (!DEBUG_MODE || (position.x < game.map.w - (game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION)))) { // @MODIFIER_TEST
+                return GetMark(position);
+            }
+            else {
+                return GetModifier(position);
+            }
+        }
     }
     else { return GetWarp(position); }
 }
@@ -395,6 +412,24 @@ function GetWarp(position) {
             return { type: TYPE_WARP, target: key };
         }
     }
+    return null;
+}
+function GetModifier(position) {
+    // Start position below map
+    let p = {
+        x: position.x - game.map.w + game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION),
+        y: position.y - game.map.h - MARKS_YOFFSET
+    }
+    if (p.x < 0 || p.y < 0) { return null; }
+    let cell = {
+        x: game.modifiers.length - 1 - Math.trunc(p.x/(MODIFIER_RADIUS*2 + MARK_SEPARATION)),
+        y: Math.trunc(p.y/(MODIFIER_RADIUS*2 + MARK_SEPARATION)),
+    }
+
+    if (cell.x < game.modifiers.length && cell.y < game.modifiers[cell.x].length) {
+        return { type: TYPE_MODIFIER, target: game.modifiers[cell.x][cell.y][0], coords: cell };
+    }
+
     return null;
 }
 

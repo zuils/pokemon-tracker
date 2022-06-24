@@ -24,6 +24,9 @@ const MARK_SEPARATION  = 5;
 const UNCHECKED_FILTER = "grayscale(100%) opacity(50%)";
 const MARKFOUND_SIZE  = 1;
 const MARKFOUND_COLOR = "#AAAAAA"
+const MODIFIER_RADIUS = 16;
+const MODIFIER_WIDTH = 4;
+const MODIFIER_TRANSPARENCY = "aa";
 
 const CONFIG_YOFFSET = 5;
 const CONFIG_XOFFSET = 5;
@@ -340,9 +343,15 @@ function RenderLocation() {
 
             if (info.type == "image") {
                 DrawImage(info.image, info);
+                if (warp.modifier) {
+                    DrawBoxContextless(info, MODIFIER_WIDTH, warp.modifier);
+                }
             }
             else {
                 DrawImage(game.frame, info);
+                if (warp.modifier) {
+                    DrawSquareContextless(info, warp.modifier + MODIFIER_TRANSPARENCY);
+                }
                 if (DEBUG_MODE && DEBUG_PRINT_KEY) {
                     aux_context.fillText(key, info.text_position.x, info.text_position.y);
                     continue;
@@ -430,6 +439,35 @@ function RenderMarks() {
     } aux_context.restore();
 }
 
+function RenderModifiers() {
+    if (!DEBUG_MODE || !game.modifiers) { return; } // @MODIFIER_TEST
+
+    let initial_position = {
+        x: game.map.w - MODIFIER_RADIUS,
+        y: game.map.h + MARKS_YOFFSET + MODIFIER_RADIUS,
+        
+    };
+    let offset = MODIFIER_RADIUS*2 + MARK_SEPARATION;
+    
+    aux_context.save(); {
+        let position = {
+            x: initial_position.x,
+            y: initial_position.y,
+        };
+        for (let row of game.modifiers) {
+            for (let c of row) {
+                aux_context.beginPath();
+                aux_context.fillStyle = c[0];
+                aux_context.arc(position.x, position.y, MODIFIER_RADIUS, 0, 2*Math.PI, false);
+                aux_context.fill();
+                position.y += offset;
+            }
+            position.x -= offset;
+            position.y = initial_position.y;
+        }
+    } aux_context.restore();
+}
+
 function RenderConfigButton() {
     let v = {
         x: 0,
@@ -478,6 +516,7 @@ function Render() {
         if (rerender_all) {
             aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
             RenderMarks();
+            RenderModifiers();
             RenderConfigButton();
         }
         else {
