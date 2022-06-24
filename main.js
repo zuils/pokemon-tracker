@@ -17,6 +17,7 @@ const CACHE_DEBUG_LOCATION = "debug-location"
 let ordered_games = [ // Games will be shown in the settings in order
     crystal,
     crystalg,
+    frlg,
     emerald,
     platinum,
     hgss,
