@@ -7,7 +7,7 @@ var crystalg = {
     font_size: "22px",
 
 	// Config texts
-	config_name: "Crystal",
+	config_name: "Crystal (WIP)",
 	config_randomizer_author: "G-Meister",
 	config_randomizer_link: "",
 	//config_tracker_author: "", 

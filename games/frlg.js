@@ -7,7 +7,7 @@ var frlg = {
     font_size: "22px",
 
     // Config texts
-    config_name: "FireRed/LeafGreen",
+    config_name: "FireRed/LeafGreen (WIP)",
     config_randomizer_author: "Pointcrow",
     config_randomizer_link: "https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of/",
     config_tracker_author: "SaltContainer", 
