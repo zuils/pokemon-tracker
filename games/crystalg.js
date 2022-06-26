@@ -239,7 +239,7 @@ var crystalg = {
 			gym:     {x: 124, y: 371, name: "Vermilion City (Gym)" },
 			botmart: {x: 331, y: 402                               },
 			seaport: {x: 303, y: 572                               },
-			digglet: {x: 528, y: 192, name: "Vermilion (Digglet)"  },
+			digglet: {x: 528, y: 192, name: "Vermilion (Diglett)"  },
             gate:    {x: 233, y: 46                                },
 			tunnel:  {x: 409, y: 19,  name: "Vermilion(Underpass)" },
         },
@@ -295,9 +295,9 @@ var crystalg = {
 
         // Routes
         r45_r46: {
-			gate:        {x: 129, y: 385, name: "Route 45 (Gate)" },
-			botdarkcave: {x: 233, y: 268, name: "Route 45 (Cave)" },
-			topdarkcave: {x: 55,  y: 61,  name: "Route 46"        },
+			gate:        {x: 129, y: 385, name: "Route 46 (Gate)" },
+			botdarkcave: {x: 233, y: 268, name: "Route 46 (Cave)" },
+			topdarkcave: {x: 55,  y: 61,  name: "Route 45"        },
         },
         r30_r31: {
 			gate:     {x: 103, y: 133, name: "Route 31" },
