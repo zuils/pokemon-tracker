@@ -44,14 +44,13 @@ let rerender_location = true;
 let last_rendered_location = "";
 
 var loading_process = {};
-var settings, help, eraser;
+var settings, help;
 var images = [];
 function LoadImages() {
     // Obtain map and frame
     var list = ["images/" + game.folder + "/" + game.name + ".png", "images/" + game.folder + "/frame.png"];
     if (!settings) { list.push("images/settings.png"); }
     if (!help)     { list.push("images/help.png"); }
-    if (!eraser)   { list.push("images/eraser.png"); }
 
     // Check if same game has been already been loaded
     // this way we avoid loading the same image twice
@@ -132,7 +131,6 @@ function ImageLoaded() {
     else if (this.src.includes("frame.png"))    { game.frame = this; }
     else if (this.src.includes("settings.png")) { settings = this;   }
     else if (this.src.includes("help.png"))     { help = this;       }
-    else if (this.src.includes("eraser.png"))   { eraser = this;     }
     else if (this.src.includes("/marks/") || this.src.includes("/progress/")) {
         images[GetNameImage(this.src)] = this;
     }
@@ -444,15 +442,6 @@ function RenderMarks() {
 function RenderModifiers() {
     if (!DEBUG_MODE || !game.modifiers) { return; } // @MODIFIER_TEST
 
-    // Draw eraser
-    let v = {
-        x: game.map.w - MODIFIER_RADIUS*2,
-        y: game.map.h + MARKS_YOFFSET,
-        w: MARK_SIZE,
-        h: MARK_SIZE,
-    }
-    DrawImage(eraser, v);
-
     // Draw other modifiers
     let initial_position = {
         x: game.map.w - MODIFIER_RADIUS,
@@ -463,7 +452,7 @@ function RenderModifiers() {
     aux_context.save(); {
         let position = {
             x: initial_position.x,
-            y: initial_position.y + offset,
+            y: initial_position.y,
         };
         for (let row of game.modifiers) {
             for (let m of row) {

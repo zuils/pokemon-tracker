@@ -439,13 +439,6 @@ function GetModifier(position) {
         y: Math.trunc(p.y/(MODIFIER_RADIUS*2 + MARK_SEPARATION)),
     }
 
-    if (cell.x == 0) {
-        if (cell.y == 0) {
-            return { type: TYPE_MODIFIER, target: null};
-        }
-        cell.y -= 1;
-    }
-    
     if (cell.x < game.modifiers.length && cell.y < game.modifiers[cell.x].length) {
         return { type: TYPE_MODIFIER, target: game.modifiers[cell.x][cell.y][0], coords: cell };
     }
