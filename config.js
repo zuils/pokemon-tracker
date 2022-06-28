@@ -102,6 +102,8 @@ function WarpsToText (current_game) {
             if (warp.link_location) text += warp.link_location;
             text += ",";
             if (warp.link) text += warp.link;
+            text += ",";
+            if (warp.modifier && warp.modifier != "null") text += warp.modifier;
             text += "\n";
         }
     }
