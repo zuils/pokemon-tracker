@@ -112,12 +112,12 @@ function LinesToWarps (lines) {
         if (line.length == 0) continue;
 
         let f = line.split(",");
-        if (f.length != 6) {
+        if (f.length < 6) {
             console.error("ERROR: Invalid line in save file: " + line);
             continue;
         }
         
-        ChangeWarpOffline(games[f[0]], f[1], f[2], f[3], f[4], f[5]);
+        ChangeWarpOffline(games[f[0]], f[1], f[2], f[3], f[4], f[5], f[6]);
     }
 }
 

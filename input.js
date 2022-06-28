@@ -165,7 +165,7 @@ function OnMouseUp(event) {
                         } // falldown
                         case TYPE_MARK: {
                             if (current_state != STATE_DEFAULT) {
-                                ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target);
+                                ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target, null);
                                 current_state = STATE_DEFAULT;
                             }
                         } break;
@@ -188,8 +188,8 @@ function OnMouseUp(event) {
                                     }
                                 } // falldown
                                 case STATE_LINK2: {
-                                    ChangeWarp(game, link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target);
-                                    ChangeWarp(game, current_location, info.target, LINKTYPE_WARP, link_location,    link_warp);
+                                    ChangeWarp(game, link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target, null);
+                                    ChangeWarp(game, current_location, info.target, LINKTYPE_WARP, link_location,    link_warp,   null);
 
                                     current_state = STATE_DEFAULT;
                                 } break;
@@ -198,9 +198,7 @@ function OnMouseUp(event) {
 
                         case TYPE_MODIFIER: {
                             if (current_state != STATE_DEFAULT) {
-                                game.warps[link_location][link_warp].modifier = info.target;
-                                rerender_location = true;
-                                //ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target);
+                                ChangeModifier(link_location, link_warp, info.target);
                                 current_state = STATE_DEFAULT;
                             }
                         } break;
@@ -233,23 +231,27 @@ function OnMouseUp(event) {
                         } break;
                         case TYPE_WARP: {
                             let warp = game.warps[current_location][info.target];
+                            if (warp.modifier) {
+                                ChangeModifier(current_location, info.target, null);
+                                break;
+                            }
+
                             if (!warp.link_type || (warp.link_type == LINKTYPE_MARK && warp.link == "unknown")) {
-                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "dead_end");
+                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "dead_end", null);
                             }
                             else {
                                 let delete_warp = true;
                                 if (warp.link_type == LINKTYPE_WARP) {
-                                    let warp2 = game.warps[warp.link_location][warp.link];
-                                    let is_warp_link = warp2.link_type == LINKTYPE_WARP && warp2.link_location == current_location && warp2.link == info.target;
-                                    if (is_warp_link) {
+                                    let is_warp_linked = IsWarpLinked(warp.link_location, warp.link);
+                                    if (is_warp_linked) {
                                         delete_warp = confirm("This will remove the link on the other end of the warp. Are you sure you want to remove this warp?");
                                     }
-                                    if (is_warp_link && delete_warp) {
-                                        ChangeWarp(game, warp.link_location, warp.link, LINKTYPE_MARK, "", "unknown");
+                                    if (is_warp_linked && delete_warp) {
+                                        ChangeWarp(game, warp.link_location, warp.link, LINKTYPE_MARK, "", "unknown", null);
                                     }
                                 }
                                 if (delete_warp) {
-                                    ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "unknown");
+                                    ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "unknown", null);
                                 }
                             }
                             
@@ -262,11 +264,11 @@ function OnMouseUp(event) {
 }
 
 // Change the warp and send info to server if connected
-function ChangeWarp(current_game, location, warp, link_type, link_location, link) {
-    ChangeWarpOffline(current_game, location, warp, link_type, link_location, link);
+function ChangeWarp(current_game, location, warp, link_type, link_location, link, modifier) {
+    ChangeWarpOffline(current_game, location, warp, link_type, link_location, link, modifier);
 
     if (connected_to || connections.length > 0) {
-        let text = current_game.name + "," + location + "," + warp + "," + link_type + "," + link_location + "," + link;
+        let text = current_game.name + "," + location + "," + warp + "," + link_type + "," + link_location + "," + link + "," + modifier;
         if (connected_to) {
             connected_to.send(text);
         }
@@ -277,7 +279,7 @@ function ChangeWarp(current_game, location, warp, link_type, link_location, link
         }
     }
 }
-function ChangeWarpOffline(current_game, location, warp, link_type, link_location, link) {
+function ChangeWarpOffline(current_game, location, warp, link_type, link_location, link, modifier) {
     // Check both ends of the link exist in case we are loading an old save file
     if (!current_game.warps[location] || !current_game.warps[location][warp]) {
         let error_text = "\"" + location + " (" + warp + ")\" doesn't exist. ";
@@ -300,11 +302,22 @@ function ChangeWarpOffline(current_game, location, warp, link_type, link_locatio
     let w = current_game.warps[location][warp];
     if (w.link_type == LINKTYPE_MARK) { AddToMark(current_game, w.link, -1, location); }
     if (link_type == LINKTYPE_MARK)   { AddToMark(current_game, link,    1, location); }
+    if (w.modifier)                   { /*AddToModifier*/}
+    if (modifier)                     { /*AddToModifier*/}
     w.link_type     = link_type;
     w.link_location = link_location;
     w.link          = link;
+    w.modifier      = modifier;
 
     rerender_location = true;
+}
+function ChangeModifier(location, link, modifier) {
+    let warp = game.warps[location][link];
+    ChangeWarp(game, location, link, warp.link_type, warp.link_location, warp.link, modifier);
+    if (IsWarpLinked(location, link)) {
+        let warp2 = game.warps[warp.link_location][warp.link];
+        ChangeWarp(game, warp.link_location, warp.link, warp2.link_type, warp2.link_location, warp2.link, modifier);
+    }
 }
 
 function EventToPosition(event) {
@@ -512,4 +525,13 @@ function AddToMark (current_game, name, value, location) {
             }
         }
     }
+}
+
+// Checks if both warps lead to each other
+function IsWarpLinked (location, link) {
+    let warp = game.warps[location][link];
+    if (!warp || warp.link_type != LINKTYPE_WARP) { return false; }
+
+    let warp2 = game.warps[warp.link_location][warp.link];
+    return warp2 && warp2.link_type == LINKTYPE_WARP && warp2.link_location == location && warp2.link == link;
 }

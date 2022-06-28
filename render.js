@@ -345,13 +345,13 @@ function RenderLocation() {
 
             if (info.type == "image") {
                 DrawImage(info.image, info);
-                if (warp.modifier) {
+                if (warp.modifier && warp.modifier != "null") {
                     DrawBoxContextless(info, MODIFIER_WIDTH, warp.modifier);
                 }
             }
             else {
                 DrawImage(game.frame, info);
-                if (warp.modifier) {
+                if (warp.modifier && warp.modifier != "null") {
                     DrawSquareContextless(info, warp.modifier + MODIFIER_TRANSPARENCY);
                 }
                 if (DEBUG_MODE && DEBUG_PRINT_KEY) {
