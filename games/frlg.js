@@ -7,9 +7,9 @@ var frlg = {
     font_size: "22px",
 
     // Config texts
-    config_name: "FireRed/LeafGreen (WIP)",
-    config_randomizer_author: "Pointcrow",
-    config_randomizer_link: "https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of/",
+    config_name: "FireRed/LeafGreen (With Sevii Islands)",
+    config_randomizer_author: "",
+    config_randomizer_link: "",
     config_tracker_author: "SaltContainer", 
     config_tracker_link: "https://saltcontainer.github.io",
 
@@ -589,5 +589,6 @@ var frlg = {
         [["hm_cut",        0], ["hm_fly",        0], ["hm_surf",       0], ["hm_strength",   0], ["hm_flash",   0], ["hm_rocksmash", 0], ["hm_waterfall",  0], ["",     undefined]],
         [["bike_voucher",  0], ["bike",          0], ["",      undefined], ["parcel",        0], ["poke_flute", 0], ["tea",          0], ["silph_scope",   0], ["gold_teeth",   0]],
         [["card_key",      0], ["lift_key",      0], ["secret_key",    0], ["",      undefined], ["",   undefined], ["ss_ticket",    0], ["tri-pass",      0], ["rainbow_pass", 0]],
+        [["ruby",          0], ["sapphire",      0]],
     ],
 };
