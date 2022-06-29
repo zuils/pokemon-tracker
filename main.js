@@ -19,9 +19,9 @@ const CURRENT_VERSION = 1;
 let ordered_games = [ // Games will be shown in the settings in order
     crystal,
     crystalg,
+    frlg_nosevii,
     frlg,
     emerald,
-    frlg,
     platinum,
     hgss,
 ];
