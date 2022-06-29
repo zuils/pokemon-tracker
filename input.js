@@ -130,8 +130,13 @@ function OnMouseUp(event) {
                 case LEFT_CLICK: {
                     switch (info.type) {
                         case TYPE_CONFIG: {
+                            if (info.target == "settings") {
+                                ShowConfig();
+                            }
+                            else {
+                                ShowHelp();
+                            }
                             current_state = STATE_DEFAULT;
-                            ShowConfig();
                         } break;
                         case TYPE_LOCATION: {
                             switch (current_state) {
@@ -190,6 +195,15 @@ function OnMouseUp(event) {
                                 } break;
                             }
                         }
+
+                        case TYPE_MODIFIER: {
+                            if (current_state != STATE_DEFAULT) {
+                                game.warps[link_location][link_warp].modifier = info.target;
+                                rerender_location = true;
+                                //ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target);
+                                current_state = STATE_DEFAULT;
+                            }
+                        } break;
                     }
                 } break;
                 case RIGHT_CLICK: {
@@ -223,13 +237,20 @@ function OnMouseUp(event) {
                                 ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "dead_end");
                             }
                             else {
+                                let delete_warp = true;
                                 if (warp.link_type == LINKTYPE_WARP) {
                                     let warp2 = game.warps[warp.link_location][warp.link];
-                                    if (warp2.link_type == LINKTYPE_WARP && warp2.link_location == current_location && warp2.link == info.target) {
+                                    let is_warp_link = warp2.link_type == LINKTYPE_WARP && warp2.link_location == current_location && warp2.link == info.target;
+                                    if (is_warp_link) {
+                                        delete_warp = confirm("This will remove the link on the other end of the warp. Are you sure you want to remove this warp?");
+                                    }
+                                    if (is_warp_link && delete_warp) {
                                         ChangeWarp(game, warp.link_location, warp.link, LINKTYPE_MARK, "", "unknown");
                                     }
                                 }
-                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "unknown");
+                                if (delete_warp) {
+                                    ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "unknown");
+                                }
                             }
                             
                         } break;
@@ -298,20 +319,34 @@ const TYPE_PROGRESS = "progress";
 const TYPE_LOCATION = "location";
 const TYPE_WARP     = "warp";
 const TYPE_CONFIG   = "config";
+const TYPE_MODIFIER = "modifier";
 function GetClicked(position) {
     // Check if config button
     if (position.x >= 0 &&
-        position.x <= settings.naturalWidth &&
+        position.x <= game.map.w &&
         position.y >= canvas.height - settings.naturalHeight &&
         position.y <  canvas.height)
     {
-        return { type: TYPE_CONFIG, target: "button" };
+        if (position.x <= settings.naturalWidth) {
+            return { type: TYPE_CONFIG, target: "settings" };
+        }
+        else if (position.x <= settings.naturalWidth + CONFIG_XOFFSET + help.naturalWidth) {
+            return { type: TYPE_CONFIG, target: "help" };
+        }
+        return null;
     }
 
     // Check everything else
     if (position.x < game.map.w) {
         if (position.y < game.map.h) { return GetLocation(position); }
-        else                    { return GetMark(position); }
+        else {
+            if (!DEBUG_MODE || (position.x < game.map.w - (game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION)))) { // @MODIFIER_TEST
+                return GetMark(position);
+            }
+            else {
+                return GetModifier(position);
+            }
+        }
     }
     else { return GetWarp(position); }
 }
@@ -377,6 +412,31 @@ function GetWarp(position) {
             return { type: TYPE_WARP, target: key };
         }
     }
+    return null;
+}
+function GetModifier(position) {
+    // Start position below map
+    let p = {
+        x: position.x - game.map.w + game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION),
+        y: position.y - game.map.h - MARKS_YOFFSET
+    }
+    if (p.x < 0 || p.y < 0) { return null; }
+    let cell = {
+        x: game.modifiers.length - 1 - Math.trunc(p.x/(MODIFIER_RADIUS*2 + MARK_SEPARATION)),
+        y: Math.trunc(p.y/(MODIFIER_RADIUS*2 + MARK_SEPARATION)),
+    }
+
+    if (cell.x == 0) {
+        if (cell.y == 0) {
+            return { type: TYPE_MODIFIER, target: null};
+        }
+        cell.y -= 1;
+    }
+    
+    if (cell.x < game.modifiers.length && cell.y < game.modifiers[cell.x].length) {
+        return { type: TYPE_MODIFIER, target: game.modifiers[cell.x][cell.y][0], coords: cell };
+    }
+
     return null;
 }
 

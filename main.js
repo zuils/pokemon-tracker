@@ -1,7 +1,7 @@
 let DEBUG_MODE = false;
 const DEBUG_WARP_TO_SELF      = false;
 const DEBUG_PRINT_KEY         = false;
-const DEBUG_REMEMBER_LOCATION = false;
+const DEBUG_REMEMBER_LOCATION = true;
 const DEBUG_IMAGE_DIMENSIONS  = false;
 
 let canvas; 
@@ -13,12 +13,15 @@ const LINKTYPE_MARK = "mark";
 const CACHE_GAME_LOADED    = "last-game-loaded";
 const CACHE_SMOOTH_IMAGES  = "smooth-images";
 const CACHE_DEBUG_LOCATION = "debug-location"
+const CACHE_LAST_VERSION   = "last-version"
+const CURRENT_VERSION = 1;
 
 let ordered_games = [ // Games will be shown in the settings in order
     crystal,
     crystalg,
     frlg,
     emerald,
+    frlg,
     platinum,
     hgss,
 ];
@@ -28,6 +31,10 @@ var loading_game_text;
 function init() {
     // Just in case I push with the setting enabled
     if (!document.URL.startsWith("file:///")) { DEBUG_MODE = false; }
+    if (!DEBUG_MODE) {
+        delete crystal.locations.test;
+        delete crystal.warps.test;
+    }
 
     // Init some stuff
     for (let g of ordered_games) {
@@ -38,9 +45,8 @@ function init() {
     InitTrackerToUnknowns();
 
     // Get UI elements
-    config                = document.getElementById("config");
-    config_controls       = document.getElementById("config_controls");
-    config_controlstoggle = document.getElementById("config_controlstoggle");
+    config_window         = document.getElementById("config_window");
+    help_window           = document.getElementById("help_window");
     config_network        = document.getElementById("config_network");
     config_networktoggle  = document.getElementById("config_networktoggle");
 
@@ -97,6 +103,13 @@ function init() {
 
             div.appendChild(text);
         game_buttons.appendChild(div);
+    }
+
+    // Show explanation + changelog if last version isn't high enough
+    let last_version = localStorage.getItem(CACHE_LAST_VERSION);
+    if (!last_version || last_version < CURRENT_VERSION) {
+        ShowHelp();
+        localStorage.setItem(CACHE_LAST_VERSION, CURRENT_VERSION);
     }
 
     // Create canvas

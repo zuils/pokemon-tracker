@@ -24,8 +24,13 @@ const MARK_SEPARATION  = 5;
 const UNCHECKED_FILTER = "grayscale(100%) opacity(50%)";
 const MARKFOUND_SIZE  = 1;
 const MARKFOUND_COLOR = "#AAAAAA"
+const MODIFIER_RADIUS = 16;
+const MODIFIER_WIDTH = 4;
+const MODIFIER_TRANSPARENCY = "aa";
 
 const CONFIG_YOFFSET = 5;
+const CONFIG_XOFFSET = 5;
+const CONFIG_HEIGHT = 40; // Hardcoded value, it's equal to max(settings.naturalHeight, help.naturalHeight)
 
 const LOADING_TEXT = "Loading map...";
 
@@ -39,12 +44,14 @@ let rerender_location = true;
 let last_rendered_location = "";
 
 var loading_process = {};
-var settings;
+var settings, help, eraser;
 var images = [];
 function LoadImages() {
     // Obtain map and frame
     var list = ["images/" + game.folder + "/" + game.name + ".png", "images/" + game.folder + "/frame.png"];
     if (!settings) { list.push("images/settings.png"); }
+    if (!help)     { list.push("images/help.png"); }
+    if (!eraser)   { list.push("images/eraser.png"); }
 
     // Check if same game has been already been loaded
     // this way we avoid loading the same image twice
@@ -117,24 +124,15 @@ function ImageLoaded() {
             h: this.naturalHeight * MAP_SCALE
         }
 
-        loading_process.map_loaded = true;
-        if (loading_process.settings_loaded) {
-            let h = GetLeftSideHeight();
-            if (h > loading_process.max_height) loading_process.max_height = h;
-        }
+        let left_side_height = game.map.h
+                             + MARKS_YOFFSET + PROGRESS_YOFFSET + loading_process.row_count*(MARK_SIZE+MARK_SEPARATION)
+                             + CONFIG_YOFFSET + CONFIG_HEIGHT;
+        if (left_side_height > loading_process.max_height) loading_process.max_height = left_side_height;
     }
-    else if (this.src.includes("frame.png")) {
-        game.frame = this;
-    }
-    else if (this.src.includes("settings.png")) {
-        settings = this;
-
-        loading_process.settings_loaded = true;
-        if (loading_process.map_loaded) {
-            let h = GetLeftSideHeight();
-            if (h > loading_process.max_height) loading_process.max_height = h;
-        }
-    }
+    else if (this.src.includes("frame.png"))    { game.frame = this; }
+    else if (this.src.includes("settings.png")) { settings = this;   }
+    else if (this.src.includes("help.png"))     { help = this;       }
+    else if (this.src.includes("eraser.png"))   { eraser = this;     }
     else if (this.src.includes("/marks/") || this.src.includes("/progress/")) {
         images[GetNameImage(this.src)] = this;
     }
@@ -195,14 +193,6 @@ function SetCanvasDimensions() {
     canvas.height = game.max_height;
     aux_canvas.width  = canvas.width;
     aux_canvas.height = canvas.height;
-}
-
-function GetLeftSideHeight() {
-    return (
-        game.map.h +
-        MARKS_YOFFSET + PROGRESS_YOFFSET + loading_process.row_count*(MARK_SIZE+MARK_SEPARATION) +
-        CONFIG_YOFFSET + settings.naturalHeight
-    );
 }
 
 /*********************************************************/
@@ -285,7 +275,6 @@ function GetWarpRenderInfo(location, warp) {
                 y: rendered_location.y + warp.y*rendered_location.scale + WARP_LINE_YOFFSET
             }
             info.text = game.locations[warp.link_location].name;
-            if (game.locations[warp.link_location].link_name) info.text = game.locations[warp.link_location].link_name;
             if (game.warps[warp.link_location][warp.link].name) info.text = game.warps[warp.link_location][warp.link].name;
         }
     }
@@ -356,9 +345,15 @@ function RenderLocation() {
 
             if (info.type == "image") {
                 DrawImage(info.image, info);
+                if (warp.modifier) {
+                    DrawBoxContextless(info, MODIFIER_WIDTH, warp.modifier);
+                }
             }
             else {
                 DrawImage(game.frame, info);
+                if (warp.modifier) {
+                    DrawSquareContextless(info, warp.modifier + MODIFIER_TRANSPARENCY);
+                }
                 if (DEBUG_MODE && DEBUG_PRINT_KEY) {
                     aux_context.fillText(key, info.text_position.x, info.text_position.y);
                     continue;
@@ -446,6 +441,44 @@ function RenderMarks() {
     } aux_context.restore();
 }
 
+function RenderModifiers() {
+    if (!DEBUG_MODE || !game.modifiers) { return; } // @MODIFIER_TEST
+
+    // Draw eraser
+    let v = {
+        x: game.map.w - MODIFIER_RADIUS*2,
+        y: game.map.h + MARKS_YOFFSET,
+        w: MARK_SIZE,
+        h: MARK_SIZE,
+    }
+    DrawImage(eraser, v);
+
+    // Draw other modifiers
+    let initial_position = {
+        x: game.map.w - MODIFIER_RADIUS,
+        y: game.map.h + MARKS_YOFFSET + MODIFIER_RADIUS,
+    };
+    let offset = MODIFIER_RADIUS*2 + MARK_SEPARATION;
+    
+    aux_context.save(); {
+        let position = {
+            x: initial_position.x,
+            y: initial_position.y + offset,
+        };
+        for (let row of game.modifiers) {
+            for (let m of row) {
+                aux_context.beginPath();
+                aux_context.fillStyle = m[0];
+                aux_context.arc(position.x, position.y, MODIFIER_RADIUS, 0, 2*Math.PI, false);
+                aux_context.fill();
+                position.y += offset;
+            }
+            position.x -= offset;
+            position.y = initial_position.y;
+        }
+    } aux_context.restore();
+}
+
 function RenderConfigButton() {
     let v = {
         x: 0,
@@ -454,6 +487,8 @@ function RenderConfigButton() {
         h: settings.naturalHeight
     };
     DrawImage(settings, v);
+    v.x = v.w + CONFIG_XOFFSET;
+    DrawImage(help, v);
 }
 
 function RenderLine() {
@@ -492,12 +527,21 @@ function Render() {
         if (rerender_all) {
             aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
             RenderMarks();
+            RenderModifiers();
             RenderConfigButton();
         }
         else {
             aux_context.clearRect(game.map.x, game.map.y, game.map.w, game.map.h);
             aux_context.clearRect(game.map.w, 0, game.max_width + SELECTED_MAP_XOFFSET, game.max_height);
         }
+
+        // Check for a bug I'm not able to reproduce, but it will prevent a hard crash.
+        // This situation should never happen, since the user can only set locations that exist
+        if (!game.locations[current_location]) {
+            console.info("This location could not be retrieved: " + current_location + "\nSwitching to default location.");
+            current_location = game.start_location;
+        }
+
         RenderMap();
         RenderLocation();
 
