@@ -31,6 +31,7 @@ function FileUploaded(event) {
             let fields = lines[0].split(",");
             let current_game = games[fields[0].substring(1, fields[0].length)];
             fields.shift;
+            current_game.obtained.clear();
             for (let p of fields) {
                 current_game.obtained.add(p);
             }
