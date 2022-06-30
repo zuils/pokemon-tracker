@@ -454,8 +454,20 @@ function RenderModifiers() {
             x: initial_position.x,
             y: initial_position.y,
         };
+        aux_context.lineWidth   = MARKFOUND_SIZE;
+        aux_context.strokeStyle = MARKFOUND_COLOR;
         for (let row of game.modifiers) {
             for (let m of row) {
+                if (m[1] && m[1] > 0) {
+                    let p = {
+                        x: position.x - MODIFIER_RADIUS,
+                        y: position.y - MODIFIER_RADIUS,
+                        w: MODIFIER_RADIUS*2,
+                        h: MODIFIER_RADIUS*2,
+                    }
+                    DrawBox(p);
+                }
+
                 aux_context.beginPath();
                 aux_context.fillStyle = m[0];
                 aux_context.arc(position.x, position.y, MODIFIER_RADIUS, 0, 2*Math.PI, false);
