@@ -20,6 +20,7 @@ let ordered_games = [ // Games will be shown in the settings in order
     crystal,
     crystalg,
     emerald,
+    frlg_nosevii,
     frlg,
     platinum,
     hgss,
