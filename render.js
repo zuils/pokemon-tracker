@@ -24,9 +24,10 @@ const MARK_SEPARATION  = 5;
 const UNCHECKED_FILTER = "grayscale(100%) opacity(50%)";
 const MARKFOUND_SIZE  = 1;
 const MARKFOUND_COLOR = "#AAAAAA"
-const MODIFIER_RADIUS = 16;
+const MODIFIER_RADIUS = MARK_SIZE/2;
 const MODIFIER_WIDTH = 4;
-const MODIFIER_TRANSPARENCY = "aa";
+const MODIFIER_ALPHA = "aa";
+const MODIFIER_SEPARATION = 20;
 
 const CONFIG_YOFFSET = 5;
 const CONFIG_XOFFSET = 5;
@@ -123,10 +124,28 @@ function ImageLoaded() {
             h: this.naturalHeight * MAP_SCALE
         }
 
+        // Check left side height in case it's higher than all the location maps
         let left_side_height = game.map.h
                              + MARKS_YOFFSET + PROGRESS_YOFFSET + loading_process.row_count*(MARK_SIZE+MARK_SEPARATION)
                              + CONFIG_YOFFSET + CONFIG_HEIGHT;
         if (left_side_height > loading_process.max_height) loading_process.max_height = left_side_height;
+
+        // Check left side width in case the map itself is less wide than the marks+modifiers
+        let marks_max_width = 0;
+        for (let list of [game.marks, game.progress]) {
+            for (let row of list) {
+                if (marks_max_width < row.length) { marks_max_width = row.length; }
+            }
+        }
+
+        if (DEBUG_MODE && game.modifiers) { // @MODIFIER_TEST: no need for the if, always execute the true case
+            game.left_width = (marks_max_width+game.modifiers.length)*(MARK_SIZE+MARK_SEPARATION) + MODIFIER_SEPARATION;
+            if (game.left_width < game.map.w) { game.left_width = game.map.w; }
+        }
+        else {
+            game.left_width = (marks_max_width) * (MARK_SIZE+MARK_SEPARATION);
+            if (game.left_width < game.map.w) { game.left_width = game.map.w; }
+        }
     }
     else if (this.src.includes("frame.png"))    { game.frame = this; }
     else if (this.src.includes("settings.png")) { settings = this;   }
@@ -167,9 +186,8 @@ function ImageLoaded() {
         }
 
         // Set canvas dimensions
-        game.max_width  = loading_process.max_width;
-        game.max_height = loading_process.max_height;
-
+        game.right_width  = loading_process.max_width;
+        game.right_height = loading_process.max_height;
         SetCanvasDimensions();
 
         loading_game_text.innerHTML = "";
@@ -187,8 +205,8 @@ function GetNameImage(path) {
 }
 
 function SetCanvasDimensions() {
-    canvas.width  = game.max_width + game.map.w + SELECTED_MAP_XOFFSET;
-    canvas.height = game.max_height;
+    canvas.width  = game.right_width + game.left_width + SELECTED_MAP_XOFFSET;
+    canvas.height = game.right_height;
     aux_canvas.width  = canvas.width;
     aux_canvas.height = canvas.height;
 }
@@ -292,10 +310,10 @@ function RenderLocation() {
 
     // ----- Render drawing space -----
     let background = {
-        x: game.map.w + SELECTED_MAP_XOFFSET,
+        x: game.left_width + SELECTED_MAP_XOFFSET,
         y: 0,
-        w: game.max_width,
-        h: game.max_height
+        w: game.right_width,
+        h: game.right_height
     };
     DrawSquareContextless(background, BACKGROUND_COLOR);
 
@@ -350,7 +368,7 @@ function RenderLocation() {
             else {
                 DrawImage(game.frame, info);
                 if (warp.modifier && warp.modifier != "null") {
-                    DrawSquareContextless(info, warp.modifier + MODIFIER_TRANSPARENCY);
+                    DrawSquareContextless(info, warp.modifier + MODIFIER_ALPHA);
                 }
                 if (DEBUG_MODE && DEBUG_PRINT_KEY) {
                     aux_context.fillText(key, info.text_position.x, info.text_position.y);
@@ -444,7 +462,7 @@ function RenderModifiers() {
 
     // Draw other modifiers
     let initial_position = {
-        x: game.map.w - MODIFIER_RADIUS,
+        x: game.left_width - MODIFIER_RADIUS,
         y: game.map.h + MARKS_YOFFSET + MODIFIER_RADIUS,
     };
     let offset = MODIFIER_RADIUS*2 + MARK_SEPARATION;
@@ -532,8 +550,8 @@ function Render() {
             RenderConfigButton();
         }
         else {
-            aux_context.clearRect(game.map.x, game.map.y, game.map.w, game.map.h);
-            aux_context.clearRect(game.map.w, 0, game.max_width + SELECTED_MAP_XOFFSET, game.max_height);
+            aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
+            aux_context.clearRect(game.left_width, 0, game.right_width + SELECTED_MAP_XOFFSET, game.right_height);
         }
 
         // Check for a bug I'm not able to reproduce, but it will prevent a hard crash.

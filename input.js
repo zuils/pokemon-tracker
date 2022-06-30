@@ -58,7 +58,7 @@ function OnMouseDown(event) {
         case MIDDLE_CLICK: {
             if (!DEBUG_MODE) return;
 
-            if (mouse_position.x < game.map.w + SELECTED_MAP_XOFFSET/2) {
+            if (mouse_position.x < game.left_width + SELECTED_MAP_XOFFSET/2) {
                 mouse_position.x /= MAP_SCALE;
                 mouse_position.y /= MAP_SCALE;
             }
@@ -336,7 +336,7 @@ const TYPE_MODIFIER = "modifier";
 function GetClicked(position) {
     // Check if config button
     if (position.x >= 0 &&
-        position.x <= game.map.w &&
+        position.x <= game.left_width &&
         position.y >= canvas.height - settings.naturalHeight &&
         position.y <  canvas.height)
     {
@@ -350,10 +350,10 @@ function GetClicked(position) {
     }
 
     // Check everything else
-    if (position.x < game.map.w) {
+    if (position.x < game.left_width) {
         if (position.y < game.map.h) { return GetLocation(position); }
         else {
-            if (!DEBUG_MODE || (position.x < game.map.w - (game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION)))) { // @MODIFIER_TEST
+            if (!DEBUG_MODE || (position.x < game.left_width - (game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION)))) { // @MODIFIER_TEST
                 return GetMark(position);
             }
             else {
@@ -430,7 +430,7 @@ function GetWarp(position) {
 function GetModifier(position) {
     // Start position below map
     let p = {
-        x: position.x - game.map.w + game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION),
+        x: position.x - game.left_width + game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION),
         y: position.y - game.map.h - MARKS_YOFFSET
     }
     if (p.x < 0 || p.y < 0) { return null; }

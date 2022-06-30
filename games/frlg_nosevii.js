@@ -415,4 +415,9 @@ var frlg_nosevii = {
         [["bike_voucher",  0], ["bike",          0], ["",      undefined], ["parcel",        0], ["poke_flute", 0], ["tea",          0], ["silph_scope",   0], ["gold_teeth",   0]],
         [["card_key",      0], ["lift_key",      0], ["secret_key",    0], ["",      undefined], ["",   undefined], ["",     undefined], ["",      undefined], ["ss_ticket",    0]],
     ],
+
+    modifiers: [
+		[["#ce4069", 0], ["#ff9c54", 0], ["#f3d23b", 0], ["#743683", 0], ["#654321", 0], ["#014f01", 0]],
+		[["#4d90d5", 0], ["#74cec0", 0], ["#90c12c", 0], ["#ec8fe6", 0], ["#5a5366", 0], ["#00146b", 0]],
+	],
 };
