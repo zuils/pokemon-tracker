@@ -207,16 +207,24 @@ function OnMouseUp(event) {
                 case RIGHT_CLICK: {
                     switch (info.type) {
                         case TYPE_MARK:
-                        case TYPE_PROGRESS: {
-                            let m = GetMarkByName(info.target, game);
-                            if (m && m[1] > 0) {
+                        case TYPE_PROGRESS: 
+                        case TYPE_MODIFIER: {
+                            let lists = (info.type == TYPE_MODIFIER) ? [game.modifiers] : [game.marks, game.progress];
+
+                            let icon = GetIconByName(info.target, lists);
+                            if (icon && icon[1] > 0) {
                                 // Start new cycle if it doesn't exist or is not the same as before
                                 if (!current_markcycle || current_markcycle.name != info.target) {
                                     current_markcycle = { name: info.target, index: 0, locations: [] };
+
+                                    let check_condition = (info.type == TYPE_MODIFIER) ?
+                                    function(warp, info) { return (warp.modifier == info.target); } :
+                                    function(warp, info) { return (warp.link_type && warp.link_type == LINKTYPE_MARK && warp.link == info.target); };
+
                                     for (let location in game.warps) {
                                         for (let name in game.warps[location]) {
                                             let warp = game.warps[location][name];
-                                            if (warp.link_type && warp.link_type == LINKTYPE_MARK && warp.link == info.target) {
+                                            if (check_condition(warp, info)) {
                                                 current_markcycle.locations.push(location);
                                                 break;
                                             }
@@ -313,9 +321,9 @@ function ChangeWarpOffline(current_game, location, warp, link_type, link_locatio
     if (w.modifier != modifier) {
         let old_modifier = null;
         if (w.modifier || w.modifier == "null") { old_modifier = w.modifier; }
-        w.modifier      = modifier;
-        if (old_modifier) { /*AddToModifier*/}
-        if (modifier)     { /*AddToModifier*/}
+        w.modifier = modifier;
+        if (old_modifier) { /*AddToModifier*/ }
+        if (modifier)     { /*AddToModifier*/ }
     }
 
     rerender_location = true;
@@ -455,8 +463,8 @@ function GetModifier(position) {
     return null;
 }
 
-function GetMarkByName(name_to_find, current_game) {
-    for (let images of [current_game.marks, current_game.progress]) {
+function GetIconByName(name_to_find, lists) {
+    for (let images of lists) {
         for (let i = 0; i < images.length; ++i) {
             for (let j = 0; j < images[i].length; ++j) {
                 let name  = images[i][j][0];
@@ -477,7 +485,7 @@ function GetMarkByName(name_to_find, current_game) {
 
 // Call this AFTER adding/removing the mark
 function AddToMark (current_game, name, value, location) {
-    let info = GetMarkByName(name, current_game);
+    let info = GetIconByName(name, [current_game.marks, current_game.progress]);
     if (!info) { return; }
 
     let old_value = info[1];
