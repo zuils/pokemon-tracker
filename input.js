@@ -367,7 +367,7 @@ function GetClicked(position) {
     if (position.x < game.left_width) {
         if (position.y < game.map.h) { return GetLocation(position); }
         else {
-            if (!DEBUG_MODE || (position.x < game.left_width - (game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION)))) { // @MODIFIER_TEST
+            if (position.x < game.left_width - (game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION))) {
                 return GetMark(position);
             }
             else {

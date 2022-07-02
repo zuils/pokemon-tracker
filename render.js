@@ -138,14 +138,8 @@ function ImageLoaded() {
             }
         }
 
-        if (DEBUG_MODE && game.modifiers) { // @MODIFIER_TEST: no need for the if, always execute the true case
-            game.left_width = (marks_max_width+game.modifiers.length)*(MARK_SIZE+MARK_SEPARATION) + MODIFIER_SEPARATION;
-            if (game.left_width < game.map.w) { game.left_width = game.map.w; }
-        }
-        else {
-            game.left_width = (marks_max_width) * (MARK_SIZE+MARK_SEPARATION);
-            if (game.left_width < game.map.w) { game.left_width = game.map.w; }
-        }
+        game.left_width = (marks_max_width+game.modifiers.length)*(MARK_SIZE+MARK_SEPARATION) + MODIFIER_SEPARATION;
+        if (game.left_width < game.map.w) { game.left_width = game.map.w; }
     }
     else if (this.src.includes("frame.png"))    { game.frame = this; }
     else if (this.src.includes("settings.png")) { settings = this;   }
@@ -458,7 +452,7 @@ function RenderMarks() {
 }
 
 function RenderModifiers() {
-    if (!DEBUG_MODE || !game.modifiers) { return; } // @MODIFIER_TEST
+    if (!game.modifiers) { return; }
 
     // Draw other modifiers
     let initial_position = {

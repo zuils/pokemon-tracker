@@ -772,4 +772,8 @@ var hgss = {
         [["radio_card",    0], ["expansion_card", 0], ["squirt_bottle", 0], ["secret_potion", 0], ["card_key",     0], ["ss_ticket",     0], ["pass",          0], ["hm_flash",     0]],
         [["bike",          0], ["clear_bell",     0], ["rainbow_wing",  0], ["basement_key",  0], ["lost_item",    0], ["mystery_egg",	 0]],
     ],
+	modifiers: [
+		[["#ce4069", 0], ["#ff9c54", 0], ["#f3d23b", 0], ["#743683", 0], ["#654321", 0], ["#014f01", 0]],
+		[["#4d90d5", 0], ["#74cec0", 0], ["#90c12c", 0], ["#ec8fe6", 0], ["#5a5366", 0], ["#00146b", 0]],
+	],
 };

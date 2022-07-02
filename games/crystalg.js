@@ -652,4 +652,8 @@ var crystalg = {
         [["machine_part",  0], ["clear_bell",    0], ["rainbow_wing",   0], ["silver_wing",   0], ["basement_key",  0], ["lost_item",     0], ["red_scale",     0], ["mystery_egg",  0]],
         [["pokedex",       0], ["bike",          0], ["blue_card",      0], ["coin_case",     0], ["itemfinder",    0], ["old_rod",       0], ["good_rod",      0], ["super_rod",    0]],
     ],
+	modifiers: [
+		[["#ce4069", 0], ["#ff9c54", 0], ["#f3d23b", 0], ["#743683", 0], ["#654321", 0], ["#014f01", 0]],
+		[["#4d90d5", 0], ["#74cec0", 0], ["#90c12c", 0], ["#ec8fe6", 0], ["#5a5366", 0], ["#00146b", 0]],
+	],
 };

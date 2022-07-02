@@ -1,4 +1,4 @@
-let DEBUG_MODE = true;
+let DEBUG_MODE = false;
 const DEBUG_WARP_TO_SELF      = false;
 const DEBUG_PRINT_KEY         = false;
 const DEBUG_REMEMBER_LOCATION = true;
@@ -31,10 +31,6 @@ var loading_game_text;
 function init() {
     // Just in case I push with the setting enabled
     if (!document.URL.startsWith("file:///")) { DEBUG_MODE = false; }
-    if (!DEBUG_MODE) {
-        delete crystal.locations.test;
-        delete crystal.warps.test;
-    }
 
     // Init some stuff
     for (let g of ordered_games) {

@@ -15,8 +15,6 @@ var crystal = {
 
 	// Tracker information
     locations: {
-		test:            {x: 2,   y: 152, w: 8, h: 8, name: "Test" },
-
         // Cities
         cherrygrove_r29: {x: 83,  y: 72, w: 8, h: 8, name: "Cherrygrove City\nRoute 29" },
         violet:          {x: 67,  y: 32, w: 8, h: 8, name: "Violet City"                },
@@ -83,27 +81,6 @@ var crystal = {
     // - link:          warp_name     / mark_name
     // - link_location: location_name / <garbage>
     warps: {
-		test: {
-			aaaa4:  {x: 140, y: 0,    },
-			aaaa6:  {x: 140, y: 50,   },
-			aaaa8:  {x: 140, y: 100,  },
-			aaaa10: {x: 140, y: 150,  },
-			aaaa0:  {x: 140, y: 200,  },
-			aaaa2:  {x: 140, y: 250,  },
-			aaaa14: {x: 260, y: 0,    },
-			aaaa15: {x: 260, y: 50,   },
-			aaaa16: {x: 260, y: 100,  },
-			aaaa17: {x: 260, y: 150,  },
-			aaaa12: {x: 260, y: 200,  },
-			aaaa13: {x: 260, y: 250,  },
-			aaaa5:  {x: 380, y: 0,    },
-			aaaa7:  {x: 380, y: 50,   },
-			aaaa9:  {x: 380, y: 100,  },
-			aaaa11: {x: 380, y: 150,  },
-			aaaa1:  {x: 380, y: 200,  },
-			aaaa3:  {x: 380, y: 250,  },
-		},
-
         // Cities
         cherrygrove_r29: {
 			r29_gate: {x: 423, y: 78, name: "R29 (Cherrygrove)" },

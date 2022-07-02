@@ -591,4 +591,8 @@ var frlg = {
         [["card_key",      0], ["lift_key",      0], ["secret_key",    0], ["",      undefined], ["",   undefined], ["ss_ticket",    0], ["tri-pass",      0], ["rainbow_pass", 0]],
         [["ruby",          0], ["sapphire",      0]],
     ],
+    modifiers: [
+		[["#ce4069", 0], ["#ff9c54", 0], ["#f3d23b", 0], ["#743683", 0], ["#654321", 0], ["#014f01", 0]],
+		[["#4d90d5", 0], ["#74cec0", 0], ["#90c12c", 0], ["#ec8fe6", 0], ["#5a5366", 0], ["#00146b", 0]],
+	],
 };
