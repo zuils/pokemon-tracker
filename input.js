@@ -210,21 +210,18 @@ function OnMouseUp(event) {
                         case TYPE_PROGRESS: 
                         case TYPE_MODIFIER: {
                             let lists = (info.type == TYPE_MODIFIER) ? [game.modifiers] : [game.marks, game.progress];
-
                             let icon = GetIconByName(info.target, lists);
                             if (icon && icon[1] > 0) {
                                 // Start new cycle if it doesn't exist or is not the same as before
                                 if (!current_markcycle || current_markcycle.name != info.target) {
                                     current_markcycle = { name: info.target, index: 0, locations: [] };
 
-                                    let check_condition = (info.type == TYPE_MODIFIER) ?
-                                    function(warp, info) { return (warp.modifier == info.target); } :
-                                    function(warp, info) { return (warp.link_type && warp.link_type == LINKTYPE_MARK && warp.link == info.target); };
+                                    let check_condition = GetConditionSameIcon(info.type);
 
                                     for (let location in game.warps) {
                                         for (let name in game.warps[location]) {
                                             let warp = game.warps[location][name];
-                                            if (check_condition(warp, info)) {
+                                            if (check_condition(warp, info.target)) {
                                                 current_markcycle.locations.push(location);
                                                 break;
                                             }
@@ -314,16 +311,16 @@ function ChangeWarpOffline(current_game, location, warp, link_type, link_locatio
         w.link_type     = link_type;
         w.link_location = link_location;
         w.link          = link;
-        if (old_link)                   { AddToMark(current_game, old_link, -1, location); }
-        if (link_type == LINKTYPE_MARK) { AddToMark(current_game, link,      1, location); }
+        if (old_link)                   { AddToIcon(current_game, old_link, -1, location, TYPE_MARK); }
+        if (link_type == LINKTYPE_MARK) { AddToIcon(current_game, link,      1, location, TYPE_MARK); }
     }
     
     if (w.modifier != modifier) {
         let old_modifier = null;
         if (w.modifier || w.modifier == "null") { old_modifier = w.modifier; }
         w.modifier = modifier;
-        if (old_modifier) { /*AddToModifier*/ }
-        if (modifier)     { /*AddToModifier*/ }
+        if (old_modifier)                   { AddToIcon(current_game, old_modifier, -1, location, TYPE_MODIFIER); }
+        if (modifier && modifier != "null") { AddToIcon(current_game, modifier,      1, location, TYPE_MODIFIER); }
     }
 
     rerender_location = true;
@@ -483,9 +480,19 @@ function GetIconByName(name_to_find, lists) {
     return null;
 }
 
+function GetConditionSameIcon(type) {
+    if (type == TYPE_MODIFIER) {
+        return function(warp, name) { return (warp.modifier == name); };
+    }
+    else {
+        return function(warp, name) { return (warp.link_type && warp.link_type == LINKTYPE_MARK && warp.link == name); };
+    }
+}
+
 // Call this AFTER adding/removing the mark
-function AddToMark (current_game, name, value, location) {
-    let info = GetIconByName(name, [current_game.marks, current_game.progress]);
+function AddToIcon (current_game, name, value, location, type) {
+    let lists = (type == TYPE_MODIFIER) ? [game.modifiers] : [game.marks, game.progress];
+    let info = GetIconByName(name, lists);
     if (!info) { return; }
 
     let old_value = info[1];
@@ -506,17 +513,16 @@ function AddToMark (current_game, name, value, location) {
         else if (value < 0) {
             if (has_location) {
                 // Check if it's more than once in this location
-                let ocurrences = 0;
+                let is_present_in_location = false;
+                let check_condition = GetConditionSameIcon(info.type);
                 for (let key in game.warps[location]) {
-                    if (game.warps[location][key].link_type &&
-                        game.warps[location][key].link_type == LINKTYPE_MARK &&
-                        game.warps[location][key].link == name)
-                    {
-                        ocurrences += 1;
+                    if (check_condition(game.warps[location][key], name)) {
+                        is_present_in_location = true;
+                        break;
                     }
                 }
 
-                if (ocurrences == 0) {
+                if (!is_present_in_location) {
                     let i = current_markcycle.locations.indexOf(location);
                     if (i >= 0) { // we found it
                         current_markcycle.locations.splice(i, 1);
