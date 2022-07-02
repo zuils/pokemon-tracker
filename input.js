@@ -300,14 +300,23 @@ function ChangeWarpOffline(current_game, location, warp, link_type, link_locatio
 
     // Save the warp
     let w = current_game.warps[location][warp];
-    if (w.link_type == LINKTYPE_MARK) { AddToMark(current_game, w.link, -1, location); }
-    if (link_type == LINKTYPE_MARK)   { AddToMark(current_game, link,    1, location); }
-    if (w.modifier)                   { /*AddToModifier*/}
-    if (modifier)                     { /*AddToModifier*/}
-    w.link_type     = link_type;
-    w.link_location = link_location;
-    w.link          = link;
-    w.modifier      = modifier;
+    if (w.link_type != link_type || w.link_location != link_location || w.link != link) {
+        let old_link = null;
+        if (w.link_type == LINKTYPE_MARK) { old_link = w.link; }
+        w.link_type     = link_type;
+        w.link_location = link_location;
+        w.link          = link;
+        if (old_link)                   { AddToMark(current_game, old_link, -1, location); }
+        if (link_type == LINKTYPE_MARK) { AddToMark(current_game, link,      1, location); }
+    }
+    
+    if (w.modifier != modifier) {
+        let old_modifier = null;
+        if (w.modifier || w.modifier == "null") { old_modifier = w.modifier; }
+        w.modifier      = modifier;
+        if (old_modifier) { /*AddToModifier*/}
+        if (modifier)     { /*AddToModifier*/}
+    }
 
     rerender_location = true;
 }
@@ -466,6 +475,7 @@ function GetMarkByName(name_to_find, current_game) {
     return null;
 }
 
+// Call this AFTER adding/removing the mark
 function AddToMark (current_game, name, value, location) {
     let info = GetMarkByName(name, current_game);
     if (!info) { return; }
@@ -498,12 +508,9 @@ function AddToMark (current_game, name, value, location) {
                     }
                 }
 
-                // We are removing the location AFTER calling this function, so
-                // if it's in here once, then there won't be any more after this
-                // and we can safely delete it from the list
-                if (ocurrences == 1) {
+                if (ocurrences == 0) {
                     let i = current_markcycle.locations.indexOf(location);
-                    if (i >= 0) {
+                    if (i >= 0) { // we found it
                         current_markcycle.locations.splice(i, 1);
                         if (current_markcycle.index > 0 && current_markcycle.index > i) {
                             current_markcycle.index -= 1;
