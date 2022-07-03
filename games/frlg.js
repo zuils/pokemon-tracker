@@ -77,8 +77,10 @@ var frlg = {
             sw:                 {x: 676,  y: 457, name: "Celadon City"        },
             s:                  {x: 749,  y: 400, name: "Celadon City"        },
             se:                 {x: 878,  y: 457, name: "Celadon City"        },
-            r7_underground:     {x: 992,  y: 337, name: "R7 (Celadon)"        },
-            r7_gate:            {x: 1104, y: 259, name: "R7 (Celadon)"        },
+            r7_underground:     {x: 992,  y: 535, name: "R7 (Celadon)"        },
+            r7_gate:            {x: 1100, y: 477, name: "R7 (Celadon)"        },
+            tea_bot:            {x: 1100, y: 271, name: "Celadon (Tea Lady)"  },
+			tea_top:            {x: 1100, y: 67,  name: "Celadon (Tea Lady)"  },
         },
         cerulean: {
             nw:                 {x: 169,  y: 150, name: "Cerulean City"       },
@@ -349,8 +351,10 @@ var frlg = {
             p_cave:             {x: 272,  y: 162, name: "R2 (Pewter)"         },
             p_house:            {x: 264,  y: 336, name: "R2 (Pewter)"         },
             p_gate_e:           {x: 307,  y: 654, name: "R2 (Pewter)"         },
-            v_gate_w:           {x: 491,  y: 101, name: "R2 (Viridian)"       },
-            v_gate_e:           {x: 698,  y: 27,  name: "R2 (Viridian)"       },
+            v_gate_w:           {x: 491,  y: 293, name: "R2 (Viridian)"       },
+            v_gate_e:           {x: 698,  y: 251, name: "R2 (Viridian)"       },
+            hm_bot:             {x: 582,  y: 146, name: "R2 (HM Flash)"       },
+			hm_top:             {x: 582,  y: 47,  name: "R2 (HM Flash)"       },
         },
         rocket_hideout: {
             b1f_stairs_w:       {x: 178,  y: 69,  name: "Rocket Hideout B1F"  },
@@ -576,12 +580,12 @@ var frlg = {
     // if null, then we don't do tracking
     // if undefined, then we don't draw the mark
     marks: [
-        [["unknown",     0], ["dead_end",  null], ["event",        0], ["center",        0], ["mart",      0], ["one_way",     null]],
-        [["normal",      0], ["fighting",     0], ["flying",       0], ["poison",        0], ["ground",    0], ["rock",           0], ["bug",    0], ["ghost",  0], ["fairy", 0]],
-        [["steel",       0], ["fire",         0], ["water",        0], ["grass",         0], ["electric",  0], ["psychic",        0], ["ice",    0], ["dragon", 0], ["dark",  0]],
-        [["1",           0], ["2",            0], ["3",            0], ["4",             0], ["5",         0], ["6",              0], ["7",      0], ["8",      0]],
-        [["bike_needed", 0], ["frlg_trainer", 0], ["team_rocket",  0], ["safari",        0]],
-        [["frlg_bush",   0], ["frlg_surf",    0], ["frlg_boulder", 0], ["frlg_darkness", 0], ["frlg_rock", 0], ["frlg_waterfall", 0]],
+        [["unknown",     0], ["dead_end",  null], ["event",        0], ["center",        0], ["mart",       0], ["one_way",     null]],
+        [["normal",      0], ["fighting",     0], ["flying",       0], ["poison",        0], ["ground",     0], ["rock",           0], ["bug",         0], ["ghost",        0], ["fairy", 0]],
+        [["steel",       0], ["fire",         0], ["water",        0], ["grass",         0], ["electric",   0], ["psychic",        0], ["ice",         0], ["dragon",       0], ["dark",  0]],
+        [["1",           0], ["2",            0], ["3",            0], ["4",             0], ["5",          0], ["6",              0], ["7",           0], ["8",            0]],
+        [["team_rocket", 0], ["frlg_rival",   0], ["",     undefined], ["safari",        0], ["masterball", 0]],
+        [["frlg_bush",   0], ["frlg_surf",    0], ["frlg_boulder", 0], ["frlg_darkness", 0], ["frlg_rock",  0], ["frlg_waterfall", 0], ["bike_needed", 0], ["frlg_trainer", 0],],
     ],
     progress: [
         [["boulder_badge", 0], ["cascade_badge", 0], ["thunder_badge", 0], ["rainbow_badge", 0], ["soul_badge", 0], ["marsh_badge",  0], ["volcano_badge", 0], ["earth_badge",  0]],
