@@ -584,7 +584,7 @@ var frlg = {
         [["normal",      0], ["fighting",     0], ["flying",       0], ["poison",        0], ["ground",     0], ["rock",           0], ["bug",         0], ["ghost",        0], ["fairy", 0]],
         [["steel",       0], ["fire",         0], ["water",        0], ["grass",         0], ["electric",   0], ["psychic",        0], ["ice",         0], ["dragon",       0], ["dark",  0]],
         [["1",           0], ["2",            0], ["3",            0], ["4",             0], ["5",          0], ["6",              0], ["7",           0], ["8",            0]],
-        [["team_rocket", 0], ["frlg_rival",   0], ["",     undefined], ["safari",        0], ["masterball", 0]],
+        [["team_rocket", 0], ["frlg_rival",   0], ["",     undefined], ["safari",        0], ["masterball", 0], ["c_legendary",    0]],
         [["frlg_bush",   0], ["frlg_surf",    0], ["frlg_boulder", 0], ["frlg_darkness", 0], ["frlg_rock",  0], ["frlg_waterfall", 0], ["bike_needed", 0], ["frlg_trainer", 0],],
     ],
     progress: [
