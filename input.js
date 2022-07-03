@@ -315,6 +315,7 @@ function ChangeWarpOffline(current_game, location, warp, link_type, link_locatio
         if (link_type == LINKTYPE_MARK) { AddToIcon(current_game, link,      1, location, TYPE_MARK); }
     }
     
+    if (modifier == "null") { modifier = null };
     if (w.modifier != modifier) {
         let old_modifier = null;
         if (w.modifier || w.modifier == "null") { old_modifier = w.modifier; }

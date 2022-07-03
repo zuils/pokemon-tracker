@@ -4,6 +4,9 @@ let config_networktoggle;
 
 let checkbox_smooth;
 
+let changelog_header;
+let help_texts = [];
+
 function ShowConfig() {
     //config.style.display = "block";
     config_window.classList.remove("window_hidden");
@@ -18,6 +21,10 @@ function ShowHelp() {
 }
 function HideHelp() {
     help_window.classList.add("window_hidden");
+    changelog_header.classList.remove("config_hidden");
+    for (let t of help_texts) {
+        t.classList.remove("config_hidden");
+    }
 }
 
 

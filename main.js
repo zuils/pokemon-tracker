@@ -14,7 +14,7 @@ const CACHE_GAME_LOADED    = "last-game-loaded";
 const CACHE_SMOOTH_IMAGES  = "smooth-images";
 const CACHE_DEBUG_LOCATION = "debug-location"
 const CACHE_LAST_VERSION   = "last-version"
-const CURRENT_VERSION = 1;
+const CURRENT_VERSION = 2;
 
 let ordered_games = [ // Games will be shown in the settings in order
     crystal,
@@ -101,12 +101,27 @@ function init() {
         game_buttons.appendChild(div);
     }
 
-    // Show explanation + changelog if last version isn't high enough
-    let last_version = localStorage.getItem(CACHE_LAST_VERSION);
-    if (!last_version || last_version < CURRENT_VERSION) {
-        ShowHelp();
-        localStorage.setItem(CACHE_LAST_VERSION, CURRENT_VERSION);
+    // Show explanation + changelog if we haven't shown it before
+    changelog_header = document.getElementById("changelog_header");
+    for (let i = 1; i <= CURRENT_VERSION; ++i) {
+        help_texts.push(document.getElementById("help_v" + i));
     }
+    let last_version = localStorage.getItem(CACHE_LAST_VERSION);
+    if (!last_version) { // New user
+        changelog_header.classList.add("config_hidden");
+        for (let i = 1; i < CURRENT_VERSION; ++i) {
+            help_texts[i].classList.add("config_hidden");
+        }
+        ShowHelp();
+    }
+    if (last_version && last_version < CURRENT_VERSION) { // Show last changes
+        for (let i = 0; i < last_version; ++i) {
+            help_texts[i].classList.add("config_hidden");
+        }
+
+        ShowHelp();
+    }
+    localStorage.setItem(CACHE_LAST_VERSION, CURRENT_VERSION);
 
     // Create canvas
     canvas  = document.getElementById('canvas');
