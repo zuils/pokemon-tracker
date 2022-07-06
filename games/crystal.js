@@ -335,10 +335,10 @@ var crystal = {
 			farm2: {x: 102, y: 29,  name: "Route 39" },
         },
         r41: {
-			topleft:  {x: 140, y: 167 },
-			topright: {x: 404, y: 192 },
-			botleft:  {x: 139, y: 391 },
-			botright: {x: 405, y: 484 },
+			topleft:  {x: 140, y: 167, name: "Route 41 (NW)" },
+			topright: {x: 404, y: 192, name: "Route 41 (NE)" },
+			botleft:  {x: 139, y: 391, name: "Route 41 (SW)" },
+			botright: {x: 405, y: 484, name: "Route 41 (SE)" },
         },
         ragelake_r43: {
             cut:      {x: 50,  y: 80,  name: "Lake of Rage"       },
