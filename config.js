@@ -156,6 +156,7 @@ function InitTrackerToUnknowns() {
             for (let key_warp in games[key_game].warps[key_location]) {
                 games[key_game].warps[key_location][key_warp].link_type = LINKTYPE_MARK;
                 games[key_game].warps[key_location][key_warp].link      = "unknown";
+                games[key_game].warps[key_location][key_warp].modifier  = null;
                 games[key_game].marks[0][0][1] += 1;
             }
         }
@@ -163,7 +164,7 @@ function InitTrackerToUnknowns() {
 }
 function ResetTracker() {
     for (let key_game in games) {
-        for (let array of [games[key_game].marks, games[key_game].progress]) {
+        for (let array of [games[key_game].marks, games[key_game].progress, games[key_game].modifiers]) {
             for (let row of array) {
                 for (let element of row) {
                     if (element[1] !== undefined && element[1] !== null) {
