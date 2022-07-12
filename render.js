@@ -407,11 +407,15 @@ function RenderMarks() {
 
     // ----- Render background progress tracker -----
     v.y += PROGRESS_YOFFSET;
+    let max_progress_marks = 0;
+    for (let p of game.progress) {
+        if (p.length > max_progress_marks) { max_progress_marks = p.length; }
+    }
     let background = {
         x: 0,
         y: v.y - MARK_SEPARATION,
-        w: game.progress[0].length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
-        h: game.progress.length    * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
+        w: max_progress_marks   * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
+        h: game.progress.length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
     };
     DrawSquareContextless(background, BACKGROUND_COLOR);
 

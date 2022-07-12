@@ -24,6 +24,7 @@ let ordered_games = [ // Games will be shown in the settings in order
     frlg,
     platinum,
     hgss,
+    white2,
 ];
 let game;
 let games = {};
