@@ -1,3 +1,14 @@
+/* Notes from Seb in case they become relevant in the future
+- The images show hidden grottos and other entrances but currently aren't randomized, so they haven't warps assigned
+- Some locations images are taken using screenshots from the game. They are good enough, but if we find higher
+quality images it might be interesting to replace them:
+	1. castelianorth + casteliaeast + casteliawest
+	2. frigaterooms + frigatehallway + frigatedeck
+	3. nimbasastation
+	4. driftveilmarket
+	5. pokemonleague + pokemonleagueout
+	6. whiteforest
+*/
 var white2 = {
 	debug: false,
     name: "white2",
