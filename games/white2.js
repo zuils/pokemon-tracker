@@ -122,7 +122,7 @@ var white2 = {
 			center:			{x: 826, y: 294, 												},
 			house_w:		{x: 365, y: 412, 												},
 			house_n:		{x: 625, y: 113, 												},
-			house_nw:		{x: 477, y: 145, 												},
+			house_nw:		{x: 477, y: 203, 												},
 			house_ne:		{x: 790, y: 119, 												},
 		},
 		anville: {
@@ -292,7 +292,7 @@ var white2 = {
 			center:			{x: 656, y: 593, 					 		   					},
 			topcenter:		{x: 656, y: 336, 					 		   					},
 			gym:			{x: 286, y: 182, 					 		   					},
-			rightgym:		{x: 466, y: 185, 					 		   					},
+			rightgym:		{x: 466, y: 260, 					 		   					},
 			drayden:		{x: 526, y: 409, 					 		   					},
 			house_n:		{x: 648, y: 185, 					 		   					},
 			house_w:		{x: 155, y: 482, 					 		   					},
