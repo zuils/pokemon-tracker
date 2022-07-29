@@ -116,8 +116,16 @@ function OnMouseMove(event) {
         // Prevent unneccessary rendering by checking if the text has to be changed
         if (current_hovering_target != previous_hovering_target) {
             if (current_hovering_target != '') {
+                // Clear map
+                aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
+
+                // Render map
                 RenderMap(info.target);
             } else {
+                // Clear map
+                aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
+
+                // Render map
                 RenderMap();
             }
         }
