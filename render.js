@@ -213,7 +213,7 @@ function SetSmoothing(state) {
     aux_context.imageSmoothingEnabled       = state;
 }
 
-function RenderMap() {
+function RenderMap(hover_location) {
     SetSmoothing(false);
 
     // ----- Draw main map -----
@@ -232,6 +232,9 @@ function RenderMap() {
             y: game.map.h - (FRAME_HEIGHT/2)*MAP_SCALE + LINE_YOFFSET
         };
         let lines = location.name.split("\n");
+        if (hover_location) {
+            lines = game.locations[hover_location].name.split("\n");
+        }
         switch (lines.length) {
             case 1: {
                 aux_context.fillText(lines[0], text_position.x, text_position.y);
