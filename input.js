@@ -107,25 +107,17 @@ function OnMouseMove(event) {
         let info = GetLocation(mouse_position);
 
         // Change current_hovering_target to info.target, if hovering a location
+        current_hovering_target = '';
         if (info && info.type == TYPE_LOCATION) {
             current_hovering_target = info.target;
-        } else {
-            current_hovering_target = '';
         }
         
         // Prevent unneccessary rendering by checking if the text has to be changed
         if (current_hovering_target != previous_hovering_target) {
+            aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
             if (current_hovering_target != '') {
-                // Clear map
-                aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
-
-                // Render map
                 RenderMap(info.target);
             } else {
-                // Clear map
-                aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
-
-                // Render map
                 RenderMap();
             }
         }
