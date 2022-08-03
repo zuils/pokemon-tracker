@@ -1,8 +1,10 @@
 let DEBUG_MODE = false;
-const DEBUG_WARP_TO_SELF      = true;
+const DEBUG_WARP_TO_SELF      = false;
 const DEBUG_PRINT_KEY         = false;
 const DEBUG_REMEMBER_LOCATION = true;
 const DEBUG_IMAGE_DIMENSIONS  = false;
+
+const AUTOTRACKER_DEVELOPMENT = false;
 
 let canvas; 
 let context;
@@ -159,11 +161,25 @@ function init() {
 
     // Start tracker
     requestAnimationFrame(GameLoop);
+
+    // Autotracker stuff for debugging
+    if (DEBUG_MODE && AUTOTRACKER_DEVELOPMENT) {
+        AT_Start();
+    }
 }
 
 function GameLoop() {
     if (game.ready) { Render(); }
     requestAnimationFrame(GameLoop);
+    if (DEBUG_MODE && AUTOTRACKER_DEVELOPMENT) {
+        if (socket.readyState == SOCKET_READYSTATE.OPEN) {
+            let current_time = new Date().getTime();
+            if (current_time - autotracker_last_poll > SECONDS_BETWEEN_POLLS*1000) {
+                AT_SendReadRequest();
+                autotracker_last_poll = current_time;
+            }
+        }
+    }
 }
 
 function FontReady() { rerender_location = true; }
