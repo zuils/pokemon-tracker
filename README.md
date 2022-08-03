@@ -1,8 +1,9 @@
 # Pokémon Tracker
 [Tracker Website](https://sekii.gitlab.io/pokemon-tracker)
 
-Project open to public so feel free to fork or add new maps for other game gens.
+Project open to public so feel free to fork or add new maps for other game gens. If you want to use the project offline, download the source code and open the file called "index.html" with your browser.
 
+## If you want to modify the tracker
 Check the issues open to contribute at modifying the code. **There's a chance I won't accept code modifications if they add dependencies or increase the complexity of the project too much.**
 
 I will accept any merge request to add new trackers for either new games or existing ones. The way I design the trackers is by trying to keep the number of warps to a minimum. If you'd like to see more complete trackers, feel free to make and submit a new one and I'll most likely accept it.
