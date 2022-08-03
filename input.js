@@ -95,9 +95,43 @@ function OnMouseDown(event) {
         }
     }
 }
+
+let previous_hovering_target = '';
+let current_hovering_target = '';
 function OnMouseMove(event) {
     if (!game.ready) return;
     mouse_position = EventToPosition(event);
+    
+    if (mouse_position.x < game.left_width && mouse_position.y < game.map.h) {
+        // Get the hovered location, if the cursor is within the map
+        let info = GetLocation(mouse_position);
+
+        // Change current_hovering_target to info.target, if hovering a location
+        if (info && info.type == TYPE_LOCATION) {
+            current_hovering_target = info.target;
+        } else {
+            current_hovering_target = '';
+        }
+        
+        // Prevent unneccessary rendering by checking if the text has to be changed
+        if (current_hovering_target != previous_hovering_target) {
+            if (current_hovering_target != '') {
+                // Clear map
+                aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
+
+                // Render map
+                RenderMap(info.target);
+            } else {
+                // Clear map
+                aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
+
+                // Render map
+                RenderMap();
+            }
+        }
+
+        previous_hovering_target = current_hovering_target;
+    }
 }
 function OnMouseUp(event) {
     if (!game.ready) return;
