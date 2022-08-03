@@ -53,8 +53,20 @@ function OnMouseDown(event) {
 
     let click = null;
     switch (event.which) {
-        case LEFT_CLICK:  click = left_click;  break;
-        case RIGHT_CLICK: click = right_click; break;
+        case LEFT_CLICK:  {
+            if (!traslucent_warps) {
+                click = left_click;
+            }
+        } break;
+        case RIGHT_CLICK: click = right_click; {
+            if (current_state == STATE_DEFAULT && mouse_position.x > game.left_width) {
+                let info = GetWarp(mouse_position);
+                if (info && info.type == TYPE_WARP) break;
+
+                traslucent_warps  = true;
+                rerender_location = true;
+            }
+        } break;
         case MIDDLE_CLICK: {
             if (!DEBUG_MODE) return;
 
@@ -138,11 +150,18 @@ function OnMouseUp(event) {
     let click = null;
     switch (event.which) {
         case LEFT_CLICK: {
-            click = left_click;
+            if (!traslucent_warps) {
+                click = left_click;
+            }
         } break;
         case RIGHT_CLICK: {
             click = right_click;
             current_state = STATE_DEFAULT;
+
+            if (traslucent_warps) {
+                traslucent_warps  = false;
+                rerender_location = true;
+            }
         } break;
         default: return;
     }

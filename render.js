@@ -43,6 +43,7 @@ let aux_context;
 let rerender_all = true;
 let rerender_location = true;
 let last_rendered_location = "";
+let traslucent_warps = false;
 
 var loading_process = {};
 var settings, help;
@@ -342,6 +343,9 @@ function RenderLocation() {
 
     // ----- Render warps -----
     aux_context.save(); {
+        if (traslucent_warps) {
+            aux_context.globalAlpha = 0.2;
+        }
         aux_context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
         aux_context.textAlign = "center";
         aux_context.fillStyle = "#111111";
