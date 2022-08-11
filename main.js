@@ -101,7 +101,7 @@ function init() {
                     }
                 }
 
-                text.innerHTML += " (" + g.marks[0][0][1] + " warps)";
+                text.innerHTML += " (" + (g.marks[0][0][1] + g.marks[0][1][1]) + " warps)";
 
             div.appendChild(text);
         game_buttons.appendChild(div);

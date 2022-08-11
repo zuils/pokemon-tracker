@@ -453,7 +453,7 @@ var crystal = {
 			r42_gate:               {x: 68,  y: 765, name: "Route 42"            },
 			r42_cave1:              {x: 168, y: 678, name: "Route 42"            },
 			r42_cave2:              {x: 313, y: 719, name: "Route 42"            },
-			r42_cave3:              {x: 550, y: 698, name: "Route42 (Mahogany)" },
+			r42_cave3:              {x: 550, y: 698, name: "Route42 (Mahogany)"  },
 			mortarmain_topstairs:   {x: 147, y: 119, name: "Mt. Mortar (Main)"   },
 			mortarmain_midstairs:   {x: 68,  y: 278, name: "Mt. Mortar (Main)"   },
 			mortarmain_leftstairs:  {x: 84,  y: 436, name: "Mt. Mortar (Main)"   },
