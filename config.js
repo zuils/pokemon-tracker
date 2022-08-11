@@ -154,10 +154,18 @@ function InitTrackerToUnknowns() {
         games[key_game].marks[0][0][1] = 0; // assuming unknowns are always being tracked
         for (let key_location in games[key_game].warps) {
             for (let key_warp in games[key_game].warps[key_location]) {
-                games[key_game].warps[key_location][key_warp].link_type = LINKTYPE_MARK;
-                games[key_game].warps[key_location][key_warp].link      = "unknown";
-                games[key_game].warps[key_location][key_warp].modifier  = null;
-                games[key_game].marks[0][0][1] += 1;
+                let w = games[key_game].warps[key_location][key_warp];
+                w.link_type = LINKTYPE_MARK;
+                w.modifier  = null;
+
+                if (w.corridor) {
+                    w.link = "corridor";
+                    games[key_game].marks[0][1][1] += 1;
+                }
+                else {
+                    w.link = "unknown";
+                    games[key_game].marks[0][0][1] += 1;
+                }
             }
         }
     }
