@@ -56,6 +56,8 @@ var frlg = {
         ss_anne:          {x: 104, y: 80,  w: 8,  h: 8,  name: "SS Anne"                                                     },
         victory_road:     {x: 8,   y: 32,  w: 8,  h: 8,  name: "Victory Road"                                                },
         gates:            {x: 64,  y: 8,   w: 8,  h: 8,  name: "Gates",                         link_name: "Gate"            },
+        rocktunnel1:	  {x: 128, y: 32,  w: 8,  h: 8,  name: "Rock Tunnel",                  								 },
+		rocktunnel2:	  {x: 128, y: 39,  w: 8,  h: 8,  name: "Rock Tunnel",                   							 },
     },
 
     // Undefined fields:
@@ -236,9 +238,17 @@ var frlg = {
             _1fa_entrance:      {x: 504,  y: 400, name: "Icefall Cave 1F A"   },
         },
         indigo: {
-            stairs:             {x: 45,   y: 200 },
-            e4:                 {x: 69,   y: 35  },
-            entrance:           {x: 181,  y: 254 },
+            stairs:             {x: 65 ,  y: 630 							  },
+            e4:                 {x: 86 ,  y: 473 							  },
+            entrance:           {x: 198,  y: 675 							  },
+			lorelei_n:			{x: 104,  y: 18 , name: "E4 Member (Lorelei)" },
+			lorelei_s:			{x: 104,  y: 186, name: "E4 Member (Lorelei)" },
+			bruno_n:			{x: 324,  y: 18 , name: "E4 Member (Bruno)"   },
+			bruno_s:			{x: 324,  y: 186, name: "E4 Member (Bruno)"   },
+			agatha_n:			{x: 104,  y: 234, name: "E4 Member (Agatha)"  },
+			agatha_s:			{x: 104,  y: 400, name: "E4 Member (Agatha)"  },
+			lance_n:			{x: 324,  y: 234, name: "E4 Member (Lance)"   },
+			lance_s:			{x: 324,  y: 400, name: "E4 Member (Lance)"   },
         },
         lavender: {
             r8_gate:            {x: 54,   y: 145, name: "R8 (Lavender)"       },

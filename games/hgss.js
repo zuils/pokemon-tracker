@@ -221,9 +221,17 @@ var hgss = {
 
         },
         indigoplateau: {
-            entrance: {x: 168, y: 326 },
-			right:    {x: 295, y: 292 },
-			top:      {x: 168, y: 62  },
+            entrance: 	{x: 168, y: 485 },
+			right:    	{x: 295, y: 457 },
+			top:      	{x: 168, y: 184 },
+			willtop:	{x: 472, y: 25 , name: "E4 Member (Will)"  },
+			willbot:	{x: 472, y: 329, name: "E4 Member (Will)"  },
+			kogatop:	{x: 735, y: 25 , name: "E4 Member (Koga)"  },
+			kogabot:	{x: 735, y: 329, name: "E4 Member (Koga)"  },
+			brunotop:	{x: 472, y: 394, name: "E4 Member (Bruno)" },
+			brunobot:	{x: 472, y: 693, name: "E4 Member (Bruno)" },
+			karentop:	{x: 735, y: 394, name: "E4 Member (Karen)" },
+			karenbot:	{x: 735, y: 693, name: "E4 Member (Karen)" },
         },
 
         pallet: {
