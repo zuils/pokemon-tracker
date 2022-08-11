@@ -9,8 +9,8 @@ var white2_a = {
 
     // Config texts
 	config_name: "Black2/White2",
-    config_randomizer_author: "Adrienn",
-	config_randomizer_link: "https://github.com/adrienntindall/hgss-map-randomizer",
+    config_randomizer_author: "Adrienn Tindall",
+	config_randomizer_link: "https://github.com/adrienntindall/hgss-map-randomizer/releases",
 	config_tracker_author: "KrakenTheJaken",
 	config_tracker_link: "https://twitter.com/KrakenJaken",
 

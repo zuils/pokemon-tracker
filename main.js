@@ -1,8 +1,8 @@
-let DEBUG_MODE = true;
+let DEBUG_MODE = false;
 const DEBUG_WARP_TO_SELF      = false;
 const DEBUG_PRINT_KEY         = false;
 const DEBUG_REMEMBER_LOCATION = true;
-const DEBUG_IMAGE_DIMENSIONS  = true;
+const DEBUG_IMAGE_DIMENSIONS  = false;
 
 const AUTOTRACKER_DEVELOPMENT = false;
 
