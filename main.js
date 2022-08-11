@@ -1,8 +1,8 @@
-let DEBUG_MODE = false;
+let DEBUG_MODE = true;
 const DEBUG_WARP_TO_SELF      = false;
 const DEBUG_PRINT_KEY         = false;
 const DEBUG_REMEMBER_LOCATION = true;
-const DEBUG_IMAGE_DIMENSIONS  = false;
+const DEBUG_IMAGE_DIMENSIONS  = true;
 
 const AUTOTRACKER_DEVELOPMENT = false;
 
@@ -27,6 +27,7 @@ let ordered_games = [ // Games will be shown in the settings in order
     platinum,
     hgss,
     white2,
+    white2_a
 ];
 let game;
 let games = {};
