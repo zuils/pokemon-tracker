@@ -1,26 +1,15 @@
-/* Notes from Seb in case they become relevant in the future
-- The images show hidden grottos and other entrances but currently aren't randomized, so they haven't warps assigned
-- Some locations images are taken using screenshots from the game. They are good enough, but if we find higher
-quality images it might be interesting to replace them:
-	1. castelianorth + casteliaeast + casteliawest
-	2. frigaterooms + frigatehallway + frigatedeck
-	3. nimbasastation
-	4. driftveilmarket
-	5. pokemonleague + pokemonleagueout
-	6. whiteforest
-*/
-var white2 = {
+var black2ad = {
 	debug: false,
-    name: "white2",
+    name: "black2ad",
     folder: "black2white2",
     start_location: "aspertia",
     font: "NDS_Font",
     font_size: "38px",
 
     // Config texts
-	config_name: "White 2",
-	config_randomizer_author: "Pointcrow",
-	config_randomizer_link: "https://www.reddit.com/r/pokemon/comments/qel5h4/i_created_a_mod_that_randomizes_the_entire_map_of/",
+	config_name: "Black 2",
+	config_randomizer_author: "Adrienn Tindall",
+	config_randomizer_link: "https://github.com/adrienntindall/hgss-map-randomizer/releases",
 	config_tracker_author: "Seb Hammes", 
 	config_tracker_link: "https://twitter.com/RealSeb95",
 
@@ -30,6 +19,7 @@ var white2 = {
         accumula_r2:		{x: 306, y: 160, w: 17, h: 8 ,  name: "Accumula Town\nRoute 2"  },
 		anville:			{x: 15 , y: 32 , w: 8 , h: 8 ,  name: "Anville Town"   			},
 		aspertia:			{x: 10 , y: 180, w: 8 , h: 15,  name: "Aspertia City"  			},
+		blackcityad:		{x: 264, y: 116, w: 15, h: 8 ,  name: "Black City"  			},
 		castelianorth:		{x: 173, y: 169, w: 16, h: 8 ,  name: "Castelia City (North)"   },
 		casteliawest:		{x: 173, y: 177, w: 8 , h: 15,  name: "Castelia City (West)"   	},
 		casteliaeast:		{x: 181, y: 177, w: 8 , h: 15,  name: "Castelia City (East)"   	},
@@ -44,15 +34,14 @@ var white2 = {
 		nimbasa1:			{x: 173, y: 116, w: 8 , h: 16,  name: "Nimbasa City (Left)"   	},
 		nimbasa2:			{x: 181, y: 116, w: 8 , h: 16,  name: "Nimbasa City (Right)"   	},
 		nuvema_r1:       	{x: 315, y: 187, w: 8 , h: 17,  name: "Nuvema Town\nRoute 1"   	},
-		opelucidwh:			{x: 162, y: 43 , w: 15, h: 15,  name: "Opelucid City"   		},
+		opelucidbl:			{x: 162, y: 43 , w: 15, h: 15,  name: "Opelucid City"   		},
         striaton:			{x: 306, y: 134, w: 8 , h: 8 ,  name: "Striaton City"   		},
 		undella:			{x: 296, y: 87 , w: 15, h: 8 ,  name: "Undella Town" 			},
 		virbank:			{x: 80 , y: 162, w: 15, h: 8 ,  name: "Virbank City"  			},
-		whiteforest:		{x: 264, y: 116, w: 15, h: 8 ,  name: "White Forest"  			},
-
+		
         // Routes
         r3:					{x: 280, y: 126, w: 8 , h: 8 ,  name: "Route 3"   				},
-		r4wh:				{x: 177, y: 144, w: 8 , h: 16,  name: "Route 4"   				},
+		r4bl:				{x: 177, y: 144, w: 8 , h: 16,  name: "Route 4"   				},
 		r5:					{x: 150, y: 116, w: 8 , h: 8 ,  name: "Route 5"   				},
 		r6:					{x: 67 , y: 98 , w: 8 , h: 8 ,  name: "Route 6"   				},
 		r7:					{x: 49 , y: 76 , w: 8 , h: 8 ,  name: "Route 7"   				},
@@ -71,22 +60,26 @@ var white2 = {
 		casteliasewers:		{x: 188, y: 191, w: 8 , h: 8 ,  name: "Castelia Sewers"   		},
 		dreamyard:			{x: 321, y: 134, w: 8 , h: 8 ,  name: "Dreamyard"   			},
 		driftveilmarket:	{x: 80 , y: 116, w: 8 , h: 8 ,  name: "Driftveil Market"   		},
-		frigatedeck:		{x: 284, y: 178, w: 8 , h: 8 ,  name: "Plasma Frigate\nDeck" 	},
+		frigatedeckbl:		{x: 284, y: 178, w: 8 , h: 8 ,  name: "Plasma Frigate\nDeck" 	},
 		frigatehallway:		{x: 293, y: 178, w: 8 , h: 8 ,  name: "Plasma Frigate\nHallway" },
 		frigaterooms:		{x: 302, y: 178, w: 8 , h: 8 ,  name: "Plasma Frigate\nRooms"   },
 		joinavenue:			{x: 177, y: 134, w: 8 , h: 8 ,  name: "Join Avenue"   			},
+		ncastle:			{x: 201, y: 20 , w: 8 , h: 8 ,  name: "N's Castle"   			},
 		nimbasastation:		{x: 164, y: 124, w: 8 , h: 8 ,  name: "Nimbasa\nGear Station"   },
 		pinwheelforest:		{x: 254, y: 150, w: 8 , h: 8 ,  name: "Pinwheel Forest"   		},
 		pokemonleague:		{x: 206, y: 3  , w: 16, h: 8 ,  name: "Pokemon League"   		},
 		pokemonleagueout:	{x: 206, y: 11 , w: 16, h: 8 ,  name: "Pokemon League (Out)"	},
+		pokestarstudios:	{x: 84 , y: 153, w: 8 , h: 8 ,  name: "Pokestar Studios"   		},
 		pwt:				{x: 89 , y: 128, w: 8 , h: 8 ,  name: "PWT"						},
 		reliccastle:		{x: 149, y: 144, w: 8 , h: 8 ,  name: "Relic Castle"   			},
 		relicpassage1:		{x: 80 , y: 128, w: 8 , h: 8 ,  name: "Relic Passage (PWT)"   	},
 		relicpassage2:		{x: 80 , y: 137, w: 8 , h: 8 ,  name: "Relic Passage (Castelia)"},
 		revmountainout:		{x: 250, y: 87 , w: 8 , h: 8 ,  name: "Reversal Mountain (Out)" },
-		revmountainwh:		{x: 270, y: 87 , w: 8 , h: 8 ,  name: "Reversal Mountain (In)" 	},
+		revmountainwh:		{x: 270, y: 82 , w: 8 , h: 8 ,  name: "Reversal Mountain (Lava)"},
+		revmountainbl:		{x: 270, y: 92 , w: 8 , h: 8 ,  name: "Reversal Mountain (Water)"},
 		royalunova:			{x: 173, y: 193, w: 8 , h: 8 ,  name: "Royal Unova"   			},
 		shoppingmall:		{x: 150, y: 41 , w: 8 , h: 8 ,  name: "Shopping Mall"   		},
+		strangehouse:		{x: 250, y: 78 , w: 8 , h: 8 ,  name: "Strange House"   		},
 		undellabay:			{x: 321, y: 87 , w: 8 , h: 8 ,  name: "Undella Bay"   			},
 		villagebridge:		{x: 202, y: 50 , w: 15, h: 8 ,  name: "Village Bridge"   		},
 		
@@ -105,8 +98,10 @@ var white2 = {
 		victoryroadcaves:	{x: 222, y: 20 , w: 8 , h: 8 ,  name: "Victory Road (Caves)"	},
 		victoryroadcliff:	{x: 210, y: 20 , w: 8 , h: 8 ,  name: "Victory Road (Cliff)"	},
 		victoryroadentrance:{x: 258, y: 20 , w: 8 , h: 8 ,  name: "Victory Road (Entrance)"	},
-		victoryroadoutwh:	{x: 234, y: 20 , w: 8 , h: 8 ,  name: "Victory Road (Outside)"	},
-		victoryroadruinswh:	{x: 246, y: 20 , w: 8 , h: 8 ,  name: "Victory Road (Ruins)"	},
+		victoryroadoutwh:	{x: 234, y: 15 , w: 8 , h: 8 ,  name: "Victory Road (Outside/White)"},
+		victoryroadoutbl:	{x: 234, y: 25 , w: 8 , h: 8 ,  name: "Victory Road (Outside/Black)"},
+		victoryroadruinswh:	{x: 246, y: 15 , w: 8 , h: 8 ,  name: "Victory Road (Ruins/White)"	},		
+		victoryroadruinsbl:	{x: 246, y: 25 , w: 8 , h: 8 ,  name: "Victory Road (Ruins/Black)"	},
 		wellspringcave:		{x: 271, y: 126, w: 8 , h: 8 ,  name: "Wellspring Cave"   		},
     },
 
@@ -132,11 +127,18 @@ var white2 = {
 		},
 		aspertia: {
 			gate:			{x: 440, y: 31 , 												},
-			center:			{x: 346, y: 465, 												},
 			gym:			{x: 180, y: 432, 												},
 			house_n:		{x: 550, y: 228, 												},
 			house_mid:		{x: 253, y: 631, 												},
 			house_s:		{x: 161, y: 794, 												},
+		},
+		blackcityad: {
+			gate_left:		{x: 100, y: 425, 					 		   					},
+			gate_right:		{x: 796, y: 25 , 					 		   					},
+			house:			{x: 795, y: 491, 					 		   					},
+			center:			{x: 796, y: 256, 					 		   					},
+			tower:			{x: 444, y: 172, 					 		   					},
+			bighouse:		{x: 452, y: 460, 					 		   					},
 		},
 		castelianorth: {
 			center_n:		{x: 456, y: 468, 												},
@@ -201,7 +203,6 @@ var white2 = {
 			center:			{x: 376, y: 778, 												},
 			house_left:		{x: 599, y: 786, 												},
 			house_right:	{x: 691, y: 752, 												},
-			alder:			{x: 413, y: 300, 												},
 			grove:			{x: 607, y: 25 , 												},
 		},
 		humilau_r21: {
@@ -229,8 +230,7 @@ var white2 = {
 		lacunosa_r12: {
 			r12_gate:		{x: 86 , y: 220, name: "Route 12 (Lacunosa)"					},
 			center:			{x: 630, y: 391, 												},
-			leftcenter:		{x: 408, y: 398, 												},
-			house_nw:		{x: 482, y: 141, 												},
+			leftcenter:		{x: 408, y: 398,												},
 			house_n:		{x: 576, y: 179, 												},
 			house_ne:		{x: 761, y: 60 , 												},
 		},
@@ -286,7 +286,7 @@ var white2 = {
 			middle:			{x: 233, y: 413, 					 		   					},
 			lab:			{x: 142, y: 298, 					 		   					},
 		},
-		opelucidwh: {
+		opelucidbl: {
 			gate_sw:		{x: 90 , y: 636, 					 		   					},
 			gate_se:		{x: 871, y: 636, 					 		   					},
 			center:			{x: 656, y: 593, 					 		   					},
@@ -325,13 +325,7 @@ var white2 = {
 			house:			{x: 184, y: 446, 					 		   					},
 			complex:		{x: 339, y: 690, 					 		   					},
 		},
-		whiteforest: {
-			gate_left:		{x: 90 , y: 312, 					 		   					},
-			gate_right:		{x: 616, y: 50 , 					 		   					},
-			house:			{x: 291, y: 268, 					 		   					},
-			center:			{x: 610, y: 298, 					 		   					},
-		},
-
+		
         // Routes
 		r3: {
 			cave:			{x: 90 , y: 56 , 					 		   					},
@@ -339,15 +333,15 @@ var white2 = {
 			school:			{x: 525, y: 78 , 					 		   					},
 			daycare:		{x: 692, y: 78 , 					 		   					},
 		},
-		r4wh: {
-			gate_s:			{x: 734, y: 839, 					 		   					},
+		r4bl: {
+			gate_s:			{x: 748, y: 903, 					 		   					},
 			gate_nw:		{x: 124, y: 27 , 					 		   					},
-			gate_ne:		{x: 736, y: 27 , 					 		   					},
-			house_left:		{x: 80 , y: 453, 					 		   					},
-			house_right_n:	{x: 872, y: 273, 					 		   					},
-			house_right_s:	{x: 745, y: 681, 					 		   					},
-			house_midleft:	{x: 465, y: 320, 					 		   					},
-			house_midright:	{x: 644, y: 320, 					 		   					},
+			gate_ne:		{x: 720, y: 27 , 					 		   					},
+			house:			{x: 90 , y: 226, 					 		   					},
+			house_right_n:	{x: 819, y: 256, 					 		   					},
+			house_right_mid:{x: 819, y: 571, 					 		   					},
+			house_right_s:	{x: 819, y: 706, 					 		   					},
+			house_left:		{x: 676, y: 424, 					 		   					},
 		},
 		r5: {
 			gate:			{x: 915, y: 270, 					 		   					},
@@ -358,6 +352,7 @@ var white2 = {
 			cave_n:			{x: 213, y: 97 , 					 		   					},
 			cave_e:			{x: 856, y: 371, 					 		   					},
 			house:			{x: 114, y: 362, 					 		   					},
+			lab:			{x: 467, y: 481, 					 		   					},
 		},
 		r7: {
 			cave:			{x: 543, y: 47 , 					 		   					},
@@ -439,12 +434,14 @@ var white2 = {
 			east:			{x: 419, y: 275, 												},
 			south:			{x: 243, y: 473, 												},
 		},
-		frigatedeck: {
-			down_n:			{x: 391, y: 201, name: "Plasma Frigate (Deck)"					},
-			down_s:			{x: 259, y: 532, name: "Plasma Frigate (Deck)"					},
-			entry:			{x: 156, y: 384, name: "Plasma Frigate (Deck)"					},
-			door_n:			{x: 391, y: 30 , name: "Plasma Frigate (Deck)"					},
-			door_s:			{x: 265, y: 819, name: "Plasma Frigate (Deck)"					},
+		frigatedeckbl: {
+			r_down:			{x: 475, y: 125, name: "Plasma Frigate R (Deck)"				},
+			r_entry:		{x: 444, y: 372, name: "Plasma Frigate R (Deck)"				},
+			r_door_n:		{x: 475, y: 31 , name: "Plasma Frigate R (Deck)"				},
+			r_door_s:		{x: 475, y: 694, name: "Plasma Frigate R (Deck)"				},
+			l_entry:		{x: 125, y: 372, name: "Plasma Frigate L (Deck)"				},
+			l_door_n:		{x: 154 ,y: 31 , name: "Plasma Frigate L (Deck)"				},
+			l_door_s:		{x: 154, y: 694, name: "Plasma Frigate L (Deck)"				},
 		},
 		frigatehallway: {
 			north_stairs:	{x: 294, y: 209, name: "Plasma Frigate (Hallway N)"				},
@@ -493,6 +490,11 @@ var white2 = {
 			gate_s:			{x: 161, y: 825, 												},
 			office:			{x: 86 , y: 691, 												},
 		},
+		ncastle: {
+			stairs_left:	{x: 100, y: 232, 												},
+			stairs_right:	{x: 735, y: 45 , 												},
+			door:			{x: 158, y: 30 , 												},
+		},
 		nimbasastation: {
 			left_n:			{x: 350, y: 219, name: "Gear Station"							},
 			leftmid_n:		{x: 262, y: 304, name: "Gear Station"							},
@@ -510,7 +512,6 @@ var white2 = {
 			entrance:		{x: 720, y: 519, name: "Pinwheel (Entrance)"					},
 		},
 		pokemonleague: {
-			entry:			{x: 487, y: 701, 												},
 			left:			{x: 110, y: 267, 												},
 			midleft:		{x: 272, y: 90 , 												},
 			midright:		{x: 676, y: 90 , 												},
@@ -521,9 +522,13 @@ var white2 = {
 			league:			{x: 617, y: 120, 												},
 			entry:			{x: 661, y: 482, 												},
 		},
+		pokestarstudios: {
+			gate:			{x: 390, y: 779, 												},
+			theater:		{x: 650, y: 75 , 												},
+			studio:			{x: 190, y: 119, 												},
+		},
 		pwt: {
 			gate:			{x: 369, y: 58 , 												},
-			pwt:			{x: 740, y: 210, 												},
 			cave:			{x: 185, y: 418, 												},
 		},
 		reliccastle: {
@@ -540,14 +545,24 @@ var white2 = {
 			house:			{x: 686, y: 218, 												},
 		},
 		revmountainwh: {
-			entry_nw:		{x: 95 , y: 68 , name: "Reversal Mountain (1F)"					},
-			entry_ne:		{x: 839, y: 68 , name: "Reversal Mountain (1F)"					},
-			entry_sw:		{x: 153, y: 828, name: "Reversal Mountain (1F)"					},
-			down_w:			{x: 398, y: 649, name: "Reversal Mountain (1F)"					},
-			down_e:			{x: 819, y: 342, name: "Reversal Mountain (1F)"					},
-			link_n:			{x: 373, y: 21 , name: "Reversal Mountain (Link)"				},
-			link_s:			{x: 373, y: 214, name: "Reversal Mountain (Link)"				},
-			link_e:			{x: 441, y: 86 , name: "Reversal Mountain (Link)"				},
+			entry_nw:		{x: 95 , y: 68 , name: "Reversal Mountain Lava (1F)"			},
+			entry_ne:		{x: 839, y: 68 , name: "Reversal Mountain Lava (1F)"			},
+			entry_sw:		{x: 153, y: 828, name: "Reversal Mountain Lava (1F)"			},
+			down_w:			{x: 398, y: 649, name: "Reversal Mountain Lava (1F)"			},
+			down_e:			{x: 819, y: 342, name: "Reversal Mountain Lava (1F)"			},
+			link_n:			{x: 373, y: 21 , name: "Reversal Mountain Lava (Link)"			},
+			link_s:			{x: 373, y: 214, name: "Reversal Mountain Lava (Link)"			},
+			link_e:			{x: 441, y: 86 , name: "Reversal Mountain Lava (Link)"			},
+		},
+		revmountainbl: {
+			entry_nw:		{x: 95 , y: 68 , name: "Reversal Mountain Water (1F)"			},
+			entry_ne:		{x: 839, y: 68 , name: "Reversal Mountain Water (1F)"			},
+			entry_sw:		{x: 153, y: 828, name: "Reversal Mountain Water (1F)"			},
+			down_w:			{x: 398, y: 649, name: "Reversal Mountain Water (1F)"			},
+			down_e:			{x: 618, y: 707, name: "Reversal Mountain Water (1F)"			},
+			link_n:			{x: 373, y: 21 , name: "Reversal Mountain Water (Link)"			},
+			link_s:			{x: 373, y: 214, name: "Reversal Mountain Water (Link)"			},
+			link_e:			{x: 441, y: 86 , name: "Reversal Mountain Water (Link)"			},
 		},
 		royalunova: {
 			left_red_nw:	{x: 147, y: 85 , name: "Royal Unova (Left)"						},
@@ -570,8 +585,24 @@ var white2 = {
 			entry:			{x: 195, y: 522, 												},
 			room:			{x: 332, y: 283, 												},
 		},
+		strangehouse: {
+			top_entry:		{x: 331, y: 350, name: "Strange House (Top)"					},
+			top_downleft:	{x: 108, y: 245, name: "Strange House (Top)"					},
+			top_downright:	{x: 549, y: 245, name: "Strange House (Top)"					},
+			top_doorleft:	{x: 238, y: 166, name: "Strange House (Top)"					},
+			top_doorright:	{x: 423, y: 166, name: "Strange House (Top)"					},
+			bot_entry:		{x: 331, y: 749, name: "Strange House (Bottom)"					},
+			bot_downright:	{x: 558, y: 566, name: "Strange House (Bottom)"					},
+			bot_doorleft:	{x: 201, y: 411, name: "Strange House (Bottom)"					},
+			bot_doormid:	{x: 329, y: 457, name: "Strange House (Bottom)"					},
+			bot_doorright:	{x: 461, y: 411, name: "Strange House (Bottom)"					},
+		},
 		undellabay: {
 			cave:			{x: 213, y: 36 , 												},
+			dive_n:			{x: 554, y: 271, 												},
+			dive_s:			{x: 554, y: 748, 												},
+			dive_w:			{x: 276, y: 480, 												},
+			dive_e:			{x: 835, y: 480, 												},
 		},
 		villagebridge: {
 			left_gate:		{x: 88 , y: 203, 												},
@@ -704,7 +735,21 @@ var white2 = {
 			cave_s:			{x: 632, y: 466, 												},
 			entry:			{x: 914, y: 371, 												},
 		},
+		victoryroadoutbl: {
+			cave_nw:		{x: 95 , y: 50 , 												},
+			cave_n:			{x: 313, y: 37 , 												},
+			cave_ne:		{x: 512, y: 64 , 												},
+			grove:			{x: 95 , y: 388, 												},
+			cave_s:			{x: 632, y: 466, 												},
+			entry:			{x: 914, y: 371, 												},
+		},
 		victoryroadruinswh: {
+			bigentry_left:	{x: 95 , y: 298, 												},
+			bigentry_right:	{x: 890, y: 828, 												},
+			entry_mid:		{x: 558, y: 129, 												},
+			entry_cave:		{x: 333, y: 109, 												},
+		},
+		victoryroadruinsbl: {
 			bigentry_left:	{x: 95 , y: 298, 												},
 			bigentry_right:	{x: 890, y: 828, 												},
 			entry_mid:		{x: 558, y: 129, 												},
