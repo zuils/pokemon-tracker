@@ -185,7 +185,8 @@ var crystal = {
 			mart:        {x: 247, y: 430 },
 			center:      {x: 351, y: 500 },
 			rightcenter: {x: 472, y: 354 },
-
+			den_door:    {x: 70,  y: 57,  corridor: "den_house", name: "Dragon's Den" },
+			den_house:   {x: 70,  y: 250, corridor: "den_door",  name: "Dragon's Den" },
         },
         indigo_e4: {
 			center_left:     {x: 40,  y: 490,                        name: "Indigo Plateau"    },
@@ -437,9 +438,11 @@ var crystal = {
 			b1f:     {x: 389, y: 487, name: "Goldenrod Store" },
         },
         underground: {
-			top:      {x: 31,  y: 72  },
-			basement: {x: 264, y: 130 },
-			bot:      {x: 31,  y: 188 },
+			top:               {x: 31,  y: 72                                                   },
+			basement:          {x: 264, y: 130                                                  },
+			bot:               {x: 31,  y: 188                                                  },
+			basement_rival:    {x: 121, y: 325, corridor: "basement_director", name: "Basement" },
+			basement_director: {x: 251, y: 325, corridor: "basement_rival",    name: "Basement" },
         },
         tintower: {
 			tinL_left:       {x: 335, y: 192, name: "Tin Tower (L)"         },
