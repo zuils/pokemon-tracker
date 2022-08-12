@@ -100,8 +100,8 @@ function init() {
                         text.innerHTML += g.config_tracker_author;
                     }
                 }
-
-                text.innerHTML += " (" + (g.marks[0][0][1] + g.marks[0][1][1]) + " warps)";
+                g.unknownCount = g.marks[0][0][1] + g.marks[0][1][1];
+                text.innerHTML += " (" + g.unknownCount + " warps)";
 
             div.appendChild(text);
         game_buttons.appendChild(div);

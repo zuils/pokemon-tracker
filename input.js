@@ -13,8 +13,14 @@ function RegisterInputEvents() {
 
     document.addEventListener("keydown", OnKeyDown);
     document.addEventListener("keyup",   OnKeyUp);
+    addEventListener("beforeunload", BeforeUnload);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
+function BeforeUnload(event) {
+    if (game.unknownCount > game.marks[0][0][1] + game.marks[0][1][1]) {
+        event.preventDefault();
+    }
+}
 
 let g_pressed = false;
 function OnKeyDown(event) {
