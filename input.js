@@ -120,28 +120,26 @@ function OnMouseMove(event) {
     if (!game.ready) return;
     mouse_position = EventToPosition(event);
     
+    current_hovering_target = '';
     if (mouse_position.x < game.left_width && mouse_position.y < game.map.h) {
         // Get the hovered location, if the cursor is within the map
         let info = GetLocation(mouse_position);
 
         // Change current_hovering_target to info.target, if hovering a location
-        current_hovering_target = '';
         if (info && info.type == TYPE_LOCATION) {
             current_hovering_target = info.target;
         }
-        
-        // Prevent unneccessary rendering by checking if the text has to be changed
-        if (current_hovering_target != previous_hovering_target) {
-            aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
-            if (current_hovering_target != '') {
-                RenderMap(info.target);
-            } else {
-                RenderMap();
-            }
-        }
-
-        previous_hovering_target = current_hovering_target;
     }
+    // Prevent unneccessary rendering by checking if the text has to be changed
+    if (current_hovering_target != previous_hovering_target) {
+        aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
+        if (current_hovering_target != '') {
+            RenderMap(current_hovering_target);
+        } else {
+            RenderMap();
+        }
+    }
+    previous_hovering_target = current_hovering_target;
 }
 function OnMouseUp(event) {
     if (!game.ready) return;
