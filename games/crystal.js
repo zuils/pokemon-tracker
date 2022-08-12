@@ -452,7 +452,34 @@ var crystal = {
 			basement_director: {x: 251, y: 325, corridor: "basement_rival",    name: "Basement" },
         },
         tintower: {
-			tinL_left:       {x: 335, y: 192, name: "Tin Tower (L)"         },
+			f3_s:  {x: 130, y: 755, corridor: "f3_ne", name: "Tin Tower (3F)"     },
+			f3_ne: {x: 230, y: 561, corridor: "f3_s",  name: "Tin Tower (3F)"     },
+			f4_sw: {x: 270, y: 756,                    name: "Tin Tower (4F)"     },
+			f4_nw: {x: 267, y: 597,                    name: "Tin Tower (4F)"     },
+			f4_ne: {x: 460, y: 562,                    name: "Tin Tower (4F)"     },
+			f4_se: {x: 460, y: 780,                    name: "Tin Tower (4F)"     },
+			f5_sw: {x: 566, y: 740,                    name: "Tin Tower (5F)"     },
+			f5_s:  {x: 671, y: 780,                    name: "Tin Tower (5F)"     },
+			f5_se: {x: 706, y: 740,                    name: "Tin Tower (5F)"     },
+			f5_nw: {x: 566, y: 596,                    name: "Tin Tower (5F)"     },
+			f6_s:  {x: 152, y: 508, corridor: "f6_w",  name: "Tin Tower (6F)"     },
+			f6_w:  {x: 70,  y: 412, corridor: "f6_s",  name: "Tin Tower (6F)"     },
+			f7_s:  {x: 396, y: 508,                    name: "Tin Tower (7F)"     },
+			f7_w:  {x: 285, y: 416,                    name: "Tin Tower (7F)"     },
+			f7_n:  {x: 365, y: 318,                    name: "Tin Tower (7F)"     },
+			f8_n:  {x: 655, y: 317, corridor: "f8_w",  name: "Tin Tower (8F)"     },
+			f8_w:  {x: 706, y: 381, corridor: "f8_n",  name: "Tin Tower (8F)"     },
+			f9_s1: {x: 332, y: 200,                    name: "Tin Tower (9F L)"   },
+			f9_s2: {x: 365, y: 234,                    name: "Tin Tower (9F L)"   },
+			f9_e:  {x: 494, y: 119,                    name: "Tin Tower (9F L)"   },
+			f9_w:  {x: 269, y: 88,  corridor: "f9_n",  name: "Tin Tower (9F top)" },
+			f9_n:  {x: 430, y: 57,  corridor: "f9_w",  name: "Tin Tower (9F top)" },
+			//aaaa0:                                                      {x: 458, y: 547 },
+			//aaaa2:                                                      {x: 583, y: 602 },
+
+
+
+			/*tinL_left:       {x: 335, y: 192, name: "Tin Tower (L)"         },
 			tinL_right:      {x: 370, y: 239, name: "Tin Tower (L)"         },
 			tinL_top:        {x: 468, y: 92,  name: "Tin Tower (L)"         },
 			tintele_top:     {x: 369, y: 298, name: "Tin Tower (Teleports)" },
@@ -465,7 +492,7 @@ var crystal = {
 			tinsquare_mid:   {x: 145, y: 270, name: "Tin Tower (Square)"    },
 			tinsquare_left:  {x: 53,  y: 216, name: "Tin Tower (Square)"    },
 			tinsquare_top:   {x: 53,  y: 100, name: "Tin Tower (Square)"    },
-			tinsquare_right: {x: 243, y: 225, name: "Tin Tower (Square)"    },
+			tinsquare_right: {x: 243, y: 225, name: "Tin Tower (Square)"    },*/
         },
         mtmortar_r42: {
 			r42_gate:               {x: 70,  y: 616,                                name: "Route 42 (Left)"      },
@@ -540,10 +567,6 @@ var crystal = {
 			main_botright:   {x: 607, y: 614, name: "Whirl (Main)"      },
 			main_cave:       {x: 316, y: 365, name: "Whirl (Main)"      },
         },
-		icepath: {
-			waterfall_left:  {x: 61,  y: 575, corridor: "waterfall_right", name: "Ice Path (Waterfall)" },
-			waterfall_right: {x: 536, y: 342, corridor: "waterfall_left",  name: "Ice Path (Waterfall)" },
-		},
 		icepath1: {
 			hub_stairsleft:   {x: 64,  y: 621,                              name: "Ice Path (Holes)"      },
 			hub_holebotleft:  {x: 92,  y: 565,                              name: "Ice Path (Holes)"      },

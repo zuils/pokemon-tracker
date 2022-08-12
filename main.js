@@ -1,8 +1,8 @@
-let DEBUG_MODE = true;
-const DEBUG_WARP_TO_SELF      = true;
+let DEBUG_MODE = false;
+const DEBUG_WARP_TO_SELF      = false;
 const DEBUG_PRINT_KEY         = false;
 const DEBUG_REMEMBER_LOCATION = true;
-const DEBUG_IMAGE_DIMENSIONS  = false;
+const DEBUG_IMAGE_DIMENSIONS  = true;
 
 const AUTOTRACKER_DEVELOPMENT = false;
 
@@ -35,8 +35,7 @@ let game;
 let games = {};
 var loading_game_text;
 function init() {
-    // Just in case I push with the setting enabled
-    if (!document.URL.startsWith("file:///")) { DEBUG_MODE = false; }
+    DEBUG_MODE = document.URL.endsWith("?debug");
 
     // Init some stuff
     for (let g of ordered_games) {
