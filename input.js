@@ -19,6 +19,7 @@ function OnContextMenu(event) { event.preventDefault(); return false; }
 function BeforeUnload(event) {
     if (game.unknownCount > game.marks[0][0][1] + game.marks[0][1][1]) {
         event.preventDefault();
+        return event.returnValue = "Are you sure you want to exit?";
     }
 }
 
