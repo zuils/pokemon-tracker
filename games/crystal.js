@@ -49,7 +49,6 @@ var crystal = {
         ragelake_r43:  {x: 91,  y: 0,   w: 8,  h: 8,  name: "Lake of Rage\nRoute 43"  },
         r26_r27:       {x: 137, y: 66,  w: 26, h: 14, name: "Route 26\nRoute 27"      },
 
-        
         r2:            {x: 179, y: 36,  w: 8,  h: 8,  name: "Route 2"                 },
         r19_r20:       {x: 195, y: 104, w: 8,  h: 8,  name: "Route 19\nRoute 20"      },
         r25:           {x: 243, y: 8,   w: 8,  h: 8,  name: "Route 25"                },
@@ -57,6 +56,7 @@ var crystal = {
         r15:           {x: 230, y: 88,  w: 8,  h: 8,  name: "Route 15"                },
         r16_r18:       {x: 195, y: 57,  w: 8,  h: 14, name: "Route 16\nRoute 18"      },
         r9_r10:        {x: 259, y: 24,  w: 8,  h: 8,  name: "Route 9\nRoute 10"       },
+        r28:           {x: 143, y: 40,  w: 8,  h: 8,  name: "Route 28"                },
 
         // Important locations
         darkcave:              {x: 96,  y: 44, w: 8, h: 8,  name: "Dark Cave"                      },
@@ -76,7 +76,7 @@ var crystal = {
         victoryroad_reception: {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
         
         mtmoon_r3_r4:          {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
-        mtsilver_r28:          {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver\nRoute 28"            },
+        mtsilver:              {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver"                      },
         celadonstore:          {x: 203, y: 31, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
 		rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
     },
@@ -396,6 +396,12 @@ var crystal = {
 			center:     {x: 187, y: 141, name: "Route 9"          },
 			powerplant: {x: 62,  y: 267, name: "Route 10 (Plant)" },
         },
+		r28: {
+			gate:   {x: 456, y: 375 },
+			house:  {x: 70,  y: 405 },
+			center: {x: 325, y: 175 },
+			silver: {x: 244, y: 43  },
+		},
 
         // Important locations
         darkcave: {
@@ -569,15 +575,14 @@ var crystal = {
 			moonsquare_top:     {x: 396, y: 44,  name: "Mt. Moon (Square)" },
 			moonsquare_bot:     {x: 423, y: 147, name: "Mt. Moon (Square)" },
         },
-		mtsilver_r28: {
-			r28_gate:    {x: 452, y: 332, name: "Route 28"   },
-			r28_house:   {x: 326, y: 227, name: "Route 28"   },
-			r28_center:  {x: 417, y: 120, name: "Route 28"   },
-			r28_silver:  {x: 332, y: 65,  name: "Route 28"   },
-			mt_entrance: {x: 145, y: 337, name: "Mt. Silver" },
-			mt_left:     {x: 83,  y: 226, name: "Mt. Silver" },
-			mt_right:    {x: 203, y: 21,  name: "Mt. Silver" },
-			mt_exit:     {x: 55,  y: 80,  name: "Mt. Silver" },
+		mtsilver: {
+			f1_entrance: {x: 227, y: 50,  corridor: "f1_door",     name: "Mt. Silver (F1)" },
+			f1_door:     {x: 126, y: 500, corridor: "f1_entrance", name: "Mt. Silver (F1)" },
+			f2_entrance: {x: 547, y: 469,                          name: "Mt. Silver (F2)" },
+			f2_left:     {x: 486, y: 297,                          name: "Mt. Silver (F2)" },
+			f2_right:    {x: 608, y: 78,                           name: "Mt. Silver (F2)" },
+			f2_exit:     {x: 454, y: 39,                           name: "Mt. Silver (F2)" },
+
         },
 		celadonstore: {
             f1_door: {x: 132, y: 380, name: "Celadon Store" },
