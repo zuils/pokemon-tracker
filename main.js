@@ -16,7 +16,7 @@ const CACHE_GAME_LOADED    = "last-game-loaded";
 const CACHE_SMOOTH_IMAGES  = "smooth-images";
 const CACHE_DEBUG_LOCATION = "debug-location"
 const CACHE_LAST_VERSION   = "last-version"
-const CURRENT_VERSION = 2;
+const CURRENT_VERSION = 3;
 
 let ordered_games = [ // Games will be shown in the settings in order
     crystal,
