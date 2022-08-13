@@ -28,9 +28,6 @@ function OnKeyDown(event) {
     if (event.key == "g") {
         g_pressed = true;
     }
-    if (g_pressed && event.key == "6") {
-        ChangeGame(hgss);
-    }
 }
 function OnKeyUp(event) {
     if (event.key == "g") {
