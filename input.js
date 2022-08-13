@@ -11,8 +11,8 @@ function RegisterInputEvents() {
     canvas.addEventListener("mouseout",    OnMouseUp);
     canvas.addEventListener("contextmenu", OnContextMenu);
 
-    document.addEventListener("keydown", OnKeyDown);
-    document.addEventListener("keyup",   OnKeyUp);
+    //document.addEventListener("keydown", OnKeyDown);
+    //document.addEventListener("keyup",   OnKeyUp);
     addEventListener("beforeunload", BeforeUnload);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
@@ -23,7 +23,7 @@ function BeforeUnload(event) {
     }
 }
 
-let g_pressed = false;
+/*let g_pressed = false;
 function OnKeyDown(event) {
     if (event.key == "g") {
         g_pressed = true;
@@ -36,7 +36,7 @@ function OnKeyUp(event) {
     if (event.key == "g") {
         g_pressed = false;
     }
-}
+}*/
 
 /*********************************************************/
 

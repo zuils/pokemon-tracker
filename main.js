@@ -113,10 +113,6 @@ function init() {
     }
     let last_version = localStorage.getItem(CACHE_LAST_VERSION);
     if (!last_version) { // New user
-        changelog_header.classList.add("config_hidden");
-        for (let i = 1; i < CURRENT_VERSION; ++i) {
-            help_texts[i].classList.add("config_hidden");
-        }
         ShowHelp();
     }
     if (last_version && last_version < CURRENT_VERSION) { // Show last changes
