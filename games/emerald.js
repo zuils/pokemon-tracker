@@ -108,6 +108,8 @@ var emerald = {
             shipyard: {x: 424, y: 449},
             house:    {x: 342, y: 555},
             beach:    {x: 90,  y: 555},
+            port:     {x: 455, y: 43 },
+
         },
 
         mauville_r117: {

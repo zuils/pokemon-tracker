@@ -408,7 +408,21 @@ var frlg_nosevii = {
             mart:               {x: 587,  y: 278, name: "Viridian City"       },
             center:             {x: 421,  y: 388, name: "Viridian City"       },
             r22:                {x: 135,  y: 50,  name: "R22 (Viridian)"      },
-        },        
+        },
+        rocktunnel1: {
+            f1_left:        {x: 73,  y: 64,  corridor: "f1_right",       name: "Rock Tunnel (F1)"    },
+			f1_right:       {x: 329, y: 240, corridor: "f1_left",        name: "Rock Tunnel (F1)"    },
+			entrance_left:  {x: 280, y: 62,  corridor: "entrance_right", name: "Rock Tunnel (Entry)" },
+			entrance_right: {x: 729, y: 63,  corridor: "entrance_left",  name: "Rock Tunnel (Entry)" },
+			exit_door:      {x: 729, y: 312, corridor: "exit_stairs",    name: "Rock Tunnel (Exit)"  },
+			exit_stairs:    {x: 297, y: 583, corridor: "exit_door",      name: "Rock Tunnel (Exit)"  },
+        },
+        rocktunnel2: {
+            left_left:  {x: 42,  y: 85,  corridor: "left_right", name: "Rock Tunnel (BF1 L)" },
+			left_right: {x: 440, y: 229, corridor: "left_left",  name: "Rock Tunnel (BF1 L)" },
+			right_top:  {x: 536, y: 85,  corridor: "right_bot",  name: "Rock Tunnel (BF1 R)" },
+			right_bot:  {x: 616, y: 485, corridor: "right_top",  name: "Rock Tunnel (BF1 R)" },
+        },
     },
 
     // Numbers are meant to be to check if exist any marks/progress in the maps
