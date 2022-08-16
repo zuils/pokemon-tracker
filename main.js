@@ -1,8 +1,7 @@
 let DEBUG_MODE = false;
-const DEBUG_WARP_TO_SELF      = false;
-const DEBUG_PRINT_KEY         = false;
-const DEBUG_REMEMBER_LOCATION = true;
-const DEBUG_IMAGE_DIMENSIONS  = true;
+let DEBUG_WARP_TO_SELF      = false;
+let DEBUG_PRINT_KEY         = false;
+let DEBUG_IMAGE_DIMENSIONS  = true;
 
 const AUTOTRACKER_DEVELOPMENT = false;
 
@@ -138,7 +137,7 @@ function init() {
     }
     game.button.disabled = true;
     current_location = game.start_location;
-    if (DEBUG_MODE && DEBUG_REMEMBER_LOCATION) {
+    if (DEBUG_MODE) {
         let last_location = localStorage.getItem(CACHE_DEBUG_LOCATION);
         if (last_location && game.locations[last_location]) current_location = last_location;
 
