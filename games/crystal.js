@@ -27,16 +27,16 @@ var crystal = {
         blackthorn:      {x: 115, y: 16, w: 8, h: 8,  name: "Blackthorn City"            },
         indigo_e4:       {x: 155, y: 8,  w: 8, h: 8,  name: "Indigo Plateau\nElite 4"    },
 
-        pallet:        {x: 179, y: 80,  w: 8, h: 8,  name: "Pallet Town"               },
-        viridian_r22:  {x: 179, y: 48,  w: 8, h: 8,  name: "Viridian City\nRoute 22"   },
-        pewter:        {x: 179, y: 24,  w: 8, h: 8,  name: "Pewter City"               },
-        cerulean_r5:   {x: 227, y: 16,  w: 8, h: 16, name: "Cerulean City\nRoute 5/25" },
-        vermilion_r6:  {x: 227, y: 56,  w: 8, h: 8,  name: "Vermilion City\nRoute 6"   },
-        celadon_r7:    {x: 203, y: 40,  w: 8, h: 8,  name: "Celadon City\nRoute 7"     },
-        lavender_r8:   {x: 259, y: 40,  w: 8, h: 8,  name: "Lavender Town\nRoute 8"    },
-        saffron:       {x: 227, y: 40,  w: 8, h: 8,  name: "Saffron City"              },
-        fuchsia:       {x: 219, y: 88,  w: 8, h: 8,  name: "Fuchsia City"              },
-        cinnabar:      {x: 179, y: 104, w: 8, h: 8,  name: "Cinnabar Island"           },
+        pallet:        {x: 179, y: 80,  w: 8,  h: 8,  name: "Pallet Town"               },
+        viridian_r22:  {x: 179, y: 48,  w: 8,  h: 8,  name: "Viridian City\nRoute 22"   },
+        pewter:        {x: 179, y: 24,  w: 8,  h: 8,  name: "Pewter City"               },
+        cerulean_r5:   {x: 227, y: 16,  w: 8,  h: 16, name: "Cerulean City\nRoute 5/25" },
+        vermilion_r6:  {x: 227, y: 56,  w: 8,  h: 8,  name: "Vermilion City\nRoute 6"   },
+        celadon_r7:    {x: 195, y: 40,  w: 16, h: 8,  name: "Celadon City\nRoute 7/16"  },
+        lavender_r8:   {x: 259, y: 40,  w: 8,  h: 8,  name: "Lavender Town\nRoute 8"    },
+        saffron:       {x: 227, y: 40,  w: 8,  h: 8,  name: "Saffron City"              },
+        fuchsia:       {x: 211, y: 88,  w: 16, h: 8,  name: "Fuchsia City\nRoute 18"    },
+        cinnabar:      {x: 179, y: 104, w: 8,  h: 8,  name: "Cinnabar Island"           },
         
         // Routes
         r45_r46:       {x: 107, y: 34,  w: 16, h: 28, name: "Route 45\nRoute 46"      },
@@ -52,7 +52,7 @@ var crystal = {
         r19_r20:       {x: 195, y: 104, w: 8,  h: 8,  name: "Route 19\nRoute 20"      },
         r12:           {x: 259, y: 56,  w: 8,  h: 8,  name: "Route 12"                },
         r15:           {x: 230, y: 88,  w: 8,  h: 8,  name: "Route 15"                },
-        r16_r18:       {x: 195, y: 57,  w: 8,  h: 14, name: "Route 16\nRoute 18"      },
+        cyclingroad:   {x: 195, y: 57,  w: 8,  h: 14, name: "Cycling Road"            },
         r9_r10:        {x: 259, y: 24,  w: 8,  h: 8,  name: "Route 9\nRoute 10"       },
         r28:           {x: 143, y: 40,  w: 8,  h: 8,  name: "Route 28"                },
 
@@ -264,6 +264,8 @@ var crystal = {
 			gym:        {x: 132, y: 442, name: "Celadon City (Gym)" },
 			coincase:   {x: 376, y: 498                             },
 			gate:       {x: 534, y: 353                             },
+			r16_fly:    {x: 62,  y: 209, name: "R16 (Fly House)"    },
+			r16_gate:   {x: 62,  y: 291                             },
         },
         lavender_r8: {
 			mart:       {x: 53,  y: 240 },
@@ -299,6 +301,7 @@ var crystal = {
 			strength:  {x: 443, y: 466                              },
 			rightgate: {x: 572, y: 330                              },
 			botgate:   {x: 127, y: 539                              },
+			leftgate:  {x: 60,  y: 298                              },
         },
         cinnabar: {
 			center: {x: 186, y: 151},
@@ -389,10 +392,10 @@ var crystal = {
         r15: {
 			gate: {x: 76, y: 77 },
         },
-        r16_r18: {
-			topgate: {x: 240, y: 104, name: "Route 16 (Celadon)" },
-			house:   {x: 56,  y: 40,  name: "Route 16"           },
-			botgate: {x: 55,  y: 250, name: "Route 18 (Fuchsia)" },
+        cyclingroad: {
+			top: {x: 125, y: 82,  corridor: "bot"},
+			bot: {x: 231, y: 710, corridor: "top"},
+
         },
         r9_r10: {
 			rocktunnel: {x: 136, y: 66,  name: "Route 9"          },
