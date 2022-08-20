@@ -238,7 +238,6 @@ var crystal = {
 			underpass_top: {x: 494, y: 529, corridor: "underpass_bot", name: "Kanto Underpass"     },
 			underpass_bot: {x: 494, y: 610, corridor: "underpass_top", name: "Kanto Underpass"     },
 			bill:          {x: 256, y: 44,                             name: "Route 25 (Cerulean)" },
-
         },
         vermilion_r6: {
 			fish:    {x: 72,  y: 149                                                            },
@@ -395,7 +394,6 @@ var crystal = {
         cyclingroad: {
 			top: {x: 125, y: 82,  corridor: "bot"},
 			bot: {x: 231, y: 710, corridor: "top"},
-
         },
         r9_r10: {
 			rocktunnel: {x: 136, y: 66,  name: "Route 9"          },
