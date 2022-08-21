@@ -27,7 +27,7 @@ var white2 = {
 	// Tracker information
     locations: {
         // Cities
-        accumula_r2:		{x: 306, y: 160, w: 17, h: 8 ,  name: "Accumula Town\nRoute 2"  },
+        accumula:			{x: 315, y: 160, w: 8 , h: 8 ,  name: "Accumula Town"  			},
 		anville:			{x: 15 , y: 32 , w: 8 , h: 8 ,  name: "Anville Town"   			},
 		aspertia:			{x: 10 , y: 180, w: 8 , h: 15,  name: "Aspertia City"  			},
 		castelianorth:		{x: 173, y: 169, w: 16, h: 8 ,  name: "Castelia City (North)"   },
@@ -45,7 +45,7 @@ var white2 = {
 		nimbasa2:			{x: 181, y: 116, w: 8 , h: 16,  name: "Nimbasa City (Right)"   	},
 		nuvema_r1:       	{x: 315, y: 187, w: 8 , h: 17,  name: "Nuvema Town\nRoute 1"   	},
 		opelucidwh:			{x: 162, y: 43 , w: 15, h: 15,  name: "Opelucid City"   		},
-        striaton:			{x: 306, y: 134, w: 8 , h: 8 ,  name: "Striaton City"   		},
+        striaton_r2:		{x: 306, y: 134, w: 8 , h: 17,  name: "Striaton City\nRoute 2"  },
 		undella:			{x: 296, y: 87 , w: 15, h: 8 ,  name: "Undella Town" 			},
 		virbank:			{x: 80 , y: 162, w: 15, h: 8 ,  name: "Virbank City"  			},
 		whiteforest:		{x: 264, y: 116, w: 15, h: 8 ,  name: "White Forest"  			},
@@ -77,8 +77,7 @@ var white2 = {
 		joinavenue:			{x: 177, y: 134, w: 8 , h: 8 ,  name: "Join Avenue"   			},
 		nimbasastation:		{x: 164, y: 124, w: 8 , h: 8 ,  name: "Nimbasa\nGear Station"   },
 		pinwheelforest:		{x: 254, y: 150, w: 8 , h: 8 ,  name: "Pinwheel Forest"   		},
-		pokemonleague:		{x: 206, y: 3  , w: 16, h: 8 ,  name: "Pokemon League"   		},
-		pokemonleagueout:	{x: 206, y: 11 , w: 16, h: 8 ,  name: "Pokemon League (Out)"	},
+		pokemonleague:		{x: 206, y: 4  , w: 15, h: 15,  name: "Pokemon League"   		},
 		pwt:				{x: 89 , y: 128, w: 8 , h: 8 ,  name: "PWT"						},
 		reliccastle:		{x: 149, y: 144, w: 8 , h: 8 ,  name: "Relic Castle"   			},
 		relicpassage1:		{x: 80 , y: 128, w: 8 , h: 8 ,  name: "Relic Passage (PWT)"   	},
@@ -116,14 +115,13 @@ var white2 = {
     // - link_location: location_name / <garbage>
     warps: {
         // Cities
-        accumula_r2: {
-			r2_gate:		{x: 207, y: 260, name: "Route 2 (Accumula)"						},
-			gate:			{x: 332, y: 149, 												},
-			center:			{x: 826, y: 294, 												},
-			house_w:		{x: 365, y: 412, 												},
-			house_n:		{x: 625, y: 113, 												},
-			house_nw:		{x: 477, y: 145, 												},
-			house_ne:		{x: 790, y: 119, 												},
+        accumula: {																
+			gate:			{x: 66 , y: 149, 												},
+			center:			{x: 560, y: 294, 												},
+			house_w:		{x: 99 , y: 412, 												},
+			house_n:		{x: 359, y: 145, 												},
+			house_nw:		{x: 211, y: 145, 												},
+			house_ne:		{x: 524, y: 119, 												},
 		},
 		anville: {
 			house_sw:		{x: 426, y: 361, 												},
@@ -297,8 +295,9 @@ var white2 = {
 			house_n:		{x: 648, y: 185, 					 		   					},
 			house_w:		{x: 155, y: 482, 					 		   					},
 		},
-		striaton: {
-			center:			{x: 243, y: 122, 					 		   					},
+		striaton_r2: {
+			r2_gate:		{x: 272, y: 729, name: "Route 2 (Striaton)"						},
+			center:			{x: 243, y: 94 , 					 		   					},
 			gym:			{x: 373, y: 128, 					 		   					},
 			school:			{x: 113, y: 124, 					 		   					},
 			dreamyard:		{x: 654, y: 59 , 					 		   					},
@@ -510,16 +509,14 @@ var white2 = {
 			entrance:		{x: 720, y: 519, name: "Pinwheel (Entrance)"					},
 		},
 		pokemonleague: {
-			entry:			{x: 487, y: 701, 												},
-			left:			{x: 110, y: 267, 												},
-			midleft:		{x: 272, y: 90 , 												},
-			midright:		{x: 676, y: 90 , 												},
-			right:			{x: 852, y: 268, 												},
-		},
-		pokemonleagueout: {
-			center:			{x: 148, y: 91 , 												},
-			league:			{x: 617, y: 120, 												},
-			entry:			{x: 661, y: 482, 												},
+			entry_e4:		{x: 291, y: 430, 												},
+			left:			{x: 100, y: 176, 												},
+			midleft:		{x: 190, y: 62 , 												},
+			midright:		{x: 374, y: 62 , 												},
+			right:			{x: 487, y: 200, 												},
+			center:			{x: 94 , y: 601, 												},
+			vroad:			{x: 396, y: 849, 												},
+			entry:			{x: 378, y: 622, 												},
 		},
 		pwt: {
 			gate:			{x: 369, y: 58 , 												},
