@@ -635,14 +635,12 @@ var white2ad = {
 			up_se:			{x: 754, y: 790, 												},
 		},
 		claytunnel1: {
-			entry_nw:		{x: 90 , y: 165, 												},
 			entry_s:		{x: 293, y: 869, 												},
 		},
 		claytunnel2: {
 			entry_n:		{x: 275, y: 25 , 												},
 			entry_nw:		{x: 90 , y: 80 , 												},
 			entry_sw:		{x: 90 , y: 773, 												},
-			entry_se:		{x: 400, y: 532, 												},
 		},
 		claytunnel3: {
 			entry_n:		{x: 184, y: 25 , 												},
