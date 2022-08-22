@@ -16,7 +16,7 @@ var white2ad = {
 	// Tracker information
     locations: {
         // Cities
-        accumula_r2:		{x: 306, y: 160, w: 17, h: 8 ,  name: "Accumula Town\nRoute 2"  },
+        accumula:			{x: 315, y: 160, w: 8 , h: 8 ,  name: "Accumula Town"  			},
 		anville:			{x: 15 , y: 32 , w: 8 , h: 8 ,  name: "Anville Town"   			},
 		aspertia:			{x: 10 , y: 180, w: 8 , h: 15,  name: "Aspertia City"  			},
 		castelianorth:		{x: 173, y: 169, w: 16, h: 8 ,  name: "Castelia City (North)"   },
@@ -34,7 +34,7 @@ var white2ad = {
 		nimbasa2:			{x: 181, y: 116, w: 8 , h: 16,  name: "Nimbasa City (Right)"   	},
 		nuvema_r1:       	{x: 315, y: 187, w: 8 , h: 17,  name: "Nuvema Town\nRoute 1"   	},
 		opelucidwh:			{x: 162, y: 43 , w: 15, h: 15,  name: "Opelucid City"   		},
-        striaton:			{x: 306, y: 134, w: 8 , h: 8 ,  name: "Striaton City"   		},
+        striaton_r2:		{x: 306, y: 134, w: 8 , h: 17,  name: "Striaton City\nRoute 2"  },
 		undella:			{x: 296, y: 87 , w: 15, h: 8 ,  name: "Undella Town" 			},
 		virbank:			{x: 80 , y: 162, w: 15, h: 8 ,  name: "Virbank City"  			},
 		whiteforestad:		{x: 264, y: 116, w: 15, h: 8 ,  name: "White Forest"  			},
@@ -57,6 +57,7 @@ var white2ad = {
 		r23:				{x: 273, y: 20 , w: 15, h: 15,  name: "Route 23"   				},
 
         // Important locations
+		abyssalruins:		{x: 330, y:  87, w: 8 , h: 8 ,  name: "Abyssal Ruins"   		},																		 
 		casteliasewers:		{x: 188, y: 191, w: 8 , h: 8 ,  name: "Castelia Sewers"   		},
 		dreamyard:			{x: 321, y: 134, w: 8 , h: 8 ,  name: "Dreamyard"   			},
 		driftveilmarket:	{x: 80 , y: 116, w: 8 , h: 8 ,  name: "Driftveil Market"   		},
@@ -67,8 +68,7 @@ var white2ad = {
 		ncastle:			{x: 201, y: 20 , w: 8 , h: 8 ,  name: "N's Castle"   			},
 		nimbasastation:		{x: 164, y: 124, w: 8 , h: 8 ,  name: "Nimbasa\nGear Station"   },
 		pinwheelforest:		{x: 254, y: 150, w: 8 , h: 8 ,  name: "Pinwheel Forest"   		},
-		pokemonleague:		{x: 206, y: 3  , w: 16, h: 8 ,  name: "Pokemon League"   		},
-		pokemonleagueout:	{x: 206, y: 11 , w: 16, h: 8 ,  name: "Pokemon League (Out)"	},
+		pokemonleague:		{x: 206, y: 4  , w: 15, h: 15,  name: "Pokemon League"   		},
 		pokestarstudios:	{x: 84 , y: 153, w: 8 , h: 8 ,  name: "Pokestar Studios"   		},
 		pwt:				{x: 89 , y: 128, w: 8 , h: 8 ,  name: "PWT"						},
 		reliccastle:		{x: 149, y: 144, w: 8 , h: 8 ,  name: "Relic Castle"   			},
@@ -111,14 +111,13 @@ var white2ad = {
     // - link_location: location_name / <garbage>
     warps: {
         // Cities
-        accumula_r2: {
-			r2_gate:		{x: 207, y: 260, name: "Route 2 (Accumula)"						},
-			gate:			{x: 332, y: 149, 												},
-			center:			{x: 826, y: 294, 												},
-			house_w:		{x: 365, y: 412, 												},
-			house_n:		{x: 625, y: 113, 												},
-			house_nw:		{x: 477, y: 145, 												},
-			house_ne:		{x: 790, y: 119, 												},
+        accumula: {																
+			gate:			{x: 66 , y: 149, 												},
+			center:			{x: 560, y: 294, 												},
+			house_w:		{x: 99 , y: 412, 												},
+			house_n:		{x: 359, y: 145, 												},
+			house_nw:		{x: 211, y: 145, 												},
+			house_ne:		{x: 524, y: 119, 												},
 		},
 		anville: {
 			house_sw:		{x: 426, y: 361, 												},
@@ -216,6 +215,7 @@ var white2ad = {
 			house_e:		{x: 398, y: 410, 												},
 			gym:			{x: 160, y: 195, 												},
 			tower:			{x: 269, y: 42 , 												},
+			lonehouse:		{x: 860, y: 855, 												},
 			r8_moor:		{x: 682, y: 42 , name: "Route 8 (Icirrus)"						},
 			r8_gate:		{x: 847, y: 240, name: "Route 8 (Icirrus)"						},
 		},
@@ -289,8 +289,9 @@ var white2ad = {
 			house_n:		{x: 648, y: 185, 					 		   					},
 			house_w:		{x: 155, y: 482, 					 		   					},
 		},
-		striaton: {
-			center:			{x: 243, y: 122, 					 		   					},
+		striaton_r2: {
+			r2_gate:		{x: 272, y: 729, name: "Route 2 (Striaton)"						},
+			center:			{x: 243, y: 94 , 					 		   					},
 			gym:			{x: 373, y: 128, 					 		   					},
 			school:			{x: 113, y: 124, 					 		   					},
 			dreamyard:		{x: 654, y: 59 , 					 		   					},
@@ -351,7 +352,6 @@ var white2ad = {
 			cave_n:			{x: 213, y: 97 , 					 		   					},
 			cave_e:			{x: 856, y: 371, 					 		   					},
 			house:			{x: 114, y: 362, 					 		   					},
-			lab:			{x: 467, y: 481, 					 		   					},
 		},
 		r7: {
 			cave:			{x: 543, y: 47 , 					 		   					},
@@ -394,7 +394,6 @@ var white2ad = {
 			gate:			{x: 715, y: 313, name: "Route 17"		   						},
 			house:			{x: 348, y: 211, name: "Route 18"		   						},
 			lab:			{x: 678, y: 61 , name: "Route 17"		   						},
-			plasma:			{x: 715, y: 145, name: "Route 17"		   						},
 		},
 		r20: {
 			ranch:			{x: 152, y: 63 , 					 		   					},
@@ -412,6 +411,12 @@ var white2ad = {
 		},
 						
         // Important locations
+		abyssalruins: {
+			north:			{x: 444, y: 27 , 					 		   					},
+			south:			{x: 444, y: 793, 					 		   					},
+			west:			{x: 90 , y: 450, 					 		   					},
+			east:			{x: 860, y: 450, 					 		   					},
+		},									   
 		casteliasewers: {
 			up_left:		{x: 354, y: 30 , 					 		   					},
 			up_mid:			{x: 745, y: 288, 					 		   					},
@@ -511,15 +516,14 @@ var white2ad = {
 			entrance:		{x: 720, y: 519, name: "Pinwheel (Entrance)"					},
 		},
 		pokemonleague: {
-			left:			{x: 110, y: 267, 												},
-			midleft:		{x: 272, y: 90 , 												},
-			midright:		{x: 676, y: 90 , 												},
-			right:			{x: 852, y: 268, 												},
-		},
-		pokemonleagueout: {
-			center:			{x: 148, y: 91 , 												},
-			league:			{x: 617, y: 120, 												},
-			entry:			{x: 661, y: 482, 												},
+			left:			{x: 100, y: 176, 												},
+			midleft:		{x: 190, y: 62 , 												},
+			midright:		{x: 374, y: 62 , 												},
+			right:			{x: 487, y: 200, 												},
+			lift:			{x: 290, y: 250, 												},
+			center:			{x: 94 , y: 601, 												},
+			vroad:			{x: 396, y: 849, 												},
+			entry:			{x: 378, y: 622, 												},
 		},
 		pokestarstudios: {
 			gate:			{x: 390, y: 779, 												},
@@ -579,6 +583,7 @@ var white2ad = {
 			right_red_se:	{x: 797, y: 347, name: "Royal Unova (Right)"					},
 			right_blue_w:	{x: 709, y: 194, name: "Royal Unova (Right)"					},
 			right_blue_e:	{x: 827, y: 162, name: "Royal Unova (Right)"					},
+			entrance:		{x: 517, y: 428, name: "Royal Unova (Entrance)"					},															
 		},
 		shoppingmall: {
 			entry:			{x: 195, y: 522, 												},
@@ -630,14 +635,12 @@ var white2ad = {
 			up_se:			{x: 754, y: 790, 												},
 		},
 		claytunnel1: {
-			entry_nw:		{x: 90 , y: 165, 												},
 			entry_s:		{x: 293, y: 869, 												},
 		},
 		claytunnel2: {
 			entry_n:		{x: 275, y: 25 , 												},
 			entry_nw:		{x: 90 , y: 80 , 												},
 			entry_sw:		{x: 90 , y: 773, 												},
-			entry_se:		{x: 400, y: 532, 												},
 		},
 		claytunnel3: {
 			entry_n:		{x: 184, y: 25 , 												},
@@ -773,7 +776,7 @@ var white2ad = {
     progress: [
         [["basicbadge",  0], ["toxicbadge", 0], ["insectbadge", 0], ["boltbadge",   0], ["quakebadge",   0], ["jetbadge", 0], ["legendbadge", 0], ["wavebadge", 0]],
 		[["hm_cut",      0], ["hm_fly",     0], ["hm_surf",     0], ["hm_strength", 0], ["hm_waterfall", 0], ["hm_dive",  0]],
-        [["bw_shauntal", 0], ["bw_marshal", 0], ["bw_grimsley", 0], ["bw_caitlin",  0], ["b2w2_iris",    0], ["", undefined], ["bw_N",        0], ["bw_alder",  0], ["bw_cynthia", 0]],
+        [["bw_shauntal", 0], ["bw_marshal", 0], ["bw_grimsley", 0], ["bw_caitlin",  0], ["b2w2_iris",    0], ["", undefined], ["", undefined], ["bw_alder",  0]],
 		[["bike",        0]],
 	],
 	modifiers: [
