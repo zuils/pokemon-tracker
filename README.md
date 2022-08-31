@@ -11,8 +11,10 @@ I will accept any merge request to add new trackers for either new games or exis
 ## If you're making your own tracker
 I recommend checking an existing tracker to use as a template. Each game has a .js file in the "games" folder detailing all the locations, warps, marks, etc. and a named folder in the "images" folder. You need to preserve the folder structure of images for it to work.
 
-I've also added some debug tools that I use while creating the maps. They are all at the top of main.js:
-- DEBUG_MODE: with this enabled, more info will be printed to the console. Besides, **middle clicking** on the map or a location will give you the coordinates for the mouse and copy them into your clipboard (which then can be copypasted in your own game js file). It will also remember the last openend location when refreshing the page.
-- DEBUG_WARP_TO_SELF: all warps will always link to themselves, this way you can check how big the text box is for a given location and the name the current map has
-- DEBUG_PRINT_KEY: instead of printing the name of the location, the key name of the linked warp will be printed. Helpful to identify different warps while adjusting their positions
-- DEBUG_IMAGE_DIMENSIONS: prints on console the height and width of all images from smallest to biggest. The canvas dimensions are set to the biggest width and height, so with this you can check which are your biggest images are and reduce them
+There's also a debug mode available. To activate it, add "?debug" to the end of the url in the browser. This will enable:
+- **Middle clicking** on the map or a location will give you the coordinates for the mouse and copy them into your clipboard (which then can be copypasted in your own game js file)
+- Press **1** to show the name of the warps.
+- Press **2** to show the internal name of the warps.
+- The last opened location will be remembered so it opens automatically if you refresh the tracker.
+- An ordered list with all the image dimensions is being printed in the console. The trackers dimensions are being decided by the largest images in your tracker, so if you reduce those you can make the tracker more compact.
+- Tests are run, if you're not changing the HTML or the code it shouldn't affect your work.

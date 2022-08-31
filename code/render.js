@@ -158,7 +158,7 @@ function ImageLoaded() {
             console.log(GetNameImage(this.src));
         }
 
-        if (DEBUG_MODE) {
+        if (DEBUG.ENABLED) {
             debug_heights.push({ value: this.naturalHeight, name: this.src});
             debug_widths.push ({ value: this.naturalWidth , name: this.src});
         }
@@ -170,7 +170,7 @@ function ImageLoaded() {
 
     loading_process.loaded += 1;
     if (loading_process.loaded == loading_process.to_load) {
-        if (DEBUG_MODE && DEBUG_IMAGE_DIMENSIONS) {
+        if (DEBUG.ENABLED && DEBUG.IMAGE_DIMENSIONS) {
             debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
             console.log("Height:");
             console.log(debug_heights);
@@ -353,7 +353,7 @@ function RenderLocation() {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
 
-            if (DEBUG_MODE && DEBUG_WARP_TO_SELF) {
+            if (DEBUG.ENABLED && DEBUG.WARP_TO_SELF) {
                 warp.link_type = LINKTYPE_WARP;
                 warp.link = key;
                 warp.link_location = current_location;
@@ -371,7 +371,7 @@ function RenderLocation() {
                 if (warp.modifier && warp.modifier != "null") {
                     DrawSquareContextless(info, warp.modifier + MODIFIER_ALPHA);
                 }
-                if (DEBUG_MODE && DEBUG_PRINT_KEY) {
+                if (DEBUG.ENABLED && DEBUG.PRINT_KEY) {
                     aux_context.fillText(key, info.text_position.x, info.text_position.y);
                     continue;
                 }

@@ -13,10 +13,12 @@ let ordered_games = [
     white2_a
 ];
 
-let DEBUG_MODE = false;
-let DEBUG_WARP_TO_SELF      = false;
-let DEBUG_PRINT_KEY         = false;
-let DEBUG_IMAGE_DIMENSIONS  = true;
+let DEBUG = {
+    ENABLED: false,
+    WARP_TO_SELF:     false,
+    PRINT_KEY:        false,
+    IMAGE_DIMENSIONS: true,
+}
 
 const AUTOTRACKER_DEVELOPMENT = false;
 
@@ -26,24 +28,26 @@ let context;
 const LINKTYPE_WARP = "warp";
 const LINKTYPE_MARK = "mark";
 
-const CACHE_GAME_LOADED    = "last-game-loaded";
-const CACHE_SMOOTH_IMAGES  = "smooth-images";
-const CACHE_DEBUG_LOCATION = "debug-location"
-const CACHE_LAST_VERSION   = "last-version"
+const CACHE = {
+    GAME_LOADED:    "last-game-loaded",
+    SMOOTH_IMAGES:  "smooth-images",
+    DEBUG_LOCATION: "debug-location",
+    LAST_VERSION:   "last-version",
+}
 const CURRENT_VERSION = 3;
 
 let game;
 let games = {};
 let loading_game_text;
 function init() {
-    DEBUG_MODE = document.URL.endsWith("?debug");
-    if (DEBUG_MODE) {
+    DEBUG.ENABLED = document.URL.endsWith("?debug");
+    if (DEBUG.ENABLED) {
         RunTests();
     }
 
     // Init some stuff
     for (let g of ordered_games) {
-        if (!g.debug || (g.debug && DEBUG_MODE)) {
+        if (!g.debug || (g.debug && DEBUG.ENABLED)) {
             games[g.name] = g;
         }
     }
@@ -56,7 +60,7 @@ function init() {
     config_networktoggle  = document.getElementById("config_networktoggle");
 
     checkbox_smooth = document.getElementById("checkbox_smooth");
-    checkbox_smooth.checked = (localStorage.getItem(CACHE_SMOOTH_IMAGES) == "true") ? true : false;
+    checkbox_smooth.checked = (localStorage.getItem(CACHE.SMOOTH_IMAGES) == "true") ? true : false;
 
     loading_game_text = document.getElementById("loading_game_text");
     loading_game_text.innerHTML = "";
@@ -115,7 +119,7 @@ function init() {
     for (let i = 1; i <= CURRENT_VERSION; ++i) {
         help_texts.push(document.getElementById("help_v" + i));
     }
-    let last_version = localStorage.getItem(CACHE_LAST_VERSION);
+    let last_version = localStorage.getItem(CACHE.LAST_VERSION);
     if (!last_version) { // New user
         ShowHelp();
     }
@@ -126,7 +130,7 @@ function init() {
 
         ShowHelp();
     }
-    localStorage.setItem(CACHE_LAST_VERSION, CURRENT_VERSION);
+    localStorage.setItem(CACHE.LAST_VERSION, CURRENT_VERSION);
 
     // Create canvas
     canvas  = document.getElementById('canvas');
@@ -135,15 +139,15 @@ function init() {
     aux_context = aux_canvas.getContext("2d");
 
     // Get last loaded game and load it
-    let last_game = localStorage.getItem(CACHE_GAME_LOADED);
+    let last_game = localStorage.getItem(CACHE.GAME_LOADED);
     game = emerald;
     if (last_game && games[last_game]) {
         game = games[last_game];
     }
     game.button.disabled = true;
     current_location = game.start_location;
-    if (DEBUG_MODE) {
-        let last_location = localStorage.getItem(CACHE_DEBUG_LOCATION);
+    if (DEBUG.ENABLED) {
+        let last_location = localStorage.getItem(CACHE.DEBUG_LOCATION);
         if (last_location && game.locations[last_location]) current_location = last_location;
 
     }
@@ -165,7 +169,7 @@ function init() {
     requestAnimationFrame(GameLoop);
 
     // Autotracker stuff for debugging
-    if (DEBUG_MODE && AUTOTRACKER_DEVELOPMENT) {
+    if (DEBUG.ENABLED && AUTOTRACKER_DEVELOPMENT) {
         AT_Start();
     }
 }
@@ -173,7 +177,7 @@ function init() {
 function GameLoop() {
     if (game.ready) { Render(); }
     requestAnimationFrame(GameLoop);
-    if (DEBUG_MODE && AUTOTRACKER_DEVELOPMENT) {
+    if (DEBUG.ENABLED && AUTOTRACKER_DEVELOPMENT) {
         if (socket.readyState == SOCKET_READYSTATE.OPEN) {
             let current_time = new Date().getTime();
             if (current_time - autotracker_last_poll > SECONDS_BETWEEN_POLLS*1000) {

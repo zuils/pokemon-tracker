@@ -24,23 +24,23 @@ function BeforeUnload(event) {
 }
 
 function OnKeyDown(event) {
-    if (!DEBUG_MODE) return;
+    if (!DEBUG.ENABLED) return;
     if (event.key == "1") {
-        DEBUG_WARP_TO_SELF = !DEBUG_WARP_TO_SELF;
+        DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
         rerender_location = true;
-        if (!DEBUG_WARP_TO_SELF) {
+        if (!DEBUG.WARP_TO_SELF) {
             InitTrackerToUnknowns();
         }
         return;
     }
     if (event.key == "2") {
-        DEBUG_PRINT_KEY = !DEBUG_PRINT_KEY;
+        DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
         rerender_location = true;
         return;
     }
 }
 function OnKeyUp(event) {
-    if (!DEBUG_MODE) return;
+    if (!DEBUG.ENABLED) return;
 
     if (event.key == "g") {
         g_pressed = false;
@@ -84,7 +84,7 @@ function OnMouseDown(event) {
             }
         } break;
         case MIDDLE_CLICK: {
-            if (!DEBUG_MODE) return;
+            if (!DEBUG.ENABLED) return;
 
             if (mouse_position.x < game.left_width + SELECTED_MAP_XOFFSET/2) {
                 mouse_position.x /= MAP_SCALE;
@@ -205,8 +205,8 @@ function OnMouseUp(event) {
                                 } // falldown
                                 case STATE_DEFAULT: {
                                     current_location = info.target;
-                                    if (DEBUG_MODE) {
-                                        localStorage.setItem(CACHE_DEBUG_LOCATION, current_location);
+                                    if (DEBUG.ENABLED) {
+                                        localStorage.setItem(CACHE.DEBUG_LOCATION, current_location);
                                     }
                                 } break;
                             }
