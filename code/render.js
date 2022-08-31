@@ -45,12 +45,12 @@ let rerender_location = true;
 let last_rendered_location = "";
 let traslucent_warps = false;
 
-var loading_process = {};
-var settings, help;
-var images = [];
+let loading_process = {};
+let settings, help;
+let images = [];
 function LoadImages() {
     // Obtain map and frame
-    var list = ["images/" + game.folder + "/" + game.name + ".png", "images/" + game.folder + "/frame.png"];
+    let list = ["images/" + game.folder + "/" + game.name + ".png", "images/" + game.folder + "/frame.png"];
     if (!settings) { list.push("images/settings.png"); }
     if (!help)     { list.push("images/help.png"); }
 
@@ -228,7 +228,7 @@ function RenderMap(hover_location) {
         aux_context.textAlign = "center";
         aux_context.fillStyle = "#111111";
 
-        var text_position = {
+        let text_position = {
             x: game.map.w - (FRAME_WIDTH /2)*MAP_SCALE,
             y: game.map.h - (FRAME_HEIGHT/2)*MAP_SCALE + LINE_YOFFSET
         };
@@ -349,7 +349,7 @@ function RenderLocation() {
         aux_context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
         aux_context.textAlign = "center";
         aux_context.fillStyle = "#111111";
-        for (var key in game.warps[current_location]) {
+        for (let key in game.warps[current_location]) {
             let warp = game.warps[current_location][key];
             let info = GetWarpRenderInfo(location, warp);
 

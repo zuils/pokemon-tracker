@@ -9,7 +9,7 @@ quality images it might be interesting to replace them:
 	5. pokemonleague + pokemonleagueout
 	6. whiteforest
 */
-var white2 = {
+let white2 = {
 	debug: false,
     name: "white2",
     folder: "black2white2",

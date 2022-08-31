@@ -1,3 +1,18 @@
+// Games will be shown in the settings in order
+let ordered_games = [
+    crystal,
+    crystalg,
+    emerald,
+    frlg_nosevii,
+    frlg,
+    platinum,
+    hgss,
+    white2,
+    white2ad,
+    black2ad,
+    white2_a
+];
+
 let DEBUG_MODE = false;
 let DEBUG_WARP_TO_SELF      = false;
 let DEBUG_PRINT_KEY         = false;
@@ -17,24 +32,14 @@ const CACHE_DEBUG_LOCATION = "debug-location"
 const CACHE_LAST_VERSION   = "last-version"
 const CURRENT_VERSION = 3;
 
-let ordered_games = [ // Games will be shown in the settings in order
-    crystal,
-    crystalg,
-    emerald,
-    frlg_nosevii,
-    frlg,
-    platinum,
-    hgss,
-    white2,
-    white2ad,
-    black2ad,
-    white2_a
-];
 let game;
 let games = {};
-var loading_game_text;
+let loading_game_text;
 function init() {
     DEBUG_MODE = document.URL.endsWith("?debug");
+    if (DEBUG_MODE) {
+        RunTests();
+    }
 
     // Init some stuff
     for (let g of ordered_games) {

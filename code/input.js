@@ -19,7 +19,7 @@ function OnContextMenu(event) { event.preventDefault(); return false; }
 function BeforeUnload(event) {
     if (game.unknownCount > game.marks[0][0][1] + game.marks[0][1][1]) {
         event.preventDefault();
-        return event.returnValue = "Are you sure you want to exit?";
+        return event.returnValue = false;
     }
 }
 
@@ -444,7 +444,7 @@ function GetLocation(position) {
         x: position.x / MAP_SCALE,
         y: position.y / MAP_SCALE
     }
-    for (var key in game.locations) {
+    for (let key in game.locations) {
         let location = game.locations[key];
         if (p.x > location.x - HITBOX_OFFSET &&
             p.x < location.x + HITBOX_OFFSET + location.w  &&
@@ -489,7 +489,7 @@ function GetMark(position) {
 function GetWarp(position) {
     // Check all warps
     let location = game.locations[current_location];
-    for (var key in game.warps[current_location]) {
+    for (let key in game.warps[current_location]) {
         let warp = game.warps[current_location][key];
         let info = GetWarpRenderInfo(location, warp);
 

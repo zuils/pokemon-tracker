@@ -1,4 +1,4 @@
-var frlg_nosevii = {
+let frlg_nosevii = {
     debug: false,
     name: "frlg_nosevii",
     folder: "frlg",

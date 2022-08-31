@@ -1,4 +1,4 @@
-var platinum = {
+let platinum = {
 	debug: false,
     name: "platinum",
     folder: "platinum",

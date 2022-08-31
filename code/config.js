@@ -7,6 +7,8 @@ let checkbox_smooth;
 let changelog_header;
 let help_texts = [];
 
+let file_selector;
+
 function ShowConfig() {
     //config.style.display = "block";
     config_window.classList.remove("window_hidden");
@@ -27,11 +29,10 @@ function HideHelp() {
     }
 }
 
-
 function LoadFile() { file_selector.click(); }
 
 function FileUploaded(event) {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function() {
         let lines = reader.result.split("\n");
         while (lines[0].startsWith("#")) { // Parse all progress trackers
@@ -69,7 +70,7 @@ function SaveFile() {
         if (!games[key_game].ready) { continue; }
         
         text += "#" + games[key_game].name + ",";
-        for (var p of games[key_game].obtained) {
+        for (let p of games[key_game].obtained) {
             text += p + ",";
         }
         text = text.substring(0, text.length-1);
@@ -87,9 +88,9 @@ function SaveFile() {
         return;
     }
 
-    var time = new Date();
-    var d = time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + "_" + time.getHours() + "." + time.getMinutes() + "." + time.getSeconds();
-    var a = document.createElement("a");
+    let time = new Date();
+    let d = time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + "_" + time.getHours() + "." + time.getMinutes() + "." + time.getSeconds();
+    let a = document.createElement("a");
     a.href = window.URL.createObjectURL(new Blob([text], {type: "text/plain"}));
     a.download = d + "_pokemon-tracker.txt";
     a.click();

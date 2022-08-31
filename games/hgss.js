@@ -1,4 +1,4 @@
-var hgss = {
+let hgss = {
 	debug: false,
     name: "hgss",
     folder: "hgss",

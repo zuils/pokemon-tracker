@@ -1,4 +1,4 @@
-var white2ad = {
+let white2ad = {
 	debug: false,
     name: "white2ad",
     folder: "black2white2",

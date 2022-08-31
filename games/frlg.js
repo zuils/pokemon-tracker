@@ -1,4 +1,4 @@
-var frlg = {
+let frlg = {
     debug: false,
     name: "frlg",
     folder: "frlg",

@@ -1,4 +1,4 @@
-var crystal = {
+let crystal = {
 	debug: false,
     name: "crystal",
 	folder: "crystal",

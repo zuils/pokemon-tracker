@@ -1,5 +1,5 @@
 
-var white2_a = {
+let white2_a = {
 	debug: false,
     name: "white2_a",
     folder: "white2_a",
