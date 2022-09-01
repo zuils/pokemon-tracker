@@ -37,23 +37,28 @@ let game;
 let games = {};
 function init() {
     DEBUG.ENABLED = document.URL.endsWith("?debug");
-    if (DEBUG.ENABLED) {
-        RunTests();
-    }
 
-    // Init some stuff
+    // Create map of games
     for (let g of ordered_games) {
         if (!g.debug || (g.debug && DEBUG.ENABLED)) {
             games[g.name] = g;
         }
     }
-    InitTrackerToUnknowns();
+    
     RetrieveAllHTMLElements();
+    InitTrackerToUnknowns();
+
+    if (DEBUG.ENABLED) { RunTests(); }
+
 
     // Show explanation + changelog if we haven't shown it before
     let last_version = localStorage.getItem(CACHE.LAST_VERSION);
     if (!last_version) { // New user
         ShowHelp();
+        html.help.changelog.classList.add("config_hidden");
+        for (let i = 1; i < CURRENT_VERSION; ++i) {
+            html.help.versions[i].classList.add("config_hidden");
+        }
     }
     if (last_version && last_version < CURRENT_VERSION) { // Show last changes
         for (let i = 0; i < last_version; ++i) {
@@ -220,8 +225,6 @@ function RetrieveAllHTMLElements() {
             div.appendChild(text);
         game_buttons.appendChild(div);
     }
-
-    console.log(html);
 }
 
 function GameLoop() {

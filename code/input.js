@@ -25,7 +25,7 @@ function BeforeUnload(event) {
 
 function OnKeyDown(event) {
     if (!DEBUG.ENABLED) return;
-    if (event.key == "1") {
+    if (event.key == "q") {
         DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
         rerender_location = true;
         if (!DEBUG.WARP_TO_SELF) {
@@ -33,7 +33,7 @@ function OnKeyDown(event) {
         }
         return;
     }
-    if (event.key == "2") {
+    if (event.key == "w") {
         DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
         rerender_location = true;
         return;

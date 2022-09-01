@@ -13,8 +13,8 @@ I recommend checking an existing tracker to use as a template. Each game has a .
 
 There's also a debug mode available. To activate it, add "?debug" to the end of the url in the browser. This will enable:
 - **Middle clicking** on the map or a location will give you the coordinates for the mouse and copy them into your clipboard (which then can be copypasted in your own game js file)
-- Press **1** to show the name of the warps.
-- Press **2** to show the internal name of the warps.
+- Press **Q** to show the name of the warps.
+- Press **W** to show the internal name of the warps.
 - The last opened location will be remembered so it opens automatically if you refresh the tracker.
 - An ordered list with all the image dimensions is being printed in the console. The trackers dimensions are being decided by the largest images in your tracker, so if you reduce those you can make the tracker more compact.
 - Tests are run, if you're not changing the HTML or the code it shouldn't affect your work.
