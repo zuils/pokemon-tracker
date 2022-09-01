@@ -1,7 +1,6 @@
 const RESET_MESSAGE = "-RESET-";
 const USERNAME_MESSAGE = "###";
 
-
 let current_peer;
 let connected_to;
 let current_id;

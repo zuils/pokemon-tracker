@@ -45,11 +45,9 @@ function init() {
         }
     }
     
-    RetrieveAllHTMLElements();
     InitTrackerToUnknowns();
-
+    RetrieveAllHTMLElements();
     if (DEBUG.ENABLED) { RunTests(); }
-
 
     // Show explanation + changelog if we haven't shown it before
     let last_version = localStorage.getItem(CACHE.LAST_VERSION);

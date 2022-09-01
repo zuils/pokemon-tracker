@@ -138,7 +138,6 @@ function ResetButton() {
     }
 }
 
-
 function InitTrackerToUnknowns() {
     for (let key_game in games) {
         games[key_game].marks[0][0][1] = 0; // assuming unknowns are always being tracked
