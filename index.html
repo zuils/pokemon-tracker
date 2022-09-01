@@ -44,10 +44,17 @@
       <div id="config_window" class="window window_hidden">
         <div class="config_content">
           <span class="close" onclick="HideConfig()">&times;</span>
-          <button onclick="LoadFile()">Load</button>
-          <button onclick="SaveFile()">Save</button>
-          <button onclick="ResetButton()">Reset Tracker</button>
-          <label><input type="checkbox" id="checkbox_smooth"  onclick="ChangeSmooth()" >Smooth images</label>
+          <div class="settings-row">
+            <button onclick="LoadFile()">Load</button>
+            <button onclick="SaveFile()">Save</button>
+            <button onclick="ResetButton()">Reset Tracker</button>
+            <label><input type="checkbox" id="checkbox_smooth"  onclick="ChangeSmooth()" >Smooth images</label>
+          </div>
+          <div class="settings-row">
+            <label>Line color:</label>
+            <input type="color" id="line_color" onchange="ChangeLineColor(value)">
+            <button onclick="ResetColor()">Default color</button>
+          </div>
           <p id="game_buttons"></p> <!-- They get created in code -->
           <p id="loading_game_text">Loading game...</p>
           <p id="config_networktoggle" class="config_toggle" onclick="ShowConfigNetwork()">+ Show network options (don't show on stream)</p>

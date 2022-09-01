@@ -182,6 +182,13 @@ function ChangeSmooth() {
     RerenderLayer(LAYER_LOCATION);
 }
 
+function ResetColor() { ChangeLineColor(DEFAULT_COLOR); }
+function ChangeLineColor(color) {
+    localStorage.setItem(CACHE.LINE_COLOR, color);
+    line_color = color;
+    html.config.line_color.value = color;
+}
+
 function ChangeGame(new_game) {
     if (!game.ready) return; // Return if game is being loaded
     game.button.disabled = false;

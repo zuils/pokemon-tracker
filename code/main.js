@@ -30,6 +30,7 @@ const CACHE = {
     SMOOTH_IMAGES:  "smooth-images",
     DEBUG_LOCATION: "debug-location",
     LAST_VERSION:   "last-version",
+    LINE_COLOR:     "line-color",
 }
 const CURRENT_VERSION = 3;
 
@@ -37,6 +38,10 @@ let game;
 let games = {};
 function init() {
     DEBUG.ENABLED = document.URL.endsWith("?debug");
+
+    // Retrieve line color
+    let cached_line_color = localStorage.getItem(CACHE.LINE_COLOR);
+    if (cached_line_color) { line_color = cached_line_color; }
 
     // Create map of games
     for (let g of ordered_games) {
@@ -111,6 +116,7 @@ const HTML_ID = {
         smooth_checkbox: "checkbox_smooth",
         loading_text: "loading_game_text",
         game_buttons: "game_buttons",
+        line_color: "line_color",
         network: {
             toggle: "config_networktoggle",
             div: "config_network",
@@ -147,8 +153,10 @@ function RetrieveAllHTMLElements() {
     config.window          = document.getElementById(HTML_ID.config.window);
     config.loading_text    = document.getElementById(HTML_ID.config.loading_text);
     config.smooth_checkbox = document.getElementById(HTML_ID.config.smooth_checkbox);
+    config.line_color      = document.getElementById(HTML_ID.config.line_color);
     config.loading_text.innerHTML = "";
     config.smooth_checkbox.checked = (localStorage.getItem(CACHE.SMOOTH_IMAGES) == "true") ? true : false;
+    config.line_color.value = line_color;
     
     // Retrieve networking elements
     let network = html.config.network;

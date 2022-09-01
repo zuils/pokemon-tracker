@@ -2,7 +2,8 @@ const BACKGROUND_COLOR = "#444444";
 
 const LINE_THRESHOLD = 16;
 const LINE_THICKNESS = 3;
-const LINE_COLOR     = "#00FFFF";
+const DEFAULT_COLOR  = "#00FFFF";
+let line_color       = DEFAULT_COLOR;
 
 const MAP_MARK_OFFSET = 1;
 const MAP_MARK_WIDTH  = 3;
@@ -628,7 +629,7 @@ function RenderLine(context) {
         }
     }
     context.save(); {
-        context.strokeStyle = LINE_COLOR;
+        context.strokeStyle = line_color;
         context.lineWidth = LINE_THICKNESS;
         context.beginPath();
         context.moveTo(info.x, info.y);
@@ -671,7 +672,7 @@ function RenderMapText(context) {
     // ----- Draw map mark -----
     context.save(); {
         context.lineWidth = MAP_MARK_WIDTH;
-        context.strokeStyle = LINE_COLOR;
+        context.strokeStyle = line_color;
         let v = {
             x: location.x*MAP_SCALE -   MAP_MARK_OFFSET,
             y: location.y*MAP_SCALE -   MAP_MARK_OFFSET,
