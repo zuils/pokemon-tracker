@@ -229,50 +229,30 @@ function InitRendering() {
         c.context  = c.canvas.getContext("2d");
         c.context.imageSmoothingEnabled = false;
         c.rerender = true;
-        //c.functions = [];
         layers.push(c);
     }
-    //layers[0].functions.push()
+    layers[0].functions = [RenderBackgroundColors, RenderMap, RenderSettings];
+    layers[1].functions = [RenderMarkSquares];
+    layers[2].functions = [RenderMarks];
+    layers[3].functions = [RenderLocation];
+    layers[4].functions = [RenderProgress];
+    layers[5].functions = [RenderLine, RenderMapText];
 }
 
 function Render() {
-    if (layers[0].rerender) {
-        ClearLayerContext(layers[0]);
-        RenderBackgroundColors (layers[0].context);
-        RenderMap              (layers[0].context);
-        RenderSettings         (layers[0].context);
-        layers[0].rerender = false;
-    }
-    
-    if (layers[1].rerender) {
-        ClearLayerContext(layers[1]);
-        RenderMarkSquares(layers[1].context);
-        layers[1].rerender = false;
-    }
+    // Render all layers that are issued with a rerender
+    for (let layer of layers) {
+        if (!layer.rerender) continue;
 
-    if (layers[2].rerender) {
-        ClearLayerContext(layers[2]);
-        RenderMarks(layers[2].context);
-        layers[2].rerender = false;
+        ClearLayerContext(layer);
+        for (let fun of layer.functions) {
+            fun(layer.context);
+        }
+        layer.rerender = false;
     }
+    layers[5].rerender = true;
 
-    
-    if (layers[3].rerender) {
-        ClearLayerContext(layers[3]);
-        RenderLocation(layers[3].context);
-        layers[3].rerender = false;
-    }
-    
-    if (layers[4].rerender) {
-        ClearLayerContext(layers[4]);
-        RenderProgress(layers[4].context);
-        layers[4].rerender = false;
-    }
-
-    ClearLayerContext(layers[5]);
-    RenderLine(layers[5].context);
-    RenderMapText(layers[5].context);
-
+    // Mix all layers
     html.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
     for (let layer of layers) {
         html.context.drawImage(layer.canvas, 0, 0);
