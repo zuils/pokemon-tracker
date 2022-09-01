@@ -106,7 +106,7 @@ function LoadImages() {
         return;
     }
 
-    loading_game_text.innerHTML = LOADING_TEXT;
+    html.config.loading_text.innerHTML = LOADING_TEXT;
     loading_process.loaded = 0;
     loading_process.to_load = list.length;
     for (let path of list) {
@@ -172,12 +172,8 @@ function ImageLoaded() {
     if (loading_process.loaded == loading_process.to_load) {
         if (DEBUG.ENABLED && DEBUG.IMAGE_DIMENSIONS) {
             debug_heights.sort((a, b) => (a.value > b.value) ? 1 : -1);
-            console.log("Height:");
-            console.log(debug_heights);
-            
             debug_widths.sort ((a, b) => (a.value > b.value) ? 1 : -1);
-            console.log("Width:");
-            console.log(debug_widths);
+            console.log("Heights:", debug_heights, "Widths:", debug_widths);
         }
 
         // Set canvas dimensions
@@ -185,12 +181,12 @@ function ImageLoaded() {
         game.right_height = loading_process.max_height;
         SetCanvasDimensions();
 
-        loading_game_text.innerHTML = "";
+        html.config.loading_text.innerHTML = "";
         game.ready = true;
         return;
     }
 
-    loading_game_text.innerHTML = LOADING_TEXT + " (" + Math.floor(loading_process.loaded*100/loading_process.to_load) + "%)";
+    html.config.loading_text.innerHTML = LOADING_TEXT + " (" + Math.floor(loading_process.loaded*100/loading_process.to_load) + "%)";
 }
 function ImageError() { console.error("ERROR: Couldn't load " + this.src); }
 
@@ -200,10 +196,10 @@ function GetNameImage(path) {
 }
 
 function SetCanvasDimensions() {
-    canvas.width  = game.right_width + game.left_width + SELECTED_MAP_XOFFSET;
-    canvas.height = game.right_height;
-    aux_canvas.width  = canvas.width;
-    aux_canvas.height = canvas.height;
+    html.canvas.width  = game.right_width + game.left_width + SELECTED_MAP_XOFFSET;
+    html.canvas.height = game.right_height;
+    aux_canvas.width  = html.canvas.width;
+    aux_canvas.height = html.canvas.height;
 }
 
 /*********************************************************/
@@ -304,7 +300,7 @@ function GetWarpRenderInfo(location, warp) {
 }
 let rendered_location = {};
 function RenderLocation() {
-    SetSmoothing(checkbox_smooth.checked);
+    SetSmoothing(html.config.smooth_checkbox.checked);
 
     // ----- Render drawing space -----
     let background = {
@@ -506,7 +502,7 @@ function RenderModifiers() {
 function RenderConfigButton() {
     let v = {
         x: 0,
-        y: canvas.height - settings.naturalHeight,
+        y: html.canvas.height - settings.naturalHeight,
         w: settings.naturalWidth,
         h: settings.naturalHeight
     };
@@ -535,14 +531,14 @@ function RenderLine() {
                 y: (location.y + location.h/2) * MAP_SCALE
             }
         }
-        context.save(); {
-            context.strokeStyle = LINE_COLOR;
-            context.lineWidth = LINE_THICKNESS;
-            context.beginPath();
-            context.moveTo(info.x, info.y);
-            context.lineTo(mouse_position.x, mouse_position.y);
-            context.stroke();
-        } context.restore();
+        html.context.save(); {
+            html.context.strokeStyle = LINE_COLOR;
+            html.context.lineWidth = LINE_THICKNESS;
+            html.context.beginPath();
+            html.context.moveTo(info.x, info.y);
+            html.context.lineTo(mouse_position.x, mouse_position.y);
+            html.context.stroke();
+        } html.context.restore();
     }
 }
 
@@ -574,8 +570,8 @@ function Render() {
         last_rendered_location = current_location;
     }
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(aux_canvas, 0, 0);
+    html.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
+    html.context.drawImage(aux_canvas, 0, 0);
     RenderLine();
 }
 

@@ -1,9 +1,6 @@
 const RESET_MESSAGE = "-RESET-";
 const USERNAME_MESSAGE = "###";
 
-let networkinput_name;
-let network_id;
-let networkinput_connect;
 
 let current_peer;
 let connected_to;
@@ -12,31 +9,22 @@ let username;
 let connections = [];
 function ShowConfigNetwork() {
     if (!current_peer) {
-        networkinput_name    = document.getElementById("networkinput_name");
-        networkinput_connect = document.getElementById("networkinput_connect");
-        networkinput_name.value    = "";
-        networkinput_connect.value = "";
-        network_id = document.getElementById("network_id");
-        network_id.innerHTML = "---";
-
-        network_connectto   = document.getElementById("network_connectto");
-        network_connections = document.getElementById("network_connections");
-        network_name        = document.getElementById("network_name");
-
         let current_date_time = new Date();
         current_id = Math.trunc(current_date_time.valueOf() / ((Math.abs(current_date_time.getTimezoneOffset())/10 % 10) + 1) * (Math.random() % 10)).toString();
 
         current_peer = new Peer(current_id);
         current_peer.on("open", function(id) {
-            network_id.innerHTML = id;
+            html.config.network.id.innerHTML = id;
         });
 
         current_peer.on("connection", function(connection) {
             if (connected_to !== null) {
                 connected_to = null;
-                network_name.classList.add("config_hidden");
-                network_connectto.classList.add("config_hidden");
-                network_connections.classList.remove("config_hidden");
+                let network = html.config.network;
+                network.name       .classList.add("config_hidden");
+                network.connectto  .classList.add("config_hidden");
+                network.warning    .classList.add("config_hidden");
+                network.connections.classList.remove("config_hidden");
             }
             
             connection.on("data", function(data) {
@@ -80,29 +68,33 @@ function ShowConfigNetwork() {
         });
     }
 
-    config_network      .classList.remove("config_hidden");
-    config_networktoggle.classList.add   ("config_hidden");
+    html.config.network.div   .classList.remove("config_hidden");
+    html.config.network.toggle.classList.add   ("config_hidden");
 }
 function HideConfigNetwork() {
-    config_network      .classList.add   ("config_hidden");
-    config_networktoggle.classList.remove("config_hidden");
+    html.config.network.div   .classList.add   ("config_hidden");
+    html.config.network.toggle.classList.remove("config_hidden");
 }
 
 function UpdateUsernames() {
-    network_connections.innerHTML = "<u>Users connected</u> <br>";
+    let htmltext_usernames = "<u>Users connected</u> <br>";
     for (let c of connections) {
-        network_connections.innerHTML += c.username + "<br>";
+        htmltext_usernames += c.username + "<br>";
     }
+    html.config.network.connections.innerHTML = htmltext_usernames;
 }
 
 function ConnectButton() {
-    networkinput_connect.value = networkinput_connect.value.trim();
-    if (networkinput_connect.value && networkinput_connect.value !== network_id.innerHTML) {
-        connected_to = current_peer.connect(networkinput_connect.value);
+    let connect_id = html.config.network.input_connect.value.trim();
+    html.config.network.input_connect.value = connect_id;
+    if (connect_id && connect_id !== html.config.network.id.innerHTML) {
+        connected_to = current_peer.connect(connect_id);
         connected_to.on("open", function(_) {
-            network_connectto.classList.add("config_hidden");
-            network_connections.classList.remove("config_hidden");
-            network_connections.innerHTML = "Connected to host: " + networkinput_connect.value;
+            let network = html.config.network;
+            network.connectto  .classList.add("config_hidden");
+            network.warning    .classList.add("config_hidden");
+            network.connections.classList.remove("config_hidden");
+            network.connections.innerHTML = "Connected to host: " + connect_id;
 
             if (username) { connected_to.send(USERNAME_MESSAGE + username); }
         });
@@ -132,6 +124,6 @@ function ChangeUsername(data) {
 
 function PressedEnter(key) {
     if (key.keyCode == 13) { // if pressed enter
-        ChangeUsername(networkinput_name.value);
+        ChangeUsername(html.config.network.input_name.value);
     }
 }

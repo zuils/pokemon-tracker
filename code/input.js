@@ -5,11 +5,11 @@ const RIGHT_CLICK  = 3;
 const HITBOX_OFFSET = 2.5;
 
 function RegisterInputEvents() {
-    canvas.addEventListener("mousedown",   OnMouseDown);
-    canvas.addEventListener("mousemove",   OnMouseMove);
-    canvas.addEventListener("mouseup",     OnMouseUp);
-    canvas.addEventListener("mouseout",    OnMouseUp);
-    canvas.addEventListener("contextmenu", OnContextMenu);
+    html.canvas.addEventListener("mousedown",   OnMouseDown);
+    html.canvas.addEventListener("mousemove",   OnMouseMove);
+    html.canvas.addEventListener("mouseup",     OnMouseUp);
+    html.canvas.addEventListener("mouseout",    OnMouseUp);
+    html.canvas.addEventListener("contextmenu", OnContextMenu);
 
     document.addEventListener("keydown", OnKeyDown);
     document.addEventListener("keyup",   OnKeyUp);
@@ -17,7 +17,7 @@ function RegisterInputEvents() {
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
 function BeforeUnload(event) {
-    if (game.unknownCount > game.marks[0][0][1] + game.marks[0][1][1]) {
+    if (!DEBUG.ENABLED && game.unknownCount > game.marks[0][0][1] + game.marks[0][1][1]) {
         event.preventDefault();
         return event.returnValue = false;
     }
@@ -398,8 +398,8 @@ function ChangeModifier(location, link, modifier) {
 
 function EventToPosition(event) {
     let position = {x: 0, y: 0};
-    position.x = event.pageX - canvas.offsetLeft;
-    position.y = event.pageY - canvas.offsetTop;
+    position.x = event.pageX - html.canvas.offsetLeft;
+    position.y = event.pageY - html.canvas.offsetTop;
     return position;
 }
 
@@ -413,8 +413,8 @@ function GetClicked(position) {
     // Check if config button
     if (position.x >= 0 &&
         position.x <= game.left_width &&
-        position.y >= canvas.height - settings.naturalHeight &&
-        position.y <  canvas.height)
+        position.y >= html.canvas.height - settings.naturalHeight &&
+        position.y <  html.canvas.height)
     {
         if (position.x <= settings.naturalWidth) {
             return { type: TYPE_CONFIG, target: "settings" };

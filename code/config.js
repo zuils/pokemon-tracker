@@ -1,30 +1,19 @@
-let config;
-let config_network;
-let config_networktoggle;
-
-let checkbox_smooth;
-
-let changelog_header;
-let help_texts = [];
-
 let file_selector;
 
 function ShowConfig() {
-    //config.style.display = "block";
-    config_window.classList.remove("window_hidden");
+    html.config.window.classList.remove("window_hidden");
     HideConfigNetwork();
 }
 function HideConfig() {
-    config_window.classList.add("window_hidden");
-    //config.style.display = "none";
+    html.config.window.classList.add("window_hidden");
 }
 function ShowHelp() {
-    help_window.classList.remove("window_hidden");
+    html.help.window.classList.remove("window_hidden");
 }
 function HideHelp() {
-    help_window.classList.add("window_hidden");
-    changelog_header.classList.remove("config_hidden");
-    for (let t of help_texts) {
+    html.help.window   .classList.add("window_hidden");
+    html.help.changelog.classList.remove("config_hidden");
+    for (let t of html.help.versions) {
         t.classList.remove("config_hidden");
     }
 }
@@ -190,7 +179,7 @@ function ResetTracker() {
 }
 
 function ChangeSmooth() {
-    localStorage.setItem(CACHE.SMOOTH_IMAGES, checkbox_smooth.checked);
+    localStorage.setItem(CACHE.SMOOTH_IMAGES, html.config.smooth_checkbox.checked);
     rerender_location = true;
 }
 
