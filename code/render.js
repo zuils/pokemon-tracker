@@ -38,12 +38,24 @@ const LOADING_TEXT = "Loading map...";
 let debug_widths  = [];
 let debug_heights = [];
 
-let aux_canvas;
-let aux_context;
-let rerender_all = true;
-let rerender_location = true;
+const LAYER_COUNT = 6;
+const LAYER_MAP      = 0;
+const LAYER_SQUARES  = 1;
+const LAYER_MARKS    = 2;
+const LAYER_LOCATION = 3;
+const LAYER_PROGRESS = 4;
+const LAYER_LINE     = 5;
+const LAYER_NAME = ["MAP", "SQUARES", "MARKS", "LOCATION", "PROGRESS", "LINE"]; // used for debugging
+let layers = [];
+
 let last_rendered_location = "";
 let traslucent_warps = false;
+
+// ██ ███    ███  █████   ██████  ███████     ██       ██████   █████  ██████  ██ ███    ██  ██████  
+// ██ ████  ████ ██   ██ ██       ██          ██      ██    ██ ██   ██ ██   ██ ██ ████   ██ ██       
+// ██ ██ ████ ██ ███████ ██   ███ █████       ██      ██    ██ ███████ ██   ██ ██ ██ ██  ██ ██   ███ 
+// ██ ██  ██  ██ ██   ██ ██    ██ ██          ██      ██    ██ ██   ██ ██   ██ ██ ██  ██ ██ ██    ██ 
+// ██ ██      ██ ██   ██  ██████  ███████     ███████  ██████  ██   ██ ██████  ██ ██   ████  ██████  
 
 let loading_process = {};
 let settings, help;
@@ -198,67 +210,503 @@ function GetNameImage(path) {
 function SetCanvasDimensions() {
     html.canvas.width  = game.right_width + game.left_width + SELECTED_MAP_XOFFSET;
     html.canvas.height = game.right_height;
-    aux_canvas.width  = html.canvas.width;
-    aux_canvas.height = html.canvas.height;
+    for (let layer of layers) {
+        layer.canvas.width  = html.canvas.width;
+        layer.canvas.height = html.canvas.height;
+    }
 }
 
-/*********************************************************/
-
-function SetSmoothing(state) {
-    aux_context.webkitImageSmoothingEnabled = state;
-    aux_context.mozImageSmoothingEnabled    = state;
-    aux_context.imageSmoothingEnabled       = state;
+// ██████  ███████ ███    ██ ██████  ███████ ██████  ██ ███    ██  ██████  
+// ██   ██ ██      ████   ██ ██   ██ ██      ██   ██ ██ ████   ██ ██       
+// ██████  █████   ██ ██  ██ ██   ██ █████   ██████  ██ ██ ██  ██ ██   ███ 
+// ██   ██ ██      ██  ██ ██ ██   ██ ██      ██   ██ ██ ██  ██ ██ ██    ██ 
+// ██   ██ ███████ ██   ████ ██████  ███████ ██   ██ ██ ██   ████  ██████  
+function InitRendering() {
+    layers = [];
+    for (let i = 0; i < LAYER_COUNT; ++i) {
+        let c = {};
+        c.canvas   = document.createElement("canvas");
+        c.context  = c.canvas.getContext("2d");
+        c.context.imageSmoothingEnabled = false;
+        c.rerender = true;
+        //c.functions = [];
+        layers.push(c);
+    }
+    //layers[0].functions.push()
 }
 
-function RenderMap(hover_location) {
-    SetSmoothing(false);
+function Render() {
+    if (layers[0].rerender) {
+        ClearLayerContext(layers[0]);
+        RenderBackgroundColors (layers[0].context);
+        RenderMap              (layers[0].context);
+        RenderSettings         (layers[0].context);
+        layers[0].rerender = false;
+    }
+    
+    if (layers[1].rerender) {
+        ClearLayerContext(layers[1]);
+        RenderMarkSquares(layers[1].context);
+        layers[1].rerender = false;
+    }
 
-    // ----- Draw main map -----
-    DrawImage(game.map.image, game.map);
+    if (layers[2].rerender) {
+        ClearLayerContext(layers[2]);
+        RenderMarks(layers[2].context);
+        layers[2].rerender = false;
+    }
 
+    
+    if (layers[3].rerender) {
+        ClearLayerContext(layers[3]);
+        RenderLocation(layers[3].context);
+        layers[3].rerender = false;
+    }
+    
+    if (layers[4].rerender) {
+        ClearLayerContext(layers[4]);
+        RenderProgress(layers[4].context);
+        layers[4].rerender = false;
+    }
+
+    ClearLayerContext(layers[5]);
+    RenderLine(layers[5].context);
+    RenderMapText(layers[5].context);
+
+    html.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
+    for (let layer of layers) {
+        html.context.drawImage(layer.canvas, 0, 0);
+    }
+}
+
+//  ██████         ███    ███  █████  ██████  
+// ██  ████        ████  ████ ██   ██ ██   ██ 
+// ██ ██ ██        ██ ████ ██ ███████ ██████  
+// ████  ██        ██  ██  ██ ██   ██ ██      
+//  ██████  ██     ██      ██ ██   ██ ██      
+
+function RenderBackgroundColors(context) {
+    // ----- Render background progress tracker -----
+    let max_progress_marks = 0;
+    for (let p of game.progress) {
+        if (p.length > max_progress_marks) { max_progress_marks = p.length; }
+    }
+
+    let background = {
+        x: 0,
+        y: game.map.h + MARKS_YOFFSET + game.marks.length*(MARK_SIZE + MARK_SEPARATION) - MARK_SEPARATION + PROGRESS_YOFFSET, 
+        w: max_progress_marks   * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
+        h: game.progress.length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
+    };
+    DrawSquareContextless(context, background, BACKGROUND_COLOR);
+
+    // ----- Render location background -----
+    background = {
+        x: game.left_width + SELECTED_MAP_XOFFSET,
+        y: 0,
+        w: game.right_width,
+        h: game.right_height
+    };
+    DrawSquareContextless(context, background, BACKGROUND_COLOR);
+}
+
+function RenderMap(context) {
+    context.imageSmoothingEnabled = false;
+    DrawImage(context, game.map.image, game.map);
+}
+
+function RenderSettings(context) {
+    let v = {
+        x: 0,
+        y: html.canvas.height - settings.naturalHeight,
+        w: settings.naturalWidth,
+        h: settings.naturalHeight
+    };
+    DrawImage(context, settings, v);
+    v.x = v.w + CONFIG_XOFFSET;
+    DrawImage(context, help, v);
+}
+
+//  ██        ███████  ██████  ██    ██  █████  ██████  ███████ ███████ 
+// ███        ██      ██    ██ ██    ██ ██   ██ ██   ██ ██      ██      
+//  ██        ███████ ██    ██ ██    ██ ███████ ██████  █████   ███████ 
+//  ██             ██ ██ ▄▄ ██ ██    ██ ██   ██ ██   ██ ██           ██ 
+//  ██ ██     ███████  ██████   ██████  ██   ██ ██   ██ ███████ ███████ 
+
+function RenderMarkSquares(context) {
+    context.imageSmoothingEnabled = false;
+
+    let boxes = [];
+    let v = {
+        x: MARK_SEPARATION,
+        y: game.map.h + MARKS_YOFFSET,
+        w: MARK_SIZE,
+        h: MARK_SIZE
+    };
+
+    // ----- Obtain squares for marks -----
+    for (let row of game.marks) {
+        for (let pair of row) {
+            //let name  = pair[0];
+            let count = pair[1];
+            if (count && count > 0) { boxes.push(GetPositionCopy(v)); }
+
+            v.x += MARK_SIZE + MARK_SEPARATION;
+        }
+        v.y += MARK_SIZE + MARK_SEPARATION;
+        v.x = MARK_SEPARATION;
+    }
+
+    // ----- Obtain squares for progress tracker -----
+    v.y += PROGRESS_YOFFSET;
+    for (let row of game.progress) {
+        for (let pair of row) {
+            //let name  = pair[0];
+            let count = pair[1];
+            if (count && count > 0) { boxes.push(GetPositionCopy(v)); }
+
+            v.x += MARK_SIZE + MARK_SEPARATION;
+        }
+        v.y += MARK_SIZE + MARK_SEPARATION;
+        v.x = MARK_SEPARATION;
+    }
+
+    // ----- Obtain boxes for modifiers -----
+    let initial_y = game.map.h + MARKS_YOFFSET + MODIFIER_RADIUS;
+    let position = {
+        x: game.left_width - MODIFIER_RADIUS,
+        y: initial_y,
+    };
+    for (let row of game.modifiers) {
+        for (let pair of row) {
+            let count = pair[1];
+            if (count && count > 0) {
+                let p = {
+                    x: position.x - MODIFIER_RADIUS,
+                    y: position.y - MODIFIER_RADIUS,
+                    w: MODIFIER_RADIUS*2,
+                    h: MODIFIER_RADIUS*2,
+                }
+                boxes.push(p);
+            }
+            position.y += MODIFIER_RADIUS*2 + MARK_SEPARATION;
+        }
+        position.x -= MODIFIER_RADIUS*2 + MARK_SEPARATION;
+        position.y = initial_y;
+    }
+
+    // ----- Render everything in bulk -----
+    context.save(); {
+        context.lineWidth   = MARKFOUND_SIZE;
+        context.strokeStyle = MARKFOUND_COLOR;
+        for (let b of boxes) {
+            DrawBox(context, b);
+        }
+    } context.restore();
+}
+
+// ██████      ███    ███  █████  ██████  ██   ██ ███████ 
+//      ██     ████  ████ ██   ██ ██   ██ ██  ██  ██      
+//  █████      ██ ████ ██ ███████ ██████  █████   ███████ 
+// ██          ██  ██  ██ ██   ██ ██   ██ ██  ██       ██ 
+// ███████     ██      ██ ██   ██ ██   ██ ██   ██ ███████ 
+
+function GetPositionCopy(v) { return { x: v.x, y: v.y, w: v.w, h: v.h }; }
+function RenderMarks(context) {
+    context.imageSmoothingEnabled = true;
+
+    let v = {
+        x: MARK_SEPARATION,
+        y: game.map.h + MARKS_YOFFSET,
+        w: MARK_SIZE,
+        h: MARK_SIZE
+    };
+    // ----- Obtain marks -----
+    let marks = [];
+    for (let row of game.marks) {
+        for (let pair of row) {
+            let name  = pair[0];
+            let count = pair[1];
+            if (count !== undefined) {
+                marks.push({ name: name, position: GetPositionCopy(v)});
+            }
+
+            v.x += MARK_SIZE + MARK_SEPARATION;
+        }
+        v.y += MARK_SIZE + MARK_SEPARATION;
+        v.x = MARK_SEPARATION;
+    }
+
+    // ----- Obtain progress tracker -----
+    v.y += PROGRESS_YOFFSET;
+    let progress = [];
+    for (let row of game.progress) {
+        for (let pair of row) {
+            let name  = pair[0];
+            let count = pair[1];
+            if (count !== undefined) {
+                let m = { name: name, position: GetPositionCopy(v)};
+                progress.push(m);
+            }
+            v.x += MARK_SIZE + MARK_SEPARATION;
+        }
+        v.y += MARK_SIZE + MARK_SEPARATION;
+        v.x = MARK_SEPARATION;
+    }
+
+    // ----- Obtain modifiers -----
+    let modifiers = [];
+    let initial_position = {
+        x: game.left_width - MODIFIER_RADIUS,
+        y: game.map.h + MARKS_YOFFSET + MODIFIER_RADIUS,
+    };
+    let offset = MODIFIER_RADIUS*2 + MARK_SEPARATION;
+    
+    let position = {
+        x: initial_position.x,
+        y: initial_position.y,
+    };
+    
+    for (let row of game.modifiers) {
+        for (let pair of row) {
+            modifiers.push({ color: pair[0], position: GetPositionCopy(position)});
+            position.y += offset;
+        }
+        position.x -= offset;
+        position.y = initial_position.y;
+    }
+
+    // ----- Render everything in bulk -----
+    for (let m of marks) {
+        DrawImage(context, images[m.name], m.position);
+    }
+    
+    context.save(); {
+        context.filter = UNCHECKED_FILTER;
+        for (let m of progress) {
+            DrawImage(context, images[m.name], m.position);
+        }
+    } context.restore();
+    
+    context.save(); {
+        context.lineWidth   = MARKFOUND_SIZE;
+        context.strokeStyle = MARKFOUND_COLOR;
+        for (let m of modifiers) {
+            context.beginPath();
+            context.fillStyle = m.color;
+            context.arc(m.position.x, m.position.y, MODIFIER_RADIUS, 0, 2*Math.PI, false);
+            context.fill();
+        }
+    } context.restore();
+}
+
+// ██████         ██       ██████   ██████  █████  ████████ ██  ██████  ███    ██ 
+//      ██        ██      ██    ██ ██      ██   ██    ██    ██ ██    ██ ████   ██ 
+//  █████         ██      ██    ██ ██      ███████    ██    ██ ██    ██ ██ ██  ██ 
+//      ██        ██      ██    ██ ██      ██   ██    ██    ██ ██    ██ ██  ██ ██ 
+// ██████  ██     ███████  ██████   ██████ ██   ██    ██    ██  ██████  ██   ████ 
+
+let rendered_location = {};
+function RenderLocation(context) {
+    context.imageSmoothingEnabled = html.config.smooth_checkbox.checked;
+
+    // ----- Render drawing space -----
+    let background = {
+        x: game.left_width + SELECTED_MAP_XOFFSET,
+        y: 0,
+        w: game.right_width,
+        h: game.right_height
+    };
+    //DrawSquareContextless(context, background, BACKGROUND_COLOR);
+
+    // ----- Render selected map -----
     let location = game.locations[current_location];
+    let ratio = {
+        width:  background.w / location.image.naturalWidth,
+        height: background.h / location.image.naturalHeight
+    };
+    let scale;
+    let center = { x: 0, y: 0 };
+    if (ratio.height < ratio.width) {
+        scale = ratio.height;
+        center.x = (background.w - location.image.naturalWidth*scale) / 2;
+    }
+    else {
+        scale = ratio.width;
+        center.y = (background.h - location.image.naturalHeight*scale) / 2;
+    }
+    rendered_location = {
+        x: background.x + center.x,
+        y: background.y + center.y,
+        w: location.image.naturalWidth  * scale,
+        h: location.image.naturalHeight * scale,
+        scale: scale
+    };
+    DrawImage(context, location.image, rendered_location);
 
-    // ----- Draw text -----
-    aux_context.save(); {
-        aux_context.font = "bold " + game.font_size + " " + game.font;
-        aux_context.textAlign = "center";
-        aux_context.fillStyle = "#111111";
+    // ----- Render warps -----
+    context.save(); {
+        if (traslucent_warps) {
+            context.globalAlpha = 0.2;
+        }
+        context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
+        context.textAlign = "center";
+        context.fillStyle = "#111111";
+        for (let key in game.warps[current_location]) {
+            let warp = game.warps[current_location][key];
+            let info = GetWarpRenderInfo(location, warp);
+
+            if (DEBUG.ENABLED && DEBUG.WARP_TO_SELF) {
+                warp.link_type = LINKTYPE_WARP;
+                warp.link = key;
+                warp.link_location = current_location;
+                info = GetWarpRenderInfo(location, warp);
+            }
+
+            if (info.type == "image") {
+                DrawImage(context, info.image, info);
+                if (warp.modifier && warp.modifier != "null") {
+                    DrawBoxContextless(context, info, MODIFIER_WIDTH, warp.modifier);
+                }
+            }
+            else {
+                DrawImage(context, game.frame, info);
+                if (warp.modifier && warp.modifier != "null") {
+                    DrawSquareContextless(context, info, warp.modifier + MODIFIER_ALPHA);
+                }
+                if (DEBUG.ENABLED && DEBUG.PRINT_KEY) {
+                    context.fillText(key, info.text_position.x, info.text_position.y);
+                    continue;
+                }
+                let text = info.text.split("\n");
+                context.fillText(text[0], info.text_position.x, info.text_position.y);
+            }
+        }
+
+    } context.restore();
+}
+
+// ██   ██        ██████  ██████   ██████   ██████  ██████  ███████ ███████ ███████ 
+// ██   ██        ██   ██ ██   ██ ██    ██ ██       ██   ██ ██      ██      ██      
+// ███████        ██████  ██████  ██    ██ ██   ███ ██████  █████   ███████ ███████ 
+//      ██        ██      ██   ██ ██    ██ ██    ██ ██   ██ ██           ██      ██ 
+//      ██ ██     ██      ██   ██  ██████   ██████  ██   ██ ███████ ███████ ███████ 
+
+function RenderProgress(context) {
+    context.imageSmoothingEnabled = true;
+
+    let v = {
+        x: MARK_SEPARATION,
+        y: game.map.h + MARKS_YOFFSET + game.marks.length*(MARK_SIZE+MARK_SEPARATION) + PROGRESS_YOFFSET,
+        w: MARK_SIZE,
+        h: MARK_SIZE
+    };
+  
+    // ----- Obtain progress tracker -----
+    let progress = [];
+    for (let row of game.progress) {
+        for (let pair of row) {
+            let name  = pair[0];
+            //let count = pair[1];
+            if (game.obtained.has(name)) { progress.push({ name: name, position: GetPositionCopy(v)}); }
+
+            v.x += MARK_SIZE + MARK_SEPARATION;
+        }
+        v.y += MARK_SIZE + MARK_SEPARATION;
+        v.x = MARK_SEPARATION;
+    }
+
+    for (let m of progress) {
+        DrawImage(context, images[m.name], m.position);
+    }
+}
+
+// ███████        ██      ██ ███    ██ ███████ 
+// ██             ██      ██ ████   ██ ██      
+// ███████        ██      ██ ██ ██  ██ █████   
+//      ██        ██      ██ ██  ██ ██ ██      
+// ███████ ██     ███████ ██ ██   ████ ███████ 
+
+function RenderLine(context) {
+    if (current_state == STATE_DEFAULT) { return; }
+    context.imageSmoothingEnabled = false;
+
+    let info;
+    if (current_state == STATE_LINK1) {
+        //let location = game.locations[current_location];
+        let warp = game.warps[current_location][link_warp];
+        info = {
+            x: rendered_location.x + warp.x*rendered_location.scale,
+            y: rendered_location.y + warp.y*rendered_location.scale
+        }
+    }
+    else {
+        let location = game.locations[link_location];
+        info = {
+            x: (location.x + location.w/2) * MAP_SCALE,
+            y: (location.y + location.h/2) * MAP_SCALE
+        }
+    }
+    context.save(); {
+        context.strokeStyle = LINE_COLOR;
+        context.lineWidth = LINE_THICKNESS;
+        context.beginPath();
+        context.moveTo(info.x, info.y);
+        context.lineTo(mouse_position.x, mouse_position.y);
+        context.stroke();
+    } context.restore();
+}
+
+function RenderMapText(context) {
+    context.imageSmoothingEnabled = false;
+    
+    let location = game.locations[current_location];
+    context.save(); {
+        context.font = "bold " + game.font_size + " " + game.font;
+        context.textAlign = "center";
+        context.fillStyle = "#111111";
 
         let text_position = {
             x: game.map.w - (FRAME_WIDTH /2)*MAP_SCALE,
             y: game.map.h - (FRAME_HEIGHT/2)*MAP_SCALE + LINE_YOFFSET
         };
         let lines = location.name.split("\n");
-        if (hover_location) {
-            lines = game.locations[hover_location].name.split("\n");
+        if (current_hovering_target) {
+            lines = game.locations[current_hovering_target].name.split("\n");
         }
         switch (lines.length) {
             case 1: {
-                aux_context.fillText(lines[0], text_position.x, text_position.y);
+                context.fillText(lines[0], text_position.x, text_position.y);
             } break;
             default: {
                 console.error("ERROR: Text can have more than 2 lines! Only rendering the 2 first lines.");
             } // falldown
             case 2: {
-                aux_context.fillText(lines[0], text_position.x, text_position.y - LINE_BREAK_YOFFSET);
-                aux_context.fillText(lines[1], text_position.x, text_position.y + LINE_BREAK_YOFFSET);
+                context.fillText(lines[0], text_position.x, text_position.y - LINE_BREAK_YOFFSET);
+                context.fillText(lines[1], text_position.x, text_position.y + LINE_BREAK_YOFFSET);
             } break;
         }
-    } aux_context.restore();
+    } context.restore();
 
     // ----- Draw map mark -----
-    aux_context.save(); {
-        aux_context.lineWidth = MAP_MARK_WIDTH;
-        aux_context.strokeStyle = LINE_COLOR;
+    context.save(); {
+        context.lineWidth = MAP_MARK_WIDTH;
+        context.strokeStyle = LINE_COLOR;
         let v = {
             x: location.x*MAP_SCALE -   MAP_MARK_OFFSET,
             y: location.y*MAP_SCALE -   MAP_MARK_OFFSET,
             w: location.w*MAP_SCALE + 2*MAP_MARK_OFFSET,
             h: location.h*MAP_SCALE + 2*MAP_MARK_OFFSET,
         };
-        DrawBox(v);
-    } aux_context.restore();
+        DrawBox(context, v);
+    } context.restore();
 }
+
+//  █████  ██    ██ ██   ██ ██ ██      ██  █████  ██████  
+// ██   ██ ██    ██  ██ ██  ██ ██      ██ ██   ██ ██   ██ 
+// ███████ ██    ██   ███   ██ ██      ██ ███████ ██████  
+// ██   ██ ██    ██  ██ ██  ██ ██      ██ ██   ██ ██   ██ 
+// ██   ██  ██████  ██   ██ ██ ███████ ██ ██   ██ ██   ██ 
 
 function GetWarpRenderInfo(location, warp) {
     let info = {
@@ -298,304 +746,42 @@ function GetWarpRenderInfo(location, warp) {
 
     return info;
 }
-let rendered_location = {};
-function RenderLocation() {
-    SetSmoothing(html.config.smooth_checkbox.checked);
 
-    // ----- Render drawing space -----
-    let background = {
-        x: game.left_width + SELECTED_MAP_XOFFSET,
-        y: 0,
-        w: game.right_width,
-        h: game.right_height
-    };
-    DrawSquareContextless(background, BACKGROUND_COLOR);
+function DrawSquareContextless(context, v, color) {
+    context.save(); {
+        context.fillStyle = color;
+        context.fillRect(v.x, v.y, v.w, v.h);
+    } context.restore();
+}
+function DrawSquare(context, v) {
+    context.fillRect(v.x, v.y, v.w, v.h);
+}
 
-    let location = game.locations[current_location];
+function DrawBox(context, v) {
+    context.strokeRect(v.x, v.y, v.w, v.h);
+}
+function DrawBoxContextless(context, v, width, color) {
+    context.save(); {
+        context.lineWidth   = width;
+        context.strokeStyle = color;
+        context.strokeRect(v.x, v.y, v.w, v.h);
+    } context.restore();
+}
 
-    // ----- Render selected map -----
-    let ratio = {
-        width:  background.w / location.image.naturalWidth,
-        height: background.h / location.image.naturalHeight
-    };
-    let scale;
-    let center = { x: 0, y: 0 };
-    if (ratio.height < ratio.width) {
-        scale = ratio.height;
-        center.x = (background.w - location.image.naturalWidth*scale) / 2;
+function DrawImage(context, image, v) {
+    context.drawImage(image, v.x, v.y, v.w, v.h);
+}
+
+function ClearLayerContext(layer) {
+    layer.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
+}
+function RerenderLayer(level) {
+    if (DEBUG.ENABLED) { console.log("Rerendering " + LAYER_NAME[level]); }
+    layers[level].rerender = true;
+}
+function RerenderAll() {
+    if (DEBUG.ENABLED) { console.log("Rerendering ~everything~"); }
+    for (let layer of layers) {
+        layer.rerender = true;
     }
-    else {
-        scale = ratio.width;
-        center.y = (background.h - location.image.naturalHeight*scale) / 2;
-    }
-    rendered_location = {
-        x: background.x + center.x,
-        y: background.y + center.y,
-        w: location.image.naturalWidth  * scale,
-        h: location.image.naturalHeight * scale,
-        scale: scale
-    };
-    DrawImage(location.image, rendered_location);
-
-    // ----- Render warps -----
-    aux_context.save(); {
-        if (traslucent_warps) {
-            aux_context.globalAlpha = 0.2;
-        }
-        aux_context.font = "bold " + WARP_FONT_SIZE + "px Avenir";
-        aux_context.textAlign = "center";
-        aux_context.fillStyle = "#111111";
-        for (let key in game.warps[current_location]) {
-            let warp = game.warps[current_location][key];
-            let info = GetWarpRenderInfo(location, warp);
-
-            if (DEBUG.ENABLED && DEBUG.WARP_TO_SELF) {
-                warp.link_type = LINKTYPE_WARP;
-                warp.link = key;
-                warp.link_location = current_location;
-                info = GetWarpRenderInfo(location, warp);
-            }
-
-            if (info.type == "image") {
-                DrawImage(info.image, info);
-                if (warp.modifier && warp.modifier != "null") {
-                    DrawBoxContextless(info, MODIFIER_WIDTH, warp.modifier);
-                }
-            }
-            else {
-                DrawImage(game.frame, info);
-                if (warp.modifier && warp.modifier != "null") {
-                    DrawSquareContextless(info, warp.modifier + MODIFIER_ALPHA);
-                }
-                if (DEBUG.ENABLED && DEBUG.PRINT_KEY) {
-                    aux_context.fillText(key, info.text_position.x, info.text_position.y);
-                    continue;
-                }
-                let text = info.text.split("\n");
-                aux_context.fillText(text[0], info.text_position.x, info.text_position.y);
-            }
-        }
-
-    } aux_context.restore();
-}
-
-function GetPositionCopy(v) { return { x: v.x, y: v.y, w: v.w, h: v.h }; }
-function RenderMarks() {
-    SetSmoothing(true);
-
-    let unfiltered_marks = [];
-    let filtered_marks = [];
-    let boxes = [];
-    let v = {
-        x: MARK_SEPARATION,
-        y: game.map.h + MARKS_YOFFSET,
-        w: MARK_SIZE,
-        h: MARK_SIZE
-    };
-    // ----- Obtain marks -----
-    for (let row of game.marks) {
-        for (let pair of row) {
-            let name  = pair[0];
-            let count = pair[1];
-            if (count !== undefined) {
-                unfiltered_marks.push({ name: name, position: GetPositionCopy(v)});
-                if (count && count > 0) { boxes.push({ position: GetPositionCopy(v) }); }
-            }
-
-            v.x += MARK_SIZE + MARK_SEPARATION;
-        }
-        v.y += MARK_SIZE + MARK_SEPARATION;
-        v.x = MARK_SEPARATION;
-    }
-
-    // ----- Render background progress tracker -----
-    v.y += PROGRESS_YOFFSET;
-    let max_progress_marks = 0;
-    for (let p of game.progress) {
-        if (p.length > max_progress_marks) { max_progress_marks = p.length; }
-    }
-    let background = {
-        x: 0,
-        y: v.y - MARK_SEPARATION,
-        w: max_progress_marks   * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION,
-        h: game.progress.length * (MARK_SIZE+MARK_SEPARATION) + MARK_SEPARATION
-    };
-    DrawSquareContextless(background, BACKGROUND_COLOR);
-
-    // ----- Obtain progress tracker -----
-    for (let row of game.progress) {
-        for (let pair of row) {
-            let name  = pair[0];
-            let count = pair[1];
-            if (count !== undefined) {
-                let m = { name: name, position: GetPositionCopy(v)};
-                if (game.obtained.has(name)) unfiltered_marks.push(m);
-                else filtered_marks.push(m);
-                if (count && count > 0) { boxes.push({ position: GetPositionCopy(v) }); }
-            }
-            v.x += MARK_SIZE + MARK_SEPARATION;
-        }
-        v.y += MARK_SIZE + MARK_SEPARATION;
-        v.x = MARK_SEPARATION;
-    }
-
-    // ----- Render everything in bulk -----
-    aux_context.save(); {
-        aux_context.lineWidth   = MARKFOUND_SIZE;
-        aux_context.strokeStyle = MARKFOUND_COLOR;
-        for (let b of boxes) {
-            DrawBox(b.position);
-        }
-
-        for (let m of unfiltered_marks) {
-            DrawImage(images[m.name], m.position);
-        }
-
-        aux_context.filter = UNCHECKED_FILTER;
-        for (let m of filtered_marks) {
-            DrawImage(images[m.name], m.position);
-        }
-    } aux_context.restore();
-}
-
-function RenderModifiers() {
-    if (!game.modifiers) { return; }
-
-    // Draw other modifiers
-    let initial_position = {
-        x: game.left_width - MODIFIER_RADIUS,
-        y: game.map.h + MARKS_YOFFSET + MODIFIER_RADIUS,
-    };
-    let offset = MODIFIER_RADIUS*2 + MARK_SEPARATION;
-    
-    aux_context.save(); {
-        let position = {
-            x: initial_position.x,
-            y: initial_position.y,
-        };
-        aux_context.lineWidth   = MARKFOUND_SIZE;
-        aux_context.strokeStyle = MARKFOUND_COLOR;
-        for (let row of game.modifiers) {
-            for (let m of row) {
-                if (m[1] && m[1] > 0) {
-                    let p = {
-                        x: position.x - MODIFIER_RADIUS,
-                        y: position.y - MODIFIER_RADIUS,
-                        w: MODIFIER_RADIUS*2,
-                        h: MODIFIER_RADIUS*2,
-                    }
-                    DrawBox(p);
-                }
-
-                aux_context.beginPath();
-                aux_context.fillStyle = m[0];
-                aux_context.arc(position.x, position.y, MODIFIER_RADIUS, 0, 2*Math.PI, false);
-                aux_context.fill();
-                position.y += offset;
-            }
-            position.x -= offset;
-            position.y = initial_position.y;
-        }
-    } aux_context.restore();
-}
-
-function RenderConfigButton() {
-    let v = {
-        x: 0,
-        y: html.canvas.height - settings.naturalHeight,
-        w: settings.naturalWidth,
-        h: settings.naturalHeight
-    };
-    DrawImage(settings, v);
-    v.x = v.w + CONFIG_XOFFSET;
-    DrawImage(help, v);
-}
-
-function RenderLine() {
-    SetSmoothing(false);
-
-    if (current_state != STATE_DEFAULT) {
-        let info;
-        if (current_state == STATE_LINK1) {
-            let location = game.locations[current_location];
-            let warp = game.warps[current_location][link_warp];
-            info = {
-                x: rendered_location.x + warp.x*rendered_location.scale,
-                y: rendered_location.y + warp.y*rendered_location.scale
-            }
-        }
-        else {
-            let location = game.locations[link_location];
-            info = {
-                x: (location.x + location.w/2) * MAP_SCALE,
-                y: (location.y + location.h/2) * MAP_SCALE
-            }
-        }
-        html.context.save(); {
-            html.context.strokeStyle = LINE_COLOR;
-            html.context.lineWidth = LINE_THICKNESS;
-            html.context.beginPath();
-            html.context.moveTo(info.x, info.y);
-            html.context.lineTo(mouse_position.x, mouse_position.y);
-            html.context.stroke();
-        } html.context.restore();
-    }
-}
-
-function Render() {
-    if (rerender_all || rerender_location || last_rendered_location != current_location) {
-        if (rerender_all) {
-            aux_context.clearRect(0, 0, aux_canvas.width, aux_canvas.height);
-            RenderMarks();
-            RenderModifiers();
-            RenderConfigButton();
-        }
-        else {
-            aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
-            aux_context.clearRect(game.left_width, 0, game.right_width + SELECTED_MAP_XOFFSET, game.right_height);
-        }
-
-        // Check for a bug I'm not able to reproduce, but it will prevent a hard crash.
-        // This situation should never happen, since the user can only set locations that exist
-        if (!game.locations[current_location]) {
-            console.info("This location could not be retrieved: " + current_location + "\nSwitching to default location.");
-            current_location = game.start_location;
-        }
-
-        RenderMap();
-        RenderLocation();
-
-        rerender_all = false;
-        rerender_location = false;
-        last_rendered_location = current_location;
-    }
-
-    html.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
-    html.context.drawImage(aux_canvas, 0, 0);
-    RenderLine();
-}
-
-function DrawSquareContextless(v, color) {
-    aux_context.save(); {
-        aux_context.fillStyle = color;
-        aux_context.fillRect(v.x, v.y, v.w, v.h);
-    } aux_context.restore();
-}
-function DrawSquare(v) {
-    aux_context.fillRect(v.x, v.y, v.w, v.h);
-}
-
-function DrawBox(v) {
-    aux_context.strokeRect(v.x, v.y, v.w, v.h);
-}
-function DrawBoxContextless(v, width, color) {
-    aux_context.save(); {
-        aux_context.lineWidth   = width;
-        aux_context.strokeStyle = color;
-        aux_context.strokeRect(v.x, v.y, v.w, v.h);
-    } aux_context.restore();
-}
-
-function DrawImage(image, v) {
-    aux_context.drawImage(image, v.x, v.y, v.w, v.h);
 }

@@ -27,7 +27,7 @@ function OnKeyDown(event) {
     if (!DEBUG.ENABLED) return;
     if (event.key == "q") {
         DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
-        rerender_location = true;
+        RerenderLayer(LAYER_LOCATION);
         if (!DEBUG.WARP_TO_SELF) {
             InitTrackerToUnknowns();
         }
@@ -35,7 +35,7 @@ function OnKeyDown(event) {
     }
     if (event.key == "w") {
         DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
-        rerender_location = true;
+        RerenderLayer(LAYER_LOCATION);
         return;
     }
 }
@@ -80,7 +80,7 @@ function OnMouseDown(event) {
                 if (info && info.type == TYPE_WARP) break;
 
                 traslucent_warps  = true;
-                rerender_location = true;
+                RerenderLayer(LAYER_LOCATION);
             }
         } break;
         case MIDDLE_CLICK: {
@@ -97,7 +97,8 @@ function OnMouseDown(event) {
                     x: mouse_position.x,
                     y: mouse_position.y,
                 };
-                rerender_location = true;
+                RerenderLayer(LAYER_LOCATION);
+
             }
 
             debug_text += "\t\t\taaaa" + debug_entry + ":" + debug_whitespace + "{x: " + Math.floor(mouse_position.x) + ", y: " + Math.floor(mouse_position.y) + " },\n";
@@ -142,12 +143,7 @@ function OnMouseMove(event) {
     }
     // Prevent unneccessary rendering by checking if the text has to be changed
     if (current_hovering_target != previous_hovering_target) {
-        aux_context.clearRect(game.map.x, game.map.y, game.left_width, game.map.h);
-        if (current_hovering_target != '') {
-            RenderMap(current_hovering_target);
-        } else {
-            RenderMap();
-        }
+        RerenderLayer(LAYER_MAP);
     }
     previous_hovering_target = current_hovering_target;
 }
@@ -174,7 +170,7 @@ function OnMouseUp(event) {
 
             if (traslucent_warps) {
                 traslucent_warps  = false;
-                rerender_location = true;
+                RerenderLayer(LAYER_LOCATION);
             }
         } break;
         default: return;
@@ -208,6 +204,7 @@ function OnMouseUp(event) {
                                     if (DEBUG.ENABLED) {
                                         localStorage.setItem(CACHE.DEBUG_LOCATION, current_location);
                                     }
+                                    RerenderLayer(LAYER_LOCATION);
                                 } break;
                             }
                         } break;
@@ -219,7 +216,7 @@ function OnMouseUp(event) {
                                 else {
                                     game.obtained.add(info.target);
                                 }
-                                rerender_all = true;
+                                RerenderLayer(LAYER_PROGRESS);
                             } 
                         } // falldown
                         case TYPE_MARK: {
@@ -242,6 +239,8 @@ function OnMouseUp(event) {
                                         let w = game.warps[current_location][info.target];
                                         if (w.link_type && w.link_type == LINKTYPE_WARP) {
                                             current_location = w.link_location;
+                                            RerenderLayer(LAYER_LOCATION);
+
                                         }
                                         break;
                                     }
@@ -291,6 +290,7 @@ function OnMouseUp(event) {
                                 // Change current_location to the appropiate one and cycle the index
                                 current_location = current_markcycle.locations[current_markcycle.index];
                                 current_markcycle.index = (current_markcycle.index+1) % current_markcycle.locations.length;
+                                RerenderLayer(LAYER_LOCATION);
                             }
                         } break;
                         case TYPE_WARP: {
@@ -385,7 +385,7 @@ function ChangeWarpOffline(current_game, location, warp, link_type, link_locatio
         if (modifier && modifier != "null") { AddToIcon(current_game, modifier,      1, location, TYPE_MODIFIER); }
     }
 
-    rerender_location = true;
+    RerenderLayer(LAYER_LOCATION);
 }
 function ChangeModifier(location, link, modifier) {
     let warp = game.warps[location][link];
@@ -562,7 +562,7 @@ function AddToIcon (current_game, name, value, location, type) {
 
     if (current_game.name != game.name) { return; }
 
-    rerender_all |= ((old_value >= 1 && info[1] <= 0) || (old_value <= 0 && info[1] >= 1));
+    if (((old_value >= 1 && info[1] <= 0) || (old_value <= 0 && info[1] >= 1))) { RerenderLayer(LAYER_SQUARES); }
 
     // Update current_markcycle if it's the same mark
     if (current_markcycle && current_markcycle.name == name) {

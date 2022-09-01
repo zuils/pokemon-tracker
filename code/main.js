@@ -46,6 +46,7 @@ function init() {
     }
     
     InitTrackerToUnknowns();
+    InitRendering();
     RetrieveAllHTMLElements();
     if (DEBUG.ENABLED) { RunTests(); }
 
@@ -139,8 +140,7 @@ function RetrieveAllHTMLElements() {
     // Retrieve canvas and create auxiliar canvases
     html.canvas  = document.getElementById(HTML_ID.canvas);
     html.context = html.canvas.getContext("2d");
-    aux_canvas  = document.createElement("canvas");
-    aux_context = aux_canvas.getContext("2d");
+    html.context.imageSmoothingEnabled = false;
 
     // Retrieve config elements
     let config  = html.config;
@@ -239,4 +239,4 @@ function GameLoop() {
     }
 }
 
-function FontReady() { rerender_location = true; }
+function FontReady() { RerenderLayer(LAYER_LOCATION); }

@@ -48,7 +48,7 @@ function FileUploaded(event) {
             }
         }
 
-        rerender_all = true;
+        RerenderAll();
     }
     reader.readAsText(file_selector.files[0]);
 }
@@ -174,12 +174,12 @@ function ResetTracker() {
         games[key_game].obtained = new Set();
     }
     InitTrackerToUnknowns();
-    rerender_all = true;
+    RerenderAll();
 }
 
 function ChangeSmooth() {
     localStorage.setItem(CACHE.SMOOTH_IMAGES, html.config.smooth_checkbox.checked);
-    rerender_location = true;
+    RerenderLayer(LAYER_LOCATION);
 }
 
 function ChangeGame(new_game) {
@@ -195,8 +195,7 @@ function ChangeGame(new_game) {
     right_click = { down: false };
     current_markcycle = undefined;
 
-    rerender_all = true;
-    rerender_location = true;
+    RerenderAll();
     if (!game.ready) {
         LoadImages();
     }

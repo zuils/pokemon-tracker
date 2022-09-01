@@ -19,6 +19,7 @@ function Test_GameFiles() {
         let g = games[name];
         if (g.marks[0][0][0] != "unknown")  { errors.push(name + " -> First mark must be 'unknown'");   }
         if (g.marks[0][1][0] != "corridor") { errors.push(name + " -> Second mark must be 'corridor'"); }
+        if (!g.modifiers) { errors.push(name + " -> Missing modifiers"); }
     }
 
     return errors;
