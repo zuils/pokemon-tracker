@@ -291,6 +291,15 @@ function OnMouseUp(event) {
                                 current_location = current_markcycle.locations[current_markcycle.index];
                                 current_markcycle.index = (current_markcycle.index+1) % current_markcycle.locations.length;
                                 RerenderLayer(LAYER_LOCATION);
+
+                                // This should never be true, but I've found a bug involved with this,
+                                // so I'll add this code just in case.
+                                if (!game.locations[current_location]) {
+                                    console.error("ERROR: Attempted to access a location that didn't exist: " + current_location);
+                                    current_location = game.start_location;
+                                    current_markcycle = null;
+                                    RerenderLayer(LAYER_LOCATION);
+                                }
                             }
                         } break;
                         case TYPE_WARP: {

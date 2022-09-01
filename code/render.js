@@ -232,12 +232,12 @@ function InitRendering() {
         c.rerender = true;
         layers.push(c);
     }
-    layers[0].functions = [RenderBackgroundColors, RenderMap, RenderSettings];
-    layers[1].functions = [RenderMarkSquares];
-    layers[2].functions = [RenderMarks];
-    layers[3].functions = [RenderLocation];
-    layers[4].functions = [RenderProgress];
-    layers[5].functions = [RenderLine, RenderMapText];
+    layers[LAYER_MAP].     functions = [RenderBackgroundColors, RenderMap, RenderSettings];
+    layers[LAYER_SQUARES]. functions = [RenderMarkSquares];
+    layers[LAYER_MARKS].   functions = [RenderMarks];
+    layers[LAYER_LOCATION].functions = [RenderLocation];
+    layers[LAYER_PROGRESS].functions = [RenderProgress];
+    layers[LAYER_LINE].    functions = [RenderLine, RenderMapText];
 }
 
 function Render() {
@@ -251,7 +251,7 @@ function Render() {
         }
         layer.rerender = false;
     }
-    layers[5].rerender = true;
+    layers[LAYER_LINE].rerender = true;
 
     // Mix all layers
     html.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
