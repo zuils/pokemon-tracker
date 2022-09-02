@@ -30,7 +30,7 @@ let emerald = {
         mossdeep_r124:  {x: 200, y: 56,  w: 16, h: 8,  name: "Mossdeep City\nRoute 124"  },
         sootopolis:     {x: 176, y: 72,  w: 8,  h: 8,  name: "Sootopolis City"           },
         pacifidlog:     {x: 144, y: 96,  w: 8,  h: 8,  name: "Pacifidlog Town"           },
-        evergrande:     {x: 224, y: 80,  w: 8,  h: 16, name: "Ever Grande City"          },
+        evergrande:     {x: 224, y: 80,  w: 8,  h: 16, name: "Ever Grande City\nElite 4" },
 
         // Routes
         petalburgwoods_r104: {x: 8,   y: 78, w: 8, h: 8, name: "Petalburg Woods\nRoute 104" },
