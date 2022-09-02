@@ -234,26 +234,36 @@ function OnMouseUp(event) {
                                     current_state = STATE_LINK1;
                                 } break;
                                 case STATE_LINK1: {
+                                    // If user clicked same warp we will change location
                                     if (current_location == link_location && info.target == link_warp) {
                                         current_state = STATE_DEFAULT;
                                         let w = game.warps[current_location][info.target];
                                         if (w.link_type && w.link_type == LINKTYPE_WARP) {
                                             current_location = w.link_location;
                                             RerenderLayer(LAYER_LOCATION);
-
                                         }
                                         break;
                                     }
                                 } // falldown
                                 case STATE_LINK2: {
-                                    // Decide which modifier to use
-                                    let modifier = game.warps[link_location][link_warp].modifier;
-                                    if (!modifier || modifier == "null") {
-                                        modifier = game.warps[current_location][info.target].modifier;
+                                    let delete_warp = AskAndRemoveOtherEnd(current_location, info.target);
+                                    if (delete_warp) {
+                                        // Remove warp for current end too
+                                        let w1 = game.warps[link_location][link_warp];
+                                        if (w1.link_type == LINKTYPE_WARP) {
+                                            let mark_image = game.warps[w1.link_location][w1.link].corridor ? "corridor" : "unknown";
+                                            ChangeWarp(game, w1.link_location, w1.link, LINKTYPE_MARK, "", mark_image, null);
+                                        }
+                                        
+                                        // Decide which modifier to use
+                                        let modifier = game.warps[link_location][link_warp].modifier;
+                                        if (!modifier || modifier == "null") {
+                                            modifier = game.warps[current_location][info.target].modifier;
+                                        }
+    
+                                        ChangeWarp(game, link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target, modifier);
+                                        ChangeWarp(game, current_location, info.target, LINKTYPE_WARP, link_location,    link_warp,   modifier);
                                     }
-
-                                    ChangeWarp(game, link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target, modifier);
-                                    ChangeWarp(game, current_location, info.target, LINKTYPE_WARP, link_location,    link_warp,   modifier);
 
                                     current_state = STATE_DEFAULT;
                                 } break;
@@ -319,17 +329,7 @@ function OnMouseUp(event) {
                                 ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "dead_end", null);
                             }
                             else {
-                                let delete_warp = true;
-                                if (warp.link_type == LINKTYPE_WARP) {
-                                    let is_warp_linked = IsWarpLinked(warp.link_location, warp.link);
-                                    if (is_warp_linked) {
-                                        delete_warp = confirm("This will remove the link on the other end of the warp. Are you sure you want to remove this warp?");
-                                    }
-                                    if (is_warp_linked && delete_warp) {
-                                        let mark_image = game.warps[warp.link_location][warp.link].corridor ? "corridor" : "unknown";
-                                        ChangeWarp(game, warp.link_location, warp.link, LINKTYPE_MARK, "", mark_image, null);
-                                    }
-                                }
+                                let delete_warp = AskAndRemoveOtherEnd(current_location, info.target);
                                 if (delete_warp) {
                                     let mark_image = warp.corridor ? "corridor" : "unknown";
                                     ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", mark_image, null);
@@ -625,4 +625,20 @@ function IsWarpLinked (location, link) {
 
     let warp2 = game.warps[warp.link_location][warp.link];
     return warp2 && warp2.link_type == LINKTYPE_WARP && warp2.link_location == location && warp2.link == link;
+}
+
+function AskAndRemoveOtherEnd (location, link) {
+    let delete_warp = true;
+    let warp = game.warps[location][link];
+    if (warp.link_type == LINKTYPE_WARP) {
+        let is_warp_linked = IsWarpLinked(warp.link_location, warp.link);
+        if (is_warp_linked) {
+            delete_warp = confirm("This will remove the link on the other end of the warp. Are you sure you want to remove this warp?");
+        }
+        if (is_warp_linked && delete_warp) {
+            let mark_image = game.warps[warp.link_location][warp.link].corridor ? "corridor" : "unknown";
+            ChangeWarp(game, warp.link_location, warp.link, LINKTYPE_MARK, "", mark_image, null);
+        }
+    }
+    return delete_warp;
 }
