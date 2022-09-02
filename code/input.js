@@ -422,13 +422,13 @@ function GetClicked(position) {
     // Check if config button
     if (position.x >= 0 &&
         position.x <= game.left_width &&
-        position.y >= html.canvas.height - settings.naturalHeight &&
+        position.y >= html.canvas.height - icons.settings.naturalHeight &&
         position.y <  html.canvas.height)
     {
-        if (position.x <= settings.naturalWidth) {
+        if (position.x <= icons.settings.naturalWidth) {
             return { type: TYPE_CONFIG, target: "settings" };
         }
-        else if (position.x <= settings.naturalWidth + CONFIG_XOFFSET + help.naturalWidth) {
+        else if (position.x <= icons.settings.naturalWidth + CONFIG_XOFFSET + icons.help.naturalWidth) {
             return { type: TYPE_CONFIG, target: "help" };
         }
         return null;

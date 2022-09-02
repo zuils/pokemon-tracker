@@ -5,6 +5,11 @@ const LINE_THICKNESS = 3;
 const DEFAULT_COLOR  = "#00FFFF";
 let line_color       = DEFAULT_COLOR;
 
+const CHECKS_COLOR    = "#f7e1b4";
+const CHECKS_FONTSIZE = "42px";
+const CHECKS_XOFFSET  = 145;
+const CHECKS_YOFFSET  = 5;
+
 const MAP_MARK_OFFSET = 1;
 const MAP_MARK_WIDTH  = 3;
 
@@ -32,7 +37,7 @@ const MODIFIER_SEPARATION = 20;
 
 const CONFIG_YOFFSET = 5;
 const CONFIG_XOFFSET = 5;
-const CONFIG_HEIGHT = 40; // Hardcoded value, it's equal to max(settings.naturalHeight, help.naturalHeight)
+const CONFIG_HEIGHT = 40;
 
 const LOADING_TEXT = "Loading map...";
 
@@ -59,13 +64,14 @@ let traslucent_warps = false;
 // ██ ██      ██ ██   ██  ██████  ███████     ███████  ██████  ██   ██ ██████  ██ ██   ████  ██████  
 
 let loading_process = {};
-let settings, help;
+let icons = {};
 let images = [];
 function LoadImages() {
     // Obtain map and frame
     let list = ["images/" + game.folder + "/" + game.name + ".png", "images/" + game.folder + "/frame.png"];
-    if (!settings) { list.push("images/settings.png"); }
-    if (!help)     { list.push("images/help.png"); }
+    if (!icons.settings)  { list.push("images/settings.png"); }
+    if (!icons.help)      { list.push("images/help.png"); }
+    if (!icons.remaining) { list.push("images/remaining.png"); }
 
     // Check if same game has been already been loaded
     // this way we avoid loading the same image twice
@@ -155,9 +161,10 @@ function ImageLoaded() {
         game.left_width = (marks_max_width+game.modifiers.length)*(MARK_SIZE+MARK_SEPARATION) + MODIFIER_SEPARATION;
         if (game.left_width < game.map.w) { game.left_width = game.map.w; }
     }
-    else if (this.src.includes("frame.png"))    { game.frame = this; }
-    else if (this.src.includes("settings.png")) { settings = this;   }
-    else if (this.src.includes("help.png"))     { help = this;       }
+    else if (this.src.includes("frame.png"))     { game.frame = this; }
+    else if (this.src.includes("settings.png"))  { icons.settings = this;   }
+    else if (this.src.includes("help.png"))      { icons.help = this;       }
+    else if (this.src.includes("remaining.png")) { icons.remaining = this;  }
     else if (this.src.includes("/marks/") || this.src.includes("/progress/")) {
         images[GetNameImage(this.src)] = this;
     }
@@ -232,12 +239,12 @@ function InitRendering() {
         c.rerender = true;
         layers.push(c);
     }
-    layers[LAYER_MAP].     functions = [RenderBackgroundColors, RenderMap, RenderSettings];
+    layers[LAYER_MAP].     functions = [RenderBackgroundColors, RenderMap, RenderSettings, RenderRemainingIcon];
     layers[LAYER_SQUARES]. functions = [RenderMarkSquares];
     layers[LAYER_MARKS].   functions = [RenderMarks];
     layers[LAYER_LOCATION].functions = [RenderLocation];
     layers[LAYER_PROGRESS].functions = [RenderProgress];
-    layers[LAYER_LINE].    functions = [RenderLine, RenderMapText];
+    layers[LAYER_LINE].    functions = [RenderLine, RenderMapText, RenderRemainingText];
 }
 
 function Render() {
@@ -299,13 +306,24 @@ function RenderMap(context) {
 function RenderSettings(context) {
     let v = {
         x: 0,
-        y: html.canvas.height - settings.naturalHeight,
-        w: settings.naturalWidth,
-        h: settings.naturalHeight
+        y: html.canvas.height - icons.settings.naturalHeight,
+        w: icons.settings.naturalWidth,
+        h: icons.settings.naturalHeight
     };
-    DrawImage(context, settings, v);
+    DrawImage(context, icons.settings, v);
     v.x = v.w + CONFIG_XOFFSET;
-    DrawImage(context, help, v);
+    DrawImage(context, icons.help, v);
+}
+
+function RenderRemainingIcon(context) {
+    context.imageSmoothingEnabled = false;
+    let v = {
+        x: game.left_width - CHECKS_XOFFSET,
+        y: html.canvas.height - icons.settings.naturalHeight,
+        w: CONFIG_HEIGHT,
+        h: CONFIG_HEIGHT,
+    };
+    DrawImage(context, icons.remaining, v);
 }
 
 //  ██        ███████  ██████  ██    ██  █████  ██████  ███████ ███████ 
@@ -641,6 +659,7 @@ function RenderLine(context) {
 function RenderMapText(context) {
     context.imageSmoothingEnabled = false;
     
+    // ----- Draw location text -----
     let location = game.locations[current_location];
     context.save(); {
         context.font = "bold " + game.font_size + " " + game.font;
@@ -680,6 +699,22 @@ function RenderMapText(context) {
             h: location.h*MAP_SCALE + 2*MAP_MARK_OFFSET,
         };
         DrawBox(context, v);
+    } context.restore();
+}
+
+function RenderRemainingText(context) {
+    context.imageSmoothingEnabled = false;
+
+    context.save(); {
+        context.font = "bold " + CHECKS_FONTSIZE + " Avenir";// + game.font;
+        context.textAlign = "left";
+        context.fillStyle = CHECKS_COLOR;
+
+        let text_position = {
+            x: game.left_width - CHECKS_XOFFSET + MARK_SIZE + 15,
+            y: html.canvas.height - CHECKS_YOFFSET,
+        };
+        context.fillText(game.marks[0][0][1], text_position.x, text_position.y);
     } context.restore();
 }
 
