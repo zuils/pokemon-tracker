@@ -16,16 +16,16 @@ let crystal = {
 	// Tracker information
     locations: {
         // Cities
-        cherrygrove_r29: {x: 83,  y: 72, w: 8, h: 8,  name: "Cherrygrove City\nRoute 29" },
-        violet:          {x: 67,  y: 32, w: 8, h: 8,  name: "Violet City"                },
-        azalea_well:     {x: 51,  y: 96, w: 8, h: 8,  name: "Azalea Town\nSlowpoke Well" },
-        goldenrod:       {x: 35,  y: 64, w: 8, h: 8,  name: "Goldenrod City"             },
-        ecruteak:        {x: 51,  y: 16, w: 8, h: 8,  name: "Ecruteak City"              },
-        olivine_r40:     {x: 19,  y: 24, w: 8, h: 16, name: "Olivine City\nRoute 38-40"  },
-        cianwood:        {x: 3,   y: 72, w: 8, h: 8,  name: "Cianwood City"              },
-        mahogany_r44:    {x: 91,  y: 16, w: 8, h: 8,  name: "Mahogany Town\nRoute 44"    },
-        blackthorn:      {x: 115, y: 16, w: 8, h: 8,  name: "Blackthorn City"            },
-        indigo_e4:       {x: 155, y: 8,  w: 8, h: 8,  name: "Indigo Plateau\nElite 4"    },
+        cherrygrove_r29: {x: 83,  y: 72, w: 16, h: 8,  name: "Cherrygrove City\nRoute 29" },
+        violet:          {x: 67,  y: 32, w: 8,  h: 8,  name: "Violet City"                },
+        azalea_well:     {x: 51,  y: 96, w: 8,  h: 8,  name: "Azalea Town\nSlowpoke Well" },
+        goldenrod:       {x: 35,  y: 64, w: 8,  h: 8,  name: "Goldenrod City"             },
+        ecruteak:        {x: 51,  y: 16, w: 8,  h: 8,  name: "Ecruteak City"              },
+        olivine_r40:     {x: 19,  y: 24, w: 8,  h: 16, name: "Olivine City\nRoute 38-40"  },
+        cianwood:        {x: 3,   y: 72, w: 8,  h: 8,  name: "Cianwood City"              },
+        mahogany_r44:    {x: 91,  y: 16, w: 8,  h: 8,  name: "Mahogany Town\nRoute 44"    },
+        blackthorn:      {x: 115, y: 16, w: 8,  h: 8,  name: "Blackthorn City"            },
+        indigo_e4:       {x: 155, y: 8,  w: 8,  h: 8,  name: "Indigo Plateau\nElite 4"    },
 
         pallet:        {x: 179, y: 80,  w: 8,  h: 8,  name: "Pallet Town"               },
         viridian_r22:  {x: 179, y: 48,  w: 8,  h: 8,  name: "Viridian City\nRoute 22"   },
@@ -76,7 +76,7 @@ let crystal = {
         
         mtmoon_r3_r4:          {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
         mtsilver:              {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver"                      },
-        celadonstore:          {x: 203, y: 31, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
+        celadonstore:          {x: 203, y: 32, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
 		rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
     },
 
