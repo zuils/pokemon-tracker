@@ -221,7 +221,7 @@ function OnMouseUp(event) {
                         } // falldown
                         case TYPE_MARK: {
                             if (current_state != STATE_DEFAULT) {
-                                ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target, null);
+                                ChangeWarp(game, link_location, link_warp, LINKTYPE_MARK, "", info.target, game.warps[link_location][link_warp].modifier);
                                 current_state = STATE_DEFAULT;
                             }
                         } break;
@@ -246,8 +246,14 @@ function OnMouseUp(event) {
                                     }
                                 } // falldown
                                 case STATE_LINK2: {
-                                    ChangeWarp(game, link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target, null);
-                                    ChangeWarp(game, current_location, info.target, LINKTYPE_WARP, link_location,    link_warp,   null);
+                                    // Decide which modifier to use
+                                    let modifier = game.warps[link_location][link_warp].modifier;
+                                    if (!modifier || modifier == "null") {
+                                        modifier = game.warps[current_location][info.target].modifier;
+                                    }
+
+                                    ChangeWarp(game, link_location,    link_warp,   LINKTYPE_WARP, current_location, info.target, modifier);
+                                    ChangeWarp(game, current_location, info.target, LINKTYPE_WARP, link_location,    link_warp,   modifier);
 
                                     current_state = STATE_DEFAULT;
                                 } break;
