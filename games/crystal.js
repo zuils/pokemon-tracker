@@ -527,11 +527,11 @@ let crystal = {
         },
 
         ssaqua: {
-			top3:     {x: 213, y: 121 },
+			top3:     {x: 216, y: 121 },
 			top4:     {x: 280, y: 155 },
-			bot1:     {x: 85,  y: 231 },
+			bot1:     {x: 88,  y: 231 },
 			bot2:     {x: 152, y: 263 },
-			bot3:     {x: 213, y: 231 },
+			bot3:     {x: 216, y: 231 },
         },
         whirlislands: {
 			waterfall_cave:  {x: 70,  y: 82,  name: "Whirl (Waterfall)" },
