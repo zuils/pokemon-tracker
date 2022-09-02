@@ -64,7 +64,11 @@ let traslucent_warps = false;
 // ██ ██      ██ ██   ██  ██████  ███████     ███████  ██████  ██   ██ ██████  ██ ██   ████  ██████  
 
 let loading_process = {};
-let icons = {};
+let icons = {
+    settings:  null,
+    help:      null,
+    remaining: null,
+};
 let images = [];
 function LoadImages() {
     // Obtain map and frame

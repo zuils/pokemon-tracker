@@ -20,6 +20,17 @@ function Test_GameFiles() {
         if (g.marks[0][0][0] != "unknown")  { errors.push(name + " -> First mark must be 'unknown'");   }
         if (g.marks[0][1][0] != "corridor") { errors.push(name + " -> Second mark must be 'corridor'"); }
         if (!g.modifiers) { errors.push(name + " -> Missing modifiers"); }
+
+        // Make sure images don't have illegal names
+        for (let list of [g.marks, g.progress]) {
+            for (let row of list) {
+                for (let i of row) {
+                    if (i[0].length > 0 && Object.keys(icons).includes(i[0])) {
+                        errors.push(name + " -> Illegal mark name: " + i[0]);
+                    }
+                }
+            } 
+        }
     }
 
     return errors;
