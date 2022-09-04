@@ -241,6 +241,7 @@ function InitRendering() {
         c.context  = c.canvas.getContext("2d");
         c.context.imageSmoothingEnabled = false;
         c.rerender = true;
+        c.skip = false;
         layers.push(c);
     }
     layers[LAYER_MAP].     functions = [RenderBackgroundColors, RenderMap, RenderSettings, RenderRemainingIcon];
@@ -267,6 +268,7 @@ function Render() {
     // Mix all layers
     html.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
     for (let layer of layers) {
+        if (DEBUG.ENABLED && layer.skip) { continue; }
         html.context.drawImage(layer.canvas, 0, 0);
     }
 }

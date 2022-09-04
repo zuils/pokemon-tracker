@@ -25,6 +25,7 @@ function BeforeUnload(event) {
 
 function OnKeyDown(event) {
     if (!DEBUG.ENABLED) return;
+
     if (event.key == "q") {
         DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
         RerenderLayer(LAYER_LOCATION);
@@ -37,6 +38,15 @@ function OnKeyDown(event) {
         DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
         RerenderLayer(LAYER_LOCATION);
         return;
+    }
+
+    if (event.key >= "1" && event.key <= "9") {
+        let layer = layers[event.key - 1];
+        if (layer) {
+            console.log("Toggling " + LAYER_NAME[event.key - 1]);
+            layer.skip = !layer.skip;
+            return;
+        }
     }
 }
 function OnKeyUp(event) {
