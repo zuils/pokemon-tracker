@@ -1,4 +1,4 @@
-let file_selector;
+let loadfile_selector;
 
 function ShowConfig() {
     html.config.window.classList.remove("window_hidden");
@@ -18,7 +18,7 @@ function HideHelp() {
     }
 }
 
-function LoadFile() { file_selector.click(); }
+function LoadFile() { loadfile_selector.click(); }
 
 function FileUploaded(event) {
     let reader = new FileReader();
@@ -50,7 +50,7 @@ function FileUploaded(event) {
 
         RerenderAll();
     }
-    reader.readAsText(file_selector.files[0]);
+    reader.readAsText(loadfile_selector.files[0]);
 }
 
 function SaveFile() {

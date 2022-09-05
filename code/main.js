@@ -95,10 +95,10 @@ function init() {
     document.fonts.onloadingdone = FontReady;
 
     // Create reader to load files (just in case)
-    file_selector = document.createElement("input");
-    file_selector.type = "file";
-    file_selector.multiple = false;
-    file_selector.onchange = function(e) { FileUploaded(e); };
+    loadfile_selector = document.createElement("input");
+    loadfile_selector.type = "file";
+    loadfile_selector.multiple = false;
+    loadfile_selector.onchange = function(e) { FileUploaded(e); };
 
     // Start tracker
     requestAnimationFrame(GameLoop);
