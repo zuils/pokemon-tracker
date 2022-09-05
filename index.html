@@ -48,7 +48,8 @@
             <button onclick="LoadFile()">Load</button>
             <button onclick="SaveFile()">Save</button>
             <button onclick="ResetButton()">Reset Tracker</button>
-            <label><input type="checkbox" id="checkbox_smooth"  onclick="ChangeSmooth()" >Smooth images</label>
+            <label><input type="checkbox" id="checkbox_smooth"           onclick="ChangeSmooth(checked)"          >Smooth images</label>
+            <label><input type="checkbox" id="checkbox_keyboarddisabled" onclick="ChangeKeyboardControls(checked)">Disable keyboard controls</label>
           </div>
           <div class="settings-row">
             <label>Line color:</label>
@@ -118,6 +119,7 @@
             Other:
             <ul>
               <li><b>Right click</b> on an empty space in an overcrowded location's map to check its layout.</li>
+              <li>Press <b>A</b> to highlight all available warps on a given location.</li>
             </ul>
             <br>
             The map is color coded (i.e. Emerald has <b style="color:#ff3910;">cities</b>, <b style="color:#39ad08;">routes</b> and <b style="color:#6638ef;">dungeons</b>)

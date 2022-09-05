@@ -24,6 +24,7 @@ function BeforeUnload(event) {
 }
 
 function OnKeyDown(event) {
+    if (html.config.keyboarddisabled.checked) { return; }
     if (DEBUG.ENABLED) {
         if (event.key == "q") {
             DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
@@ -47,6 +48,15 @@ function OnKeyDown(event) {
                 return;
             }
         }
+    }
+    if (event.key == "a") {
+        for (let warp in game.warps[current_location]) {
+            let w = game.warps[current_location][warp];
+            if (w.link != "unknown") { continue; }
+            highlights[warp] = { location: current_location };
+        }
+        RerenderLayer(LAYER_HIGHLIGHT);
+        return;
     }
 }
 /*function OnKeyUp(event) {

@@ -177,10 +177,11 @@ function ResetTracker() {
     RerenderAll();
 }
 
-function ChangeSmooth() {
-    localStorage.setItem(CACHE.SMOOTH_IMAGES, html.config.smooth_checkbox.checked);
+function ChangeSmooth(checked) {
+    localStorage.setItem(CACHE.SMOOTH_IMAGES, checked);
     RerenderLayer(LAYER_LOCATION);
 }
+function ChangeKeyboardControls(checked) { localStorage.setItem(CACHE.KEYBOARD_DISABLED, checked); }
 
 function ResetColor() { ChangeLineColor(DEFAULT_COLOR); }
 function ChangeLineColor(color) {

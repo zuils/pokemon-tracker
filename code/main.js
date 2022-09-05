@@ -26,11 +26,12 @@ const LINKTYPE_WARP = "warp";
 const LINKTYPE_MARK = "mark";
 
 const CACHE = {
-    GAME_LOADED:    "last-game-loaded",
-    SMOOTH_IMAGES:  "smooth-images",
-    DEBUG_LOCATION: "debug-location",
-    LAST_VERSION:   "last-version",
-    LINE_COLOR:     "line-color",
+    GAME_LOADED:       "last-game-loaded",
+    SMOOTH_IMAGES:     "smooth-images",
+    DEBUG_LOCATION:    "debug-location",
+    LAST_VERSION:      "last-version",
+    LINE_COLOR:        "line-color",
+    KEYBOARD_DISABLED: "keyboard-disabled",
 }
 const CURRENT_VERSION = 3;
 
@@ -114,6 +115,7 @@ const HTML_ID = {
     config: {
         window: "config_window",
         smooth_checkbox: "checkbox_smooth",
+        keyboarddisabled: "checkbox_keyboarddisabled",
         loading_text: "loading_game_text",
         game_buttons: "game_buttons",
         line_color: "line_color",
@@ -150,12 +152,14 @@ function RetrieveAllHTMLElements() {
 
     // Retrieve config elements
     let config  = html.config;
-    config.window          = document.getElementById(HTML_ID.config.window);
-    config.loading_text    = document.getElementById(HTML_ID.config.loading_text);
-    config.smooth_checkbox = document.getElementById(HTML_ID.config.smooth_checkbox);
-    config.line_color      = document.getElementById(HTML_ID.config.line_color);
+    config.window           = document.getElementById(HTML_ID.config.window);
+    config.loading_text     = document.getElementById(HTML_ID.config.loading_text);
+    config.smooth_checkbox  = document.getElementById(HTML_ID.config.smooth_checkbox);
+    config.keyboarddisabled = document.getElementById(HTML_ID.config.keyboarddisabled);
+    config.line_color       = document.getElementById(HTML_ID.config.line_color);
     config.loading_text.innerHTML = "";
-    config.smooth_checkbox.checked = (localStorage.getItem(CACHE.SMOOTH_IMAGES) == "true") ? true : false;
+    config.smooth_checkbox.checked  = (localStorage.getItem(CACHE.SMOOTH_IMAGES)     == "true") ? true  : false;
+    config.keyboarddisabled.checked = (localStorage.getItem(CACHE.KEYBOARD_DISABLED) == "true") ? true : false;
     config.line_color.value = line_color;
     
     // Retrieve networking elements
@@ -242,7 +246,7 @@ function GameLoop() {
 
     if (game.ready) { Render(); }
     requestAnimationFrame(GameLoop);
-    
+
     if (DEBUG.ENABLED && AUTOTRACKER_DEVELOPMENT) {
         if (socket.readyState == SOCKET_READYSTATE.OPEN) {
             let current_time = new Date().getTime();
