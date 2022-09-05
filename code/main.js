@@ -233,9 +233,16 @@ function RetrieveAllHTMLElements() {
     }
 }
 
+let delta_time = 0;
+let last_time = 0;
 function GameLoop() {
+    let current_time = GetCurrentMilliseconds();
+    delta_time = current_time - last_time;
+    last_time = current_time;
+
     if (game.ready) { Render(); }
     requestAnimationFrame(GameLoop);
+    
     if (DEBUG.ENABLED && AUTOTRACKER_DEVELOPMENT) {
         if (socket.readyState == SOCKET_READYSTATE.OPEN) {
             let current_time = new Date().getTime();
@@ -248,3 +255,4 @@ function GameLoop() {
 }
 
 function FontReady() { RerenderLayer(LAYER_LOCATION); }
+function GetCurrentMilliseconds() { return (new Date()).getTime(); }

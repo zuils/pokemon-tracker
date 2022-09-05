@@ -12,7 +12,7 @@ function RegisterInputEvents() {
     html.canvas.addEventListener("contextmenu", OnContextMenu);
 
     document.addEventListener("keydown", OnKeyDown);
-    document.addEventListener("keyup",   OnKeyUp);
+    //document.addEventListener("keyup",   OnKeyUp);
     addEventListener("beforeunload", BeforeUnload);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
@@ -24,38 +24,34 @@ function BeforeUnload(event) {
 }
 
 function OnKeyDown(event) {
-    if (!DEBUG.ENABLED) return;
-
-    if (event.key == "q") {
-        DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
-        RerenderLayer(LAYER_LOCATION);
-        if (!DEBUG.WARP_TO_SELF) {
-            InitTrackerToUnknowns();
-        }
-        return;
-    }
-    if (event.key == "w") {
-        DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
-        RerenderLayer(LAYER_LOCATION);
-        return;
-    }
-
-    if (event.key >= "1" && event.key <= "9") {
-        let layer = layers[event.key - 1];
-        if (layer) {
-            console.log("Toggling " + LAYER_NAME[event.key - 1]);
-            layer.skip = !layer.skip;
+    if (DEBUG.ENABLED) {
+        if (event.key == "q") {
+            DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
+            RerenderLayer(LAYER_LOCATION);
+            if (!DEBUG.WARP_TO_SELF) {
+                InitTrackerToUnknowns();
+            }
             return;
         }
+        if (event.key == "w") {
+            DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
+            RerenderLayer(LAYER_LOCATION);
+            return;
+        }
+        
+        if (event.key >= "1" && event.key <= "9") {
+            let layer = layers[event.key - 1];
+            if (layer) {
+                console.log("Toggling " + LAYER_NAME[event.key - 1]);
+                layer.skip = !layer.skip;
+                return;
+            }
+        }
     }
 }
-function OnKeyUp(event) {
+/*function OnKeyUp(event) {
     if (!DEBUG.ENABLED) return;
-
-    if (event.key == "g") {
-        g_pressed = false;
-    }
-}
+}*/
 
 /*********************************************************/
 
@@ -251,6 +247,8 @@ function OnMouseUp(event) {
                                         if (w.link_type && w.link_type == LINKTYPE_WARP) {
                                             current_location = w.link_location;
                                             RerenderLayer(LAYER_LOCATION);
+                                            highlights[w.link] = { location: w.link_location }
+                                            RerenderLayer(LAYER_HIGHLIGHT);
                                         }
                                         break;
                                     }
@@ -516,7 +514,7 @@ function GetWarp(position) {
     let location = game.locations[current_location];
     for (let key in game.warps[current_location]) {
         let warp = game.warps[current_location][key];
-        let info = GetWarpRenderInfo(location, warp);
+        let info = GetWarpRenderInfo(warp);
 
         if (position.x > info.x &&
             position.x < info.x + info.w &&

@@ -41,17 +41,22 @@ const CONFIG_HEIGHT = 40;
 
 const LOADING_TEXT = "Loading map...";
 
+const HIGHLIGHT_BLINKING = 500;  //milliseconds
+const HIGHLIGHT_DURATION = 4000; //milliseconds
+let highlights = {};
+
 let debug_widths  = [];
 let debug_heights = [];
 
-const LAYER_COUNT = 6;
-const LAYER_MAP      = 0;
-const LAYER_SQUARES  = 1;
-const LAYER_MARKS    = 2;
-const LAYER_LOCATION = 3;
-const LAYER_PROGRESS = 4;
-const LAYER_LINE     = 5;
-const LAYER_NAME = ["MAP", "SQUARES", "MARKS", "LOCATION", "PROGRESS", "LINE"]; // used for debugging
+const LAYER_COUNT = 7;
+const LAYER_MAP       = 0;
+const LAYER_SQUARES   = 1;
+const LAYER_MARKS     = 2;
+const LAYER_LOCATION  = 3;
+const LAYER_PROGRESS  = 4;
+const LAYER_LINE      = 5;
+const LAYER_HIGHLIGHT = 6;
+const LAYER_NAME = ["MAP", "SQUARES", "MARKS", "LOCATION", "PROGRESS", "LINE", "HIGHLIGHT"]; // used for debugging
 let layers = [];
 
 let last_rendered_location = "";
@@ -244,24 +249,25 @@ function InitRendering() {
         c.skip = false;
         layers.push(c);
     }
-    layers[LAYER_MAP].     functions = [RenderBackgroundColors, RenderMap, RenderSettings, RenderRemainingIcon];
-    layers[LAYER_SQUARES]. functions = [RenderMarkSquares];
-    layers[LAYER_MARKS].   functions = [RenderMarks];
-    layers[LAYER_LOCATION].functions = [RenderLocation];
-    layers[LAYER_PROGRESS].functions = [RenderProgress];
-    layers[LAYER_LINE].    functions = [RenderLine, RenderMapText, RenderRemainingText];
+    layers[LAYER_MAP].      functions = [RenderBackgroundColors, RenderMap, RenderSettings, RenderRemainingIcon];
+    layers[LAYER_SQUARES].  functions = [RenderMarkSquares];
+    layers[LAYER_MARKS].    functions = [RenderMarks];
+    layers[LAYER_LOCATION]. functions = [RenderLocation];
+    layers[LAYER_PROGRESS]. functions = [RenderProgress];
+    layers[LAYER_LINE].     functions = [RenderLine, RenderMapText, RenderRemainingText];
+    layers[LAYER_HIGHLIGHT].functions = [RenderHighlights];
 }
 
 function Render() {
     // Render all layers that are issued with a rerender
     for (let layer of layers) {
         if (!layer.rerender) continue;
+        layer.rerender = false;
 
         ClearLayerContext(layer);
         for (let fun of layer.functions) {
             fun(layer.context);
         }
-        layer.rerender = false;
     }
     layers[LAYER_LINE].rerender = true;
 
@@ -559,13 +565,13 @@ function RenderLocation(context) {
         context.fillStyle = "#111111";
         for (let key in game.warps[current_location]) {
             let warp = game.warps[current_location][key];
-            let info = GetWarpRenderInfo(location, warp);
+            let info = GetWarpRenderInfo(warp);
 
             if (DEBUG.ENABLED && DEBUG.WARP_TO_SELF) {
                 warp.link_type = LINKTYPE_WARP;
                 warp.link = key;
                 warp.link_location = current_location;
-                info = GetWarpRenderInfo(location, warp);
+                info = GetWarpRenderInfo(warp);
             }
 
             if (info.type == "image") {
@@ -724,13 +730,59 @@ function RenderRemainingText(context) {
     } context.restore();
 }
 
+//  ██████         ██   ██ ██  ██████  ██   ██ ██      ██  ██████  ██   ██ ████████ ███████ 
+// ██              ██   ██ ██ ██       ██   ██ ██      ██ ██       ██   ██    ██    ██      
+// ███████         ███████ ██ ██   ███ ███████ ██      ██ ██   ███ ███████    ██    ███████ 
+// ██    ██        ██   ██ ██ ██    ██ ██   ██ ██      ██ ██    ██ ██   ██    ██         ██ 
+//  ██████  ██     ██   ██ ██  ██████  ██   ██ ███████ ██  ██████  ██   ██    ██    ███████ 
+
+function RenderHighlights(context) {
+    if (Object.keys(highlights) == 0) { return; }
+    
+    for (let name in highlights) {
+        let h = highlights[name];
+        if (h.duration == undefined) { // new highlight
+            h.duration   = HIGHLIGHT_DURATION;
+            h.blinking   = true;
+            h.blink_time = HIGHLIGHT_BLINKING;
+            continue;
+        }
+        if (h.duration < 0 || h.location != current_location) {
+            delete highlights[name];
+        }
+    }
+
+    for (let name in highlights) {
+        let h = highlights[name];
+        h.duration -= delta_time;
+        h.blink_time -= delta_time;
+        if (h.blink_time < 0) {
+            h.blink_time = HIGHLIGHT_BLINKING;
+            h.blinking = !h.blinking;
+        }
+        if (!h.blinking) { continue; }
+
+        let i = GetWarpRenderInfo(game.warps[h.location][name]);
+        if (i.type == "image") {
+            let color = line_color + MODIFIER_ALPHA;
+            DrawSquareContextless(context, i, color);
+        }
+        else {
+            DrawBoxContextless(context, i, MODIFIER_WIDTH, line_color);
+        }
+    }
+
+    RerenderLayer(LAYER_HIGHLIGHT);
+}
+
+
 //  █████  ██    ██ ██   ██ ██ ██      ██  █████  ██████  
 // ██   ██ ██    ██  ██ ██  ██ ██      ██ ██   ██ ██   ██ 
 // ███████ ██    ██   ███   ██ ██      ██ ███████ ██████  
 // ██   ██ ██    ██  ██ ██  ██ ██      ██ ██   ██ ██   ██ 
 // ██   ██  ██████  ██   ██ ██ ███████ ██ ██   ██ ██   ██ 
 
-function GetWarpRenderInfo(location, warp) {
+function GetWarpRenderInfo(warp) {
     let info = {
         type: "image",
         image: images["unknown"],
@@ -798,8 +850,11 @@ function ClearLayerContext(layer) {
     layer.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
 }
 function RerenderLayer(level) {
-    if (DEBUG.ENABLED) { console.log("Rerendering " + LAYER_NAME[level]); }
+    //if (DEBUG.ENABLED) { console.log("Rerendering " + LAYER_NAME[level]); }
     layers[level].rerender = true;
+    if (level == LAYER_LOCATION) {
+        highlights = {};
+    }
 }
 function RerenderAll() {
     if (DEBUG.ENABLED) { console.log("Rerendering ~everything~"); }
