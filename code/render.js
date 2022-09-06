@@ -41,8 +41,8 @@ const CONFIG_HEIGHT = 40;
 
 const LOADING_TEXT = "Loading map...";
 
-const HIGHLIGHT_BLINKING = 500;  //milliseconds
-const HIGHLIGHT_DURATION = 4000; //milliseconds
+const HIGHLIGHT_BLINKING = 150;  //milliseconds
+const HIGHLIGHT_DURATION = 1500; //milliseconds
 let highlights = {};
 
 let debug_widths  = [];
