@@ -135,6 +135,7 @@ function LoadImages() {
     }
 
     html.config.loading_text.innerHTML = LOADING_TEXT;
+    document.body.style.cursor = "wait";
     loading_process.loaded = 0;
     loading_process.to_load = list.length;
     for (let path of list) {
@@ -211,6 +212,7 @@ function ImageLoaded() {
         SetCanvasDimensions();
 
         html.config.loading_text.innerHTML = "";
+        document.body.style.cursor = "default";
         game.ready = true;
         return;
     }
