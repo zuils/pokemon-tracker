@@ -629,9 +629,14 @@ function RenderProgress(context) {
         v.x = MARK_SEPARATION;
     }
 
-    for (let m of progress) {
-        DrawImage(context, images[m.name], m.position);
-    }
+    context.save(); {
+        context.shadowBlur = 5;
+        context.shadowColor = "#AAAAAA";
+        for (let m of progress) {
+            DrawImage(context, images[m.name], m.position);
+        }
+    } context.restore();
+
 }
 
 // ███████        ██      ██ ███    ██ ███████ 
