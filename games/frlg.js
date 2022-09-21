@@ -58,6 +58,7 @@ let frlg = {
         gates:            {x: 64,  y: 8,   w: 8,  h: 8,  name: "Gates",                         link_name: "Gate"            },
         rocktunnel1:	  {x: 128, y: 32,  w: 8,  h: 8,  name: "Rock Tunnel",                  								 },
 		rocktunnel2:	  {x: 128, y: 39,  w: 8,  h: 8,  name: "Rock Tunnel",                   							 },
+        pokemontower:     {x: 144, y: 48,  w: 8,  h: 8,  name: "Pokémon Tower"                                               },
     },
 
     // Undefined fields:
@@ -101,12 +102,14 @@ let frlg = {
             r5_underground:     {x: 905,  y: 558, name: "R5 (Cerulean)"       },
         },
         cerulean_cave: {
-            w:                  {x: 86,   y: 230 },
-            nw:                 {x: 169,  y: 45  },
-            c:                  {x: 391,  y: 193 },
-            e:                  {x: 489,  y: 143 },
-            ne:                 {x: 554,  y: 48  },
-            entrance:           {x: 534,  y: 339 },
+            w:                  {x: 86,   y: 230,                                                  },
+            nw:                 {x: 169,  y: 45,                                                   },
+            c:                  {x: 391,  y: 193,                                                  },
+            e:                  {x: 489,  y: 143,                                                  },
+            ne:                 {x: 554,  y: 48,                                                   },
+            entrance:           {x: 534,  y: 339,                                                  },
+			f2_left:            {x: 85,   y: 451, corridor: "f2_right", name: "Cerulean Cave (F2)" },
+			f2_right:           {x: 376,  y: 511, corridor: "f2_left",  name: "Cerulean Cave (F2)" },
         },
         cinnabar: {
             mansion:            {x: 135,  y: 32,  name: "Cinnabar Island"     },
@@ -597,6 +600,18 @@ let frlg = {
 			left_right: {x: 440, y: 229, corridor: "left_left",  name: "Rock Tunnel (BF1 L)" },
 			right_top:  {x: 536, y: 85,  corridor: "right_bot",  name: "Rock Tunnel (BF1 R)" },
 			right_bot:  {x: 616, y: 485, corridor: "right_top",  name: "Rock Tunnel (BF1 R)" },
+        },
+        pokemontower: {
+            f2_down: {x: 270, y: 734, corridor: "f2_up",   name: "Pokémon Tower (2F)" },
+			f2_up:   {x: 14,  y: 734, corridor: "f2_down", name: "Pokémon Tower (2F)" },
+			f3_down: {x: 344, y: 800, corridor: "f3_up",   name: "Pokémon Tower (3F)" },
+			f3_up:   {x: 590, y: 800, corridor: "f3_down", name: "Pokémon Tower (3F)" },
+			f4_down: {x: 270, y: 431, corridor: "f4_up",   name: "Pokémon Tower (4F)" },
+			f4_up:   {x: 14,  y: 431, corridor: "f4_down", name: "Pokémon Tower (4F)" },
+			f5_down: {x: 344, y: 500, corridor: "f5_up",   name: "Pokémon Tower (5F)" },
+			f5_up:   {x: 590, y: 499, corridor: "f5_down", name: "Pokémon Tower (5F)" },
+			f6_down: {x: 441, y: 134, corridor: "f6_up",   name: "Pokémon Tower (6F)" },
+			f6_up:   {x: 281, y: 218, corridor: "f6_down", name: "Pokémon Tower (6F)" },
         },
     },
 
