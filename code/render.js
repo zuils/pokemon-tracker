@@ -631,7 +631,7 @@ function RenderProgress(context) {
 
     context.save(); {
         context.shadowBlur = 5;
-        context.shadowColor = "#AAAAAA";
+        context.shadowColor = "#F7E1B4";
         for (let m of progress) {
             DrawImage(context, images[m.name], m.position);
         }
