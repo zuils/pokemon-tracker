@@ -586,7 +586,7 @@ function GetConditionSameIcon(type) {
 
 // Call this AFTER adding/removing the mark
 function AddToIcon (current_game, name, value, location, type) {
-    let lists = (type == TYPE_MODIFIER) ? [game.modifiers] : [game.marks, game.progress];
+    let lists = (type == TYPE_MODIFIER) ? [current_game.modifiers] : [current_game.marks, current_game.progress];
     let info = GetIconByName(name, lists);
     if (!info) { return; }
 
