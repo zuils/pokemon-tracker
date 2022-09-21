@@ -89,7 +89,6 @@ let emerald = {
             mart:      {x: 262, y: 585},
             rightmart: {x: 422, y: 602},
         },
-
         dewford: {
             top:    {x: 56,  y: 31 },
             middle: {x: 135, y: 110},
@@ -97,22 +96,20 @@ let emerald = {
             center: {x: 38,  y: 144},
             gym:    {x: 135, y: 248},
         },
-
         slateport_r109: {
-            contest:   {x: 168, y: 40                                                   },
-            rater:     {x: 85,  y: 148                                                  },
-            club:      {x: 51,  y: 264                                                  },
-            center:    {x: 310, y: 153                                                  },
-            mart:      {x: 225, y: 267                                                  },
-            museum:    {x: 494, y: 268                                                  },
-            shipyard:  {x: 424, y: 449                                                  },
-            house:     {x: 342, y: 555                                                  },
-            beach:     {x: 90,  y: 555                                                  },
-            port:      {x: 455, y: 43                                                   },
-            stern_top: {x: 534, y: 399, corridor: "stern_bot", name: "Stern's Shipyard" },
-			stern_bot: {x: 527, y: 624, corridor: "stern_top", name: "Stern's Shipyard" },
+            contest:   {x: 168, y: 40                                                     },
+            rater:     {x: 85,  y: 148                                                    },
+            club:      {x: 51,  y: 264                                                    },
+            center:    {x: 310, y: 153                                                    },
+            mart:      {x: 225, y: 267                                                    },
+            museum:    {x: 494, y: 268,                        name: "Slateport (Museum)" },
+            shipyard:  {x: 424, y: 449                                                    },
+            house:     {x: 342, y: 555                                                    },
+            beach:     {x: 90,  y: 555                                                    },
+            port:      {x: 455, y: 43                                                     },
+            stern_top: {x: 534, y: 399, corridor: "stern_bot", name: "Stern's Shipyard"   },
+			stern_bot: {x: 527, y: 624, corridor: "stern_top", name: "Stern's Shipyard"   },
         },
-
         mauville_r117: {
             gym:     {x: 135, y: 50 },
 			center:  {x: 369, y: 50 },
@@ -123,7 +120,6 @@ let emerald = {
 			right:   {x: 526, y: 190},
 			daycare: {x: 115, y: 374},
         },
-
         verdanturf: {
             contest: {x: 55,  y: 89 },
             tunnel:  {x: 135, y: 9  },
@@ -133,7 +129,6 @@ let emerald = {
             middle:  {x: 167, y: 204},
             right:   {x: 281, y: 219},
         },
-
         fallarbor_r113: {
             move:    {x: 52,  y: 77 },
             contest: {x: 136, y: 130},
