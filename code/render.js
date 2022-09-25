@@ -864,7 +864,7 @@ function RerenderLayer(level) {
     }
 }
 function RerenderAll() {
-    if (DEBUG.ENABLED) { console.log("Rerendering ~everything~"); }
+    //if (DEBUG.ENABLED) { console.log("Rerendering ~everything~"); }
     for (let layer of layers) {
         layer.rerender = true;
     }
