@@ -703,6 +703,18 @@ let hgss = {
 			moon_up_n: {x: 295, y: 25 , name: "Mt. Moon" },
 			moon_up_s: {x: 376, y: 166, name: "Mt. Moon" },
 		},
+		rocktunnel: {
+			f1_entry: {x: 663, y: 37,  corridor: "f1_e",     name: "Rock Tunnel F1 (Entry)"    },
+			f1_e:     {x: 521, y: 201, corridor: "f1_entry", name: "Rock Tunnel F1 (Entry)"    },
+			f1_nw:    {x: 57,  y: 79,  corridor: "f1_w",     name: "Rock Tunnel F1 (Corridor)" },
+			f1_w:     {x: 91,  y: 212, corridor: "f1_nw",    name: "Rock Tunnel F1 (Corridor)" },
+			f1_sw:    {x: 57,  y: 348, corridor: "f1_exit",  name: "Rock Tunnel F1 (Exit)"     },
+			f1_exit:  {x: 295, y: 364, corridor: "f1_sw",    name: "Rock Tunnel F1 (Exit)"     },
+			bf1_nw:   {x: 71,  y: 511, corridor: "bf1_e",    name: "Rock Tunnel BF1 (Line)"    },
+			bf1_e:    {x: 536, y: 557, corridor: "bf1_nw",   name: "Rock Tunnel BF1 (Line)"    },
+			bf1_w:    {x: 103, y: 655, corridor: "bf1_sw",   name: "Rock Tunnel BF1 (Rocks)"   },
+			bf1_sw:   {x: 71,  y: 842, corridor: "bf1_w",    name: "Rock Tunnel BF1 (Rocks)"   },
+		},
 		seafoam1: {
 			f1_entry:		{x: 133, y: 517, name: "Seafoam Island (1F)"},
 			f1_up:			{x: 133, y: 429, name: "Seafoam Island (1F)"},
