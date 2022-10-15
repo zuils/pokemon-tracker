@@ -1,5 +1,5 @@
 # Pokémon Tracker
-[Tracker Website](https://sekii.gitlab.io/pokemon-tracker)
+https://sekii.gitlab.io/pokemon-tracker
 
 Project open to public so feel free to fork or add new maps for other game gens. If you want to use the project offline, download the source code and open the file called "index.html" with your browser.
 

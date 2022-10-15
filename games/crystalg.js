@@ -403,9 +403,11 @@ let crystalg = {
 
         // Important locations
         darkcave: {
-			left:  {x: 113, y: 217 },
-			top:   {x: 280, y: 49  },
-			right: {x: 571, y: 506 },
+			r31_left:  {x: 70,  y: 216                                                      },
+			r31_top:   {x: 293, y: 32                                                       },
+			r31_right: {x: 584, y: 497                                                      },
+			r45_left:  {x: 58,  y: 628, corridor: "r45_right", name: "Dark Cave (Corridor)" },
+			r45_right: {x: 365, y: 331, corridor: "r45_left",  name: "Dark Cave (Corridor)" },
         },
         puzzlechambers: {
 			hooh_top:       {x: 80,  y: 25,  name: "Puzzle (Ho-oh)"      },
