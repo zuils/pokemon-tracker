@@ -256,7 +256,7 @@ function InitRendering() {
     layers[LAYER_MARKS].    functions = [RenderMarks];
     layers[LAYER_LOCATION]. functions = [RenderLocation];
     layers[LAYER_PROGRESS]. functions = [RenderProgress];
-    layers[LAYER_LINE].     functions = [RenderLine, RenderMapText, RenderRemainingText];
+    layers[LAYER_LINE].     functions = [RenderLine, RenderMapText, RenderRemainingText, RenderTooltip];
     layers[LAYER_HIGHLIGHT].functions = [RenderHighlights];
 }
 
@@ -690,8 +690,9 @@ function RenderMapText(context) {
             y: game.map.h - (FRAME_HEIGHT/2)*MAP_SCALE + LINE_YOFFSET
         };
         let lines = location.name.split("\n");
-        if (current_hovering_target) {
-            lines = game.locations[current_hovering_target].name.split("\n");
+        if (current_hovering_location && current_hovering_location.target != current_location) {
+            lines = game.locations[current_hovering_location.target].name.split("\n");
+            context.fillStyle = "#888888";
         }
         switch (lines.length) {
             case 1: {
@@ -725,7 +726,7 @@ function RenderRemainingText(context) {
     context.imageSmoothingEnabled = false;
 
     context.save(); {
-        context.font = "bold " + CHECKS_FONTSIZE + " Avenir";// + game.font;
+        context.font = "bold " + CHECKS_FONTSIZE + " Avenir";
         context.textAlign = "left";
         context.fillStyle = CHECKS_COLOR;
 
@@ -734,6 +735,84 @@ function RenderRemainingText(context) {
             y: html.canvas.height - CHECKS_YOFFSET,
         };
         context.fillText(game.marks[0][0][1], text_position.x, text_position.y);
+    } context.restore();
+}
+
+const TOOLTIP_SIZEX = 120;
+const TOOLTIP_SIZEY = 50;
+const TOOLTIP_CENTERTEXT = 2;
+const TOOLTIP_LINEBREAK = 8;
+function RenderTooltip(context) {
+    if (!DEBUG.ENABLED) { return; }
+    if (html.config.tooltipsdisabled.checked) { return; }
+    if (!current_hovering_mark) { return; }
+
+    // Figure if render
+    let tooltip_text = tooltips[current_hovering_mark.target];
+    if (tooltip_text === null) { return; }
+    if (!tooltip_text) {
+        let words = current_hovering_mark.target.split("_");
+        for (let i = 0; i < words.length; ++i) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        tooltip_text = words.join(" ");
+    }
+    
+    // Place tooltip box
+    let v = {
+        x: 0,
+        y: 0,
+        w: TOOLTIP_SIZEX,
+        h: TOOLTIP_SIZEY,
+    }
+    let padded_marksize     = MARK_SEPARATION + MARK_SIZE;
+    let padded_modifiersize = MARK_SEPARATION + 2*MODIFIER_RADIUS;
+    let pos = current_hovering_mark.coords;
+    switch (current_hovering_mark.type) {
+        case TYPE_PROGRESS: {
+            v.y += PROGRESS_YOFFSET + game.marks.length*padded_marksize;
+        } // falldown
+        case TYPE_MARK: {
+            v.x += pos.x*padded_marksize + MARK_SEPARATION;
+            v.y += pos.y*padded_marksize + game.map.h + MARKS_YOFFSET;
+
+            v.x += MARK_SIZE - MARK_SEPARATION;
+            v.y += MARK_SIZE - MARK_SEPARATION;
+        } break;
+        case TYPE_MODIFIER: {
+            v.x += -pos.x*padded_modifiersize + game.left_width - 2*MODIFIER_RADIUS;
+            v.y +=  pos.y*padded_modifiersize + game.map.h + MARKS_YOFFSET;
+
+            v.x -= TOOLTIP_SIZEX - MARK_SEPARATION;
+            v.y += MARK_SIZE - MARK_SEPARATION;
+        } break;
+    }
+
+    // Draw tooltip
+    context.save(); {
+        context.fillStyle = "#8a7c62" + "DD";
+        DrawSquare(context, v);
+        DrawBox(context, v);
+
+        v.y += MARK_SIZE - TOOLTIP_CENTERTEXT;
+        v.x += v.w/2;
+        context.font = "bold 14px Avenir";
+        context.textAlign = "center";
+        context.fillStyle = CHECKS_COLOR;
+
+        let lines = tooltip_text.split("\n");
+        switch (lines.length) {
+            case 1: {
+                context.fillText(lines[0], v.x, v.y);
+            } break;
+            default: {
+                console.error("ERROR: Text can have more than 2 lines! Only rendering the 2 first lines.");
+            } // falldown
+            case 2: {
+                context.fillText(lines[0], v.x, v.y - TOOLTIP_LINEBREAK);
+                context.fillText(lines[1], v.x, v.y + TOOLTIP_LINEBREAK);
+            } break;
+        }
     } context.restore();
 }
 

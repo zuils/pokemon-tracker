@@ -182,6 +182,7 @@ function ChangeSmooth(checked) {
     RerenderLayer(LAYER_LOCATION);
 }
 function ChangeKeyboardControls(checked) { localStorage.setItem(CACHE.KEYBOARD_DISABLED, checked); }
+function ChangeTooltips(checked)         { localStorage.setItem(CACHE.TOOLTIPS_DISABLED, checked); }
 
 function ResetColor() { ChangeLineColor(DEFAULT_COLOR); }
 function ChangeLineColor(color) {

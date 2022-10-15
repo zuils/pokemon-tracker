@@ -141,27 +141,35 @@ function OnMouseDown(event) {
     }
 }
 
-let previous_hovering_target = '';
-let current_hovering_target = '';
+let current_hovering_location = null;
+let current_hovering_mark     = null;
 function OnMouseMove(event) {
     if (!game.ready) return;
     mouse_position = EventToPosition(event);
-    
-    current_hovering_target = '';
-    if (mouse_position.x < game.left_width && mouse_position.y < game.map.h) {
-        // Get the hovered location, if the cursor is within the map
-        let info = GetLocation(mouse_position);
 
-        // Change current_hovering_target to info.target, if hovering a location
-        if (info && info.type == TYPE_LOCATION) {
-            current_hovering_target = info.target;
+    current_hovering_location = null;
+    current_hovering_mark = null;
+
+    if (mouse_position.x < game.left_width) {
+        let info = null;
+        if (mouse_position.y < game.map.h) {
+            info = GetLocation(mouse_position);
+            if (info && info.type == TYPE_LOCATION) {
+                current_hovering_location = info;
+            }
+        }
+        else {
+            if (mouse_position.x < game.left_width - (game.modifiers.length*(MODIFIER_RADIUS*2 + MARK_SEPARATION))) {
+                info = GetMark(mouse_position);
+            }
+            else {
+                info = GetModifier(mouse_position);
+            }
+            if (info && (info.type == TYPE_MARK || info.type == TYPE_PROGRESS || info.type == TYPE_MODIFIER)) {
+                current_hovering_mark = info;
+            }
         }
     }
-    // Prevent unneccessary rendering by checking if the text has to be changed
-    if (current_hovering_target != previous_hovering_target) {
-        RerenderLayer(LAYER_MAP);
-    }
-    previous_hovering_target = current_hovering_target;
 }
 function OnMouseUp(event) {
     if (!game.ready) return;
@@ -513,7 +521,7 @@ function GetMark(position) {
     }
 
     // Check which mark is in cuadrant and return it
-    if (type == TYPE_MARK || (cell.y < images.length && cell.x < images[cell.y].length)) {
+    if (cell.y < images.length && cell.x < images[cell.y].length) {
         let result = images[cell.y][cell.x];
         if (result && result[1] !== undefined) return { type: type, target: result[0], coords: cell };
     }

@@ -116,6 +116,7 @@ const HTML_ID = {
         window: "config_window",
         smooth_checkbox: "checkbox_smooth",
         keyboarddisabled: "checkbox_keyboarddisabled",
+        tooltipsdisabled: "checkbox_tooltips",
         loading_text: "loading_game_text",
         game_buttons: "game_buttons",
         line_color: "line_color",
@@ -156,10 +157,12 @@ function RetrieveAllHTMLElements() {
     config.loading_text     = document.getElementById(HTML_ID.config.loading_text);
     config.smooth_checkbox  = document.getElementById(HTML_ID.config.smooth_checkbox);
     config.keyboarddisabled = document.getElementById(HTML_ID.config.keyboarddisabled);
+    config.tooltipsdisabled = document.getElementById(HTML_ID.config.tooltipsdisabled);
     config.line_color       = document.getElementById(HTML_ID.config.line_color);
     config.loading_text.innerHTML = "";
-    config.smooth_checkbox.checked  = (localStorage.getItem(CACHE.SMOOTH_IMAGES)     == "true") ? true  : false;
+    config.smooth_checkbox.checked  = (localStorage.getItem(CACHE.SMOOTH_IMAGES)     == "true") ? true : false;
     config.keyboarddisabled.checked = (localStorage.getItem(CACHE.KEYBOARD_DISABLED) == "true") ? true : false;
+    config.tooltipsdisabled.checked = (localStorage.getItem(CACHE.TOOLTIPS_DISABLED) == "true") ? true : false;
     config.line_color.value = line_color;
     
     // Retrieve networking elements
