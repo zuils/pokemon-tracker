@@ -325,10 +325,12 @@ let crystalg = {
 			union:     {x: 443, y: 408, name: "Route 32"            },
         },
         r34_ilex: {
-			r34_gate:    {x: 102, y: 420, name: "Route 34"    },
-			r34_daycare: {x: 62,  y: 40,  name: "Route 34"    },
-			ilext_top:   {x: 264, y: 62,  name: "Ilex Forest" },
-			ilext_bot:   {x: 297, y: 390, name: "Ilex Forest" },
+			r34_gate:    {x: 138, y: 420,                        name: "Route 34"        },
+			r34_daycare: {x: 86,  y: 40,                         name: "Route 34"        },
+			ilext_top:   {x: 264, y: 62,  corridor: "ilext_bot", name: "Ilex Forest"     },
+			ilext_bot:   {x: 302, y: 642, corridor: "ilext_top", name: "Ilex Forest"     },
+			tm12_top:    {x: 150, y: 559, corridor: "tm12_bot",  name: "Gate R34 (TM12)" },
+			tm12_bot:    {x: 152, y: 673, corridor: "tm12_top",  name: "Gate R34 (TM12)" },
         },
         r35_r36: {
 			botgate:   {x: 158, y: 452, name: "Route 35"          },
