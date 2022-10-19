@@ -39,6 +39,11 @@ const CONFIG_YOFFSET = 5;
 const CONFIG_XOFFSET = 5;
 const CONFIG_HEIGHT = 40;
 
+const TOOLTIP_SIZEX = 120;
+const TOOLTIP_SIZEY = 50;
+const TOOLTIP_CENTERTEXT = 2;
+const TOOLTIP_LINEBREAK = 8;
+
 const LOADING_TEXT = "Loading map...";
 
 const HIGHLIGHT_BLINKING = 150;  //milliseconds
@@ -738,10 +743,6 @@ function RenderRemainingText(context) {
     } context.restore();
 }
 
-const TOOLTIP_SIZEX = 120;
-const TOOLTIP_SIZEY = 50;
-const TOOLTIP_CENTERTEXT = 2;
-const TOOLTIP_LINEBREAK = 8;
 function RenderTooltip(context) {
     if (!DEBUG.ENABLED) { return; }
     if (html.config.tooltipsdisabled.checked) { return; }
