@@ -31,6 +31,7 @@ let frlg_nosevii = {
         r2:               {x: 24,  y: 48,  w: 8,  h: 8,  name: "Route 2"                                                     },
         r10:              {x: 136, y: 32,  w: 8,  h: 8,  name: "Route 10"                                                    },
         r12:              {x: 136, y: 72,  w: 8,  h: 8,  name: "Route 12"                                                    },
+        r15:              {x: 98,  y: 96,  w: 8,  h: 8,  name: "Route 15"                                                    },
 
         // Important locations
         cerulean_cave:    {x: 96,  y: 16,  w: 8,  h: 8,  name: "Cerulean Cave"                                               },
@@ -48,6 +49,7 @@ let frlg_nosevii = {
         rocktunnel1:	  {x: 128, y: 32,  w: 8,  h: 8,  name: "Rock Tunnel",                  								 },
 		rocktunnel2:	  {x: 128, y: 39,  w: 8,  h: 8,  name: "Rock Tunnel",                   							 },
         pokemontower:     {x: 144, y: 48,  w: 8,  h: 8,  name: "Pokémon Tower"                                               },
+        cyclingroad:      {x: 48,  y: 72,  w: 8,  h: 8,  name: "Cycling Road"                                                },
     },
 
     // Undefined fields:
@@ -151,7 +153,6 @@ let frlg_nosevii = {
             se1:                {x: 670,  y: 468, name: "Fuchsia City"        },
             se2:                {x: 759,  y: 502, name: "Fuchsia City"        },
             r15_left:           {x: 859,  y: 303, name: "R15 (Fuchsia)"       },
-            r15_right:          {x: 968,  y: 349, name: "R15 (Route)"         },
         },
         gates: {
             r11_w:              {x: 42,   y: 74,  name: "Gate (Route 11)"     },
@@ -238,6 +239,9 @@ let frlg_nosevii = {
             v_gate_e:           {x: 698,  y: 251, name: "R2 (Viridian)"       },
             hm_bot:             {x: 582,  y: 146, name: "R2 (HM Flash)"       },
 			hm_top:             {x: 582,  y: 47,  name: "R2 (HM Flash)"       },
+        },
+        r15: {
+			gate:               {x: 126,  y: 92,  name: "Route 15"            },
         },
         rocket_hideout: {
             b1f_stairs_w:       {x: 178,  y: 69,  name: "Rocket Hideout B1F"  },
@@ -439,6 +443,10 @@ let frlg_nosevii = {
 			f5_up:   {x: 590, y: 499, corridor: "f5_down", name: "Pokémon Tower (5F)" },
 			f6_down: {x: 441, y: 134, corridor: "f6_up",   name: "Pokémon Tower (6F)" },
 			f6_up:   {x: 281, y: 218, corridor: "f6_down", name: "Pokémon Tower (6F)" },
+        },
+        cyclingroad: {
+            top: {x: 147, y: 60,  corridor: "bot" },
+			bot: {x: 155, y: 215, corridor: "top" },
         },
     },
 

@@ -38,6 +38,7 @@ let frlg = {
         r2:               {x: 24,  y: 48,  w: 8,  h: 8,  name: "Route 2"                                                     },
         r10:              {x: 136, y: 32,  w: 8,  h: 8,  name: "Route 10"                                                    },
         r12:              {x: 136, y: 72,  w: 8,  h: 8,  name: "Route 12"                                                    },
+        r15:              {x: 98,  y: 96,  w: 8,  h: 8,  name: "Route 15"                                                    },
 
         // Important locations
         cerulean_cave:    {x: 96,  y: 16,  w: 8,  h: 8,  name: "Cerulean Cave"                                               },
@@ -59,6 +60,7 @@ let frlg = {
         rocktunnel1:	  {x: 128, y: 32,  w: 8,  h: 8,  name: "Rock Tunnel",                  								 },
 		rocktunnel2:	  {x: 128, y: 39,  w: 8,  h: 8,  name: "Rock Tunnel",                   							 },
         pokemontower:     {x: 144, y: 48,  w: 8,  h: 8,  name: "Pokémon Tower"                                               },
+        cyclingroad:      {x: 48,  y: 72,  w: 8,  h: 8,  name: "Cycling Road"                                                },
     },
 
     // Undefined fields:
@@ -207,7 +209,6 @@ let frlg = {
             se1:                {x: 670,  y: 468, name: "Fuchsia City"        },
             se2:                {x: 759,  y: 502, name: "Fuchsia City"        },
             r15_left:           {x: 859,  y: 303, name: "R15 (Fuchsia)"       },
-            r15_right:          {x: 968,  y: 349, name: "R15 (Route)"         },
         },
         gates: {
             r11_w:              {x: 42,   y: 74,  name: "Gate (Route 11)"     },
@@ -358,6 +359,9 @@ let frlg = {
             gate_s:             {x: 158,  y: 105, name: "R12 (Route)"         },
             gate_n:             {x: 158,  y: 24,  name: "R12 (Lavender)"      },
             r11_gate:           {x: 38,   y: 217, name: "R12 (Route)"         },
+        },
+        r15: {
+			gate:               {x: 126,  y: 92,  name: "Route 15"            },
         },
         r2: {
             p_gate_w:           {x: 93,   y: 211, name: "R2 (Pewter)"         },
@@ -614,6 +618,10 @@ let frlg = {
 			f5_up:   {x: 590, y: 499, corridor: "f5_down", name: "Pokémon Tower (5F)" },
 			f6_down: {x: 441, y: 134, corridor: "f6_up",   name: "Pokémon Tower (6F)" },
 			f6_up:   {x: 281, y: 218, corridor: "f6_down", name: "Pokémon Tower (6F)" },
+        },
+        cyclingroad: {
+            top: {x: 147, y: 60,  corridor: "bot" },
+			bot: {x: 155, y: 215, corridor: "top" },
         },
     },
 
