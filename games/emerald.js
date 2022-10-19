@@ -53,6 +53,7 @@ let emerald = {
         seafloor_underwater:     {x: 200, y: 72,  w: 8, h: 8, name: "Seafloor Cavern\nUnderwater" },
         skypillar_r131:          {x: 169, y: 96,  w: 8, h: 8, name: "Sky Pillar\nRoute 131"       },
         victoryroad:             {x: 237, y: 80,  w: 8, h: 8, name: "Victory Road"                },
+        victoryroad_corridors:   {x: 237, y: 70,  w: 8, h: 8, name: "Victory Road\n(Corridors)"   },
         navelrock:               {x: 206, y: 22,  w: 8, h: 8, name: "Navel Rock"                  },
     },
 
@@ -496,6 +497,14 @@ let emerald = {
             bf2_mid:      {x: 313, y: 570, name: "Victory Road (2BF)"},
             bf2_left:     {x: 86,  y: 715, name: "Victory Road (2BF)"},
             bf2_right:    {x: 484, y: 695, name: "Victory Road (2BF)"},
+        },
+        victoryroad_corridors: {
+            f1_entrybot:  {x: 207, y: 530, corridor: "f1_entrytop",  name: "Victory Road (F1 Entry)" },
+			f1_entrytop:  {x: 127, y: 215, corridor: "f1_entrybot",  name: "Victory Road (F1 Entry)" },
+			f1_exitbot:   {x: 288, y: 455, corridor: "f1_exittop",   name: "Victory Road (F1 Exit)"  },
+			f1_exittop:   {x: 526, y: 100, corridor: "f1_exitbot",   name: "Victory Road (F1 Exit)"  },
+			exterior_bot: {x: 71,  y: 65,  corridor: "exterior_top", name: "Ever Grande (Entrance)"  },
+			exterior_top: {x: 219, y: 45,  corridor: "exterior_bot", name: "Ever Grande (Entrance)"  },
         },
         navelrock: {
             stairsleft:   {x: 74,  y: 76 },
