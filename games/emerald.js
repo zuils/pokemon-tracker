@@ -269,10 +269,12 @@ let emerald = {
             desert_mirage:   {x: 195, y: 421, name: "Route 112 (Mirage)"      },
             desert_regirock: {x: 358, y: 398, name: "Route 112 (Regirock)"    },
         },
-        r114:                {
-            fossilmaniac: {x: 264, y: 66 , name: "Route114 (Fossil Maniac)" },
-            lanette:      {x: 247, y: 190, name: "Route 114 (Lanette)"      },
-            meteorfalls:  {x: 87,  y: 187, name: "Route 114 (Meteor Falls)" },
+        r114: {
+            fossilmaniac: {x: 264, y: 66 ,                          name: "Route114 (Fossil Maniac)" },
+            lanette:      {x: 247, y: 190,                          name: "Route 114 (Lanette)"      },
+            meteorfalls:  {x: 87,  y: 187,                          name: "Route 114 (Meteor Falls)" },
+            maniac_top:   {x: 70,  y: 10,  corridor: "maniac_bot",  name: "Fossil Maniac's House"    },
+			maniac_bot:   {x: 80,  y: 102, corridor: "maniac_top",  name: "Fossil Maniac's House"    },
         },
         r119_r123:           {
             r119_house:       {x: 166, y: 287, name: "Route 119 (House)"  },
