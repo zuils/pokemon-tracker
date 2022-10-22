@@ -42,48 +42,39 @@ function OnKeyDown(event) {
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", file, false);
         rawFile.onreadystatechange = function () {
-            if(rawFile.readyState === 4)
-            {
-                if(rawFile.status === 200 || rawFile.status == 0)
-                {
-                    var allText = rawFile.responseText;
-                    alert(allText);
+            if(rawFile.readyState === 4) {
+                if(rawFile.status === 200 || rawFile.status == 0) {
+                    let lines = rawFile.responseText.split("\n");
+                    while (lines[0].startsWith("#")) { // Parse all progress trackers
+                        let fields = lines[0].split(",");
+                        let current_game = games[fields[0].substring(1, fields[0].length)];
+                        fields.shift;
+                        current_game.obtained.clear();
+                        for (let p of fields) {
+                            current_game.obtained.add(p);
+                        }
+                        lines.shift();
+                    }
+
+                    LinesToWarps(lines);
+                    if (connected_to || connections.length > 0) {
+                        let text = lines.join("\n");
+                        if (connected_to) {
+                            connected_to.send(text);
+                        }
+                        else {
+                            for (let c of connections) {
+                                c.connection.send(text);
+                            }
+                        }
+                    }
+
+                    ChangeGame(frlg_nosevii);
+                    RerenderAll();
                 }
             }
         }
         rawFile.send(null);
-/*
-        let reader = new FileReader();
-        reader.onload = function() {
-            let lines = reader.result.split("\n");
-            while (lines[0].startsWith("#")) { // Parse all progress trackers
-                let fields = lines[0].split(",");
-                let current_game = games[fields[0].substring(1, fields[0].length)];
-                fields.shift;
-                current_game.obtained.clear();
-                for (let p of fields) {
-                    current_game.obtained.add(p);
-                }
-                lines.shift();
-            }
-
-            LinesToWarps(lines);
-            if (connected_to || connections.length > 0) {
-                let text = lines.join("\n");
-                if (connected_to) {
-                    connected_to.send(text);
-                }
-                else {
-                    for (let c of connections) {
-                        c.connection.send(text);
-                    }
-                }
-            }
-
-            ChangeGame(frlg_nosevii);
-            RerenderAll();
-        }
-        reader.readAsText("code/test_file1.txt");*/
         return;
     }
     
