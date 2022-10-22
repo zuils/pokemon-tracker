@@ -761,9 +761,19 @@ function RenderTooltip(context) {
     if (html.config.tooltipsdisabled.checked) { return; }
     if (!current_hovering_mark) { return; }
 
-    // Get text
-    let tooltip_text = tooltips[current_hovering_mark.target];
+    // Get tooltip text & figure out if we should render the tooltip
+    let tooltip_folder = tooltips[game.folder];
+    let tooltip_text = undefined;
+    if (tooltip_folder) {
+        tooltip_text = tooltip_folder[current_hovering_mark.target];
+        if (tooltip_text === null) { return; }
+    }
+    
+    if (!tooltip_text) {
+        tooltip_text = tooltips[current_hovering_mark.target];
+    }
     if (tooltip_text === null) { return; }
+
     if (!tooltip_text) {
         let words = current_hovering_mark.target.split("_");
         for (let i = 0; i < words.length; ++i) {

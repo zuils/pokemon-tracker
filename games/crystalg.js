@@ -664,17 +664,17 @@ let crystalg = {
     // if null, then we don't do tracking
     // if undefined, then we don't draw the mark
     marks: [
-        [["unknown",     0], ["corridor",    0], ["dead_end", null], ["event",      0], ["center",      0], ["mart",        0], ["one_way",   null]],
-        [["normal",      0], ["fighting",    0], ["flying",     0], ["poison",      0], ["ground",      0], ["rock",         0], ["bug",    0], ["ghost",       0], ["fairy",     0]],
-        [["steel",       0], ["fire",        0], ["water",      0], ["grass",       0], ["electric",    0], ["psychic",      0], ["ice",    0], ["dragon",      0], ["dark",      0]],
-        [["1",           0], ["2",           0], ["3",          0], ["4",           0], ["5",           0], ["6",            0], ["7",      0], ["8",           0]],
-		[["team_rocket", 0], ["c_rival",     0], ["c_gyarados", 0], ["",    undefined], ["c_legendary", 0], ["burned_tower", 0], ["c_oak",  0], ["c_kurt",      0], ["c_unown",   0], ["c_train",   0], ["dratini", 0]],
-        [["c_bush",      0], ["c_surf",      0], ["c_boulder",  0], ["c_darkness",  0], ["c_whirlpool", 0], ["c_waterfall",  0], ["c_rock", 0], ["bike_needed", 0], ["c_trainer", 0]],
+        [["unknown",     0], ["corridor",    0], ["dead_end", null], ["event",      0], ["center",      0], ["mart",         0], ["one_way",  null]],
+        [["normal",      0], ["fighting",    0], ["flying",      0], ["poison",     0], ["ground",      0], ["rock",         0], ["bug",         0], ["ghost",       0], ["fairy",     0]],
+        [["steel",       0], ["fire",        0], ["water",       0], ["grass",      0], ["electric",    0], ["psychic",      0], ["ice",         0], ["dragon",      0], ["dark",      0]],
+        [["1",           0], ["2",           0], ["3",           0], ["4",          0], ["5",           0], ["6",            0], ["7",           0], ["8",           0]],
+		[["team_rocket", 0], ["c_rival",     0], ["c_gyarados",  0], ["",   undefined], ["c_legendary", 0], ["burned_tower", 0], ["c_kurt",      0], ["c_unown",     0], ["c_train",   0], ["dratini", 0]],
+        [["c_bush",      0], ["c_surf",      0], ["c_boulder",   0], ["c_darkness", 0], ["c_whirlpool", 0], ["c_waterfall",  0], ["c_rock",      0], ["bike_needed", 0], ["c_trainer", 0]],
     ],
     progress: [
         [["zephyr_badge",  0], ["hive_badge",    0], ["plain_badge",    0], ["fog_badge",     0], ["storm_badge",   0], ["mineral_badge", 0], ["glacier_badge", 0], ["rising_badge", 0]],
         [["boulder_badge", 0], ["cascade_badge", 0], ["thunder_badge",  0], ["rainbow_badge", 0], ["soul_badge",    0], ["marsh_badge",   0], ["volcano_badge", 0], ["earth_badge",  0]],
-        [["c_will",        0], ["c_koga",        0], ["c_bruno",        0], ["c_karen",       0], ["c_lance",       0], ["",      undefined], ["",      undefined], ["c_red",        0]],
+        [["c_will",        0], ["c_koga",        0], ["c_bruno",        0], ["c_karen",       0], ["c_lance",       0], ["",      undefined], ["c_oak",         0], ["c_red",        0]],
         [["hm_cut",        0], ["hm_fly",        0], ["hm_surf",        0], ["hm_strength",   0], ["hm_flash",      0], ["hm_whirlpool",  0], ["hm_waterfall",  0], ["hm_rocksmash", 0]],
         [["pokegear",      0], ["radio_card",    0], ["expansion_card", 0], ["squirt_bottle", 0], ["secret_potion", 0], ["card_key",      0], ["ss_ticket",     0], ["pass",         0]],
         [["machine_part",  0], ["clear_bell",    0], ["rainbow_wing",   0], ["silver_wing",   0], ["basement_key",  0], ["lost_item",     0], ["red_scale",     0], ["mystery_egg",  0]],
