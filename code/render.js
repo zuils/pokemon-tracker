@@ -121,7 +121,7 @@ function LoadImages() {
     for (let row of game.marks) {
         loading_process.row_count += 1;
         for (let pair of row) {
-            if(pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/marks/" + pair[0] + ".png") }
+            if(pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/_marks/" + pair[0] + ".png") }
         }
     }
 
@@ -180,7 +180,7 @@ function ImageLoaded() {
     else if (this.src.includes("settings.png"))  { icons.settings = this;   }
     else if (this.src.includes("help.png"))      { icons.help = this;       }
     else if (this.src.includes("remaining.png")) { icons.remaining = this;  }
-    else if (this.src.includes("/marks/") || this.src.includes("/progress/")) {
+    else if (this.src.includes("/_marks/") || this.src.includes("/progress/")) {
         images[GetNameImage(this.src)] = this;
     }
     else {
