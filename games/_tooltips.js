@@ -44,7 +44,6 @@ const tooltips = {
     mineral_badge: undefined,
     glacier_badge: "Glacier Badge\n(Waterfall)",
     rising_badge:  "Rising Badge\n(Whirlpool)",
-    // Kanto's badges left undefined
     c_will:  "Elite 4\nWill",
     c_koga:  "Elite 4\nKoga",
     c_bruno: "Elite 4\nBruno",
@@ -59,7 +58,7 @@ const tooltips = {
     hm_flash:     "HM 05\n(Flash)",
     hm_whirlpool: "HM 06\n(Whirlpool)",
     hm_waterfall: "HM 07\n(Waterfall)",
-    cystal: {
+    crystal: {
         hm_rocksmash: "TM 08\n(Rock Smash)",
     },
     pokegear:       "Pokégear",
@@ -183,5 +182,63 @@ const tooltips = {
     hm_defog: "HM 05\n(Defog)",
     hm_rockclimb: "HM 08\n(Rock Climb)",
 
+    /* Heart Gold - Soul Silver */
+    hgss_surf:       "Blocked by\nSurf",
+    hgss_whirlpool:  "Blocked by\nWhirlpool",
+    hgss_darkness:   "Blocked by\nFlash",
+    hgss: {
+        zephyr_badge:  "Zephyr Badge\n(Rock Smash)",
+        glacier_badge: "Glacier Badge\n(Whirlpool)",
+        rising_badge:  "Rising Badge\n(Waterfall)",
+        earth_badge:   "Earth Badge\n(Rock Climb)",
+        hm_whirlpool:  "HM 05\n(Whirlpool)",
+        hm_rocksmash:  "HM 06\n(Rock Smash)",
+        hm_flash:      "TM 70\n(Flash)",
+    },
+    hgss_will:  "Elite 4\nWill",
+    hgss_koga:  "Elite 4\nKoga",
+    hgss_bruno: "Elite 4\nBruno",
+    hgss_karen: "Elite 4\nKaren",
+    hgss_lance: "Champion\nLance",
+    hgss_red:   "Red\n(Post-Game)",
 
+
+    /* Black 2 - White 2 */
+    w2_n: "N",
+    w2_ghetsis: "Ghetsis",
+    b2w2_legendary: "Kyurem\nReshiram Zekrom",
+    w2_bush:       "Blocked by\nCut",
+    w2_surf:       "Blocked by\nSurf",
+    w2_boulder:    "Blocked by\nStrength",
+    w2_waterfall:  "Blocked by\nWaterfall",
+    basicbadge:  "Basic Badge",
+    toxicbadge:  "Toxic Badge",
+    insectbadge: "Insect Badge",
+    boltbadge:   "Bolt Badge",
+    quakebadge:  "Quake Badge",
+    jetbadge:    "Jet Badge",
+    legendbadge: "Legend Badge",
+    wavebadge:   "Wave Badge",
+
+    black2white2: {
+        hm_waterfall: "HM 05\n(Waterfall)",
+        hm_dive: "HM 06\n(Dive)",
+    },
+
+    bw_shauntal:  "Elite 4\nShauntal",
+    bw_marshal:   "Elite 4\nMarshal",
+    bw_grimsley:  "Elite 4\nGrimsley",
+    bw_caitlin:   "Elite 4\nCaitlin",
+    b2w2_iris:    "Champion\nIris",
+    bw_N:         "N\n(Post-Game)",
+    bw_alder:     "Alder\n(Post-Game)",
+    bw_cynthia:   "Cynthia\n(Post-Game)",
+
+    white2_a: {
+        shauntal: "Elite 4\nShauntal",
+        marshal:  "Elite 4\nMarshal",
+        grimsley: "Elite 4\nGrimsley",
+        catlin:   "Elite 4\nCaitlin",
+        champ:    "Champion\nIris",
+    },
 }
