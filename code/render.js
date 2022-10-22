@@ -745,11 +745,11 @@ function RenderRemainingText(context) {
 
     context.save(); {
         context.font = "bold " + CHECKS_FONTSIZE + " Avenir";
-        context.textAlign = "left";
+        context.textAlign = "center";
         context.fillStyle = CHECKS_COLOR;
 
         let text_position = {
-            x: game.left_width - CHECKS_XOFFSET + MARK_SIZE + 15,
+            x: game.left_width - CHECKS_XOFFSET + MARK_SIZE + 15 + CONFIG_HEIGHT,
             y: html.canvas.height - CHECKS_YOFFSET,
         };
         context.fillText(game.marks[0][0][1], text_position.x, text_position.y);
