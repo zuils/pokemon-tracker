@@ -5,10 +5,12 @@ const LINE_THICKNESS = 3;
 const DEFAULT_COLOR  = "#00FFFF";
 let line_color       = DEFAULT_COLOR;
 
+const CHECKS_HEIGHT = 50;
+const CHECKS_WIDTH  = 150;
 const CHECKS_COLOR    = "#f7e1b4";
 const CHECKS_FONTSIZE = "42px";
 const CHECKS_XOFFSET  = 145;
-const CHECKS_YOFFSET  = 5;
+const CHECKS_YOFFSET  = 9;
 
 const MAP_MARK_OFFSET = 1;
 const MAP_MARK_WIDTH  = 3;
@@ -315,6 +317,15 @@ function RenderBackgroundColors(context) {
         h: game.right_height
     };
     DrawSquareContextless(context, background, BACKGROUND_COLOR);
+
+    // ----- Render remaining warps background -----
+    background = {
+        x: game.left_width   - CHECKS_WIDTH,
+        y: game.right_height - CHECKS_HEIGHT,
+        w: CHECKS_WIDTH,
+        h: CHECKS_HEIGHT,
+    };
+    DrawSquareContextless(context, background, BACKGROUND_COLOR);
 }
 
 function RenderMap(context) {
@@ -338,7 +349,7 @@ function RenderRemainingIcon(context) {
     context.imageSmoothingEnabled = false;
     let v = {
         x: game.left_width - CHECKS_XOFFSET,
-        y: html.canvas.height - icons.settings.naturalHeight,
+        y: html.canvas.height - icons.settings.naturalHeight - CHECKS_YOFFSET/2,
         w: CONFIG_HEIGHT,
         h: CONFIG_HEIGHT,
     };
