@@ -377,12 +377,15 @@ function OnMouseUp(event) {
                                 current_location = current_markcycle.locations[current_markcycle.index];
                                 current_markcycle.index = (current_markcycle.index+1) % current_markcycle.locations.length;
                                 RerenderLayer(LAYER_LOCATION);
-                                highlight = { location: current_location, warps: [] };
+                                highlight = { location: current_location, warps: [], locations: [] };
                                 for (let warp_name in game.warps[current_location]) {
                                     let warp = game.warps[current_location][warp_name];
                                     if (warp.link == icon[0] || warp.modifier == icon[0]) {
                                         highlight.warps.push(warp_name);
                                     }
+                                }
+                                for (let location of current_markcycle.locations) {
+                                    highlight.locations.push(location);
                                 }
                                 RerenderLayer(LAYER_HIGHLIGHT);
 
