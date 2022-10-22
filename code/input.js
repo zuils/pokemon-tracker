@@ -111,12 +111,8 @@ function OnMouseDown(event) {
     let click = null;
     switch (event.which) {
         case LEFT_CLICK:  {
-            if (!traslucent_warps) {
-                click = left_click;
-            }
-        } break;
-        case RIGHT_CLICK: click = right_click; {
-            if (current_state == STATE_DEFAULT && mouse_position.x > game.left_width) {
+            click = left_click;
+            if (mouse_position.x > game.left_width) {
                 let info = GetWarp(mouse_position);
                 if (info && info.type == TYPE_WARP) break;
 
@@ -124,6 +120,7 @@ function OnMouseDown(event) {
                 RerenderLayer(LAYER_LOCATION);
             }
         } break;
+        case RIGHT_CLICK: click = right_click; break;
         case MIDDLE_CLICK: {
             if (!DEBUG.ENABLED) return;
 
@@ -209,18 +206,15 @@ function OnMouseUp(event) {
     let click = null;
     switch (event.which) {
         case LEFT_CLICK: {
-            if (!traslucent_warps) {
-                click = left_click;
+            click = left_click;
+            if (traslucent_warps) {
+                traslucent_warps  = false;
+                RerenderLayer(LAYER_LOCATION);
             }
         } break;
         case RIGHT_CLICK: {
             click = right_click;
             current_state = STATE_DEFAULT;
-
-            if (traslucent_warps) {
-                traslucent_warps  = false;
-                RerenderLayer(LAYER_LOCATION);
-            }
         } break;
         default: return;
     }
