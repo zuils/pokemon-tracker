@@ -12,7 +12,6 @@ function RegisterInputEvents() {
     html.canvas.addEventListener("contextmenu", OnContextMenu);
 
     document.addEventListener("keydown", OnKeyDown);
-    //document.addEventListener("keyup",   OnKeyUp);
     addEventListener("beforeunload", BeforeUnload);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
@@ -24,44 +23,30 @@ function BeforeUnload(event) {
 }
 
 function OnKeyDown(event) {
-    if (html.config.keyboarddisabled.checked) { return; }
-    if (DEBUG.ENABLED) {
-        if (event.key == "q") {
-            DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
-            RerenderLayer(LAYER_LOCATION);
-            if (!DEBUG.WARP_TO_SELF) {
-                InitTrackerToUnknowns();
-            }
-            return;
+    if (!DEBUG.ENABLED) { return; }
+    if (event.key == "q") {
+        DEBUG.WARP_TO_SELF = !DEBUG.WARP_TO_SELF;
+        RerenderLayer(LAYER_LOCATION);
+        if (!DEBUG.WARP_TO_SELF) {
+            InitTrackerToUnknowns();
         }
-        if (event.key == "w") {
-            DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
-            RerenderLayer(LAYER_LOCATION);
-            return;
-        }
-        
-        if (event.key >= "1" && event.key <= "9") {
-            let layer = layers[event.key - 1];
-            if (layer) {
-                console.log("Toggling " + LAYER_NAME[event.key - 1]);
-                layer.skip = !layer.skip;
-                return;
-            }
-        }
-    }
-    if (event.key == "a") {
-        for (let warp in game.warps[current_location]) {
-            let w = game.warps[current_location][warp];
-            if (w.link != "unknown") { continue; }
-            highlights[warp] = { location: current_location };
-        }
-        RerenderLayer(LAYER_HIGHLIGHT);
         return;
     }
+    if (event.key == "w") {
+        DEBUG.PRINT_KEY = !DEBUG.PRINT_KEY;
+        RerenderLayer(LAYER_LOCATION);
+        return;
+    }
+    
+    if (event.key >= "1" && event.key <= "9") {
+        let layer = layers[event.key - 1];
+        if (layer) {
+            console.log("Toggling " + LAYER_NAME[event.key - 1]);
+            layer.skip = !layer.skip;
+            return;
+        }
+    }
 }
-/*function OnKeyUp(event) {
-    if (!DEBUG.ENABLED) return;
-}*/
 
 /*********************************************************/
 
@@ -209,12 +194,31 @@ function OnMouseUp(event) {
                 case LEFT_CLICK: {
                     switch (info.type) {
                         case TYPE_CONFIG: {
-                            if (info.target == "settings") {
-                                ShowConfig();
+                            if (info.target == "remaining_checks") {
+                                highlight = { location: current_location, warps: [], locations: [] };
+                                for (let warp in game.warps[current_location]) {
+                                    let w = game.warps[current_location][warp];
+                                    if (w.link != "unknown") { continue; }
+                                    highlight.warps.push(warp);
+                                }
+                                for (let location in game.locations) {
+                                    let has_unknowns = false;
+                                    for (let warp in game.warps[location]) {
+                                        let w = game.warps[location][warp];
+                                        if (w.link == "unknown") {
+                                            has_unknowns = true;
+                                            break;
+                                        }
+                                    }
+                                    if (has_unknowns)
+                                    highlight.locations.push(location);
+                                }
+                                RerenderLayer(LAYER_HIGHLIGHT);
+                                break;
                             }
-                            else {
-                                ShowHelp();
-                            }
+
+                            if (info.target == "settings") { ShowConfig(); } 
+                            else { ShowHelp(); }
                             current_state = STATE_DEFAULT;
                         } break;
                         case TYPE_LOCATION: {
@@ -265,7 +269,7 @@ function OnMouseUp(event) {
                                         if (w.link_type && w.link_type == LINKTYPE_WARP) {
                                             current_location = w.link_location;
                                             RerenderLayer(LAYER_LOCATION);
-                                            highlights[w.link] = { location: w.link_location }
+                                            highlight = { location: w.link_location, warps: [w.link] };
                                             RerenderLayer(LAYER_HIGHLIGHT);
                                         }
                                         break;
@@ -462,6 +466,9 @@ function GetClicked(position) {
         }
         else if (position.x <= icons.settings.naturalWidth + CONFIG_XOFFSET + icons.help.naturalWidth) {
             return { type: TYPE_CONFIG, target: "help" };
+        }
+        else if (position.x >= game.left_width - CHECKS_WIDTH) {
+            return { type: TYPE_CONFIG, target: "remaining_checks" };
         }
         return null;
     }

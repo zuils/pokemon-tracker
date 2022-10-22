@@ -31,7 +31,6 @@ const CACHE = {
     DEBUG_LOCATION:    "debug-location",
     LAST_VERSION:      "last-version",
     LINE_COLOR:        "line-color",
-    KEYBOARD_DISABLED: "keyboard-disabled",
 }
 const CURRENT_VERSION = 3;
 
@@ -115,7 +114,6 @@ const HTML_ID = {
     config: {
         window: "config_window",
         smooth_checkbox: "checkbox_smooth",
-        keyboarddisabled: "checkbox_keyboarddisabled",
         tooltipsdisabled: "checkbox_tooltips",
         loading_text: "loading_game_text",
         game_buttons: "game_buttons",
@@ -156,12 +154,10 @@ function RetrieveAllHTMLElements() {
     config.window           = document.getElementById(HTML_ID.config.window);
     config.loading_text     = document.getElementById(HTML_ID.config.loading_text);
     config.smooth_checkbox  = document.getElementById(HTML_ID.config.smooth_checkbox);
-    config.keyboarddisabled = document.getElementById(HTML_ID.config.keyboarddisabled);
     config.tooltipsdisabled = document.getElementById(HTML_ID.config.tooltipsdisabled);
     config.line_color       = document.getElementById(HTML_ID.config.line_color);
     config.loading_text.innerHTML = "";
     config.smooth_checkbox.checked  = (localStorage.getItem(CACHE.SMOOTH_IMAGES)     == "true") ? true : false;
-    config.keyboarddisabled.checked = (localStorage.getItem(CACHE.KEYBOARD_DISABLED) == "true") ? true : false;
     config.tooltipsdisabled.checked = (localStorage.getItem(CACHE.TOOLTIPS_DISABLED) == "true") ? true : false;
     config.line_color.value = line_color;
     
@@ -233,7 +229,7 @@ function RetrieveAllHTMLElements() {
                     }
                 }
                 g.unknownCount = g.marks[0][0][1] + g.marks[0][1][1];
-                text.innerHTML += " (" + g.unknownCount + " warps)";
+                text.innerHTML += " (" + g.marks[0][0][1] + " warps)";
 
             div.appendChild(text);
         game_buttons.appendChild(div);

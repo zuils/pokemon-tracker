@@ -52,7 +52,7 @@ const LOADING_TEXT = "Loading map...";
 
 const HIGHLIGHT_BLINKING = 150;  //milliseconds
 const HIGHLIGHT_DURATION = 1500; //milliseconds
-let highlights = {};
+let highlight = {};
 
 let debug_widths  = [];
 let debug_heights = [];
@@ -828,42 +828,56 @@ function RenderTooltip(context) {
 //  ██████  ██     ██   ██ ██  ██████  ██   ██ ███████ ██  ██████  ██   ██    ██    ███████ 
 
 function RenderHighlights(context) {
-    if (Object.keys(highlights) == 0) { return; }
+    if (!highlight) { return; }
     
-    for (let name in highlights) {
-        let h = highlights[name];
-        if (h.duration == undefined) { // new highlight
-            h.duration   = HIGHLIGHT_DURATION;
-            h.blinking   = true;
-            h.blink_time = HIGHLIGHT_BLINKING;
-            continue;
-        }
-        if (h.duration < 0 || h.location != current_location) {
-            delete highlights[name];
-        }
+    if (highlight.duration == undefined) { // new highlight
+        highlight.duration   = HIGHLIGHT_DURATION;
+        highlight.blinking   = true;
+        highlight.blink_time = HIGHLIGHT_BLINKING;
     }
-
-    for (let name in highlights) {
-        let h = highlights[name];
-        h.duration -= delta_time;
-        h.blink_time -= delta_time;
-        if (h.blink_time < 0) {
-            h.blink_time = HIGHLIGHT_BLINKING;
-            h.blinking = !h.blinking;
-        }
-        if (!h.blinking) { continue; }
-
-        let i = GetWarpRenderInfo(game.warps[h.location][name]);
-        if (i.type == "image") {
-            let color = line_color + MODIFIER_ALPHA;
-            DrawSquareContextless(context, i, color);
-        }
-        else {
-            DrawBoxContextless(context, i, MODIFIER_WIDTH, line_color);
-        }
+    if (highlight.duration < 0 || highlight.location != current_location) {
+        highlight = null;
+        return;
     }
-
     RerenderLayer(LAYER_HIGHLIGHT);
+
+    highlight.duration   -= delta_time;
+    highlight.blink_time -= delta_time;
+    if (highlight.blink_time < 0) {
+        highlight.blink_time = HIGHLIGHT_BLINKING;
+        highlight.blinking = !highlight.blinking;
+    }
+    if (!highlight.blinking) { return; }
+
+    context.save(); {
+        context.fillStyle   = line_color + MODIFIER_ALPHA;
+        context.strokeStyle = line_color;
+        context.lineWidth = MAP_MARK_WIDTH;
+        if (highlight.warps) {
+            for (let w of highlight.warps) {
+                let i = GetWarpRenderInfo(game.warps[highlight.location][w]);
+                if (i.type == "image") {
+                    DrawSquare(context, i);
+                }
+                else {
+                    DrawBox(context, i);
+                }
+            }
+        }
+
+        if (highlight.locations) {
+            for (let location_name of highlight.locations) {
+                let location = game.locations[location_name];
+                let v = {
+                    x: location.x*MAP_SCALE -   MAP_MARK_OFFSET,
+                    y: location.y*MAP_SCALE -   MAP_MARK_OFFSET,
+                    w: location.w*MAP_SCALE + 2*MAP_MARK_OFFSET,
+                    h: location.h*MAP_SCALE + 2*MAP_MARK_OFFSET,
+                };
+                DrawSquare(context, v);
+            }
+        }
+    } context.restore();
 }
 
 
@@ -944,7 +958,7 @@ function RerenderLayer(level) {
     //if (DEBUG.ENABLED) { console.log("Rerendering " + LAYER_NAME[level]); }
     layers[level].rerender = true;
     if (level == LAYER_LOCATION) {
-        highlights = {};
+        highlight = null;
     }
 }
 function RerenderAll() {
