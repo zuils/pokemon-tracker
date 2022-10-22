@@ -32,7 +32,7 @@ const CACHE = {
     LAST_VERSION:      "last-version",
     LINE_COLOR:        "line-color",
 }
-const CURRENT_VERSION = 3;
+const CURRENT_VERSION = 4;
 
 let game;
 let games = {};

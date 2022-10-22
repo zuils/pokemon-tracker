@@ -757,7 +757,6 @@ function RenderRemainingText(context) {
 }
 
 function RenderTooltip(context) {
-    if (!DEBUG.ENABLED) { return; }
     if (html.config.tooltipsdisabled.checked) { return; }
     if (!current_hovering_mark) { return; }
 
