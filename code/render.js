@@ -43,6 +43,8 @@ const CONFIG_HEIGHT = 40;
 
 const TOOLTIP_SIZEX = 120;
 const TOOLTIP_SIZEY = 50;
+const TOOLTIP_XOFFSET = 10;
+const TOOLTIP_YOFFSET = 17;
 const TOOLTIP_CENTERTEXT = 2;
 const TOOLTIP_LINEBREAK = 8;
 
@@ -759,7 +761,7 @@ function RenderTooltip(context) {
     if (html.config.tooltipsdisabled.checked) { return; }
     if (!current_hovering_mark) { return; }
 
-    // Figure if render
+    // Get text
     let tooltip_text = tooltips[current_hovering_mark.target];
     if (tooltip_text === null) { return; }
     if (!tooltip_text) {
@@ -772,32 +774,13 @@ function RenderTooltip(context) {
     
     // Place tooltip box
     let v = {
-        x: 0,
-        y: 0,
+        x: mouse_position.x + TOOLTIP_XOFFSET,
+        y: mouse_position.y + TOOLTIP_YOFFSET,
         w: TOOLTIP_SIZEX,
         h: TOOLTIP_SIZEY,
     }
-    let padded_marksize     = MARK_SEPARATION + MARK_SIZE;
-    let padded_modifiersize = MARK_SEPARATION + 2*MODIFIER_RADIUS;
-    let pos = current_hovering_mark.coords;
-    switch (current_hovering_mark.type) {
-        case TYPE_PROGRESS: {
-            v.y += PROGRESS_YOFFSET + game.marks.length*padded_marksize;
-        } // falldown
-        case TYPE_MARK: {
-            v.x += pos.x*padded_marksize + MARK_SEPARATION;
-            v.y += pos.y*padded_marksize + game.map.h + MARKS_YOFFSET;
-
-            v.x += MARK_SIZE - MARK_SEPARATION;
-            v.y += MARK_SIZE - MARK_SEPARATION;
-        } break;
-        case TYPE_MODIFIER: {
-            v.x += -pos.x*padded_modifiersize + game.left_width - 2*MODIFIER_RADIUS;
-            v.y +=  pos.y*padded_modifiersize + game.map.h + MARKS_YOFFSET;
-
-            v.x -= TOOLTIP_SIZEX - MARK_SEPARATION;
-            v.y += MARK_SIZE - MARK_SEPARATION;
-        } break;
+    if (current_hovering_mark.type == TYPE_MODIFIER) {
+        v.x = mouse_position.x - TOOLTIP_SIZEX;
     }
 
     // Draw tooltip
