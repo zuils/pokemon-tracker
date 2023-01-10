@@ -258,6 +258,8 @@ let crystalg = {
 			gym:        {x: 132, y: 442, name: "Celadon City (Gym)" },
 			coincase:   {x: 376, y: 498                             },
 			gate:       {x: 534, y: 353                             },
+			r16_fly:    {x: 62,  y: 209, name: "R16 (Fly House)"    },
+			r16_gate:   {x: 62,  y: 291                             },
         },
         lavender_r8: {
 			mart:       {x: 53,  y: 240                             },
@@ -379,9 +381,6 @@ let crystalg = {
 			gate:   {x: 73, y: 30,  name: "Route 19" },
 			blaine: {x: 69, y: 202, name: "Route 20" },
         },
-        r25: {
-			bill: {x: 139, y: 68 },
-        },
         r12: {
 			fish: {x: 182, y: 191 },
         },
@@ -391,11 +390,6 @@ let crystalg = {
 		cyclingroad: {
 			top: {x: 125, y: 82,  corridor: "bot"},
 			bot: {x: 231, y: 710, corridor: "top"},
-        },
-        r16_r18: {
-			topgate: {x: 240, y: 104, name: "Route 16 (Celadon)" },
-			house:   {x: 56,  y: 40,  name: "Route 16"           },
-			botgate: {x: 55,  y: 250, name: "Route 18 (Fuchsia)" },
         },
         r9_r10: {
 			rocktunnel: {x: 136, y: 66,  name: "Route 9"          },
