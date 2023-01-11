@@ -367,12 +367,15 @@ function OnMouseUp(event) {
                                             current_markcycle.locations.push({name: location, count: sum});
                                         }
                                     }
+                                    current_markcycle.locations.sort((a,b) => a.count < b.count);
                                 }
 
                                 // Change current_location to the appropiate one and cycle the index
                                 current_location = current_markcycle.locations[current_markcycle.index].name;
                                 current_markcycle.index = (current_markcycle.index+1) % current_markcycle.locations.length;
                                 RerenderLayer(LAYER_LOCATION);
+
+                                // Highlight all warps and locations
                                 highlight = { location: current_location, warps: [], locations: [] };
                                 for (let warp_name in game.warps[current_location]) {
                                     let warp = game.warps[current_location][warp_name];
@@ -670,30 +673,51 @@ function AddToIcon (current_game, name, value, location, type) {
         }
 
         if (value > 0) { // if adding a mark
-            if (!mc_location) {
+            if (!mc_location) { // if it isn't on the list, add it at the end
                 current_markcycle.locations.push({name: location, count: 1});
             }
-            else {
+            else { // otherwise, move it above
                 mc_location.count += 1;
+                let i = current_markcycle.locations.indexOf(mc_location);
+                current_markcycle.locations.splice(i, 1);
+                let new_i;
+                for (new_i = i-1; new_i >= 0; --new_i) {
+                    if (current_markcycle.locations[new_i].count >= mc_location.count) {
+                        new_i += 1;
+                        current_markcycle.locations.splice(new_i, 0, mc_location);
+                        break;
+                    }
+                }
+                if (new_i < 0) { // there isn't any warp with more warps than this one, so it goes to the top of the list
+                    new_i = 0;
+                    current_markcycle.locations.splice(new_i, 0, mc_location);
+                }
+                if (i >= current_markcycle.index && new_i <= current_markcycle.index) { // if it was below the index and now it's above
+                    current_markcycle.index = new_i;
+                }
             }
         }
         else if (value < 0) { // if removing a mark
             if (mc_location) {
-                // Check if it's more than once in this location
                 mc_location.count -= 1;
-                let is_present_in_location = (mc_location.count > 0);
 
-                if (!is_present_in_location) {
-                    let i = current_markcycle.locations.indexOf(mc_location);
-                    if (i >= 0) { // we found it
-                        current_markcycle.locations.splice(i, 1);
-                        if (current_markcycle.index > 0 && current_markcycle.index > i) {
-                            current_markcycle.index -= 1;
+                let i = current_markcycle.locations.indexOf(mc_location);
+                current_markcycle.locations.splice(i, 1); // Always remove element
+                if (mc_location.count <= 0) { // We don't need to add it again
+                    if (current_markcycle.index > i) { // if the index was below
+                        current_markcycle.index -= 1;
+                    }
+                }
+                else { // Add it again in the correct position
+                    let new_i;
+                    for (new_i = i; new_i < current_markcycle.locations.length; ++new_i) {
+                        if (current_markcycle.locations[new_i].count <= mc_location.count) {
+                            current_markcycle.locations.splice(new_i, 0, mc_location);
+                            break;
                         }
                     }
-                    else {
-                        // just in case, not necessary, we know it's in there
-                        console.error("Location not found in mark cycle!");
+                    if (i < current_markcycle.index && new_i >= current_markcycle.index) { // if it was above the index and now it's below
+                        current_markcycle.index -= 1;
                     }
                 }
 
