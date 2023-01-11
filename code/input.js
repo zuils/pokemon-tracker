@@ -357,18 +357,20 @@ function OnMouseUp(event) {
                                     let check_condition = GetConditionSameIcon(info.type);
 
                                     for (let location in game.warps) {
+                                        let sum = 0;
                                         for (let name in game.warps[location]) {
-                                            let warp = game.warps[location][name];
-                                            if (check_condition(warp, info.target)) {
-                                                current_markcycle.locations.push(location);
-                                                break;
+                                            if (check_condition(game.warps[location][name], info.target)) {
+                                                sum += 1;
                                             }
+                                        }
+                                        if (sum > 0) {
+                                            current_markcycle.locations.push({name: location, count: sum});
                                         }
                                     }
                                 }
 
                                 // Change current_location to the appropiate one and cycle the index
-                                current_location = current_markcycle.locations[current_markcycle.index];
+                                current_location = current_markcycle.locations[current_markcycle.index].name;
                                 current_markcycle.index = (current_markcycle.index+1) % current_markcycle.locations.length;
                                 RerenderLayer(LAYER_LOCATION);
                                 highlight = { location: current_location, warps: [], locations: [] };
@@ -379,7 +381,7 @@ function OnMouseUp(event) {
                                     }
                                 }
                                 for (let location of current_markcycle.locations) {
-                                    highlight.locations.push(location);
+                                    highlight.locations.push(location.name);
                                 }
                                 RerenderLayer(LAYER_HIGHLIGHT);
 
@@ -388,7 +390,7 @@ function OnMouseUp(event) {
                                 if (!game.locations[current_location]) {
                                     console.error("ERROR: Attempted to access a location that didn't exist: " + current_location);
                                     current_location = game.start_location;
-                                    current_markcycle = null;
+                                    current_markcycle = undefined;
                                     RerenderLayer(LAYER_LOCATION);
                                 }
                             }
@@ -659,26 +661,30 @@ function AddToIcon (current_game, name, value, location, type) {
 
     // Update current_markcycle if it's the same mark
     if (current_markcycle && current_markcycle.name == name) {
-        let has_location = current_markcycle.locations.includes(location);
-        if (value > 0) {
-            if (!has_location) {
-                current_markcycle.locations.push(location);
+        let mc_location = undefined;
+        for (let mcl of current_markcycle.locations) {
+            if (mcl.name == location) {
+                mc_location = mcl;
+                break;
             }
         }
-        else if (value < 0) {
-            if (has_location) {
+
+        if (value > 0) { // if adding a mark
+            if (!mc_location) {
+                current_markcycle.locations.push({name: location, count: 1});
+            }
+            else {
+                mc_location.count += 1;
+            }
+        }
+        else if (value < 0) { // if removing a mark
+            if (mc_location) {
                 // Check if it's more than once in this location
-                let is_present_in_location = false;
-                let check_condition = GetConditionSameIcon(info.type);
-                for (let key in game.warps[location]) {
-                    if (check_condition(game.warps[location][key], name)) {
-                        is_present_in_location = true;
-                        break;
-                    }
-                }
+                mc_location.count -= 1;
+                let is_present_in_location = (mc_location.count > 0);
 
                 if (!is_present_in_location) {
-                    let i = current_markcycle.locations.indexOf(location);
+                    let i = current_markcycle.locations.indexOf(mc_location);
                     if (i >= 0) { // we found it
                         current_markcycle.locations.splice(i, 1);
                         if (current_markcycle.index > 0 && current_markcycle.index > i) {
@@ -693,6 +699,7 @@ function AddToIcon (current_game, name, value, location, type) {
 
             }
         }
+        console.log(current_markcycle);
     }
 }
 
