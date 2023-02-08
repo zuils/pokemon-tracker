@@ -246,13 +246,21 @@ function SetDimensions() {
     SetCanvasDimensions();
 }
 function SetCanvasDimensions() {
+    game.canvas_stretched = {};
     if (html.config.fit_to_screen.checked) {
-        html.canvas.width  = window.innerWidth;
-        html.canvas.height = window.innerHeight;
+        let ratio_w = window.innerWidth  / game.layer_width;
+        let ratio_h = window.innerHeight / game.layer_height;
+        let ratio = (ratio_w > ratio_h) ? ratio_h : ratio_w;
+        html.canvas.width  = game.layer_width  * ratio;
+        html.canvas.height = game.layer_height * ratio;
+        game.canvas_stretched.width  = ratio;
+        game.canvas_stretched.height = ratio;
     }
     else {
         html.canvas.width  = game.layer_width;
         html.canvas.height = game.layer_height;
+        game.canvas_stretched.width  = 1;
+        game.canvas_stretched.height = 1;
     }
 }
 

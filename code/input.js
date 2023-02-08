@@ -497,8 +497,8 @@ function ChangeModifier(location, link, modifier) {
 
 function EventToPosition(event) {
     let position = {x: 0, y: 0};
-    position.x = event.pageX - html.canvas.offsetLeft;
-    position.y = event.pageY - html.canvas.offsetTop;
+    position.x = (event.pageX - html.canvas.offsetLeft) / game.canvas_stretched.width;
+    position.y = (event.pageY - html.canvas.offsetTop)  / game.canvas_stretched.height;
     return position;
 }
 
@@ -512,8 +512,8 @@ function GetClicked(position) {
     // Check if config button
     if (position.x >= 0 &&
         position.x <= game.left_width &&
-        position.y >= html.canvas.height - icons.settings.naturalHeight &&
-        position.y <  html.canvas.height)
+        position.y >= game.layer_height - icons.settings.naturalHeight &&
+        position.y <  game.layer_height)
     {
         if (position.x <= icons.settings.naturalWidth) {
             return { type: TYPE_CONFIG, target: "settings" };
