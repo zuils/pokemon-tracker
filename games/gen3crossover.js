@@ -746,12 +746,14 @@ let gen3crossover = {
             reception:   {x: 405, y: 51,                           name: "Route 26" }
         },
     
+        /*
         r28: {
             gate:   {x: 456, y: 375 },
             house:  {x: 70,  y: 405 },
             center: {x: 325, y: 175 },
             silver: {x: 244, y: 43  },
         },
+        */
     
         // Important locations
         darkcave: {
