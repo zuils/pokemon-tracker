@@ -1,3 +1,4 @@
+const CANVAS_MARGIN = 5; // Same value as CSS (body -> margin)
 const BACKGROUND_COLOR = "#444444";
 
 const LINE_THRESHOLD = 16;
@@ -248,8 +249,8 @@ function SetDimensions() {
 function SetCanvasDimensions() {
     game.canvas_stretched = {};
     if (html.config.fit_to_screen.checked) {
-        let ratio_w = window.innerWidth  / game.layer_width;
-        let ratio_h = window.innerHeight / game.layer_height;
+        let ratio_w = (window.innerWidth  - 2*CANVAS_MARGIN) / game.layer_width;
+        let ratio_h = (window.innerHeight - 2*CANVAS_MARGIN) / game.layer_height;
         let ratio = (ratio_w > ratio_h) ? ratio_h : ratio_w;
         html.canvas.width  = game.layer_width  * ratio;
         html.canvas.height = game.layer_height * ratio;

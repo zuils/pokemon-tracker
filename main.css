@@ -48,7 +48,7 @@ html {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    margin: 0px;
+    margin: 5px;
 }
 
 a {
