@@ -7,7 +7,7 @@ let gen3crossover = {
     font_size: "22px",
 
     // Config texts
-	config_name: "FireRed/CrystalDust/Emerald Crossover",
+	config_name: "FireRed+CrystalDust+Emerald Crossover",
 	config_randomizer_author: "KittyPBoxx",
 	config_randomizer_link: "https://kittypboxx.github.io/GBAXG/",
 	//config_tracker_author: "", 
@@ -85,7 +85,7 @@ let gen3crossover = {
         r35_r36:       {x: 71,  y: 44,  w: 8,  h: 8, name: "Route 35\nRoute 36"      },
         r41:           {x: 23,  y: 65,  w: 8,  h: 8, name: "Route 41"                },
         ragelake_r43:  {x: 127, y: 19,  w: 8,  h: 8, name: "Lake of Rage\nRoute 43"  },
-        r26_r27:       {x: 213, y: 92,  w: 8,  h: 8,name: "Route 26\nRoute 27"      },
+        r26_r27:       {x: 213, y: 92,  w: 8,  h: 8, name: "Route 26\nRoute 27"      },
 
         // Important locations
         darkcave:              {x: 150, y: 60, w: 8, h: 8,  name: "Dark Cave"                      },
@@ -332,14 +332,14 @@ let gen3crossover = {
             r11_gate:           {x: 38,   y: 217, name: "R12 (Route)"         },
         },
         r2: {
-            p_gate_w:           {x: 93,   y: 211, name: "R2 (Pewter)"         },
-            p_cave:             {x: 272,  y: 162, name: "R2 (Pewter)"         },
-            p_house:            {x: 264,  y: 336, name: "R2 (Pewter)"         },
-            p_gate_e:           {x: 307,  y: 654, name: "R2 (Pewter)"         },
-            v_gate_w:           {x: 491,  y: 293, name: "R2 (Viridian)"       },
-            v_gate_e:           {x: 698,  y: 251, name: "R2 (Viridian)"       },
-            hm_bot:             {x: 582,  y: 146, name: "R2 (HM Flash)"       },
-			hm_top:             {x: 582,  y: 47,  name: "R2 (HM Flash)"       },
+            p_gate_w:           {x: 93,   y: 211,                     name: "R2 (Pewter)"   },
+            p_cave:             {x: 272,  y: 162,                     name: "R2 (Pewter)"   },
+            p_house:            {x: 264,  y: 336,                     name: "R2 (Pewter)"   },
+            p_gate_e:           {x: 307,  y: 654,                     name: "R2 (Pewter)"   },
+            v_gate_w:           {x: 491,  y: 293,                     name: "R2 (Viridian)" },
+            v_gate_e:           {x: 698,  y: 251,                     name: "R2 (Viridian)" },
+            hm_bot:             {x: 582,  y: 146, corridor: "hm_top", name: "R2 (HM Flash)" },
+			hm_top:             {x: 582,  y: 47,  corridor: "hm_bot", name: "R2 (HM Flash)" },
         },
         r15: {
 			gate:               {x: 126,  y: 92,  name: "Route 15"            },

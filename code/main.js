@@ -35,7 +35,7 @@ const CACHE = {
     LINE_COLOR:        "line-color",
     TOOLTIPS_DISABLED: "tooltips-disabled",
 }
-const CURRENT_VERSION = 4;
+const CURRENT_VERSION = 5;
 
 let game;
 let games = {};
