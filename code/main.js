@@ -28,10 +28,12 @@ const LINKTYPE_MARK = "mark";
 
 const CACHE = {
     GAME_LOADED:       "last-game-loaded",
-    SMOOTH_IMAGES:     "smooth-images",
+    SMOOTH_IMAGES:     "smooth-images-v2",
+    FIT_TO_SCREEN:     "fit-to-screen",
     DEBUG_LOCATION:    "debug-location",
     LAST_VERSION:      "last-version",
     LINE_COLOR:        "line-color",
+    TOOLTIPS_DISABLED: "tooltips-disabled",
 }
 const CURRENT_VERSION = 4;
 
@@ -116,6 +118,7 @@ const HTML_ID = {
         window: "config_window",
         smooth_checkbox: "checkbox_smooth",
         tooltipsdisabled: "checkbox_tooltips",
+        fit_to_screen: "checkbox_fittoscreen",
         loading_text: "loading_game_text",
         game_buttons: "game_buttons",
         line_color: "line_color",
@@ -155,11 +158,13 @@ function RetrieveAllHTMLElements() {
     config.window           = document.getElementById(HTML_ID.config.window);
     config.loading_text     = document.getElementById(HTML_ID.config.loading_text);
     config.smooth_checkbox  = document.getElementById(HTML_ID.config.smooth_checkbox);
+    config.fit_to_screen    = document.getElementById(HTML_ID.config.fit_to_screen);
     config.tooltipsdisabled = document.getElementById(HTML_ID.config.tooltipsdisabled);
     config.line_color       = document.getElementById(HTML_ID.config.line_color);
     config.loading_text.innerHTML = "";
-    config.smooth_checkbox.checked  = (localStorage.getItem(CACHE.SMOOTH_IMAGES)     == "true") ? true : false;
-    config.tooltipsdisabled.checked = (localStorage.getItem(CACHE.TOOLTIPS_DISABLED) == "true") ? true : false;
+    config.smooth_checkbox.checked  = (localStorage.getItem(CACHE.SMOOTH_IMAGES)     == "false") ? false : true;
+    config.fit_to_screen.checked    = (localStorage.getItem(CACHE.FIT_TO_SCREEN)     == "true")  ? true  : false;
+    config.tooltipsdisabled.checked = (localStorage.getItem(CACHE.TOOLTIPS_DISABLED) == "false") ? false : true;
     config.line_color.value = line_color;
     
     // Retrieve networking elements

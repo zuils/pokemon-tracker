@@ -13,6 +13,8 @@ function RegisterInputEvents() {
 
     document.addEventListener("keydown", OnKeyDown);
     addEventListener("beforeunload", BeforeUnload);
+
+    addEventListener("resize", OnResize);
 }
 function OnContextMenu(event) { event.preventDefault(); return false; } 
 function BeforeUnload(event) {
@@ -21,6 +23,8 @@ function BeforeUnload(event) {
         return event.returnValue = false;
     }
 }
+
+function OnResize(event) { SetCanvasDimensions(); }
 
 function OnKeyDown(event) {
     if (!DEBUG.ENABLED) { return; }

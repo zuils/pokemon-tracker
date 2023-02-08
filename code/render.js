@@ -218,7 +218,7 @@ function ImageLoaded() {
         // Set canvas dimensions
         game.right_width  = loading_process.max_width;
         game.right_height = loading_process.max_height;
-        SetCanvasDimensions();
+        SetDimensions();
 
         html.config.loading_text.innerHTML = "";
         document.body.style.cursor = "default";
@@ -235,12 +235,24 @@ function GetNameImage(path) {
     return array[array.length-1].split(".")[0];
 }
 
-function SetCanvasDimensions() {
-    html.canvas.width  = game.right_width + game.left_width + SELECTED_MAP_XOFFSET;
-    html.canvas.height = game.right_height;
+function SetDimensions() {
+    game.layer_width  = game.right_width + game.left_width + SELECTED_MAP_XOFFSET;
+    game.layer_height = game.right_height;
+
     for (let layer of layers) {
-        layer.canvas.width  = html.canvas.width;
-        layer.canvas.height = html.canvas.height;
+        layer.canvas.width  = game.layer_width;
+        layer.canvas.height = game.layer_height;
+    }
+    SetCanvasDimensions();
+}
+function SetCanvasDimensions() {
+    if (html.config.fit_to_screen.checked) {
+        html.canvas.width  = window.innerWidth;
+        html.canvas.height = window.innerHeight;
+    }
+    else {
+        html.canvas.width  = game.layer_width;
+        html.canvas.height = game.layer_height;
     }
 }
 
@@ -286,7 +298,7 @@ function Render() {
     html.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
     for (let layer of layers) {
         if (DEBUG.ENABLED && layer.skip) { continue; }
-        html.context.drawImage(layer.canvas, 0, 0);
+        html.context.drawImage(layer.canvas, 0, 0, html.canvas.width, html.canvas.height);
     }
 }
 
@@ -336,9 +348,10 @@ function RenderMap(context) {
 }
 
 function RenderSettings(context) {
+    let layer = layers[LAYER_MAP];
     let v = {
         x: 0,
-        y: html.canvas.height - icons.settings.naturalHeight,
+        y: layer.canvas.height - icons.settings.naturalHeight,
         w: icons.settings.naturalWidth,
         h: icons.settings.naturalHeight
     };
@@ -348,10 +361,11 @@ function RenderSettings(context) {
 }
 
 function RenderRemainingIcon(context) {
+    let layer = layers[LAYER_MAP];
     context.imageSmoothingEnabled = false;
     let v = {
         x: game.left_width - CHECKS_XOFFSET,
-        y: html.canvas.height - icons.settings.naturalHeight - CHECKS_YOFFSET/2,
+        y: layer.canvas.height - icons.settings.naturalHeight - CHECKS_YOFFSET/2,
         w: CONFIG_HEIGHT,
         h: CONFIG_HEIGHT,
     };
@@ -741,6 +755,7 @@ function RenderMapText(context) {
 }
 
 function RenderRemainingText(context) {
+    let layer = layers[LAYER_LINE];
     context.imageSmoothingEnabled = false;
 
     context.save(); {
@@ -750,7 +765,7 @@ function RenderRemainingText(context) {
 
         let text_position = {
             x: game.left_width - CHECKS_XOFFSET + MARK_SIZE + 15 + CONFIG_HEIGHT,
-            y: html.canvas.height - CHECKS_YOFFSET,
+            y: layer.canvas.height - CHECKS_YOFFSET,
         };
         context.fillText(game.marks[0][0][1], text_position.x, text_position.y);
     } context.restore();
@@ -951,7 +966,7 @@ function DrawImage(context, image, v) {
 }
 
 function ClearLayerContext(layer) {
-    layer.context.clearRect(0, 0, html.canvas.width, html.canvas.height);
+    layer.context.clearRect(0, 0, layer.canvas.width, layer.canvas.height);
 }
 function RerenderLayer(level) {
     //if (DEBUG.ENABLED) { console.log("Rerendering " + LAYER_NAME[level]); }

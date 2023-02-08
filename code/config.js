@@ -183,6 +183,11 @@ function ChangeSmooth(checked) {
 }
 function ChangeKeyboardControls(checked) { localStorage.setItem(CACHE.KEYBOARD_DISABLED, checked); }
 function ChangeTooltips(checked)         { localStorage.setItem(CACHE.TOOLTIPS_DISABLED, checked); }
+function ChangeFitToScreen(checked) {
+    localStorage.setItem(CACHE.FIT_TO_SCREEN, checked);
+    SetCanvasDimensions();
+}
+
 
 function ResetColor() { ChangeLineColor(DEFAULT_COLOR); }
 function ChangeLineColor(color) {
@@ -209,6 +214,6 @@ function ChangeGame(new_game) {
         LoadImages();
     }
     else {
-        SetCanvasDimensions();
+        SetDimensions();
     }
 }
