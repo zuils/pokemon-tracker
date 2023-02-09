@@ -22,7 +22,7 @@ const LINE_YOFFSET = 8;
 const LINE_BREAK_YOFFSET = 14;
 
 const MAP_SCALE = 2;
-const SELECTED_MAP_XOFFSET = 5;
+const SELECTED_MAP_XOFFSET = 6;
 const WARP_LINE_YOFFSET = 5;
 const WARP_FONT_SIZE    = 13;
 
@@ -54,6 +54,9 @@ const LOADING_TEXT = "Loading map...";
 const HIGHLIGHT_BLINKING = 150;  //milliseconds
 const HIGHLIGHT_DURATION = 1500; //milliseconds
 let highlight = {};
+
+const DEFAULT_COOLDOWN_TOOLTIP = 500; //milliseconds
+let cooldown_tooltip = DEFAULT_COOLDOWN_TOOLTIP;
 
 let debug_widths  = [];
 let debug_heights = [];
@@ -782,6 +785,8 @@ function RenderRemainingText(context) {
 function RenderTooltip(context) {
     if (html.config.tooltipsdisabled.checked) { return; }
     if (!current_hovering_mark) { return; }
+    cooldown_tooltip -= delta_time;
+    if (cooldown_tooltip >= 0) { return; }
 
     // Get tooltip text & figure out if we should render the tooltip
     let tooltip_folder = tooltips[game.folder];

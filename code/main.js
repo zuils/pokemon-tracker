@@ -33,7 +33,7 @@ const CACHE = {
     DEBUG_LOCATION:    "debug-location",
     LAST_VERSION:      "last-version",
     LINE_COLOR:        "line-color",
-    TOOLTIPS_DISABLED: "tooltips-disabled",
+    TOOLTIPS_DISABLED: "tooltips-disabled-v2",
 }
 const CURRENT_VERSION = 5;
 
@@ -164,7 +164,7 @@ function RetrieveAllHTMLElements() {
     config.loading_text.innerHTML = "";
     config.smooth_checkbox.checked  = (localStorage.getItem(CACHE.SMOOTH_IMAGES)     == "false") ? false : true;
     config.fit_to_screen.checked    = (localStorage.getItem(CACHE.FIT_TO_SCREEN)     == "true")  ? true  : false;
-    config.tooltipsdisabled.checked = (localStorage.getItem(CACHE.TOOLTIPS_DISABLED) == "false") ? false : true;
+    config.tooltipsdisabled.checked = (localStorage.getItem(CACHE.TOOLTIPS_DISABLED) == "true")  ? true  : false;
     config.line_color.value = line_color;
     
     // Retrieve networking elements
