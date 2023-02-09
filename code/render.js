@@ -22,7 +22,7 @@ const LINE_YOFFSET = 8;
 const LINE_BREAK_YOFFSET = 14;
 
 const MAP_SCALE = 2;
-const SELECTED_MAP_XOFFSET = 10;
+const SELECTED_MAP_XOFFSET = 5;
 const WARP_LINE_YOFFSET = 5;
 const WARP_FONT_SIZE    = 13;
 
@@ -571,7 +571,6 @@ function RenderLocation(context) {
         w: game.right_width,
         h: game.right_height
     };
-    //DrawSquareContextless(context, background, BACKGROUND_COLOR);
 
     // ----- Render selected map -----
     let location = game.locations[current_location];
