@@ -31,6 +31,16 @@ function Test_GameFiles() {
                 }
             } 
         }
+
+        // Make sure we don't have marks that are corridors & items at the same time
+        for (let warp in g.warps) {
+            for (let e in g.warps[warp]) {
+                let entry = g.warps[warp][e];
+                if ((entry.name || entry.corridor) && entry.item) {
+                    errors.push(name + " -> Entry is both a warp and a item: " + warp + " (" + e + ")");
+                }
+            }
+        }
     }
 
     return errors;

@@ -409,6 +409,15 @@ function OnMouseUp(event) {
                                 ChangeModifier(current_location, info.target, null);
                                 break;
                             }
+                            if (warp.item) {
+                                if (warp.link == "item_overworld") {
+                                    ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_checked", null);
+                                }
+                                else {
+                                    ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_overworld", null);
+                                }
+                                break;
+                            }
 
                             if (!warp.link_type || (warp.link_type == LINKTYPE_MARK && (warp.link == "unknown" || warp.link == "corridor"))) {
                                 ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "dead_end", null);
@@ -728,7 +737,6 @@ function AddToIcon (current_game, name, value, location, type) {
 
             }
         }
-        console.log(current_markcycle);
     }
 }
 

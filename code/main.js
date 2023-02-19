@@ -11,7 +11,8 @@ let ordered_games = [
     white2ad,
     black2ad,
     white2_a,
-    gen3crossover
+    gen3crossover,
+    crystal_fir,
 ];
 
 let DEBUG = {
