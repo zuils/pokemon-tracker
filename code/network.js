@@ -14,7 +14,7 @@ function ShowConfigNetwork() {
         let options = {};
         options = {
             debug: (DEBUG.ENABLED && DEBUG.NETWORK) ? 3 : 0,
-            config: {
+            /*config: {
                 iceServers: [
                     { url: "stun:stun.l.google.com:19302" },
                     {
@@ -23,7 +23,8 @@ function ShowConfigNetwork() {
                         credential: "1234",
                     },
                 ],
-                sdpSemantics: 'unified-plan' }
+                sdpSemantics: 'unified-plan'
+            }*/
         }
         current_peer = new Peer(current_id, options);
         current_peer.on("open", function(id) {
