@@ -14,9 +14,14 @@ function ShowConfigNetwork() {
         let options = {};
         options = {
             debug: (DEBUG.ENABLED && DEBUG.NETWORK) ? 3 : 0,
-            /*config: {
+            config: {
                 iceServers: [
                     { url: "stun:stun.l.google.com:19302" },
+                    {
+                        urls : "turn:0.peerjs.com:3478",
+                        username : "peerjs",
+                        credential : "peerjsp",
+                    },
                     {
                         url: "turn:65.21.186.209:3478",
                         username: "test",
@@ -24,7 +29,7 @@ function ShowConfigNetwork() {
                     },
                 ],
                 sdpSemantics: 'unified-plan'
-            }*/
+            }
         }
         current_peer = new Peer(current_id, options);
         current_peer.on("open", function(id) {
