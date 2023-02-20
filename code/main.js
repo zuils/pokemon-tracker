@@ -20,6 +20,7 @@ let DEBUG = {
     WARP_TO_SELF:     false,
     PRINT_KEY:        false,
     IMAGE_DIMENSIONS: true,
+    NETWORK: true
 }
 
 const AUTOTRACKER_DEVELOPMENT = false;

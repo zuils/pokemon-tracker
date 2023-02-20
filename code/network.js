@@ -12,20 +12,23 @@ function ShowConfigNetwork() {
         current_id = Math.trunc(current_date_time.valueOf() / ((Math.abs(current_date_time.getTimezoneOffset())/10 % 10) + 1) * (Math.random() % 10)).toString();
 
         let options = {};
-        if (DEBUG.ENABLED) {
-            options = {
-                debug: 3,
-                config: {
-                    urls: "turn:0.peerjs.com:3478",
-                    username: "peerjs",
-                    credential: "peerjsp"
-                },
-            }
+        options = {
+            debug: (DEBUG.ENABLED && DEBUG.NETWORK) ? 3 : 0,
+            config: {
+                iceServers: [
+                    { urls: "stun:stun.l.google.com:19302" },
+                    {
+                        urls: "turn:65.21.186.209:3478",
+                        username: "test",
+                        credential: "1234",
+                    },
+                ],
+                sdpSemantics: 'unified-plan' }
         }
         current_peer = new Peer(current_id, options);
         current_peer.on("open", function(id) {
             html.config.network.id.innerHTML = id;
-            if (DEBUG.ENABLED) { console.log(current_peer); }
+            if (DEBUG.ENABLED && DEBUG.NETWORK) { console.log(current_peer); }
         });
 
         current_peer.on("connection", function(connection) {
