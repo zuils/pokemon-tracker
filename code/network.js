@@ -14,6 +14,7 @@ function ShowConfigNetwork() {
         let options = {};
         options = {
             debug: (DEBUG.ENABLED && DEBUG.NETWORK) ? 3 : 0,
+            host: "/",
             config: {
                 iceServers: [
                     { urls: "stun:stun.l.google.com:19302" },
