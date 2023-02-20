@@ -11,9 +11,21 @@ function ShowConfigNetwork() {
         let current_date_time = new Date();
         current_id = Math.trunc(current_date_time.valueOf() / ((Math.abs(current_date_time.getTimezoneOffset())/10 % 10) + 1) * (Math.random() % 10)).toString();
 
-        current_peer = new Peer(current_id);
+        let options = {};
+        if (DEBUG.ENABLED) {
+            options = {
+                debug: 3,
+                config: {
+                    urls: "turn:0.peerjs.com:3478",
+                    username: "peerjs",
+                    credential: "peerjsp"
+                },
+            }
+        }
+        current_peer = new Peer(current_id, options);
         current_peer.on("open", function(id) {
             html.config.network.id.innerHTML = id;
+            if (DEBUG.ENABLED) { console.log(current_peer); }
         });
 
         current_peer.on("connection", function(connection) {
