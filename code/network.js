@@ -14,12 +14,11 @@ function ShowConfigNetwork() {
         let options = {};
         options = {
             debug: (DEBUG.ENABLED && DEBUG.NETWORK) ? 3 : 0,
-            host: "/",
             config: {
                 iceServers: [
-                    { urls: "stun:stun.l.google.com:19302" },
+                    { url: "stun:stun.l.google.com:19302" },
                     {
-                        urls: "turn:65.21.186.209:3478",
+                        url: "turn:65.21.186.209:3478",
                         username: "test",
                         credential: "1234",
                     },
