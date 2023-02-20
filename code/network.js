@@ -16,17 +16,9 @@ function ShowConfigNetwork() {
             debug: (DEBUG.ENABLED && DEBUG.NETWORK) ? 3 : 0,
             config: {
                 iceServers: [
-                    { url: "stun:stun.l.google.com:19302" },
-                    {
-                        urls : "turn:0.peerjs.com:3478",
-                        username : "peerjs",
-                        credential : "peerjsp",
-                    },
-                    {
-                        url: "turn:65.21.186.209:3478",
-                        username: "test",
-                        credential: "1234",
-                    },
+                    { urls : "stun:stun.l.google.com:19302" },
+                    { urls : "turn:0.peerjs.com:3478",   username : "peerjs", credential : "peerjsp" },
+                    { urls : "turn:65.21.186.209:3478",  username : "test",   credential : "1234"    },
                 ],
                 sdpSemantics: 'unified-plan'
             }
