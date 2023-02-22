@@ -1,8 +1,8 @@
 let crystal_fir = {
 	debug: false,
     name: "crystal_fir",
-	folder: "crystal",
-    start_location: "cherrygrove_r29",
+	folder: "crystal_fir",
+    start_location: "cherrygrove",
     font: "GameBoy_Font",
     font_size: "22px",
 
@@ -16,19 +16,23 @@ let crystal_fir = {
 	// Tracker information
     locations: {
         // Cities
-        cherrygrove_r29: {x: 83,  y: 72, w: 16, h: 8,  name: "Cherrygrove City\nRoute 29" },
+        //TODO newbark, cherrygrove, viridian, r13-15, r35-36, r36-37, diglettcave, radiotower, rockethideout, sprouttower, tintower
+        newbark_r28: {x: 95,  y: 72, w: 20, h: 8,  name: "Newbark Town\nRoute 28" },
+        //cherrygrove_r29: {x: 83,  y: 72, w: 16, h: 8,  name: "Cherrygrove City\nRoute 29" },
+        cherrygrove: {x: 83,  y: 72, w: 8, h: 8,  name: "Cherrygrove City" },
         violet:          {x: 67,  y: 32, w: 8,  h: 8,  name: "Violet City"                },
         azalea_well:     {x: 51,  y: 96, w: 8,  h: 8,  name: "Azalea Town\nSlowpoke Well" },
         goldenrod:       {x: 35,  y: 64, w: 8,  h: 8,  name: "Goldenrod City"             },
         ecruteak:        {x: 51,  y: 16, w: 8,  h: 8,  name: "Ecruteak City"              },
         olivine_r40:     {x: 19,  y: 24, w: 8,  h: 16, name: "Olivine City\nRoute 38-40"  },
         cianwood:        {x: 3,   y: 72, w: 8,  h: 8,  name: "Cianwood City"              },
-        mahogany_r44:    {x: 91,  y: 16, w: 8,  h: 8,  name: "Mahogany Town\nRoute 44"    },
+        mahogany_r44:    {x: 91,  y: 16, w: 16,  h: 8, name: "Mahogany Town\nRoute 44"    },
         blackthorn:      {x: 115, y: 16, w: 8,  h: 8,  name: "Blackthorn City"            },
         indigo_e4:       {x: 155, y: 8,  w: 8,  h: 8,  name: "Indigo Plateau\nElite 4"    },
 
         pallet:        {x: 179, y: 80,  w: 8,  h: 8,  name: "Pallet Town"               },
-        viridian_r22:  {x: 179, y: 48,  w: 8,  h: 8,  name: "Viridian City\nRoute 22"   },
+        //viridian_r22:  {x: 179, y: 48,  w: 8,  h: 8,  name: "Viridian City\nRoute 22"   },
+        viridian_r1_r22: {x: 179, y: 48,  w: 8,  h: 16,  name: "Viridian City\nRoute 22"   },
         pewter:        {x: 179, y: 24,  w: 8,  h: 8,  name: "Pewter City"               },
         cerulean_r5:   {x: 227, y: 16,  w: 8,  h: 16, name: "Cerulean City\nRoute 5/25" },
         vermilion_r6:  {x: 227, y: 56,  w: 8,  h: 8,  name: "Vermilion City\nRoute 6"   },
@@ -43,14 +47,16 @@ let crystal_fir = {
         r30_r31:       {x: 83,  y: 44,  w: 8,  h: 14, name: "Route 30\nRoute 31"      },
         alphruins_r32: {x: 67,  y: 67,  w: 8,  h: 14, name: "Ruins of Alph\nRoute 32" },
         r34_ilex:      {x: 35,  y: 81,  w: 8,  h: 8,  name: "Route 34\nIlex Forest"   },
-        r35_r36:       {x: 35,  y: 32,  w: 14, h: 14, name: "Route 35\nRoute 36"      },
+        //r35_r36:       {x: 35,  y: 32,  w: 14, h: 14, name: "Route 35\nRoute 36"      },
+        r36t_r37:      {x: 51,  y: 32,  w: 8,  h: 8,  name: "Route 36 Top\nRoute 37"  },
         r41:           {x: 11,  y: 52,  w: 8,  h: 8,  name: "Route 41"                },
         ragelake_r43:  {x: 91,  y: 0,   w: 8,  h: 8,  name: "Lake of Rage\nRoute 43"  },
         r26_r27:       {x: 137, y: 66,  w: 26, h: 14, name: "Route 26\nRoute 27"      },
 
         r2:            {x: 179, y: 36,  w: 8,  h: 8,  name: "Route 2"                 },
         r19_r20:       {x: 195, y: 104, w: 8,  h: 8,  name: "Route 19\nRoute 20"      },
-        r12:           {x: 259, y: 56,  w: 8,  h: 8,  name: "Route 12"                },
+        //r12:           {x: 259, y: 56,  w: 8,  h: 8,  name: "Route 12"                },
+        r11_r12_r13:   {x: 259, y: 56,  w: 8,  h: 8,  name: "Route 11\nRoute 12/13" },
         r15:           {x: 230, y: 88,  w: 8,  h: 8,  name: "Route 15"                },
         cyclingroad:   {x: 195, y: 57,  w: 8,  h: 14, name: "Cycling Road"            },
         r9_r10:        {x: 259, y: 24,  w: 8,  h: 8,  name: "Route 9\nRoute 10"       },
@@ -58,10 +64,13 @@ let crystal_fir = {
 
         // Important locations
         darkcave:              {x: 96,  y: 44, w: 8, h: 8,  name: "Dark Cave"                      },
+        sprouttower:           {x: 75,  y: 24, w: 8, h: 8,  name: "Sprout Tower"                   },
         puzzlechambers:        {x: 58,  y: 42, w: 8, h: 8,  name: "Puzzle Chambers"                },
         unioncave:             {x: 67,  y: 96, w: 8, h: 8,  name: "Union Cave"                     },
         goldenrodstore:        {x: 46,  y: 57, w: 8, h: 8,  name: "Goldenrod\nDepartment Store"    },
         underground:           {x: 46,  y: 71, w: 8, h: 8,  name: "Underground"                    },
+        radiotower:            {x: 27,  y: 64, w: 8, h: 8,  name: "Radio Tower"                    },
+        nationalpark_r35_r36b: {x: 35,  y: 32, w: 14,h: 14, name: "National park\nRoute 35/36" },  
         tintower:              {x: 51,  y: 6,  w: 8, h: 8,  name: "Tin Tower"                      },
         mtmortar_r42:          {x: 67,  y: 16, w: 8, h: 8,  name: "Mt. Mortar Entry\nRoute 42"     },
         mtmortarback:          {x: 67,  y: 8,  w: 8, h: 8,  name: "Mt. Mortar Back"                },
@@ -70,6 +79,7 @@ let crystal_fir = {
         lighthouse:            {x: 22,  y: 44, w: 8, h: 8,  name: "Olivine's Lighthouse"           },
         ssaqua:                {x: 213, y: 66, w: 8, h: 8,  name: "S.S. Aqua"                      },
         whirlislands:          {x: 11,  y: 64, w: 8, h: 8,  name: "Whirl Islands"                  },
+        rockethideout:         {x: 99,  y: 8,  w: 8, h: 8,  name: "Mahogany Town\nRoute 44"        },
         icepath1:              {x: 115, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
         icepath2:              {x: 124, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
         victoryroad_reception: {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
@@ -78,6 +88,7 @@ let crystal_fir = {
         mtsilver:              {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver"                      },
         celadonstore:          {x: 203, y: 32, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
 	rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
+	diglettcave_undergroundpath: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path"   },
     },
 
     // Undefined fields:
@@ -86,14 +97,14 @@ let crystal_fir = {
     // - link_location: location_name / <garbage>
     warps: {
         // Cities
-        cherrygrove_r29: {
+        /*cherrygrove_r29: {
 			r29_gate: {x: 423, y: 78, name: "R29 (Cherrygrove)" },
 			mart:     {x: 216, y: 80                            },
 			center:   {x: 312, y: 36                            },
 			house1:   {x: 118, y: 140                           },
 			house2:   {x: 247, y: 170                           },
 			house3:   {x: 342, y: 202                           },
-        },
+        },*/
         violet: {
             sprout:        {x: 383, y: 52                                                           },
 			leftmart:      {x: 66,  y: 219                                                          },
@@ -210,14 +221,14 @@ let crystal_fir = {
 			rival: {x: 221, y: 50  },
 			lab:   {x: 197, y: 143 },
         },
-        viridian_r22: {
+        /*viridian_r22: {
 			gate:   {x: 88,  y: 181 },
 			gym:    {x: 412, y: 77  },
 			house:  {x: 235, y: 127 },
 			school: {x: 267, y: 211 },
 			mart:   {x: 364, y: 281 },
 			centre: {x: 267, y: 371 },
-        },
+        },*/
         pewter: {
             gym:    {x: 236, y: 235 },
 			mart:   {x: 382, y: 241 },
@@ -351,7 +362,7 @@ let crystal_fir = {
 			tm12_top:    {x: 150, y: 559, corridor: "tm12_bot",  name: "Gate R34 (TM12)" },
 			tm12_bot:    {x: 152, y: 673, corridor: "tm12_top",  name: "Gate R34 (TM12)" },
         },
-        r35_r36: {
+        /*r35_r36: {
 			botgate:    {x: 158, y: 452,                         name: "Route 35"          },
 			botpark:    {x: 58,  y: 294,                         name: "Route 35"          },
 			toppark:    {x: 303, y: 54,                          name: "Route 36"          },
@@ -360,7 +371,7 @@ let crystal_fir = {
 			kenya_bot:  {x: 474, y: 491, corridor: "kenya_top",  name: "Gate R35 (Kenya)"  },
 			park_right: {x: 141, y: 68,  corridor: "park_bot",   name: "National Park"     },
 			park_bot:   {x: 80,  y: 171, corridor: "park_right", name: "National Park"     },
-        },
+        },*/
         r41: {
 			topleft:  {x: 185, y: 207, name: "Route 41 (NW)" },
 			topright: {x: 568, y: 239, name: "Route 41 (NE)" },
@@ -397,9 +408,9 @@ let crystal_fir = {
 			gate:   {x: 73, y: 30,  name: "Route 19" },
 			blaine: {x: 69, y: 202, name: "Route 20" },
         },
-        r12: {
+        /*r12: {
 			fish: {x: 182, y: 191 },
-        },
+        },*/
         r15: {
 			gate: {x: 76, y: 77 },
         },
