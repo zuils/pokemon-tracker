@@ -10,16 +10,16 @@ let crystal_fir = {
 	config_name: "Crystal FIR (WIP)",
 	//config_randomizer_author: "iFatRain",
 	//config_randomizer_link: "https://github.com/iFatRain/pokemon-crystal-map-randomizer",
-	//config_tracker_author: "", 
+	//config_tracker_author: "",
 	//config_tracker_link: "",
 
 	// Tracker information
     locations: {
         // Cities
         //TODO newbark, cherrygrove, viridian, r13-15, r35-36, r36-37, diglettcave, radiotower, rockethideout, sprouttower, tintower
-        newbark_r28: {x: 95,  y: 72, w: 20, h: 8,  name: "Newbark Town\nRoute 28" },
+        newbark_r28:     {x: 95,  y: 72, w: 20, h: 8,  name: "Newbark Town\nRoute 28"     },
         //cherrygrove_r29: {x: 83,  y: 72, w: 16, h: 8,  name: "Cherrygrove City\nRoute 29" },
-        cherrygrove: {x: 83,  y: 72, w: 8, h: 8,  name: "Cherrygrove City" },
+        cherrygrove:     {x: 83,  y: 72, w: 8,  h: 8,  name: "Cherrygrove City"           },
         violet:          {x: 67,  y: 32, w: 8,  h: 8,  name: "Violet City"                },
         azalea_well:     {x: 51,  y: 96, w: 8,  h: 8,  name: "Azalea Town\nSlowpoke Well" },
         goldenrod:       {x: 35,  y: 64, w: 8,  h: 8,  name: "Goldenrod City"             },
@@ -32,7 +32,7 @@ let crystal_fir = {
 
         pallet:        {x: 179, y: 80,  w: 8,  h: 8,  name: "Pallet Town"               },
         //viridian_r22:  {x: 179, y: 48,  w: 8,  h: 8,  name: "Viridian City\nRoute 22"   },
-        viridian_r1_r22: {x: 179, y: 48,  w: 8,  h: 16,  name: "Viridian City\nRoute 22"   },
+        viridian_r1_r22: {x: 179, y: 48,  w: 8,  h: 16,  name: "Viridian City\nRoute 22"},
         pewter:        {x: 179, y: 24,  w: 8,  h: 8,  name: "Pewter City"               },
         cerulean_r5:   {x: 227, y: 16,  w: 8,  h: 16, name: "Cerulean City\nRoute 5/25" },
         vermilion_r6:  {x: 227, y: 56,  w: 8,  h: 8,  name: "Vermilion City\nRoute 6"   },
@@ -41,7 +41,7 @@ let crystal_fir = {
         saffron:       {x: 227, y: 40,  w: 8,  h: 8,  name: "Saffron City"              },
         fuchsia:       {x: 211, y: 88,  w: 16, h: 8,  name: "Fuchsia City\nRoute 18"    },
         cinnabar:      {x: 179, y: 104, w: 8,  h: 8,  name: "Cinnabar Island"           },
-        
+
         // Routes
         r45_r46:       {x: 107, y: 34,  w: 16, h: 28, name: "Route 45\nRoute 46"      },
         r30_r31:       {x: 83,  y: 44,  w: 8,  h: 14, name: "Route 30\nRoute 31"      },
@@ -70,8 +70,9 @@ let crystal_fir = {
         goldenrodstore:        {x: 46,  y: 57, w: 8, h: 8,  name: "Goldenrod\nDepartment Store"    },
         underground:           {x: 46,  y: 71, w: 8, h: 8,  name: "Underground"                    },
         radiotower:            {x: 27,  y: 64, w: 8, h: 8,  name: "Radio Tower"                    },
-        nationalpark_r35_r36b: {x: 35,  y: 32, w: 14,h: 14, name: "National park\nRoute 35/36" },  
-        tintower:              {x: 51,  y: 6,  w: 8, h: 8,  name: "Tin Tower"                      },
+        nationalpark_r35_r36b: {x: 35,  y: 32, w: 14,h: 14, name: "National park\nRoute 35/36"     },
+        //tintower:              {x: 51,  y: 6,  w: 8, h: 8,  name: "Tin Tower"    
+        tintower_burnedtower:  {x: 51,  y: 6,  w: 8, h: 8,  name: "Tin Tower\nBurnedTower"         },
         mtmortar_r42:          {x: 67,  y: 16, w: 8, h: 8,  name: "Mt. Mortar Entry\nRoute 42"     },
         mtmortarback:          {x: 67,  y: 8,  w: 8, h: 8,  name: "Mt. Mortar Back"                },
         mtmortarf2:            {x: 62,  y: 0,  w: 8, h: 8,  name: "Mt. Mortar F2"                  },
@@ -83,12 +84,12 @@ let crystal_fir = {
         icepath1:              {x: 115, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
         icepath2:              {x: 124, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
         victoryroad_reception: {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
-        
+
         mtmoon_r3_r4:          {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
         mtsilver:              {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver"                      },
         celadonstore:          {x: 203, y: 32, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
-	rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
-	diglettcave_undergroundpath: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path"   },
+        rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
+        diglettcave_undergroundpath: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path"   },
     },
 
     // Undefined fields:
@@ -105,6 +106,35 @@ let crystal_fir = {
 			house2:   {x: 247, y: 170                           },
 			house3:   {x: 342, y: 202                           },
         },*/
+
+
+        newbark_r28: { //TODO
+        		r28_gate: {x: 98, y: 40 },
+        		
+        		it_mom:
+        		it_aide_starter:
+        		it_aide_mysteryegg:
+        		it_elm_risingbadge:
+        		it_elm_e4:
+        		it_potion:
+        		it_berry:
+        		it_tuscany:
+
+        },
+
+        cherrygrove: {
+        		//TODO 
+        		mart:     {x: 216, y: 80                            },
+			center:   {x: 312, y: 36                            },
+			house1:   {x: 118, y: 140                           },
+			house2:   {x: 247, y: 170                           },
+			house3:   {x: 342, y: 202                           },
+			
+			it_mysticwater:
+			
+        },
+
+
         violet: {
             sprout:        {x: 383, y: 52                                                           },
 			leftmart:      {x: 66,  y: 219                                                          },
@@ -116,6 +146,13 @@ let crystal_fir = {
 			gate:          {x: 572, y: 441                                                          },
 			center_door:   {x: 543, y: 217, corridor: "center_stairs", name: "Violet City (Center)" },
 			center_stairs: {x: 483, y: 164, corridor: "center_door",   name: "Violet City (Center)" },
+			
+			it_tree
+			it_hidden_cut
+			it_surf_left
+			it_surf_right
+			it_gym_badge
+			it_gym_tm
         },
         azalea_well: {
             kurt:      {x: 151, y: 54                                                    },
@@ -128,6 +165,18 @@ let crystal_fir = {
 			darkcave:  {x: 440, y: 356,                        name: "Route 33 (Azalea)" },
 			well_up:   {x: 209, y: 450, corridor: "well_down", name: "Slowpoke Well"     },
 			well_down: {x: 60,  y: 380, corridor: "well_up",   name: "Slowpoke Well"     },
+			
+			it_hidden
+			it_tree_right
+			it_tree_left
+			it_gym_badge
+			it_gym_tm
+			it_charcoal
+			it_kurt
+			it_well_potion
+			it_well_tm
+			it_well_kingsrock
+			
         },
         goldenrod: {
 			gate:       {x: 311, y: 53  },
@@ -145,6 +194,12 @@ let crystal_fir = {
 			center:     {x: 246, y: 412 },
 			mart:       {x: 392, y: 412 },
 			bike:       {x: 477, y: 500 },
+			
+			it_bike
+			it_gym_badge
+			it_gym_tm
+			it_squirtbottle
+
         },
         ecruteak: {
 			burned:    {x: 106, y: 34  },
@@ -157,6 +212,12 @@ let crystal_fir = {
 			rightgym:  {x: 220, y: 410 },
 			center:    {x: 379, y: 410 },
 			gateright: {x: 571, y: 474 },
+			
+			it_hidden
+			it_itemfinder
+			it_kimono
+			it_gym_badge
+			it_gym_tm
         },
         olivine_r40: {
 			gym:        {x: 165, y: 145, name: "Olivine City"       },
@@ -171,6 +232,18 @@ let crystal_fir = {
 			gate:       {x: 416, y: 56,  name: "Route 38 (Olivine)" },
 			farm1:      {x: 122, y: 36,  name: "Route 39 (Olivine)" },
 			farm2:      {x: 188, y: 76,  name: "Route 39 (Olivine)" },
+			
+			it_tree_trainer
+			it_tree_moomoo
+			it_hidden_moomoo
+			it_miltank
+			it_rod
+			it_strength
+			it_monica
+			it_rocksmash
+			it_gym_badge
+			it_gym_tm
+			
 
         },
         cianwood: {
@@ -181,6 +254,13 @@ let crystal_fir = {
 			gym:    {x: 384, y: 482 },
 			center: {x: 134, y: 490 },
 			house5: {x: 247, y: 625 },
+			
+			it_secretpotion
+			it_gym_badge
+			it_gym_tm
+			it_wife
+			it_rocksmash_top
+			it_rocksmash_bottom
         },
         mahogany_r44: {
 			gate:      {x: 151, y: 45                             },
@@ -189,6 +269,14 @@ let crystal_fir = {
 			gym:       {x: 102, y: 183                            },
 			center:    {x: 252, y: 251                            },
 			icepath:   {x: 432, y: 90, name: "Route44 (Mahogany)" },
+			
+			it_gym_badge
+			it_gym_tm
+			it_tree
+			it_hidden_repel
+			it_grass
+			it_hidden_elixer
+			it_ultraball
         },
         blackthorn: {
 			den:         {x: 330, y: 69  },
@@ -201,6 +289,11 @@ let crystal_fir = {
 			rightcenter: {x: 472, y: 354 },
 			den_door:    {x: 70,  y: 57,  corridor: "den_house", name: "Dragon's Den" },
 			den_house:   {x: 70,  y: 250, corridor: "den_door",  name: "Dragon's Den" },
+			
+			it_gym_badge
+			it_gym_tm
+			it_santos
+			
         },
         indigo_e4: {
 			center_left:     {x: 40,  y: 490,                        name: "Indigo Plateau"    },
@@ -229,12 +322,35 @@ let crystal_fir = {
 			mart:   {x: 364, y: 281 },
 			centre: {x: 267, y: 371 },
         },*/
+
+        viridian_r1_r22: {
+        		//TODO 
+        		
+        		gate:   {x: 88,  y: 181 },
+			gym:    {x: 412, y: 77  },
+			house:  {x: 235, y: 127 },
+			school: {x: 267, y: 211 },
+			mart:   {x: 364, y: 281 },
+			centre: {x: 267, y: 371 },
+        		
+        		it_cut_guy
+        		it_tree
+        		it_gym_badge
+        		
+        },
+
+
         pewter: {
             gym:    {x: 236, y: 235 },
 			mart:   {x: 382, y: 241 },
 			top:    {x: 478, y: 176 },
 			center: {x: 222, y: 367 },
 			bot:    {x: 121, y: 448 },
+			
+			it_silverwing
+			it_tree_left
+			it_tree_right
+			it_gym_badge
         },
         cerulean_r5: {
 			candy:         {x: 59,  y: 174                                                         },
@@ -243,12 +359,20 @@ let crystal_fir = {
 			center:        {x: 250, y: 325                                                         },
 			gym:           {x: 424, y: 291                                                         },
 			mart:          {x: 349, y: 394                                                         },
-            daycare:       {x: 265, y: 519                                                         },
+                       daycare:       {x: 265, y: 519                                                         },
 			tunnel:        {x: 378, y: 583,                            name: "Cerulean(Underpass)" },
 			gate:          {x: 238, y: 621                                                         },
 			underpass_top: {x: 494, y: 529, corridor: "underpass_bot", name: "Kanto Underpass"     },
 			underpass_bot: {x: 494, y: 610, corridor: "underpass_top", name: "Kanto Underpass"     },
 			bill:          {x: 256, y: 44,                             name: "Route 25 (Cerulean)" },
+			
+			it_hidden_water
+			it_hidden_rock
+			it_cut
+			it_nugget_guy
+			it_machinepart
+			it_gym_badge
+			it_daycare
         },
         vermilion_r6: {
 			fish:        {x: 72,  y: 149                                                        },
@@ -259,10 +383,17 @@ let crystal_fir = {
 			gym:         {x: 124, y: 371,                          name: "Vermilion City (Gym)" },
 			botmart:     {x: 331, y: 402                                                        },
 			digglet:     {x: 528, y: 192,                          name: "Vermilion (Diglett)"  },
-            gate:        {x: 233, y: 46                                                         },
+                       gate:        {x: 233, y: 46                                                         },
 			tunnel:      {x: 409, y: 19,                           name: "Vermilion(Underpass)" },
 			diglett_top: {x: 518, y: 432, corridor: "diglett_bot", name: "Diglett's Cave"       },
 			diglett_bot: {x: 518, y: 565, corridor: "diglett_top", name: "Diglett's Cave"       },
+			
+			it_hidden
+			it_fanclub
+			it_lostitem
+			it_gym_badge
+			it_port
+			
         },
         celadon_r7: {
 			mart:       {x: 62,  y: 119                             },
@@ -276,6 +407,12 @@ let crystal_fir = {
 			gate:       {x: 534, y: 353                             },
 			r16_fly:    {x: 62,  y: 209, name: "R16 (Fly House)"    },
 			r16_gate:   {x: 62,  y: 291                             },
+			
+			it_hidden
+			it_leftover
+			it_tophouse
+			it_gym_badge
+			it_gym_tm
         },
         lavender_r8: {
 			mart:       {x: 53,  y: 240 },
@@ -287,6 +424,9 @@ let crystal_fir = {
 			botradio:   {x: 260, y: 284 },
 			rocktunnel: {x: 311, y: 82  },
 			gate:       {x: 73,  y: 111, name:"Route 8 (Lavender)" },
+			
+			it_tree
+			it_expansioncard
         },
         saffron: {
 			topgate:   {x: 294, y: 23  },
@@ -301,6 +441,14 @@ let crystal_fir = {
 			silph:     {x: 297, y: 320 },
 			center:    {x: 152, y: 447 },
 			psychic:   {x: 438, y: 447 },
+			
+			it_psychic
+			it_copycat
+			it_silphco
+			it_fightgym
+			it_gym_badge
+			
+			
         },
         fuchsia: {
 			mart:      {x: 88,  y: 187, name: "Fuchsia City (Mart)" },
@@ -312,9 +460,15 @@ let crystal_fir = {
 			rightgate: {x: 572, y: 330                              },
 			botgate:   {x: 127, y: 539                              },
 			leftgate:  {x: 60,  y: 298                              },
+			
+			it_tree
+			it_gym_badge
+			it_gym_tm
         },
         cinnabar: {
 			center: {x: 186, y: 151},
+			
+			it_hidden
         },
 
         // Routes
@@ -322,6 +476,16 @@ let crystal_fir = {
 			gate:        {x: 129, y: 385, name: "Route 46 (Gate)" },
 			botdarkcave: {x: 233, y: 268, name: "Route 46 (Cave)" },
 			topdarkcave: {x: 55,  y: 61,  name: "Route 45"        },
+			
+			it_elixer
+			it_potion
+			it_xspecial
+			it_revive
+			it_oasis
+			it_tree_oasis
+			it_tree_top
+			it_tree_right
+			it_xspeed
         },
         r30_r31: {
 			gate:     {x: 103, y: 133, name: "Route 31" },
@@ -336,8 +500,12 @@ let crystal_fir = {
 			it_tree_berry: {x: 95,  y: 384, item: "overworld" },
 			it_berryman:   {x: 165, y: 380, item: "overworld" },
 			it_tree_kenya: {x: 263, y: 113, item: "overworld" },
+			it_kenya_return:
 			it_tree_lab:   {x: 493, y: 383, item: "overworld" },
-			it_lab:        {x: 609, y: 376, item: "overworld" },
+			it_mrpokemon:  {x: 609, y: 376, item: "overworld" },
+			it_oak:
+			it_redscale:
+			
         },
         alphruins_r32: {
 			topgate:    {x: 119, y: 22,                          name: "Ruins of Alph (Top)" },
@@ -353,6 +521,16 @@ let crystal_fir = {
 			union:      {x: 443, y: 408,                         name: "Route 32"            },
 			rod_stairs: {x: 501, y: 511, corridor: "rod_door",   name: "Old Rod PokéCenter"  },
 			rod_door:   {x: 564, y: 543, corridor: "rod_stairs", name: "Old Rod PokéCenter"  },
+			
+			it_miracle_seed
+			it_grass_top
+			it_grass_bottom
+			it_roar
+			it_hidden_grass
+			it_hidden_frieda
+			it_frieda
+			it_fisher
+
         },
         r34_ilex: {
 			r34_gate:    {x: 138, y: 420,                        name: "Route 34"        },
@@ -361,6 +539,21 @@ let crystal_fir = {
 			ilext_bot:   {x: 302, y: 642, corridor: "ilext_top", name: "Ilex Forest"     },
 			tm12_top:    {x: 150, y: 559, corridor: "tm12_bot",  name: "Gate R34 (TM12)" },
 			tm12_bot:    {x: 152, y: 673, corridor: "tm12_top",  name: "Gate R34 (TM12)" },
+			
+			it_cut
+			it_revive
+			it_hidden_fullheal
+			it_xattack
+			it_antidote
+			it_hidden_potion
+			it_headbutt
+			it_ether
+			it_hidden_ether
+			it_sweet_scent
+			it_nugget
+			it_hidden_candy
+			it_hidden_daycare
+			it_softsand
         },
         /*r35_r36: {
 			botgate:    {x: 158, y: 452,                         name: "Route 35"          },
@@ -372,11 +565,29 @@ let crystal_fir = {
 			park_right: {x: 141, y: 68,  corridor: "park_bot",   name: "National Park"     },
 			park_bot:   {x: 80,  y: 171, corridor: "park_right", name: "National Park"     },
         },*/
+
+        r36t_r37: {
+        		//TODO 
+        		gate:    {x: 486, y: 142,                         name: "Route 36 (Violet)" },
+        		
+        		it_arthur
+        		it_rocksmash
+        		it_sunny
+        		it_tree_bottom
+        		it_tree_left
+        		it_tree_right
+        		it_hidden
+        },
+ 
+
         r41: {
 			topleft:  {x: 185, y: 207, name: "Route 41 (NW)" },
 			topright: {x: 568, y: 239, name: "Route 41 (NE)" },
 			botleft:  {x: 184, y: 528, name: "Route 41 (SW)" },
 			botright: {x: 570, y: 657, name: "Route 41 (SE)" },
+			
+			it_hidden
+
         },
         ragelake_r43: {
             cut:      {x: 50,  y: 80,                      name: "Lake of Rage"       },
@@ -386,6 +597,19 @@ let crystal_fir = {
 			gatetop:  {x: 194, y: 126,                     name: "Route 43 (Lake)"    },
 			tm_bot:   {x: 310, y: 219, corridor: "tm_top", name: "Gate R43 (Rockets)" },
 			tm_top:   {x: 310, y: 140, corridor: "tm_bot", name: "Gate R43 (Rockets)" },
+			
+			it_gate
+			it_ether
+			it_tree
+			it_gyarados
+			it_hidden_potion
+			it_hidden_full_restore
+			it_hidden_candy
+			it_Wesley
+			it_Elixer
+			it_detect
+			it_house
+			
         },
         r26_r27: {
 			left:        {x: 57,  y: 59,                           name: "Route 27" },
@@ -396,39 +620,86 @@ let crystal_fir = {
 			reception:   {x: 421, y: 52,                           name: "Route 26" },
 			falls_left:  {x: 251, y: 424, corridor: "falls_right", name: "Tohjo Falls" },
 			falls_right: {x: 442, y: 424, corridor: "falls_left",  name: "Tohjo Falls" },
+			
+			it_sandstorm
+			it_surf
+			it_whirl
+			it_tree
+			it_elixer
+			
         },
 
         r2: {
-            digglet: {x: 200, y: 76  },
+                       diglett: {x: 200, y: 76  },
 			trade:   {x: 248, y: 210 },
 			gatetop: {x: 266, y: 401 },
 			gatebot: {x: 246, y: 513 },
+			
+			it_cut
+			it_diglett
+			it_hidden_revive
+			it_dire_hit
+			it_hidden_full_restore
+			it_hidden_ether
+			it_hidden_full_heal
+			it_potion
+			it_tree
+			it_house
         },
         r19_r20: {
 			gate:   {x: 73, y: 30,  name: "Route 19" },
 			blaine: {x: 69, y: 202, name: "Route 20" },
+			
+			it_gym_badge
         },
         /*r12: {
 			fish: {x: 182, y: 191 },
         },*/
+
+        r11_r12_r13: {
+        		//TODO 
+        		
+        		fish: {x: 182, y: 191 },
+        		
+        		it_hidden_surf
+        		it_cut
+        		it_surf_cut
+        		it_hidden_maze
+        		it_hidden_rock
+        		it_tree
+        },
+
+
         r15: {
 			gate: {x: 76, y: 77 },
+			
+			it_cut
         },
         cyclingroad: {
 			top: {x: 125, y: 82,  corridor: "bot"},
 			bot: {x: 231, y: 710, corridor: "top"},
+			
+			it_hidden_water
+			it_hidden_elixer
         },
         r9_r10: {
 			rocktunnel: {x: 136, y: 66,  name: "Route 9"          },
 			center:     {x: 187, y: 141, name: "Route 9"          },
 			powerplant: {x: 62,  y: 267, name: "Route 10 (Plant)" },
+			
+			it_powerplant
+			it_hidden
         },
-		r28: {
+	r28: {
 			gate:   {x: 456, y: 375 },
 			house:  {x: 70,  y: 405 },
 			center: {x: 325, y: 175 },
 			silver: {x: 244, y: 43  },
-		},
+			
+			it_house
+			it_hidden_rock
+			it_hidden_surf
+	},
 
         // Important locations
         darkcave: {
@@ -437,7 +708,38 @@ let crystal_fir = {
 			r31_right: {x: 584, y: 497                                                      },
 			r45_left:  {x: 58,  y: 628, corridor: "r45_right", name: "Dark Cave (Corridor)" },
 			r45_right: {x: 365, y: 331, corridor: "r45_left",  name: "Dark Cave (Corridor)" },
+			
+			it_potion
+			it_hidden_elixer
+			it_nugget
+			it_full_heal
+			it_dire_hit
+			it_blackglasses
+			it_revive
+			it_snore	
+			
         },
+        sprouttower: {
+        		//TODO 
+        		entrance_top:       {x: 80,  y: 25,  corridor: "hooh_bot",       name: "Puzzle (Ho-oh)"      },
+			entrance_bot:       {x: 80,  y: 130, corridor: "hooh_top",       name: "Puzzle (Ho-oh)"      },
+			floor1_left:     {x: 250, y: 25,  corridor: "kabuto_bot",     name: "Puzzle (Kabuto)"     },
+			floor1_right:     {x: 250, y: 130, corridor: "kabuto_top",     name: "Puzzle (Kabuto)"     },
+			entrance_right:    {x: 80,  y: 194, corridor: "omanyte_bot",    name: "Puzzle (Omanyte)"    },
+			entrance_left:    {x: 80,  y: 305, corridor: "omanyte_top",    name: "Puzzle (Omanyte)"    },
+			floor1_top: {x: 250, y: 194, corridor: "aerodactyl_bot", name: "Puzzle (Aerodactyl)" },
+			floor1_bot: {x: 250, y: 305, corridor: "aerodactyl_top", name: "Puzzle (Aerodactyl)" },
+        		top_floor: 
+        		
+        		
+        		it_paralyze_heal
+        		it_xaccuracy
+        		it_potion
+        		it_escape_rope
+        		it_elder
+        		
+        },
+
         puzzlechambers: {
 			hooh_top:       {x: 80,  y: 25,  corridor: "hooh_bot",       name: "Puzzle (Ho-oh)"      },
 			hooh_bot:       {x: 80,  y: 130, corridor: "hooh_top",       name: "Puzzle (Ho-oh)"      },
@@ -447,15 +749,41 @@ let crystal_fir = {
 			omanyte_bot:    {x: 80,  y: 305, corridor: "omanyte_top",    name: "Puzzle (Omanyte)"    },
 			aerodactyl_top: {x: 250, y: 194, corridor: "aerodactyl_bot", name: "Puzzle (Aerodactyl)" },
 			aerodactyl_bot: {x: 250, y: 305, corridor: "aerodactyl_top", name: "Puzzle (Aerodactyl)" },
+			
+			it_hooh_NW
+			it_hooh_NE
+			it_hooh_SW
+			it_hooh_SE
+			it_kabuto_NW
+			it_kabuto_NE
+			it_kabuto_SW
+			it_kabuto_SE
+			it_omanyte_NW
+			it_omanyte_NE
+			it_omanyte_SW
+			it_omanyte_SE
+			it_aerodactyl_NW
+			it_aerodactyl_NE
+			it_aerodactyl_SW
+			it_aerodactyl_SE
         },
         unioncave: {
-            f1_top:   {x: 278, y: 36,  name: "Union Cave (1F)"  },
+                       f1_top:   {x: 278, y: 36,  name: "Union Cave (1F)"  },
 			f1_mid:   {x: 91,  y: 141, name: "Union Cave (1F)"  },
 			f1_right: {x: 279, y: 341, name: "Union Cave (1F)"  },
 			f1_left:  {x: 68,  y: 352, name: "Union Cave (1F)"  },
 			bf1_top:  {x: 385, y: 95,  name: "Union Cave (B1F)" },
 			bf1_mid:  {x: 385, y: 223, name: "Union Cave (B1F)" },
 			bf1_bot:  {x: 455, y: 362, name: "Union Cave (B1F)" },
+			
+			it_xattack
+			it_great_ball
+			it_potion
+			it_awakening
+			it_swift
+			it_xdefend
+			it_elixer
+			it_hyper_potion
         },
         goldenrodstore: {
 			f1_door: {x: 132, y: 380, name: "Goldenrod Store" },
@@ -471,6 +799,13 @@ let crystal_fir = {
 			f6_up:   {x: 520, y: -5,  name: "Goldenrod Store" },
 			f6_down: {x: 470, y: 40,  name: "Goldenrod Store" },
 			b1f:     {x: 389, y: 487, name: "Goldenrod Store" },
+			
+			it_return1
+			it_return2
+			it_basement_NW
+			it_basement_NE
+			it_basement_SW
+			it_basement_SE
         },
         underground: {
 			top:               {x: 31,  y: 72                                                   },
@@ -478,8 +813,56 @@ let crystal_fir = {
 			bot:               {x: 31,  y: 188                                                  },
 			basement_rival:    {x: 121, y: 325, corridor: "basement_director", name: "Basement" },
 			basement_director: {x: 251, y: 325, corridor: "basement_rival",    name: "Basement" },
+			
+			it_coin_case
+			it_hidden_super_potion
+			it_hidden_paralyz_heal
+			it_hidden_antidote
+			it_hidden_revive
+			it_hidden_max_potion
+			it_full_heal
+			it_smoke_ball
+			it_ultra_ball
+			it_max_ether
+			it_sleeptalk
+			it_director
+
         },
-        tintower: {
+        radiotower: {
+        		//TODO 
+        		
+        		it_radiocard
+        		it_buena
+        		it_fake_director
+        		it_sunny_day
+        		it_pink_bow
+        		it_clear_bell
+        		it_ultra_ball
+        				
+        },
+
+        nationalpark_r35_r36b: {
+        		//TODO 
+        		   
+			botgate:    {x: 158, y: 452,                         name: "Route 35"          },
+			botpark:    {x: 58,  y: 294,                         name: "Route 35"          },
+			toppark:    {x: 303, y: 54,                          name: "Route 36"          },
+			kenya_top:  {x: 469, y: 379, corridor: "kenya_bot",  name: "Gate R35 (Kenya)"  },
+			kenya_bot:  {x: 474, y: 491, corridor: "kenya_top",  name: "Gate R35 (Kenya)"  },
+			park_right: {x: 141, y: 68,  corridor: "park_bot",   name: "National Park"     },
+			park_bot:   {x: 80,  y: 171, corridor: "park_right", name: "National Park"     },
+        		
+        		it_kenya
+        		it_tree_hell
+        		it_hell
+        		it_tree_sudo
+        		it_quick_claw
+        		it_park_right
+        		it_park_left
+        		it_hidden_park
+        },
+
+        /*tintower: {
 			f3_s:  {x: 130, y: 755, corridor: "f3_ne", name: "Tin Tower (3F)"     },
 			f3_ne: {x: 230, y: 561, corridor: "f3_s",  name: "Tin Tower (3F)"     },
 			f4_sw: {x: 270, y: 756,                    name: "Tin Tower (4F)"     },
@@ -502,7 +885,53 @@ let crystal_fir = {
 			f9_e:  {x: 494, y: 119,                    name: "Tin Tower (9F L)"   },
 			f9_w:  {x: 269, y: 88,  corridor: "f9_n",  name: "Tin Tower (9F top)" },
 			f9_n:  {x: 430, y: 57,  corridor: "f9_w",  name: "Tin Tower (9F top)" },
+        },*/
+        tintower_burnedtower: {
+                       //TODO
+                       
+                       f1:
+                       f3_s:  {x: 130, y: 755, corridor: "f3_ne", name: "Tin Tower (3F)"     },
+			f3_ne: {x: 230, y: 561, corridor: "f3_s",  name: "Tin Tower (3F)"     },
+			f4_sw: {x: 270, y: 756,                    name: "Tin Tower (4F)"     },
+			f4_nw: {x: 267, y: 597,                    name: "Tin Tower (4F)"     },
+			f4_ne: {x: 460, y: 562,                    name: "Tin Tower (4F)"     },
+			f4_se: {x: 460, y: 780,                    name: "Tin Tower (4F)"     },
+			f5_sw: {x: 566, y: 740,                    name: "Tin Tower (5F)"     },
+			f5_s:  {x: 671, y: 780,                    name: "Tin Tower (5F)"     },
+			f5_se: {x: 706, y: 740,                    name: "Tin Tower (5F)"     },
+			f5_nw: {x: 566, y: 596,                    name: "Tin Tower (5F)"     },
+			f6_s:  {x: 152, y: 508, corridor: "f6_w",  name: "Tin Tower (6F)"     },
+			f6_w:  {x: 70,  y: 412, corridor: "f6_s",  name: "Tin Tower (6F)"     },
+			f7_s:  {x: 396, y: 508,                    name: "Tin Tower (7F)"     },
+			f7_w:  {x: 285, y: 416,                    name: "Tin Tower (7F)"     },
+			f7_n:  {x: 365, y: 318,                    name: "Tin Tower (7F)"     },
+			f8_n:  {x: 655, y: 317, corridor: "f8_w",  name: "Tin Tower (8F)"     },
+			f8_w:  {x: 706, y: 381, corridor: "f8_n",  name: "Tin Tower (8F)"     },
+			f9_s1: {x: 332, y: 200,                    name: "Tin Tower (9F L)"   },
+			f9_s2: {x: 365, y: 234,                    name: "Tin Tower (9F L)"   },
+			f9_e:  {x: 494, y: 119,                    name: "Tin Tower (9F L)"   },
+			f9_w:  {x: 269, y: 88,  corridor: "f9_n",  name: "Tin Tower (9F top)" },
+			f9_n:  {x: 430, y: 57,  corridor: "f9_w",  name: "Tin Tower (9F top)" },
+			burned_tower
+			
+			it_sage
+			it_f2
+			it_f3_right
+			it_f3_middle
+			it_f3_hidden
+			it_f3_left
+			it_f4_candy
+			it_hidden_left
+			it_hidden_right
+			it_f5
+			it_f6
+			it_f7_bottom
+			it_f7_middle
+			it_f7_top
+			it_f8
+			
         },
+        
         mtmortar_r42: {
 			r42_gate:               {x: 70,  y: 616,                                name: "Route 42 (Left)"      },
 			r42_cave1:              {x: 169, y: 548,                                name: "Route 42 (Left)"      },
@@ -513,22 +942,59 @@ let crystal_fir = {
 			mortarwater_waterfall:  {x: 280, y: 61,                                 name: "Mortar Entry (Water)" },
 			mortar1item_door:       {x: 472, y: 257, corridor: "mortar1item_entry", name: "Mortar Entry (1item)" },
 			mortar1item_entry:      {x: 570, y: 458, corridor: "mortar1item_door",  name: "Mortar Entry (1item)" },
+			
+			it_r42_left
+			it_hidden_surf
+			it_r42_middle
+			it_tree_left
+			it_tree_middle
+			it_tree_right
+			it_mtmortar_hidden
+			it_mtmortar_left
+			it_mtmortar_right
+			
         },
-		mtmortarback: {
+	mtmortarback: {
 			topstairs:   {x: 137, y: 98,  name: "Mortar Back (Top)" },
 			midstairs:   {x: 66,  y: 271, name: "Mortar Back (Top)" },
 			leftstairs:  {x: 73,  y: 581, name: "Mortar Back (Bot)" },
 			leftdoor:    {x: 167, y: 722, name: "Mortar Back (Bot)" },
 			rightdoor:   {x: 455, y: 728, name: "Mortar Back (Bot)" },
 			rightstairs: {x: 514, y: 609, name: "Mortar Back (Bot)" },
-		},
-		mtmortarf2: {
+			
+			it_escape_rope
+			it_hyper_potion
+			it_nugget
+			it_max_potion
+			it_ultra_ball
+			it_iron
+			it_max_revive
+			it_hidden_max_repel
+	},
+	mtmortarf2: {
 			door:   {x: 277, y: 503, corridor: "stairs" },
 			stairs: {x: 93,  y: 45,  corridor: "door"   },
-		},
+			
+			it_rare_candy
+			it_max_potion
+			it_defense_curl
+			it_hidden_full_restore
+			it_escape_rope
+			it_dragon_scale
+			it_elixer
+
+	},
         mtmortarb1f: {
 			top:    {x: 72,  y: 44,  corridor: "bottom" },
 			bottom: {x: 297, y: 493, corridor: "top"    },
+			
+			it_full_restore
+			it_hyper_potion
+			it_max_ether
+			it_pp_up
+			it_carbos
+			it_hidden_rock
+			
 		},
         lighthouse: {
 			f2_entrance:  {x: 60,  y: 510,                         name: "Lighthouse (F2)"  },
@@ -549,6 +1015,14 @@ let crystal_fir = {
 			f5_inbot:     {x: 460, y: 537, corridor: "f5_intop",   name: "Lighthouse (F5)"  },
 			top_stairs:   {x: 482, y: 221, corridor: "top_hole",   name: "Lighthouse (Top)" },
 			top_hole:     {x: 592, y: 53,  corridor: "top_stairs", name: "Lighthouse (Top)" },
+			
+			it_f3
+			it_f5_left
+			it_f5_hidden
+			it_f5_middle
+			it_f5_right
+			it_top	
+			
         },
 
         ssaqua: {
@@ -557,6 +1031,8 @@ let crystal_fir = {
 			bot1:     {x: 88,  y: 231 },
 			bot2:     {x: 152, y: 263 },
 			bot3:     {x: 216, y: 231 },
+			
+			it_ship
         },
         whirlislands: {
 			waterfall_top:           {x: 118, y: 37,                          name: "Whirl (Waterfall)"     },
@@ -577,8 +1053,39 @@ let crystal_fir = {
 			main_botleft:            {x: 312, y: 452,                         name: "Whirl (Hub)"           },
 			main_botmid:             {x: 536, y: 455,                         name: "Whirl (Hub)"           },
 			main_botright:           {x: 664, y: 422,                         name: "Whirl (Hub)"           },
+			
+			it_ledge
+			it_waterfall_full_restore
+			it_waterfall_max_elixer
+			it_waterfall_max_revive
+			it_surf_ultra_ball
+			it_hidden_rare_candy
+			it_nugget
+			it_full_restore
+			it_carbos
+			it_hidden_full_restore
+			it_escape_rope
+			it_hidden_ultra_ball
+			it_calcium	
+			
         },
-		icepath1: {
+	rockethideout: {
+	               
+	               it_bf1_hyper_potion
+	               it_bf1_scientist
+	               it_bf1_nugget
+	               it_bf1_hidden
+	               it_bf2_lance
+	               it_bf2_hidden
+	               it_bf2_thief
+	               it_bf3_full_heal
+	               it_bf3_ice_heal
+	               it_bf3_ultra_ball
+	               it_bf3_dire_hit
+	               it_bf3_protein
+	
+	},
+	icepath1: {
 			hub_stairsleft:   {x: 64,  y: 621,                              name: "Ice Path (Holes)"      },
 			hub_holebotleft:  {x: 92,  y: 565,                              name: "Ice Path (Holes)"      },
 			hub_holebotright: {x: 199, y: 597,                              name: "Ice Path (Holes)"      },
@@ -591,16 +1098,31 @@ let crystal_fir = {
 			exit_door:        {x: 545, y: 410, corridor: "exit_stairs",     name: "Ice Path (Exit)"       },
 			b1f_right:        {x: 484, y: 556, corridor: "b1f_left",        name: "Ice Path (B1F)"        },
 			b1f_left:         {x: 387, y: 520, corridor: "b1f_right",       name: "Ice Path (B1F)"        },
-		},
-		icepath2: {
+			
+			it_waterfall
+			it_exit_protein
+			it_exit_pp_up
+			it_hidden_max_potion
+			it_iron
+
+	},
+	icepath2: {
 			fall_mid:  {x: 151, y: 162, corridor: "fall_up",   name: "Ice Path (Fall)" },
 			fall_up:   {x: 282, y: 50,  corridor: "fall_mid",  name: "Ice Path (Fall)" },
 			b2f_top:   {x: 381, y: 78,  corridor: "b2f_bot",   name: "Ice Path (B2F)"  },
 			b2f_bot:   {x: 378, y: 226, corridor: "b2f_top",   name: "Ice Path (B2F)"  },
 			b3f_right: {x: 332, y: 349, corridor: "b3f_left",  name: "Ice Path (B3F)"  },
 			b3f_left:  {x: 139, y: 353, corridor: "b3f_right", name: "Ice Path (B3F)"  },
-		},
-        victoryroad_reception: {
+			
+			it_full_heal
+			it_max_potion
+			it_hidden_carbos
+			it_rest
+			it_hidden_ice_heal
+			it_rocksmash_nevermeltice
+			
+	},
+  victoryroad_reception: {
 			reception_bot:   {x: 484, y: 580,                         name: "League Reception"  },
 			reception_right: {x: 580, y: 420,                         name: "League Reception"  },
 			reception_top:   {x: 484, y: 364,                         name: "League Reception"  },
@@ -613,6 +1135,15 @@ let crystal_fir = {
 			roadf3_mid:      {x: 539, y: 172,                         name: "Victory Road (3F)" },
 			roadf3_bot:      {x: 579, y: 280,                         name: "Victory Road (3F)" },
 			roadf3_top:      {x: 541, y: 49,                          name: "Victory Road (3F)" },
+			
+			it_f1_hidden_rock
+			it_f1_left
+			it_f1_right
+			it_f2_bottom
+			it_f2_right
+			it_f2_top
+			it_f2_hidden
+			
         },
 
         mtmoon_r3_r4: {
@@ -625,18 +1156,37 @@ let crystal_fir = {
 			moonsquare_house:   {x: 282, y: 66,  name: "Mt. Moon (Square)" },
 			moonsquare_top:     {x: 396, y: 44,  name: "Mt. Moon (Square)" },
 			moonsquare_bot:     {x: 423, y: 147, name: "Mt. Moon (Square)" },
+			
+			it_rocksmash_clefairy
+			it_r4_hp_up
+			it_r4_hidden
+			
         },
-		mtsilver: {
+	mtsilver: {
 			f1_entrance: {x: 227, y: 50,  corridor: "f1_door",     name: "Mt. Silver (F1)" },
 			f1_door:     {x: 126, y: 500, corridor: "f1_entrance", name: "Mt. Silver (F1)" },
 			f2_entrance: {x: 547, y: 469,                          name: "Mt. Silver (F2)" },
 			f2_left:     {x: 486, y: 297,                          name: "Mt. Silver (F2)" },
 			f2_right:    {x: 608, y: 78,                           name: "Mt. Silver (F2)" },
 			f2_exit:     {x: 454, y: 39,                           name: "Mt. Silver (F2)" },
-
+			
+			it_f1_protein
+			it_f1_escape_rope
+			it_f1_ultra_ball
+			it_f1_hidden_dire_hit
+			it_f1_hidden_ultra_ball
+			it_f1_max_elixer
+			it_f2_hidden_max_potion
+			it_f2_ultra_ball
+			it_f2_pp_up
+			it_f2_calcium
+			it_f2_inner_left
+			it_f2_inner_right
+			
+			
         },
-		celadonstore: {
-            f1_door: {x: 132, y: 380, name: "Celadon Store" },
+	celadonstore: {
+                       f1_door: {x: 132, y: 380, name: "Celadon Store" },
 			f1_up:   {x: 252, y: 270, name: "Celadon Store" },
 			f2_up:   {x: 252, y: 134, name: "Celadon Store" },
 			f2_down: {x: 204, y: 176, name: "Celadon Store" },
@@ -648,7 +1198,7 @@ let crystal_fir = {
 			f5_down: {x: 470, y: 176, name: "Celadon Store" },
 			f6_up:   {x: 520, y: -5,  name: "Celadon Store" },
         },
-		rocktunnel: {
+	rocktunnel: {
 			f1_entry_door:   {x: 231, y: 23,  corridor: "f1_entry_stairs", name: "Rock Tunnel (Entry)"  },
 			f1_entry_stairs: {x: 423, y: 77,  corridor: "f1_entry_door",   name: "Rock Tunnel (Entry)"  },
 			f1_exit_stairs:  {x: 423, y: 232, corridor: "f1_exit_door",    name: "Rock Tunnel (Exit)"   },
@@ -657,7 +1207,25 @@ let crystal_fir = {
 			bf1_3item_right: {x: 261, y: 523, corridor: "bf1_3item_left",  name: "Rock Tunnel (3items)" },
 			bf1_1item_top:   {x: 355, y: 421, corridor: "bf1_1item_bot",   name: "Rock Tunnel (1item)"  },
 			bf1_1item_bot:   {x: 392, y: 746, corridor: "bf1_1item_top",   name: "Rock Tunnel (1item)"  },
-		},
+			
+			it_f1_left
+			it_f1_middle
+			it_f1_hidden_bottom
+			it_f1_hidden_top
+			it_bf1_hidden
+			it_bf1_top
+			it_bf1_middle
+			it_bf1_bottom
+			
+	},
+	diglettcave_undergroundpath: {
+        		//TODO 
+        		entrance_bottom: {x: 132, y: 380, name: "Celadon Store" },
+			entrance_top:    {x: 252, y: 270, name: "Celadon Store" },
+        		        		
+        		it_hidden_rock
+        },
+
     },
 
     // Numbers are meant to be to check if exist any marks/progress in the maps
