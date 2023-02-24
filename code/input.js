@@ -42,7 +42,7 @@ function OnKeyDown(event) {
         return;
     }
     if (event.key == "p") {
-        const file = "https://sekii.gitlab.io/pokemon-tracker/code/test_file1.txt";
+        const file = "https://sekii.gitlab.io/pokemon-tracker/code/data/test_file1.txt";
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", file, false);
         rawFile.onreadystatechange = function () {
