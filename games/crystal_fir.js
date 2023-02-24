@@ -89,7 +89,7 @@ let crystal_fir = {
         mtsilver:              {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver"                      },
         celadonstore:          {x: 203, y: 32, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
         rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
-        diglettcave_undergroundpath: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path"   },
+        diglettcave_underpass: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path"   },
     },
 
     // Undefined fields:
@@ -116,9 +116,9 @@ let crystal_fir = {
         		r28_gate: {x: 81, y: 44, name: "Route 28 (Newbark)"},
         		
         		it_mom: {x: 350, y: 40, item: "overworld" },
-        		it_aide_starter: {x: 274, y: 234, item: "overworld" },
+        		it_aide_starter: {x: 283, y: 233, item: "overworld" },
         		it_aide_mysteryegg: {x: 299, y: 233, item: "overworld" },
-        		it_elm_risingbadge: {x: 260, y: 142, item: "overworld" },
+        		it_elm_risingbadge: {x: 268, y: 140, item: "overworld" },
         		it_elm_e4: {x: 282, y: 140, item: "overworld" },
         		it_potion: {x: 215, y: 44, item: "overworld" },
         		it_berry: {x: 64, y: 184, item: "overworld" },
@@ -147,7 +147,7 @@ let crystal_fir = {
 			school:        {x: 488, y: 304                                                          },
 			center:        {x: 506, y: 368                                                          },
 			trade:         {x: 345, y: 442                                                          },
-			gate:          {x: 572, y: 441                                                          },
+			gate:          {x: 605, y: 409                                                          },
 			center_door:   {x: 543, y: 217, corridor: "center_stairs", name: "Violet City (Center)" },
 			center_stairs: {x: 483, y: 164, corridor: "center_door",   name: "Violet City (Center)" },
 			
@@ -167,7 +167,7 @@ let crystal_fir = {
 			gym:       {x: 165, y: 210                                                   },
 			charcoal:  {x: 343, y: 187                                                   },
 			gate:      {x: 60,  y: 180                                                   },
-			darkcave:  {x: 440, y: 356,                        name: "Route 33 (Azalea)" },
+			darkcave:  {x: 448, y: 328,                        name: "Route 33 (Azalea)" },
 			well_up:   {x: 209, y: 450, corridor: "well_down", name: "Slowpoke Well"     },
 			well_down: {x: 60,  y: 380, corridor: "well_up",   name: "Slowpoke Well"     },
 			
@@ -369,8 +369,6 @@ let crystal_fir = {
                        daycare:       {x: 265, y: 519                                                         },
 			tunnel:        {x: 378, y: 583,                            name: "Cerulean(Underpass)" },
 			gate:          {x: 238, y: 621                                                         },
-			underpass_top: {x: 494, y: 529, corridor: "underpass_bot", name: "Kanto Underpass"     },
-			underpass_bot: {x: 494, y: 610, corridor: "underpass_top", name: "Kanto Underpass"     },
 			bill:          {x: 370, y: 45,                             name: "Route 25 (Cerulean)" },
 			
 			it_hidden_water: {x: 52, y: 50, item: "overworld" },
@@ -481,8 +479,8 @@ let crystal_fir = {
 
         // Routes
         r45_r46: {
-			gate:        {x: 129, y: 385, name: "Route 46 (Gate)" },
-			botdarkcave: {x: 233, y: 268, name: "Route 46 (Cave)" },
+			gate:        {x: 147, y: 812, name: "Route 46 (Gate)" },
+			botdarkcave: {x: 255, y: 649, name: "Route 46 (Cave)" },
 			topdarkcave: {x: 55,  y: 61,  name: "Route 45"        },
 			
 			it_elixer: {x: 95, y: 140, item: "overworld" },
@@ -501,17 +499,17 @@ let crystal_fir = {
 			berry:    {x: 130, y: 357, name: "Route 30" },
 			lab:      {x: 570, y: 410, name: "Route 30" },
 
-			it_tophouse:   {x: 144, y: 323, item: "overworld" },
-			it_trainer:    {x: 344, y: 215, item: "overworld" },
+			it_tophouse:   {x: 164, y: 320, item: "overworld" },
+			it_trainer:    {x: 338, y: 195, item: "overworld" },
 			it_cave:       {x: 471, y: 87,  item: "overworld" },
 			it_hidden:     {x: 536, y: 445, item: "overworld" },
 			it_tree_berry: {x: 95,  y: 384, item: "overworld" },
-			it_berryman:   {x: 165, y: 380, item: "overworld" },
+			it_berryman:   {x: 156, y: 382, item: "overworld" },
 			it_tree_kenya: {x: 262, y: 88, item: "overworld" },
 			it_kenya_return: {x: 282, y: 88, item: "overworld" },
-			it_tree_lab:   {x: 493, y: 383, item: "overworld" },
+			it_tree_lab:   {x: 492, y: 363, item: "overworld" },
 			it_mrpokemon:  {x: 576, y: 369, item: "overworld" },
-			it_oak: {x: 595, y: 368, item: "overworld" },
+			it_oak: {x: 595, y: 369, item: "overworld" },
 			it_redscale: {x: 616, y: 369, item: "overworld" },
 			
         },
@@ -626,8 +624,8 @@ let crystal_fir = {
 			house2:      {x: 356, y: 157,                          name: "Route 26" },
 			house3:      {x: 485, y: 158,                          name: "Route 26" },
 			reception:   {x: 336, y: 64,                           name: "Route 26" },
-			falls_left:  {x: 251, y: 424, corridor: "falls_right", name: "Tohjo Falls" },
-			falls_right: {x: 442, y: 424, corridor: "falls_left",  name: "Tohjo Falls" },
+			falls_left:  {x: 241, y: 485, corridor: "falls_right", name: "Tohjo Falls" },
+			falls_right: {x: 429, y: 485, corridor: "falls_left",  name: "Tohjo Falls" },
 			
 			it_sandstorm: {x: 191, y: 104, item: "overworld" },
 			it_surf: {x: 153, y: 251, item: "overworld" },
@@ -675,6 +673,7 @@ let crystal_fir = {
         		it_hidden_maze: {x: 205, y: 556, item: "overworld" },
         		it_hidden_rock: {x: 80, y: 129, item: "overworld" },
         		it_tree: {x: 80, y: 76, item: "overworld" },
+        		it_fisher: {x: 143, y: 254, item: "overworld" }
         },
 
 
@@ -685,7 +684,7 @@ let crystal_fir = {
         },
         cyclingroad: {
 			top: {x: 125, y: 82,  corridor: "bot"},
-			bot: {x: 231, y: 710, corridor: "top"},
+			bot: {x: 235, y: 766, corridor: "top"},
 			
 			it_hidden_water: {x: 149, y: 282, item: "overworld" },
 			it_hidden_elixer: {x: 136, y: 649, item: "overworld" },
@@ -785,6 +784,7 @@ let crystal_fir = {
 			bf1_top:  {x: 408, y: 53,  name: "Union Cave (B1F)" },
 			bf1_mid:  {x: 410, y: 185, name: "Union Cave (B1F)" },
 			bf1_bot:  {x: 452, y: 324, name: "Union Cave (B1F)" },
+			bf1_deadend: {x: 280, y: 469, name: "Union Cave (B1F)" },
 			
 			it_xattack: {x: 93, y: 29, item: "overworld" },
 			it_great_ball: {x: 252, y: 190, item: "overworld" },
@@ -1055,8 +1055,8 @@ let crystal_fir = {
 			lake_left:               {x: 128, y: 555,                         name: "Whirl (Lake Left)"     },
 			lake_right:              {x: 353, y: 555,                         name: "Whirl (Lake Right)"    },
 			lake_entrance:           {x: 162, y: 692,                         name: "Whirl (Lake Left)"     },
-			surf_left:               {x: 129, y: 805, corridor: "surf_right", name: "Whirl (Surf Corridor)" },
-			surf_right:              {x: 355, y: 805, corridor: "surf_left",  name: "Whirl (Surf Corridor)" },
+			surf_left:               {x: 129, y: 748, corridor: "surf_right", name: "Whirl (Surf Corridor)" },
+			surf_right:              {x: 355, y: 743, corridor: "surf_left",  name: "Whirl (Surf Corridor)" },
 			ledges_entrance:         {x: 456, y: 724,                         name: "Whirl (Ledges)"        },
 			ledges_bot:              {x: 615, y: 683,                         name: "Whirl (Ledges 🚫)"     },
 			ledges_top:              {x: 681, y: 555,                         name: "Whirl (Ledges 🚫)"     },
@@ -1183,10 +1183,8 @@ let crystal_fir = {
 			f1_door:     {x: 126, y: 500, corridor: "f1_entrance", name: "Mt. Silver (F1)" },
 			f2_entrance: {x: 547, y: 469,                          name: "Mt. Silver (F2)" },
 			f2_left:     {x: 485, y: 355,                          name: "Mt. Silver (F2)" },
-			f2_right:    {x: 608, y: 78,                           name: "Mt. Silver (F2)" },
+			f2_right:    {x: 646, y: 61,                           name: "Mt. Silver (F2)" },
 			f2_exit:     {x: 454, y: 39,                           name: "Mt. Silver (F2)" },
-			right_room:  {x: 536, y: 285,                          name: "Mt. Silver (F2)" },
-			left_room:   {x: 476, y: 158,                          name: "Mt. Silver (F2)" },
 			
 			it_f1_protein: {x: 205, y: 454, item: "overworld" },
 			it_f1_escape_rope: {x: 42, y: 466, item: "overworld" },
@@ -1198,9 +1196,9 @@ let crystal_fir = {
 			it_f2_ultra_ball: {x: 629, y: 391, item: "overworld" },
 			it_f2_pp_up: {x: 364, y: 310, item: "overworld" },
 			it_f2_calcium: {x: 640, y: 148, item: "overworld" },
-			it_f2_inner_left: {x: 360, y: 149, item: "overworld" },
-			it_f2_inner_right: {x: 646, y: 248, item: "overworld" },
-			
+			it_f2_inner_left: {x: 464, y: 321, item: "overworld" },
+			it_f2_inner_right: {x: 622, y: 34, item: "overworld" },		
+
 			
         },
 	celadonstore: {
@@ -1236,10 +1234,10 @@ let crystal_fir = {
 			it_bf1_bottom: {x: 125, y: 795, item: "overworld" },
 			
 	},
-	diglettcave_undergroundpath: {
+	diglettcave_underpass: {
         		//TODO 
-        		undergroundpath_bottom: {x: 261, y: 472, corridor: "undergroundpath_bottom", name: "Kanto Underground Path" },
-			undergroundpath_top:    {x: 263, y: 38, corridor: "undergroundpath_top", name: "Kanto Underground Path" },
+        		underpass_bot: {x: 261, y: 472, corridor: "underpass_bot", name: "Kanto Underpass" },
+			underpass_top:    {x: 263, y: 38, corridor: "underpass_top", name: "Kanto Underpass" },
 			diglett_top: {x: 74, y: 54, corridor: "diglett_top", name: "Diglett's Cave"       },
 			diglett_bot: {x: 92, y: 486, corridor: "diglett_bot", name: "Diglett's Cave"       },
 			
