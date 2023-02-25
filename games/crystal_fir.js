@@ -82,15 +82,18 @@ let crystal_fir = {
         rockethideout:         {x: 99,  y: 8,  w: 8, h: 8,  name: "Rocket Hideout"                 },
         icepath1:              {x: 115, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
         icepath2:              {x: 124, y: 6,  w: 8, h: 8,  name: "Ice Path"                       },
-        //TODO dragons den
+        dragonsden:            {x: 124, y: 16, w: 8, h: 8,  name: "Dragon's Den"                   },
         victoryroad_reception: {x: 155, y: 34, w: 8, h: 14, name: "Victory Road\nLeague Reception" },
-
         mtmoon_r3_r4:          {x: 213, y: 24, w: 8, h: 8, name: "Mt. Moon\nRoute 3 / 4"           },
         mtsilver:              {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver"                      },
         celadonstore:          {x: 203, y: 32, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
         rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
         diglettcave_underpass: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path"   },
     },
+    
+
+			
+
 
     // Undefined fields:
     // - link_type:     "warp"        / "mark"
@@ -112,7 +115,7 @@ let crystal_fir = {
 //			den_house:   {x: 70,  y: 250, corridor: "den_door",  name: "Dragon's Den" },
 
 
-        newbark_r29: { //TODO
+        newbark_r29: { 
         		r28_gate: {x: 81, y: 44, name: "Route 28 (Newbark)"},
         		
         		it_mom: {x: 350, y: 40, item: "overworld" },
@@ -127,7 +130,6 @@ let crystal_fir = {
         },
 
         cherrygrove: {
-        		//TODO 
         		mart:     {x: 216, y: 80                            },
 			center:   {x: 312, y: 36                            },
 			house1:   {x: 118, y: 140                           },
@@ -249,7 +251,7 @@ let crystal_fir = {
 			it_rocksmash: {x: 5, y: 532, item: "overworld" },
 			it_gym_badge: {x: 150, y: 154, item: "overworld" },
 			it_gym_tm: {x: 173, y: 154, item: "overworld" },
-			//TODO it_port
+			it_port: {x: 453, y: 541, item: "overworld" },
 
         },
         cianwood: {
@@ -330,7 +332,6 @@ let crystal_fir = {
         },*/
 
         viridian_r1_r22: {
-        		//TODO 
         		
         		gate:   {x: 79, y: 85, name: "Route 22 (Viridian)" },
 			gym:    {x: 412, y: 77  },
@@ -397,7 +398,7 @@ let crystal_fir = {
 			it_fanclub: {x: 92, y: 291, item: "overworld" },
 			it_lostitem: {x: 119, y: 290, item: "overworld" },
 			it_gym_badge: {x: 124, y: 394 , item: "overworld" },
-			//TODO it_port: {, item: "overworld" },			
+			it_port:{x: 184, y: 555, item: "overworld" },			
 			
         },
         celadon_r7: {
@@ -573,7 +574,6 @@ let crystal_fir = {
         },*/
 
         r36t_r37: {
-        		//TODO 
         		gate:    {x: 486, y: 142,                         name: "Route 36 (Violet)" },
         		
         		it_arthur: {x: 402, y: 30, item: "overworld" },
@@ -663,7 +663,6 @@ let crystal_fir = {
         },*/
 
         r11_r12_r13: {
-        		//TODO 
         		
         		fish: {x: 112, y: 277 },
         		
@@ -727,7 +726,6 @@ let crystal_fir = {
 			
         },
         sprouttower: {
-        		//TODO 
         		floor1_top:       {x: 186, y: 310,  corridor: "floor1_top",       name: "SproutTower (1F)"      },
 			floor1_bot:       {x: 241, y: 417, corridor: "floor1_bot",       name: "SproutTower (1F)"      },
 			floor2_left:     {x: 60, y: 71,  corridor: "floor2_left",     name: "SproutTower (2F)"     },
@@ -839,7 +837,6 @@ let crystal_fir = {
 
         },
         radiotower: {
-        		//TODO 
         		entrance:          {x: 48, y: 115},
         		
         		it_radiocard: {x: 200, y: 76, item: "overworld" },
@@ -853,7 +850,6 @@ let crystal_fir = {
         },
 
         nationalpark_r35_r36b: {
-        		//TODO 
         		   
 			botgate:    {x: 158, y: 395,                         name: "Route 35"          },
 			botpark:    {x: 63, y: 264,                         name: "Route 35"          },
@@ -898,7 +894,6 @@ let crystal_fir = {
 			f9_n:  {x: 430, y: 57,  corridor: "f9_w",  name: "Tin Tower (9F top)" },
         },*/
         tintower_burnedtower: {
-                       //TODO
                        
                        f1:    {x: 650, y: 246,                    name: "Tin Tower (1F)"     },
                        f3_s:  {x: 130, y: 755, corridor: "f3_ne", name: "Tin Tower (3F)"     },
@@ -1138,6 +1133,14 @@ let crystal_fir = {
 			it_rocksmash_nevermeltice: {x: 192, y: 407, item: "overworld" },
 			
 	},
+	dragonsden: {	
+			it_top:           {x: 470, y: 67, item: "overworld" },
+			it_left:          {x: 87,  y: 305, item: "overworld" },
+			it_right:         {x: 568, y: 281, item: "overworld" },
+			it_hidden_left:   {x: 345, y: 257, item: "overworld" },
+			it_hidden_right:  {x: 504, y: 220, item: "overworld" },
+			it_hidden_bottom: {x: 535, y: 447, item: "overworld" },	
+	},
   victoryroad_reception: {
 			reception_bot:   {x: 484, y: 580,                         name: "League Reception"  },
 			reception_right: {x: 580, y: 420,                         name: "League Reception"  },
@@ -1234,8 +1237,7 @@ let crystal_fir = {
 			it_bf1_bottom: {x: 125, y: 795, item: "overworld" },
 			
 	},
-	diglettcave_underpass: {
-        		//TODO 
+	diglettcave_underpass: { 
         		underpass_bot: {x: 261, y: 472, corridor: "underpass_bot", name: "Kanto Underpass" },
 			underpass_top:    {x: 263, y: 38, corridor: "underpass_top", name: "Kanto Underpass" },
 			diglett_top: {x: 74, y: 54, corridor: "diglett_top", name: "Diglett's Cave"       },
