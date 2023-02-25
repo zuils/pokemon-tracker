@@ -120,12 +120,12 @@ let crystal_fir = {
         		
         		it_mom: {x: 350, y: 40, item: "overworld" },
         		it_aide_starter: {x: 283, y: 233, item: "overworld" },
-        		it_aide_mysteryegg: {x: 299, y: 233, item: "overworld" },
-        		it_elm_risingbadge: {x: 268, y: 140, item: "overworld" },
-        		it_elm_e4: {x: 282, y: 140, item: "overworld" },
+        		it_aide_mystery_egg: {x: 299, y: 233, item: "mystery_egg" },
+        		it_elm_rising_badge: {x: 268, y: 140, item: "rising_badge" },
+        		it_elm_e4: {x: 282, y: 140, item: "e4" }, 
         		it_potion: {x: 215, y: 44, item: "overworld" },
         		it_berry: {x: 64, y: 184, item: "overworld" },
-        		it_tuscany: {x: 155, y: 211, item: "overworld" },
+        		it_tuscany: {x: 155, y: 211, item: "zephyr_badge" },
 
         },
 
@@ -136,7 +136,7 @@ let crystal_fir = {
 			house2:   {x: 247, y: 170                           },
 			house3:   {x: 342, y: 202                           },
 			
-			it_mysticwater: {x: 79, y: 262, item: "overworld" },
+			it_mysticwater: {x: 79, y: 262, item: "surf" },
 			
         },
 
@@ -154,9 +154,9 @@ let crystal_fir = {
 			center_stairs: {x: 483, y: 164, corridor: "center_door",   name: "Violet City (Center)" },
 			
 			it_tree: {x: 213, y: 471, item: "overworld" },
-			it_hidden_cut: {x: 606, y: 250, item: "overworld" },
-			it_surf_left: {x: 90, y: 20, item: "overworld" },
-			it_surf_right: {x: 547, y: 31, item: "overworld" },
+			it_hidden_cut: {x: 606, y: 250, item: "cut" },
+			it_surf_left: {x: 90, y: 20, item: "surf" },
+			it_surf_right: {x: 547, y: 31, item: "surf" },
 			it_gym_badge: {x: 274, y: 258, item: "overworld" },
 			it_gym_tm: {x: 332, y: 255, item: "overworld" },
 
@@ -170,19 +170,21 @@ let crystal_fir = {
 			charcoal:  {x: 343, y: 187                                                   },
 			gate:      {x: 60,  y: 180                                                   },
 			darkcave:  {x: 448, y: 328,                        name: "Route 33 (Azalea)" },
-			well_up:   {x: 209, y: 450, corridor: "well_down", name: "Slowpoke Well"     },
-			well_down: {x: 60,  y: 380, corridor: "well_up",   name: "Slowpoke Well"     },
+			well_up:   {x: 135, y: 493, corridor: "well_down", name: "Slowpoke Well"     },
+			well_down: {x: 38,  y: 436, corridor: "well_up",   name: "Slowpoke Well"     },
+			well_b1f:  {x: 277, y: 437,			     name: "Slowpoke Well B1F" },
+
 			
 			it_hidden: {x: 504, y: 90, item: "overworld" },
 			it_tree_right: {x: 516, y: 405, item: "overworld" },
 			it_tree_left: {x: 118, y: 17, item: "overworld" },
 			it_gym_badge: {x: 151, y: 232, item: "overworld" },
 			it_gym_tm: {x: 186, y: 233, item: "overworld" },
-			it_charcoal: {x: 365, y: 210, item: "overworld" },
+			it_charcoal: {x: 365, y: 210, item: "farfetchd" }, //req: do farfetchd quest in ilex
 			it_kurt: {x: 172, y: 80, item: "overworld" },
 			it_well_potion: {x: 80, y: 309, item: "overworld" },
-			it_well_tm: {x: 345, y: 349, item: "overworld" },
-			it_well_kingsrock: {x: 251, y: 322, item: "overworld" },
+			it_well_tm: {x: 345, y: 349, item: "surf_strength" }, //req: both surf and strength
+			it_well_kingsrock: {x: 251, y: 322, item: "surf_strength" }, // same
 
         },
         goldenrod: {
@@ -205,7 +207,7 @@ let crystal_fir = {
 			it_bike: {x: 492, y: 445, item: "overworld" },
 			it_gym_badge: {x: 373, y: 93, item: "overworld" },
 			it_gym_tm: {x: 408, y: 90, item: "overworld" },
-			it_squirtbottle: {x: 501, y: 79, item: "overworld" },
+			it_squirtbottle: {x: 501, y: 79, item: "plain_badge" },
 
         },
         ecruteak: {
@@ -248,7 +250,7 @@ let crystal_fir = {
 			it_rod: {x: 244, y: 239, item: "overworld" },
 			it_strength: {x: 143, y: 327, item: "overworld" },
 			it_monica: {x: 61, y: 526, item: "overworld" },
-			it_rocksmash: {x: 5, y: 532, item: "overworld" },
+			it_rocksmash: {x: 5, y: 532, item: "rocksmash" },
 			it_gym_badge: {x: 150, y: 154, item: "overworld" },
 			it_gym_tm: {x: 173, y: 154, item: "overworld" },
 			it_port: {x: 453, y: 541, item: "overworld" },
@@ -263,12 +265,12 @@ let crystal_fir = {
 			center: {x: 134, y: 490 },
 			house5: {x: 247, y: 625 },
 			
-			it_secretpotion: {x: 270, y: 592, item: "overworld" },
-			it_gym_badge: {x: 120, y: 511, item: "overworld" },
-			it_gym_tm: {x: 146, y: 510, item: "overworld" },
-			it_wife: {x: 188, y: 558, item: "overworld" },
-			it_rocksmash_top: {x: 50, y: 151, item: "overworld" },
-			it_rocksmash_bottom: {x: 59, y: 311, item: "overworld" },
+			it_secretpotion: {x: 270, y: 592, item: "amphy" }, //req: talk to jasmine about sick ampharos in lighthouse
+			it_gym_badge: {x: 120, y: 511, item: "strength" },
+			it_gym_tm: {x: 146, y: 510, item: "strength" },
+			it_wife: {x: 188, y: 558, item: "strength" }, //req: actually beating gym - which required strength TODO
+			it_rocksmash_top: {x: 50, y: 151, item: "rocksmash" },
+			it_rocksmash_bottom: {x: 59, y: 311, item: "rocksmash" },
 
         },
         mahogany_r44: {
@@ -283,8 +285,8 @@ let crystal_fir = {
 			it_gym_tm: {x: 63, y: 189, item: "overworld" },
 			it_tree: {x: 55, y: 316, item: "overworld" },
 			it_hidden_repel: {x: 118, y: 380, item: "overworld" },
-			it_grass: {x: 217, y: 334, item: "overworld" },
-			it_hidden_elixer: {x: 251, y: 383, item: "overworld" },
+			it_grass: {x: 217, y: 334, item: "surf" },
+			it_hidden_elixer: {x: 251, y: 383, item: "surf" },
 			it_ultraball: {x: 388, y: 323, item: "overworld" },
 
         },
@@ -298,8 +300,6 @@ let crystal_fir = {
 			center:      {x: 351, y: 500 },
 			rightcenter: {x: 472, y: 354 },
 			
-			it_gym_badge: {x: 274, y: 167, item: "overworld" },
-			it_gym_tm: {x: 301, y: 165, item: "overworld" },
 			it_santos: {x: 390, y: 327, item: "overworld" },
 			
         },
@@ -340,7 +340,7 @@ let crystal_fir = {
 			mart:   {x: 364, y: 281 },
 			centre: {x: 267, y: 371 },
         		
-        		it_cut_guy: {x: 90, y: 259, item: "overworld" },
+        		it_cut_guy: {x: 90, y: 259, item: "cut_or_surf" }, // req: either surf OR cut
         		it_tree: {x: 79, y: 421, item: "overworld" },
         		it_gym_badge: {x: 366, y: 97, item: "overworld" },
         		        		
@@ -372,12 +372,12 @@ let crystal_fir = {
 			gate:          {x: 238, y: 621                                                         },
 			bill:          {x: 370, y: 45,                             name: "Route 25 (Cerulean)" },
 			
-			it_hidden_water: {x: 52, y: 50, item: "overworld" },
+			it_hidden_water: {x: 52, y: 50, item: "surf" },
 			it_hidden_rock: {x: 178, y: 101, item: "overworld" },
-			it_cut: {x: 223, y: 21, item: "overworld" },
+			it_cut: {x: 223, y: 21, item: "cut" },
 			it_nugget_guy: {x: 283, y: 70, item: "overworld" },
-			it_machinepart: {x: 383, y: 305, item: "overworld" },
-			it_gym_badge: {x: 342, y: 305, item: "overworld" },
+			it_machinepart: {x: 383, y: 305, item: "power_plant" }, // req; talk to power_plant director
+			it_gym_badge: {x: 342, y: 305, item: "machine_part_quest" }, //req: finish machine part quest to find misty at route 25, making her appear in gym TODO
 			it_daycare: {x: 238, y: 534, item: "overworld" },
 
         },
@@ -396,9 +396,9 @@ let crystal_fir = {
 			
 			it_hidden: {x: 184, y: 388, item: "overworld" },
 			it_fanclub: {x: 92, y: 291, item: "overworld" },
-			it_lostitem: {x: 119, y: 290, item: "overworld" },
+			it_lostitem: {x: 119, y: 290, item: "copy_cat" }, //req: talk to copy cat girl in saffron 
 			it_gym_badge: {x: 124, y: 394 , item: "overworld" },
-			it_port:{x: 184, y: 555, item: "overworld" },			
+			it_port:{x: 184, y: 555, item: "surf_ticket" }, //req: ss-ticket and surf required TODO			
 			
         },
         celadon_r7: {
@@ -415,10 +415,10 @@ let crystal_fir = {
 			r16_gate:   {x: 62,  y: 291                             },
 			
 			it_hidden: {x: 582, y: 376, item: "overworld" },
-			it_leftover: {x: 398, y: 452, item: "overworld" },
+			it_leftover: {x: 398, y: 452, item: "overworld" }, //might not be in 
 			it_tophouse: {x: 259, y: 74, item: "overworld" },
-			it_gym_badge: {x: 76, y: 462, item: "overworld" },
-			it_gym_tm: {x: 103, y: 465, item: "overworld" },		
+			it_gym_badge: {x: 76, y: 462, item: "cut" },
+			it_gym_tm: {x: 103, y: 465, item: "cut" },		
 
         },
         lavender_r8: {
@@ -433,7 +433,7 @@ let crystal_fir = {
 			gate:       {x: 73,  y: 111, name:"Route 8 (Lavender)" },
 			
 			it_tree: {x: 22, y: 237, item: "overworld" },
-			it_expansioncard: {x: 347, y: 207, item: "overworld" },
+			it_expansioncard: {x: 347, y: 207, item: "machine_part_quest" },
         },
         saffron: {
 			topgate:   {x: 294, y: 23  },
@@ -450,7 +450,7 @@ let crystal_fir = {
 			psychic:   {x: 438, y: 447 },
 			
 			it_psychic: {x: 461, y: 463, item: "overworld" },
-			it_copycat: {x: 173, y: 172, item: "overworld" },
+			it_copycat: {x: 173, y: 172, item: "lost_item" },
 			it_silphco: {x: 328, y: 329, item: "overworld" },
 			it_fightgym: {x: 390, y: 45, item: "overworld" },
 			it_gym_badge: {x: 500, y: 47, item: "overworld" },
@@ -468,7 +468,7 @@ let crystal_fir = {
 			botgate:   {x: 127, y: 539                              },
 			leftgate:  {x: 60,  y: 298                              },
 			
-			it_tree: {x: 158, y: 28, item: "overworld" },
+			it_tree: {x: 158, y: 28, item: "cut" },
 			it_gym_badge: {x: 79, y: 431, item: "overworld" },
 			it_gym_tm: {x: 107, y: 429, item: "overworld" },
         },
@@ -488,7 +488,7 @@ let crystal_fir = {
 			it_potion: {x: 160, y: 245, item: "overworld" },
 			it_nugget: {x: 76, y: 308, item: "overworld" },
 			it_revive: {x: 78, y: 426, item: "overworld" },
-			it_oasis: {x: 237, y: 501, item: "overworld" },
+			it_oasis: {x: 237, y: 501, item: "surf" },
 			it_tree_oasis: {x: 289, y: 533, item: "overworld" },
 			it_tree_top: {x: 120, y: 619, item: "overworld" },
 			it_tree_right: {x: 164, y: 659, item: "overworld" },
@@ -511,7 +511,7 @@ let crystal_fir = {
 			it_tree_lab:   {x: 492, y: 363, item: "overworld" },
 			it_mrpokemon:  {x: 576, y: 369, item: "overworld" },
 			it_oak: {x: 595, y: 369, item: "overworld" },
-			it_redscale: {x: 616, y: 369, item: "overworld" },
+			it_red_scale: {x: 616, y: 369, item: "red_scale" },
 			
         },
         alphruins_r32: {
@@ -529,10 +529,10 @@ let crystal_fir = {
 			rod_stairs: {x: 501, y: 511, corridor: "rod_door",   name: "Old Rod PokéCenter"  },
 			rod_door:   {x: 564, y: 543, corridor: "rod_stairs", name: "Old Rod PokéCenter"  },
 			
-			it_miracle_seed: {x: 438, y: 20, item: "overworld" },
+			it_miracle_seed: {x: 438, y: 20, item: "zephyr_badge" },
 			it_grass_top: {x: 473, y: 46, item: "overworld" },
 			it_grass_bottom: {x: 387, y: 211, item: "overworld" },
-			it_roar: {x: 379, y: 84, item: "overworld" },
+			it_roar: {x: 379, y: 84, item: "cut" },
 			it_hidden_grass: {x: 514, y: 114, item: "overworld" },
 			it_hidden_frieda: {x: 511, y: 307, item: "overworld" },
 			it_frieda: {x: 534, y: 304, item: "overworld" },
@@ -547,7 +547,7 @@ let crystal_fir = {
 			tm12_top:    {x: 150, y: 559, corridor: "tm12_bot",  name: "Gate R34 (TM12)" },
 			tm12_bot:    {x: 152, y: 673, corridor: "tm12_top",  name: "Gate R34 (TM12)" },
 			
-			it_cut: {x: 353, y: 432, item: "overworld" },
+			it_cut: {x: 353, y: 432, item: "farfetchd" }, //req: farfetchd quest required, but you can also do farfetchd quest here TODO
 			it_revive: {x: 567, y: 536, item: "overworld" },
 			it_hidden_fullheal: {x: 259, y: 298, item: "overworld" },
 			it_xattack: {x: 367, y: 279, item: "overworld" },
@@ -557,10 +557,10 @@ let crystal_fir = {
 			it_ether: {x: 656, y: 23, item: "overworld" },
 			it_hidden_ether: {x: 421, y: 96, item: "overworld" },
 			it_sweet_scent: {x: 200, y: 630, item: "overworld" },
-			it_nugget: {x: 35, y: 302, item: "overworld" },
-			it_hidden_candy: {x: 31, y: 372, item: "overworld" },
+			it_nugget: {x: 35, y: 302, item: "surf" },
+			it_hidden_candy: {x: 31, y: 372, item: "surf" },
 			it_hidden_daycare: {x: 171, y: 149, item: "overworld" },
-			it_softsand: {x: 21, y: 589, item: "overworld" },
+			it_softsand: {x: 21, y: 589, item: "surf" },
         },
         /*r35_r36: {
 			botgate:    {x: 158, y: 452,                         name: "Route 35"          },
@@ -577,7 +577,7 @@ let crystal_fir = {
         		gate:    {x: 486, y: 142,                         name: "Route 36 (Violet)" },
         		
         		it_arthur: {x: 402, y: 30, item: "overworld" },
-        		it_rocksmash: {x: 375, y: 71, item: "overworld" },
+        		it_rocksmash: {x: 375, y: 71, item: "sudowoodo" }, //req: doing sudowoodo with squirtbottle
         		it_sunny: {x: 202, y: 119, item: "overworld" },
         		it_tree_bottom: {x: 159, y: 101, item: "overworld" },
         		it_tree_left: {x: 132, y: 68, item: "overworld" },
@@ -592,7 +592,7 @@ let crystal_fir = {
 			botleft:  {x: 184, y: 528, name: "Route 41 (SW)" },
 			botright: {x: 570, y: 657, name: "Route 41 (SE)" },
 			
-			it_hidden: {x: 137, y: 447, item: "overworld" },
+			it_hidden: {x: 137, y: 447, item: "surf" },
 
         },
         ragelake_r43: {
@@ -604,17 +604,17 @@ let crystal_fir = {
 			tm_bot:   {x: 366, y: 349, corridor: "tm_top", name: "Gate R43 (Rockets)" },
 			tm_top:   {x: 365, y: 242, corridor: "tm_bot", name: "Gate R43 (Rockets)" },
 			
-			it_gate: {x: 315, y: 297, item: "overworld" },
+			it_gate: {x: 315, y: 297, item: "rockets" }, //req: beating rockets in mahagony hideout TODO
 			it_ether: {x: 184, y: 269, item: "overworld" },
 			it_tree: {x: 43, y: 392, item: "overworld" },
-			it_gyarados: {x: 238, y: 172, item: "overworld" },
+			it_gyarados: {x: 238, y: 172, item: "surf" },
 			it_hidden_potion: {x: 291, y: 70, item: "overworld" },
 			it_hidden_full_restore: {x: 69, y: 270, item: "overworld" },
-			it_hidden_candy: {x: 32, y: 99, item: "overworld" },
-			it_Wesley: {x: 24, y: 54, item: "overworld" },
-			it_Elixer: {x: 103, y: 168, item: "overworld" },
-			it_detect: {x: 256, y: 20, item: "overworld" },
-			it_house: {x: 105, y: 29, item: "overworld" },
+			it_hidden_candy: {x: 32, y: 99, item: "cut" },
+			it_Wesley: {x: 24, y: 54, item: "cut" },
+			it_Elixer: {x: 103, y: 168, item: "cut" },
+			it_detect: {x: 256, y: 20, item: "cut" },
+			it_house: {x: 105, y: 29, item: "cut" },
 			
         },
         r26_r27: {
@@ -627,9 +627,9 @@ let crystal_fir = {
 			falls_left:  {x: 241, y: 485, corridor: "falls_right", name: "Tohjo Falls" },
 			falls_right: {x: 429, y: 485, corridor: "falls_left",  name: "Tohjo Falls" },
 			
-			it_sandstorm: {x: 191, y: 104, item: "overworld" },
-			it_surf: {x: 153, y: 251, item: "overworld" },
-			it_whirl: {x: 315, y: 248, item: "overworld" },
+			it_sandstorm: {x: 191, y: 104, item: "overworld" }, //this route is kinda weird, you actually need waterfall to come from left (in non-warp-rando) TODO
+			it_surf: {x: 153, y: 251, item: "surf" },
+			it_whirl: {x: 315, y: 248, item: "whirl" }, //req: actually surf AND whirl, I didnt include surf for whirl and waterfall
 			it_tree: {x: 451, y: 115, item: "overworld" },
 			it_elixer: {x: 475, y: 57, item: "overworld" },
 			
@@ -641,7 +641,7 @@ let crystal_fir = {
 			gatetop: {x: 266, y: 401 },
 			gatebot: {x: 246, y: 513 },
 			
-			it_cut: {x: 298, y: 527, item: "overworld" },
+			it_cut: {x: 298, y: 527, item: "cut" },
 			it_diglett: {x: 308, y: 36, item: "overworld" },
 			it_hidden_revive: {x: 164, y: 472, item: "overworld" },
 			it_dire_hit: {x: 28, y: 454, item: "overworld" },
@@ -656,7 +656,7 @@ let crystal_fir = {
 			gate:   {x: 73, y: 30,  name: "Route 19" },
 			blaine: {x: 69, y: 202, name: "Route 20" },
 			
-			it_gym_badge: {x: 95, y: 200, item: "overworld" },
+			it_gym_badge: {x: 95, y: 200, item: "overworld" }, //req: actually need surf to get to island, but I assume for item-tags that you have access to area  
         },
         /*r12: {
 			fish: {x: 182, y: 191 },
@@ -666,9 +666,9 @@ let crystal_fir = {
         		
         		fish: {x: 112, y: 277 },
         		
-        		it_hidden_surf: {x: 162, y: 122, item: "overworld" },
-        		it_cut: {x: 42, y: 419, item: "overworld" },
-        		it_surf_cut: {x: 36, y: 531, item: "overworld" },
+        		it_hidden_surf: {x: 162, y: 122, item: "surf" },
+        		it_cut: {x: 42, y: 419, item: "cut" },
+        		it_surf_cut: {x: 36, y: 531, item: "surf_cut" },
         		it_hidden_maze: {x: 205, y: 556, item: "overworld" },
         		it_hidden_rock: {x: 80, y: 129, item: "overworld" },
         		it_tree: {x: 80, y: 76, item: "overworld" },
@@ -679,7 +679,7 @@ let crystal_fir = {
         r15: {
 			gate: {x: 76, y: 77 },
 			
-			it_cut: {x: 221, y: 84, item: "overworld" },
+			it_cut: {x: 221, y: 84, item: "cut" },
         },
         cyclingroad: {
 			top: {x: 125, y: 82,  corridor: "bot"},
@@ -693,7 +693,7 @@ let crystal_fir = {
 			center:     {x: 187, y: 141, name: "Route 9"          },
 			powerplant: {x: 62,  y: 267, name: "Route 10 (Plant)" },
 			
-			it_powerplant: {x: 131, y: 270, item: "overworld" },
+			it_powerplant: {x: 131, y: 270, item: "machine_part_quest" },
 			it_hidden: {x: 41, y: 98, item: "overworld" },
         },
 	r28: {
@@ -703,8 +703,8 @@ let crystal_fir = {
 			silver: {x: 244, y: 43  },
 			
 			it_house: {x: 69, y: 362, item: "overworld" },
-			it_hidden_rock: {x: 313, y: 356, item: "overworld" },
-			it_hidden_surf: {x: 116, y: 239, item: "overworld" },
+			it_hidden_rock: {x: 313, y: 356, item: "cut" },
+			it_hidden_surf: {x: 116, y: 239, item: "surf" },
 	},
 
         // Important locations
@@ -716,13 +716,13 @@ let crystal_fir = {
 			r45_right: {x: 365, y: 331, corridor: "r45_left",  name: "Dark Cave (Corridor)" },
 			
 			it_potion: {x: 140, y: 114, item: "overworld" },
-			it_hidden_elixer: {x: 464, y: 38, item: "overworld" },
-			it_hyper_potion: {x: 604, y: 131, item: "overworld" },
-			it_full_heal: {x: 620, y: 336, item: "overworld" },
-			it_dire_hit: {x: 523, y: 436, item: "overworld" },
-			it_blackglasses: {x: 132, y: 288, item: "overworld" },
-			it_revive: {x: 358, y: 627, item: "overworld" },
-			it_snore: {x: 137, y: 590, item: "overworld" },
+			it_hidden_elixer: {x: 464, y: 38, item: "rocksmash" },
+			it_hyper_potion: {x: 604, y: 131, item: "rocksmash" },
+			it_full_heal: {x: 620, y: 336, item: "rocksmash" },
+			it_dire_hit: {x: 523, y: 436, item: "rocksmash" },
+			it_blackglasses: {x: 132, y: 288, item: "surf" },
+			it_revive: {x: 358, y: 627, item: "surf" },
+			it_snore: {x: 137, y: 590, item: "surf" },
 			
         },
         sprouttower: {
@@ -734,7 +734,7 @@ let crystal_fir = {
 			floor1_left:    {x: 119, y: 344, corridor: "floor1_left",    name: "SproutTower (1F))"    },
 			floor2_top: {x: 9, y: 81, corridor: "floor2_top", name: "SproutTower (2F)" },
 			floor2_bot: {x: 136, y: 209, corridor: "floor2_bot", name: "SproutTower (2F)" },
-        		top_floor:  {x: 356, y: 233,                             name: "SproutTower (1F)"  },
+        		top_floor:  {x: 356, y: 233,                             name: "SproutTower (1F)"  }, //deadend
 
         		
         		
@@ -756,7 +756,7 @@ let crystal_fir = {
 			hooh_top:       {x: 443, y: 212,  corridor: "hooh_bot",       name: "Puzzle (Ho-oh)"      },
 			hooh_bot:       {x: 438, y: 96, corridor: "hooh_top",       name: "Puzzle (Ho-oh)"      },
 
-			it_kabuto_NW: {x: 23, y: 8, item: "overworld" },
+			it_kabuto_NW: {x: 23, y: 8, item: "overworld" }, //do we need to mark these ? I wouldnt TODO
 			it_kabuto_NE: {x: 69, y: 8, item: "overworld" },
 			it_kabuto_SW: {x: 21, y: 41, item: "overworld" },
 			it_kabuto_SE: {x: 68, y: 41, item: "overworld" },
@@ -782,7 +782,7 @@ let crystal_fir = {
 			bf1_top:  {x: 408, y: 53,  name: "Union Cave (B1F)" },
 			bf1_mid:  {x: 410, y: 185, name: "Union Cave (B1F)" },
 			bf1_bot:  {x: 452, y: 324, name: "Union Cave (B1F)" },
-			bf1_deadend: {x: 280, y: 469, name: "Union Cave (B1F)" },
+			bf1_deadend: {x: 280, y: 469, name: "Union Cave (B1F)" }, //deadend
 			
 			it_xattack: {x: 93, y: 29, item: "overworld" },
 			it_great_ball: {x: 252, y: 190, item: "overworld" },
@@ -790,8 +790,8 @@ let crystal_fir = {
 			it_awakening: {x: 175, y: 376, item: "overworld" },
 			it_swift: {x: 367, y: 269, item: "overworld" },
 			it_xdefend: {x: 586, y: 359, item: "overworld" },
-			it_elixer: {x: 434, y: 472, item: "overworld" },
-			it_hyper_potion: {x: 391, y: 704, item: "overworld" },
+			it_elixer: {x: 434, y: 472, item: "surf" },
+			it_hyper_potion: {x: 391, y: 704, item: "surf" },
         },
         goldenrodstore: {
 			f1_door: {x: 132, y: 380, name: "Goldenrod Store" },
@@ -811,41 +811,41 @@ let crystal_fir = {
 			it_return1: {x: 365, y: 191, item: "overworld" },
 			it_return2: {x: 385, y: 191, item: "overworld" },
 			it_basement_NW: {x: 56, y: 441, item: "overworld" },
-			it_basement_NE: {x: 162, y: 442, item: "overworld" },
+			it_basement_NE: {x: 162, y: 442, item: "basement_key" }, //req: basement key to access basement //deadend //TODO
 			it_basement_SW: {x: 349, y: 479, item: "overworld" },
 			it_basement_SE: {x: 431, y: 478, item: "overworld" },
         },
         underground: {
 			top:               {x: 51, y: 44                                                   },
-			basement:          {x: 408, y: 406                                                  },
+			basement:          {x: 139, y: 99                                                  },
 			bot:               {x: 53, y: 554                                                  },
-			basement_rival:    {x: 248, y: 245, corridor: "basement_director", name: "Basement" },
-			basement_director: {x: 456, y: 139, corridor: "basement_rival",    name: "Basement" },
+			basement_rival:    {x: 408, y: 406, corridor: "basement_director", name: "Basement" },
+			basement_director: {x: 456, y: 139, corridor: "basement_rival",    name: "Basement" },		
 			
 			it_coin_case: {x: 71, y: 412, item: "overworld" },
 			it_hidden_super_potion: {x: 78, y: 301, item: "overworld" },
 			it_hidden_paralyz_heal: {x: 56, y: 216, item: "overworld" },
 			it_hidden_antidote: {x: 126, y: 137, item: "overworld" },
-			it_hidden_revive: {x: 170, y: 486, item: "overworld" },
-			it_hidden_max_potion: {x: 242, y: 462, item: "overworld" },
-			it_full_heal: {x: 317, y: 462, item: "overworld" },
-			it_smoke_ball: {x: 153, y: 536, item: "overworld" },
-			it_ultra_ball: {x: 265, y: 101, item: "overworld" },
-			it_max_ether: {x: 452, y: 308, item: "overworld" },
-			it_sleeptalk: {x: 418, y: 223, item: "overworld" },
-			it_director: {x: 361, y: 203, item: "overworld" },
+			it_hidden_revive: {x: 170, y: 486, item: "basement_key" }, //req: all items in the basement area need basement_key
+			it_hidden_max_potion: {x: 242, y: 462, item: "basement_key" },
+			it_full_heal: {x: 317, y: 462, item: "basement_key" },
+			it_smoke_ball: {x: 153, y: 536, item: "basement_key" },
+			it_ultra_ball: {x: 265, y: 101, item: "basement_key" },
+			it_max_ether: {x: 452, y: 308, item: "basement_key" },
+			it_sleeptalk: {x: 418, y: 223, item: "basement_key" },
+			it_director: {x: 361, y: 203, item: "radiotower" }, //req: Im actually unsure what exactly is needed (only card key section, or fake director ?) TODO
 
         },
         radiotower: {
-        		entrance:          {x: 48, y: 115},
+        		entrance:          {x: 48, y: 115}, //somewhat a deadend
         		
         		it_radiocard: {x: 200, y: 76, item: "overworld" },
         		it_buena: {x: 209, y: 220, item: "overworld" },
-        		it_fake_director: {x: 38, y: 628, item: "overworld" },
-        		it_sunny_day: {x: 204, y: 320, item: "overworld" },
-        		it_pink_bow: {x: 206, y: 503, item: "overworld" },
-        		it_clear_bell: {x: 243, y: 624, item: "overworld" },
-        		it_ultra_ball: {x: 155, y: 633, item: "overworld" },
+        		it_fake_director: {x: 38, y: 628, item: "overworld" }, //this and all below require 7+ badges TODO
+        		it_sunny_day: {x: 204, y: 320, item: "card_key" }, 
+        		it_pink_bow: {x: 206, y: 503, item: "card_key" },
+        		it_clear_bell: {x: 243, y: 624, item: "card_key" },
+        		it_ultra_ball: {x: 155, y: 633, item: "card_key" },
         				
         },
 
@@ -860,7 +860,7 @@ let crystal_fir = {
 			park_bot:   {x: 83, y: 127, corridor: "park_right", name: "National Park"     },
         		
         		it_kenya: {x: 362, y: 389, item: "overworld" },
-        		it_tree_hell: {x: 61, y: 386, item: "overworld" },
+        		it_tree_hell: {x: 61, y: 386, item: "surf" },
         		it_hell: {x: 251, y: 357, item: "overworld" },
         		it_tree_sudo: {x: 450, y: 42, item: "overworld" },
         		it_quick_claw: {x: 158, y: 26, item: "overworld" },
@@ -895,7 +895,7 @@ let crystal_fir = {
         },*/
         tintower_burnedtower: {
                        
-                       f1:    {x: 650, y: 246,                    name: "Tin Tower (1F)"     },
+                       f1:    {x: 650, y: 246,                    name: "Tin Tower (1F)"     }, //deadend ? (both entrances lead to same place in warp rando)
                        f3_s:  {x: 130, y: 755, corridor: "f3_ne", name: "Tin Tower (3F)"     },
 			f3_ne: {x: 230, y: 561, corridor: "f3_s",  name: "Tin Tower (3F)"     },
 			f4_sw: {x: 270, y: 756,                    name: "Tin Tower (4F)"     },
@@ -918,11 +918,11 @@ let crystal_fir = {
 			f9_e:  {x: 494, y: 119,                    name: "Tin Tower (9F L)"   },
 			f9_w:  {x: 269, y: 88,  corridor: "f9_n",  name: "Tin Tower (9F top)" },
 			f9_n:  {x: 430, y: 57,  corridor: "f9_w",  name: "Tin Tower (9F top)" },
-			burned_tower:  {x: 132, y: 239,            name: "Burned Tower"       },
+			burned_tower:  {x: 132, y: 239,            name: "Burned Tower"       }, //deadend
 
 			
-			it_f1_sage: {x: 617, y: 46, item: "overworld" },
-			it_f3: {x: 27, y: 723, item: "overworld" },
+			it_f1_sage: {x: 617, y: 46, item: "overworld" }, // TODO idk what he needs
+			it_f3: {x: 27, y: 723, item: "overworld" }, 
 			it_f4_right: {x: 500, y: 719, item: "overworld" },
 			it_f4_middle: {x: 458, y: 657, item: "overworld" },
 			it_f4_hidden: {x: 390, y: 623, item: "overworld" },
@@ -951,11 +951,11 @@ let crystal_fir = {
 			mortar1item_entry:      {x: 740, y: 465, corridor: "mortar1item_door",  name: "Mortar Entry (1item)" },
 			
 			it_r42_left: {x: 231, y: 538, item: "overworld" },
-			it_hidden_surf: {x: 400, y: 623, item: "overworld" },
+			it_hidden_surf: {x: 400, y: 623, item: "surf" },
 			it_r42_middle: {x: 596, y: 560, item: "overworld" },
-			it_tree_left: {x: 486, y: 635, item: "overworld" },
-			it_tree_middle: {x: 517, y: 633, item: "overworld" },
-			it_tree_right: {x: 548, y: 633, item: "overworld" },
+			it_tree_left: {x: 486, y: 635, item: "surf_cut" }, 
+			it_tree_middle: {x: 517, y: 633, item: "surf_cut" },
+			it_tree_right: {x: 548, y: 633, item: "surf_cut" },
 			it_mtmortar_hidden: {x: 545, y: 327, item: "overworld" },
 			it_mtmortar_left: {x: 330, y: 187, item: "overworld" },
 			it_mtmortar_right: {x: 646, y: 203, item: "overworld" },
@@ -982,24 +982,24 @@ let crystal_fir = {
 			door:   {x: 277, y: 503, corridor: "stairs" },
 			stairs: {x: 93,  y: 45,  corridor: "door"   },
 			
-			it_rare_candy: {x: 58, y: 513, item: "overworld" },
-			it_max_potion: {x: 453, y: 377, item: "overworld" },
-			it_defense_curl: {x: 328, y: 276, item: "overworld" },
-			it_hidden_full_restore: {x: 366, y: 133, item: "overworld" },
-			it_escape_rope: {x: 476, y: 79, item: "overworld" },
-			it_dragon_scale: {x: 283, y: 85, item: "overworld" },
-			it_elixer: {x: 176, y: 176, item: "overworld" },
+			it_rare_candy: {x: 58, y: 513, item: "surf" }, //kinda need waterfall to get into the room first TODO
+			it_max_potion: {x: 453, y: 377, item: "surf" },
+			it_defense_curl: {x: 328, y: 276, item: "surf" },
+			it_hidden_full_restore: {x: 366, y: 133, item: "surf" },
+			it_escape_rope: {x: 476, y: 79, item: "surf" },
+			it_dragon_scale: {x: 283, y: 85, item: "surf" },
+			it_elixer: {x: 176, y: 176, item: "surf" },
 
 	},
         mtmortarb1f: {
 			top:    {x: 72,  y: 44,  corridor: "bottom" },
 			bottom: {x: 297, y: 493, corridor: "top"    },
 			
-			it_full_restore: {x: 538, y: 395, item: "overworld" },
-			it_hyper_potion: {x: 477, y: 180, item: "overworld" },
-			it_max_ether: {x: 509, y: 63, item: "overworld" },
-			it_pp_up: {x: 308, y: 406, item: "overworld" },
-			it_carbos: {x: 57, y: 267, item: "overworld" },
+			it_full_restore: {x: 538, y: 395, item: "surf" },
+			it_hyper_potion: {x: 477, y: 180, item: "surf" },
+			it_max_ether: {x: 509, y: 63, item: "surf" },
+			it_pp_up: {x: 308, y: 406, item: "surf" },
+			it_carbos: {x: 57, y: 267, item: "surf" },
 			it_hidden_rock: {x: 80, y: 92, item: "overworld" },
 			
 		},
@@ -1040,7 +1040,7 @@ let crystal_fir = {
 			bot2:     {x: 152, y: 263 },
 			bot3:     {x: 216, y: 231 },
 			
-			it_ship: {x: 283, y: 229, item: "overworld" },
+			it_ship: {x: 283, y: 229, item: "overworld" }, //req: need ss-ticket to even get on the ship TODO
         },
         whirlislands: {
 			waterfall_top:           {x: 118, y: 37,                          name: "Whirl (Waterfall)"     },
@@ -1080,9 +1080,9 @@ let crystal_fir = {
         },
 	rockethideout: {
 	
-			shop_entrance: {x: 206, y: 128},
+			shop_entrance: {x: 206, y: 128}, //kinda deadend
 	               
-	               it_bf1_hyper_potion: {x: 500, y: 165, item: "overworld" },
+	               it_bf1_hyper_potion: {x: 500, y: 165, item: "overworld" }, //need lake of rage gyarados to even access this area
 	               it_bf1_scientist: {x: 332, y: 130, item: "overworld" },
 	               it_bf1_nugget: {x: 245, y: 203, item: "overworld" },
 	               it_bf1_hidden: {x: 62, y: 118, item: "overworld" },
@@ -1111,10 +1111,10 @@ let crystal_fir = {
 			b1f_left:         {x: 387, y: 520, corridor: "b1f_right",       name: "Ice Path (B1F)"        },
 			
 			it_waterfall: {x: 452, y: 107, item: "overworld" },
-			it_exit_protein: {x: 571, y: 134, item: "overworld" },
-			it_exit_pp_up: {x: 470, y: 356, item: "overworld" },
-			it_hidden_max_potion: {x: 603, y: 569, item: "overworld" },
-			it_iron: {x: 411, y: 644, item: "overworld" },
+			it_exit_protein: {x: 571, y: 134, item: "strength" },
+			it_exit_pp_up: {x: 470, y: 356, item: "strength" },
+			it_hidden_max_potion: {x: 603, y: 569, item: "strength" },
+			it_iron: {x: 411, y: 644, item: "strength" },
 
 	},
 	icepath2: {
@@ -1125,21 +1125,26 @@ let crystal_fir = {
 			b3f_right: {x: 332, y: 349, corridor: "b3f_left",  name: "Ice Path (B3F)"  },
 			b3f_left:  {x: 139, y: 353, corridor: "b3f_right", name: "Ice Path (B3F)"  },
 			
-			it_full_heal: {x: 134, y: 128, item: "overworld" },
-			it_max_potion: {x: 26, y: 36, item: "overworld" },
-			it_hidden_carbos: {x: 11, y: 257, item: "overworld" },
-			it_rest: {x: 458, y: 236, item: "overworld" },
-			it_hidden_ice_heal: {x: 383, y: 168, item: "overworld" },
-			it_rocksmash_nevermeltice: {x: 192, y: 407, item: "overworld" },
+			it_full_heal: {x: 134, y: 128, item: "strength" },
+			it_max_potion: {x: 26, y: 36, item: "strength" },
+			it_hidden_carbos: {x: 11, y: 257, item: "strength" },
+			it_rest: {x: 458, y: 236, item: "strength" },
+			it_hidden_ice_heal: {x: 383, y: 168, item: "strength" },
+			it_rocksmash_nevermeltice: {x: 192, y: 407, item: "strength" },
 			
 	},
-	dragonsden: {	
-			it_top:           {x: 470, y: 67, item: "overworld" },
-			it_left:          {x: 87,  y: 305, item: "overworld" },
+	dragonsden: {		
+			entrance:         {x: 344, y: 61,   name: "Dragon's Den" },
+			shrine:           {x: 295, y: 468 , name: "Dragon's Den" },
+
+			it_top:           {x: 470, y: 67,  item: "overworld" }, //need to beat claire first to access this area
+			it_left:          {x: 87,  y: 305, item: "surf" },
 			it_right:         {x: 568, y: 281, item: "overworld" },
-			it_hidden_left:   {x: 345, y: 257, item: "overworld" },
-			it_hidden_right:  {x: 504, y: 220, item: "overworld" },
-			it_hidden_bottom: {x: 535, y: 447, item: "overworld" },	
+			it_hidden_left:   {x: 345, y: 257, item: "whirl" },
+			it_hidden_right:  {x: 504, y: 220, item: "whirl" },
+			it_hidden_bottom: {x: 535, y: 447, item: "whirl" },
+			it_gym_badge:     {x: 336, y: 446, item: "whirl" }, //blackthorn gym badge and tm
+			it_gym_tm:        {x: 240, y: 491, item: "whirl" },	
 	},
   victoryroad_reception: {
 			reception_bot:   {x: 484, y: 580,                         name: "League Reception"  },
@@ -1176,7 +1181,7 @@ let crystal_fir = {
 			moonsquare_top:     {x: 396, y: 44,  name: "Mt. Moon (Square)" },
 			moonsquare_bot:     {x: 423, y: 147, name: "Mt. Moon (Square)" },
 			
-			it_rocksmash_clefairy: {x: 296, y: 221, item: "overworld" },
+			it_rocksmash_clefairy: {x: 296, y: 221, item: "rocksmash" },
 			it_r4_hp_up: {x: 468, y: 350, item: "overworld" },
 			it_r4_hidden: {x: 316, y: 339, item: "overworld" },
 			
@@ -1197,10 +1202,10 @@ let crystal_fir = {
 			it_f1_max_elixer: {x: 67, y: 134, item: "overworld" },
 			it_f2_hidden_max_potion: {x: 483, y: 490, item: "overworld" },
 			it_f2_ultra_ball: {x: 629, y: 391, item: "overworld" },
-			it_f2_pp_up: {x: 364, y: 310, item: "overworld" },
-			it_f2_calcium: {x: 640, y: 148, item: "overworld" },
-			it_f2_inner_left: {x: 464, y: 321, item: "overworld" },
-			it_f2_inner_right: {x: 622, y: 34, item: "overworld" },		
+			it_f2_pp_up: {x: 364, y: 310, item: "waterfall" },
+			it_f2_calcium: {x: 640, y: 148, item: "waterfall" },
+			it_f2_inner_left: {x: 464, y: 321, item: "waterfall" },
+			it_f2_inner_right: {x: 622, y: 34, item: "waterfall" },		
 
 			
         },
@@ -1238,14 +1243,14 @@ let crystal_fir = {
 			
 	},
 	diglettcave_underpass: { 
-        		underpass_bot: {x: 261, y: 472, corridor: "underpass_bot", name: "Kanto Underpass" },
+        		underpass_bot: {x: 261, y: 472, corridor: "underpass_bot", name: "Kanto Underpass" }, 
 			underpass_top:    {x: 263, y: 38, corridor: "underpass_top", name: "Kanto Underpass" },
-			diglett_top: {x: 74, y: 54, corridor: "diglett_top", name: "Diglett's Cave"       },
+			diglett_top: {x: 74, y: 54, corridor: "diglett_top", name: "Diglett's Cave"       }, 
 			diglett_bot: {x: 92, y: 486, corridor: "diglett_bot", name: "Diglett's Cave"       },
 			
         		        		
-        		it_hidden_rock: {x: 125, y: 184, item: "overworld" },
-        		it_hidden_underground_top: {x: 214, y: 135, item: "overworld" },
+        		it_hidden_rock: {x: 125, y: 184, item: "overworld" }, //need to move snorlax //TODO
+        		it_hidden_underground_top: {x: 214, y: 135, item: "overworld" }, //need to finish machine part quest to access this //TODO
         		it_hidden_underground_bottom: {x: 238, y: 385, item: "overworld" },
         },
 
