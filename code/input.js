@@ -98,9 +98,10 @@ let debug_text = "";
 let debug_entry = 0;
 const debug_whitespace = "                                                      ";
 
-const STATE_DEFAULT = 0;
-const STATE_LINK1 = 1;
-const STATE_LINK2 = 2;
+const STATE_DEFAULT  = 0;
+const STATE_LINK1    = 1;
+const STATE_LINK2    = 2;
+const STATE_ITEMLINK = 3;
 let current_state = STATE_DEFAULT;
 let link_location, link_warp;
 let current_location;
@@ -118,7 +119,7 @@ function OnMouseDown(event) {
             click = left_click;
             if (mouse_position.x > game.left_width) {
                 let info = GetWarp(mouse_position);
-                if (info && info.type == TYPE_WARP) break;
+                if (info && (info.type == TYPE_WARP || info.type == TYPE_ITEM)) break;
 
                 traslucent_warps  = true;
                 RerenderLayer(LAYER_LOCATION);
@@ -154,14 +155,15 @@ function OnMouseDown(event) {
 
     if (!click) return;
 
+    // Start linking early before doing a full click
     let info = GetClicked(mouse_position);
     if (info) {
         click.down = true;
         click.info = info;
-        if (event.which == LEFT_CLICK && info.type == TYPE_WARP && current_state == STATE_DEFAULT) {
+        if (event.which == LEFT_CLICK && current_state == STATE_DEFAULT && (info.type == TYPE_WARP || info.type == TYPE_ITEM)) {
             link_location = current_location;
             link_warp     = info.target;
-            current_state = STATE_LINK1;
+            current_state = info.type == TYPE_WARP ? STATE_LINK1 : STATE_ITEMLINK;
             click.down = false;
         }
     }
@@ -263,8 +265,14 @@ function OnMouseUp(event) {
                         case TYPE_LOCATION: {
                             switch (current_state) {
                                 case STATE_LINK1:
-                                case STATE_LINK2: {
-                                    current_state = (info.target == link_location) ? STATE_LINK1 : STATE_LINK2;
+                                case STATE_LINK2:
+                                case STATE_ITEMLINK: {
+                                    if (current_state == STATE_ITEMLINK) {
+                                        current_state = STATE_DEFAULT;
+                                    }
+                                    else {
+                                        current_state = (info.target == link_location) ? STATE_LINK1 : STATE_LINK2;
+                                    }
                                 } // falldown
                                 case STATE_DEFAULT: {
                                     current_location = info.target;
@@ -295,6 +303,7 @@ function OnMouseUp(event) {
                         
                         case TYPE_WARP: {
                             switch (current_state) {
+                                case STATE_ITEMLINK:
                                 case STATE_DEFAULT: {
                                     link_location = current_location;
                                     link_warp     = info.target;
@@ -337,7 +346,28 @@ function OnMouseUp(event) {
                                     current_state = STATE_DEFAULT;
                                 } break;
                             }
-                        }
+                        } break;
+
+                        case TYPE_ITEM: {
+                            switch (current_state) {
+                                case STATE_LINK1:
+                                case STATE_LINK2:
+                                case STATE_DEFAULT: {
+                                    link_location = current_location;
+                                    link_warp     = info.target;
+                                    current_state = STATE_ITEMLINK;
+                                } break;
+                                case STATE_ITEMLINK: {
+                                    if (link_location == current_location && link_warp == info.target) {
+                                        current_state = STATE_DEFAULT;
+                                    }
+                                    else {
+                                        link_location = current_location;
+                                        link_warp     = info.target;
+                                    }
+                                } break;
+                            }
+                        } break;
 
                         case TYPE_MODIFIER: {
                             if (current_state != STATE_DEFAULT) {
@@ -409,15 +439,6 @@ function OnMouseUp(event) {
                                 ChangeModifier(current_location, info.target, null);
                                 break;
                             }
-                            if (warp.item) {
-                                if (warp.link == "item_overworld") {
-                                    ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_checked", null);
-                                }
-                                else {
-                                    ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_overworld", null);
-                                }
-                                break;
-                            }
 
                             if (!warp.link_type || (warp.link_type == LINKTYPE_MARK && (warp.link == "unknown" || warp.link == "corridor"))) {
                                 ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "dead_end", null);
@@ -430,6 +451,19 @@ function OnMouseUp(event) {
                                 }
                             }
                             
+                        } break;
+                        case TYPE_ITEM: {
+                            let warp = game.warps[current_location][info.target];
+                            if (warp.modifier) {
+                                ChangeModifier(current_location, info.target, null);
+                                break;
+                            }
+                            if (warp.link == "item_overworld") {
+                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_checked", null);
+                            }
+                            else {
+                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_overworld", null);
+                            }
                         } break;
                     }
                 } break;
@@ -516,6 +550,7 @@ const TYPE_MARK     = "mark";
 const TYPE_PROGRESS = "progress";
 const TYPE_LOCATION = "location";
 const TYPE_WARP     = "warp";
+const TYPE_ITEM     = "item";
 const TYPE_CONFIG   = "config";
 const TYPE_MODIFIER = "modifier";
 function GetClicked(position) {
@@ -600,17 +635,18 @@ function GetMark(position) {
 }
 function GetWarp(position) {
     // Check all warps
-    let location = game.locations[current_location];
+    //let location = game.locations[current_location];
     for (let key in game.warps[current_location]) {
         let warp = game.warps[current_location][key];
         let info = GetWarpRenderInfo(warp);
-
+        
+        if (info.item_frame) { info = info.item_frame; } // Get the bigger hitbox
         if (position.x > info.x &&
             position.x < info.x + info.w &&
             position.y > info.y &&
             position.y < info.y + info.h)
         {
-            return { type: TYPE_WARP, target: key };
+            return { type: warp.item ? TYPE_ITEM : TYPE_WARP, target: key };
         }
     }
     return null;

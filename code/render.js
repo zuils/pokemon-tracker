@@ -700,7 +700,7 @@ function RenderLine(context) {
     context.imageSmoothingEnabled = false;
 
     let info;
-    if (current_state == STATE_LINK1) {
+    if (current_state == STATE_LINK1 || current_state == STATE_ITEMLINK) {
         //let location = game.locations[current_location];
         let warp = game.warps[current_location][link_warp];
         info = {
