@@ -833,7 +833,7 @@ let crystal_fir = {
 			it_ultra_ball: {x: 265, y: 101, item: "basement_key" },
 			it_max_ether: {x: 452, y: 308, item: "basement_key" },
 			it_sleeptalk: {x: 418, y: 223, item: "basement_key" },
-			it_director: {x: 361, y: 203, item: "radiotower" }, //req: Im actually unsure what exactly is needed (only card key section, or fake director ?) TODO
+			it_director: {x: 361, y: 203, item: "radiotower" }, //req: beat radio tower
 
         },
         radiotower: {
