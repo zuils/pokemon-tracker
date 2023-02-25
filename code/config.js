@@ -142,7 +142,7 @@ function InitTrackerToUnknowns() {
     for (let key_game in games) {
         games[key_game].marks[0][0][1] = 0; // assuming unknowns are always being tracked
         games[key_game].marks[0][1][1] = 0;
-        games[key_game].marks[0][3][1] = 0;
+        games[key_game].marks[1][0][1] = 0;
         for (let key_location in games[key_game].warps) {
             for (let key_warp in games[key_game].warps[key_location]) {
                 let w = games[key_game].warps[key_location][key_warp];
@@ -155,7 +155,7 @@ function InitTrackerToUnknowns() {
                 }
                 else if (w.item) {
                     w.link = "item_overworld";
-                    games[key_game].marks[0][3][1] += 1;
+                    games[key_game].marks[1][0][1] += 1;
                 }
                 else {
                     w.link = "unknown";

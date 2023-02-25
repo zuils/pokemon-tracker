@@ -86,6 +86,7 @@ let icons = {
     settings:  null,
     help:      null,
     remaining: null,
+    item_frame: null,
 };
 let images = [];
 function LoadImages() {
@@ -140,6 +141,8 @@ function LoadImages() {
             if (pair[1] !== undefined && !images.includes(pair[0])) { list.push("images/" + game.folder + "/progress/" + pair[0] + ".png") }
         }
     }
+    
+    if (!icons.item_frame) { list.push("images/_marks/item_frame.png"); }
 
     // Load all images
     if (list.length == 0) {
@@ -184,10 +187,11 @@ function ImageLoaded() {
         game.left_width = (marks_max_width+game.modifiers.length)*(MARK_SIZE+MARK_SEPARATION) + MODIFIER_SEPARATION;
         if (game.left_width < game.map.w) { game.left_width = game.map.w; }
     }
-    else if (this.src.includes("frame.png"))     { game.frame = this; }
-    else if (this.src.includes("settings.png"))  { icons.settings = this;   }
-    else if (this.src.includes("help.png"))      { icons.help = this;       }
-    else if (this.src.includes("remaining.png")) { icons.remaining = this;  }
+    else if (this.src.includes("item_frame.png")) { icons.item_frame = this; }
+    else if (this.src.includes("frame.png"))      { game.frame = this; }
+    else if (this.src.includes("settings.png"))   { icons.settings = this;   }
+    else if (this.src.includes("help.png"))       { icons.help = this;       }
+    else if (this.src.includes("remaining.png"))  { icons.remaining = this;  }
     else if (this.src.includes("/_marks/") || this.src.includes("/progress/")) {
         images[GetNameImage(this.src)] = this;
     }
@@ -620,6 +624,9 @@ function RenderLocation(context) {
             }
 
             if (info.type == "image") {
+                if (info.item_frame) {
+                    DrawImage(context, icons.item_frame, info.item_frame);
+                }
                 DrawImage(context, info.image, info);
                 if (warp.modifier && warp.modifier != "null") {
                     DrawBoxContextless(context, info, MODIFIER_WIDTH, warp.modifier);
@@ -948,6 +955,27 @@ function GetWarpRenderInfo(warp) {
         info.y = rendered_location.y + warp.y*rendered_location.scale - info.image.naturalHeight/2;
         info.w = info.image.naturalWidth;
         info.h = info.image.naturalHeight;
+
+        if (warp.item) {
+            let new_w = info.w / 1.375;
+            let new_h = info.h / 1.375;
+
+            if (!warp.link.startsWith("item_")) {
+                info.item_frame = {};
+                info.item_frame.x = rendered_location.x + warp.x*rendered_location.scale - icons.item_frame.naturalWidth/2;
+                info.item_frame.y = rendered_location.y + warp.y*rendered_location.scale - icons.item_frame.naturalHeight/2;
+                info.item_frame.w = icons.item_frame.naturalWidth;
+                info.item_frame.h = icons.item_frame.naturalHeight;
+
+                new_w = info.w / 1.5;
+                new_h = info.h / 1.5;
+            }
+            
+            info.x += (info.w - new_w) / 2;
+            info.y += (info.h - new_h) / 2;
+            info.w = new_w;
+            info.h = new_h;
+        }
     }
 
     return info;

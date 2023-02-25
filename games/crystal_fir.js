@@ -337,20 +337,17 @@ let crystal_fir = {
         },*/
 
         viridian_r1_r22: {
-        		
-        		gate:   {x: 79, y: 85, name: "Route 22 (Viridian)" },
+			gate:   {x: 79, y: 85, name: "Route 22 (Viridian)" },
 			gym:    {x: 412, y: 77  },
 			house:  {x: 235, y: 127 },
 			school: {x: 267, y: 211 },
 			mart:   {x: 364, y: 281 },
 			centre: {x: 267, y: 371 },
         		
-        		it_cut_guy: {x: 90, y: 259, item: "cut_or_surf" }, // req: either surf OR cut
-        		it_tree: {x: 79, y: 421, item: "overworld" },
-        		it_gym_badge: {x: 366, y: 97, item: "overworld" },
-        		        		
+			it_cut_guy:   {x: 90,  y: 259, item: "surf_cut"  }, // req: either surf OR cut
+			it_tree:      {x: 79,  y: 421, item: "overworld" },
+			it_gym_badge: {x: 366, y: 97,  item: "overworld" },
         },
-
 
         pewter: {
             gym:    {x: 236, y: 235 },
@@ -395,15 +392,15 @@ let crystal_fir = {
 			gym:         {x: 124, y: 371,                          name: "Vermilion City (Gym)" },
 			botmart:     {x: 331, y: 402                                                        },
 			digglet:     {x: 528, y: 192,                          name: "Vermilion (Diglett)"  },
-                       gate:        {x: 233, y: 46                                                         },
+			gate:        {x: 233, y: 46                                                         },
 			tunnel:      {x: 409, y: 19,                           name: "Vermilion(Underpass)" },
 
 			
-			it_hidden: {x: 184, y: 388, item: "overworld" },
-			it_fanclub: {x: 92, y: 300, item: "overworld" },
-			it_lostitem: {x: 128, y: 300, item: "copy_cat" }, //req: talk to copy cat girl in saffron 
-			it_gym_badge: {x: 124, y: 394 , item: "overworld" },
-			it_port:{x: 184, y: 555, item: "surf_ticket" }, //req: ss-ticket and surf required TODO			
+			it_hidden:    {x: 184, y: 388, item: "overworld"   },
+			it_fanclub:   {x: 92,  y: 300, item: "overworld"   },
+			it_lostitem:  {x: 128, y: 300, item: "copy_cat"    }, //req: talk to copy cat girl in saffron 
+			it_gym_badge: {x: 124, y: 394, item: "overworld"   },
+			it_port:      {x: 184, y: 555, item: "surf_ticket" }, //req: ss-ticket and surf required TODO			
 			
         },
         celadon_r7: {
@@ -419,11 +416,11 @@ let crystal_fir = {
 			r16_fly:    {x: 62,  y: 209, name: "R16 (Fly House)"    },
 			r16_gate:   {x: 62,  y: 291                             },
 			
-			it_hidden: {x: 582, y: 376, item: "overworld" },
-			it_leftover: {x: 398, y: 452, item: "overworld" }, //might not be in 
-			it_tophouse: {x: 259, y: 74, item: "overworld" },
-			it_gym_badge: {x: 76, y: 462, item: "cut" },
-			it_gym_tm: {x: 103, y: 465, item: "cut" },		
+			it_hidden:    {x: 582, y: 376, item: "overworld" },
+			it_leftover:  {x: 398, y: 452, item: "overworld" }, //might not be in 
+			it_tophouse:  {x: 259, y: 74,  item: "overworld" },
+			it_gym_badge: {x: 76,  y: 462, item: "cut"       },
+			it_gym_tm:    {x: 103, y: 465, item: "cut"       },		
 
         },
         lavender_r8: {
@@ -437,7 +434,7 @@ let crystal_fir = {
 			rocktunnel: {x: 311, y: 82  },
 			gate:       {x: 73,  y: 111, name:"Route 8 (Lavender)" },
 			
-			it_tree: {x: 22, y: 237, item: "overworld" },
+			it_tree:          {x: 22,  y: 237, item: "overworld"          },
 			it_expansioncard: {x: 347, y: 207, item: "machine_part_quest" },
         },
         saffron: {
@@ -454,11 +451,11 @@ let crystal_fir = {
 			center:    {x: 152, y: 447 },
 			psychic:   {x: 438, y: 447 },
 			
-			it_psychic: {x: 461, y: 463, item: "overworld" },
-			it_copycat: {x: 173, y: 172, item: "lost_item" },
-			it_silphco: {x: 328, y: 329, item: "overworld" },
-			it_fightgym: {x: 390, y: 45, item: "overworld" },
-			it_gym_badge: {x: 500, y: 47, item: "overworld" },
+			it_psychic:   {x: 461, y: 463, item: "overworld" },
+			it_copycat:   {x: 173, y: 172, item: "lost_item" },
+			it_silphco:   {x: 328, y: 329, item: "overworld" },
+			it_fightgym:  {x: 390, y: 45,  item: "overworld" },
+			it_gym_badge: {x: 500, y: 47,  item: "overworld" },
 			
 			
         },
@@ -473,9 +470,9 @@ let crystal_fir = {
 			botgate:   {x: 127, y: 539                              },
 			leftgate:  {x: 60,  y: 298                              },
 			
-			it_tree: {x: 158, y: 28, item: "cut" },
-			it_gym_badge: {x: 79, y: 431, item: "overworld" },
-			it_gym_tm: {x: 107, y: 429, item: "overworld" },
+			it_tree:      {x: 158, y: 28,  item: "cut"       },
+			it_gym_badge: {x: 79,  y: 431, item: "overworld" },
+			it_gym_tm:    {x: 107, y: 429, item: "overworld" },
         },
         cinnabar: {
 			center: {x: 186, y: 151},
@@ -552,20 +549,20 @@ let crystal_fir = {
 			tm12_top:    {x: 150, y: 559, corridor: "tm12_bot",  name: "Gate R34 (TM12)" },
 			tm12_bot:    {x: 152, y: 673, corridor: "tm12_top",  name: "Gate R34 (TM12)" },
 			
-			it_cut: {x: 353, y: 432, item: "farfetchd" }, //req: farfetchd quest required, but you can also do farfetchd quest here TODO
-			it_revive: {x: 567, y: 536, item: "overworld" },
+			it_cut:             {x: 353, y: 432, item: "farfetchd" }, //req: farfetchd quest required, but you can also do farfetchd quest here TODO
+			it_revive:          {x: 567, y: 536, item: "overworld" },
 			it_hidden_fullheal: {x: 259, y: 298, item: "overworld" },
-			it_xattack: {x: 367, y: 279, item: "overworld" },
-			it_antidote: {x: 532, y: 135, item: "overworld" },
-			it_hidden_potion: {x: 618, y: 229, item: "overworld" },
-			it_headbutt: {x: 506, y: 229, item: "overworld" },
-			it_ether: {x: 656, y: 23, item: "overworld" },
-			it_hidden_ether: {x: 421, y: 96, item: "overworld" },
-			it_sweet_scent: {x: 200, y: 630, item: "overworld" },
-			it_nugget: {x: 35, y: 302, item: "surf" },
-			it_hidden_candy: {x: 31, y: 372, item: "surf" },
-			it_hidden_daycare: {x: 171, y: 149, item: "overworld" },
-			it_softsand: {x: 21, y: 589, item: "surf" },
+			it_xattack:         {x: 367, y: 279, item: "overworld" },
+			it_antidote:        {x: 532, y: 135, item: "overworld" },
+			it_hidden_potion:   {x: 618, y: 229, item: "overworld" },
+			it_headbutt:        {x: 506, y: 229, item: "overworld" },
+			it_ether:           {x: 656, y: 23,  item: "overworld" },
+			it_hidden_ether:    {x: 421, y: 96,  item: "overworld" },
+			it_sweet_scent:     {x: 200, y: 630, item: "overworld" },
+			it_nugget:          {x: 35,  y: 302, item: "surf"      },
+			it_hidden_candy:    {x: 31,  y: 372, item: "surf"      },
+			it_hidden_daycare:  {x: 171, y: 149, item: "overworld" },
+			it_softsand:        {x: 21,  y: 589, item: "surf"      },
         },
         /*r35_r36: {
 			botgate:    {x: 158, y: 452,                         name: "Route 35"          },
@@ -642,7 +639,7 @@ let crystal_fir = {
         },
 
         r2: {
-                       diglett: {x: 200, y: 76  },
+			diglett: {x: 200, y: 76  },
 			trade:   {x: 248, y: 210 },
 			gatetop: {x: 266, y: 401 },
 			gatebot: {x: 246, y: 513 },
@@ -669,7 +666,6 @@ let crystal_fir = {
         },*/
 
         r11_r12_r13: {
-        		
         		fish: {x: 112, y: 277 },
         		
         		it_hidden_surf: {x: 162, y: 122, item: "surf" },
@@ -781,23 +777,23 @@ let crystal_fir = {
 
         },
         unioncave: {
-                       f1_top:   {x: 278, y: 36,  name: "Union Cave (1F)"  },
-			f1_mid:   {x: 90, y: 185, name: "Union Cave (1F)"  },
-			f1_right: {x: 279, y: 341, name: "Union Cave (1F)"  },
-			f1_left:  {x: 68,  y: 352, name: "Union Cave (1F)"  },
-			bf1_top:  {x: 408, y: 53,  name: "Union Cave (B1F)" },
-			bf1_mid:  {x: 410, y: 185, name: "Union Cave (B1F)" },
-			bf1_bot:  {x: 452, y: 324, name: "Union Cave (B1F)" },
+			f1_top:      {x: 278, y: 36,  name: "Union Cave (1F)"  },
+			f1_mid:      {x: 90,  y: 185, name: "Union Cave (1F)"  },
+			f1_right:    {x: 279, y: 341, name: "Union Cave (1F)"  },
+			f1_left:     {x: 68,  y: 352, name: "Union Cave (1F)"  },
+			bf1_top:     {x: 408, y: 53,  name: "Union Cave (B1F)" },
+			bf1_mid:     {x: 410, y: 185, name: "Union Cave (B1F)" },
+			bf1_bot:     {x: 452, y: 324, name: "Union Cave (B1F)" },
 			bf1_deadend: {x: 280, y: 469, name: "Union Cave (B1F)" }, //deadend
 			
-			it_xattack: {x: 93, y: 29, item: "overworld" },
-			it_great_ball: {x: 252, y: 190, item: "overworld" },
-			it_potion: {x: 50, y: 122, item: "overworld" },
-			it_awakening: {x: 175, y: 376, item: "overworld" },
-			it_swift: {x: 367, y: 269, item: "overworld" },
-			it_xdefend: {x: 586, y: 359, item: "overworld" },
-			it_elixer: {x: 434, y: 472, item: "surf" },
-			it_hyper_potion: {x: 391, y: 704, item: "surf" },
+				it_xattack:      {x: 93,  y: 29,  item: "overworld" },
+				it_great_ball:   {x: 252, y: 190, item: "overworld" },
+				it_potion:       {x: 50,  y: 122, item: "overworld" },
+				it_awakening:    {x: 175, y: 376, item: "overworld" },
+				it_swift:        {x: 367, y: 269, item: "overworld" },
+				it_xdefend:      {x: 586, y: 359, item: "overworld" },
+				it_elixer:       {x: 434, y: 472, item: "surf"      },
+				it_hyper_potion: {x: 391, y: 704, item: "surf"      },
         },
         goldenrodstore: {
 			f1_door: {x: 132, y: 380, name: "Goldenrod Store" },
@@ -814,49 +810,46 @@ let crystal_fir = {
 			f6_down: {x: 513, y: 31,  name: "Goldenrod Store" },
 			b1f:     {x: 254, y: 448, name: "Goldenrod Store" },
 			
-			it_return1: {x: 365, y: 191, item: "overworld" },
-			it_return2: {x: 385, y: 191, item: "overworld" },
-			it_basement_NW: {x: 56, y: 441, item: "overworld" },
-			it_basement_NE: {x: 162, y: 442, item: "basement_key" }, //req: basement key to access basement //deadend //TODO
-			it_basement_SW: {x: 349, y: 479, item: "overworld" },
-			it_basement_SE: {x: 431, y: 478, item: "overworld" },
+				it_return1:     {x: 365, y: 191, item: "overworld"    },
+				it_return2:     {x: 385, y: 191, item: "overworld"    },
+				it_basement_NW: {x: 56,  y: 441, item: "overworld"    },
+				it_basement_NE: {x: 162, y: 442, item: "basement_key" }, //req: basement key to access basement //deadend //TODO
+				it_basement_SW: {x: 349, y: 479, item: "overworld"    },
+				it_basement_SE: {x: 431, y: 478, item: "overworld"    },
         },
         underground: {
-			top:               {x: 51, y: 44                                                   },
-			basement:          {x: 139, y: 99                                                  },
-			bot:               {x: 53, y: 554                                                  },
+			top:               {x: 51,  y: 44                                                   },
+			basement:          {x: 139, y: 99                                                   },
+			bot:               {x: 53,  y: 554                                                  },
 			basement_rival:    {x: 408, y: 406, corridor: "basement_director", name: "Basement" },
 			basement_director: {x: 456, y: 139, corridor: "basement_rival",    name: "Basement" },		
 			
-			it_coin_case: {x: 71, y: 412, item: "overworld" },
-			it_hidden_super_potion: {x: 78, y: 301, item: "overworld" },
-			it_hidden_paralyz_heal: {x: 56, y: 216, item: "overworld" },
-			it_hidden_antidote: {x: 126, y: 137, item: "overworld" },
-			it_hidden_revive: {x: 170, y: 486, item: "basement_key" }, //req: all items in the basement area need basement_key
-			it_hidden_max_potion: {x: 242, y: 462, item: "basement_key" },
-			it_full_heal: {x: 317, y: 462, item: "basement_key" },
-			it_smoke_ball: {x: 153, y: 536, item: "basement_key" },
-			it_ultra_ball: {x: 265, y: 101, item: "basement_key" },
-			it_max_ether: {x: 452, y: 308, item: "basement_key" },
-			it_sleeptalk: {x: 418, y: 223, item: "basement_key" },
-			it_director: {x: 361, y: 203, item: "radiotower" }, //req: beat radio tower
-
+				it_coin_case:           {x: 71,  y: 412, item: "overworld"    },
+				it_hidden_super_potion: {x: 78,  y: 301, item: "overworld"    },
+				it_hidden_paralyz_heal: {x: 56,  y: 216, item: "overworld"    },
+				it_hidden_antidote:     {x: 126, y: 137, item: "overworld"    },
+				it_hidden_revive:       {x: 170, y: 486, item: "basement_key" }, //req: all items in the basement area need basement_key
+				it_hidden_max_potion:   {x: 242, y: 462, item: "basement_key" },
+				it_full_heal:           {x: 317, y: 462, item: "basement_key" },
+				it_smoke_ball:          {x: 153, y: 536, item: "basement_key" },
+				it_ultra_ball:          {x: 265, y: 101, item: "basement_key" },
+				it_max_ether:           {x: 452, y: 308, item: "basement_key" },
+				it_sleeptalk:           {x: 418, y: 223, item: "basement_key" },
+				it_director:            {x: 361, y: 203, item: "radiotower"   }, //req: beat radio tower
         },
         radiotower: {
-        		entrance:          {x: 48, y: 115}, //somewhat a deadend
-        		
-        		it_radiocard: {x: 200, y: 76, item: "overworld" },
-        		it_buena: {x: 209, y: 220, item: "overworld" },
-        		it_fake_director: {x: 38, y: 628, item: "overworld" }, //this and all below require 7+ badges TODO
-        		it_sunny_day: {x: 204, y: 320, item: "card_key" }, 
-        		it_pink_bow: {x: 206, y: 503, item: "card_key" },
-        		it_clear_bell: {x: 243, y: 624, item: "card_key" },
-        		it_ultra_ball: {x: 155, y: 633, item: "card_key" },
-        				
+			entrance: {x: 48, y: 115}, //somewhat a deadend
+			
+				it_radiocard:     {x: 200, y: 76,  item: "overworld" },
+				it_buena:         {x: 209, y: 220, item: "overworld" },
+				it_fake_director: {x: 38,  y: 628, item: "overworld" }, //this and all below require 7+ badges TODO
+				it_sunny_day:     {x: 204, y: 320, item: "card_key"  }, 
+				it_pink_bow:      {x: 206, y: 503, item: "card_key"  },
+				it_clear_bell:    {x: 243, y: 624, item: "card_key"  },
+				it_ultra_ball:    {x: 155, y: 633, item: "card_key"  },
         },
 
         nationalpark_r35_r36b: {
-        		   
 			botgate:    {x: 158, y: 395,                         name: "Route 35"          },
 			botpark:    {x: 63, y: 264,                         name: "Route 35"          },
 			toppark:    {x: 408, y: 95,                          name: "Route 36"          },
@@ -865,14 +858,14 @@ let crystal_fir = {
 			park_right: {x: 244, y: 116,  corridor: "park_bot",   name: "National Park"     },
 			park_bot:   {x: 83, y: 127, corridor: "park_right", name: "National Park"     },
         		
-        		it_kenya: {x: 362, y: 389, item: "overworld" },
-        		it_tree_hell: {x: 61, y: 386, item: "surf" },
-        		it_hell: {x: 251, y: 357, item: "overworld" },
-        		it_tree_sudo: {x: 450, y: 42, item: "overworld" },
-        		it_quick_claw: {x: 158, y: 26, item: "overworld" },
-        		it_park_right: {x: 262, y: 16, item: "overworld" },
-        		it_park_left: {x: 16, y: 26, item: "overworld" },
-        		it_hidden_park: {x: 10, y: 110, item: "overworld" },
+				it_kenya: {x: 362, y: 389, item: "overworld" },
+				it_tree_hell: {x: 61, y: 386, item: "surf" },
+				it_hell: {x: 251, y: 357, item: "overworld" },
+				it_tree_sudo: {x: 450, y: 42, item: "overworld" },
+				it_quick_claw: {x: 158, y: 26, item: "overworld" },
+				it_park_right: {x: 262, y: 16, item: "overworld" },
+				it_park_left: {x: 16, y: 26, item: "overworld" },
+				it_hidden_park: {x: 10, y: 110, item: "overworld" },
         },
 
         /*tintower: {
@@ -1461,7 +1454,9 @@ let crystal_fir = {
     // if null, then we don't do tracking
     // if undefined, then we don't draw the mark
     marks: [
-        [["unknown",     0], ["corridor",    0], ["dead_end", null], ["item_overworld", 0], ["item_checked", 0], ["event",      0], ["center",      0], ["mart",         0], ["one_way",  null]],
+        [["unknown",     0], ["corridor",    0], ["dead_end", null], ["event",      0], ["center",      0], ["mart",         0], ["one_way",  null]],
+        [["item_overworld", 0], ["item_checked", null]],
+        //[],
         [["normal",      0], ["fighting",    0], ["flying",      0], ["poison",     0], ["ground",      0], ["rock",         0], ["bug",         0], ["ghost",       0], ["fairy",     0]],
         [["steel",       0], ["fire",        0], ["water",       0], ["grass",      0], ["electric",    0], ["psychic",      0], ["ice",         0], ["dragon",      0], ["dark",      0]],
         [["1",           0], ["2",           0], ["3",           0], ["4",          0], ["5",           0], ["6",            0], ["7",           0], ["8",           0]],
