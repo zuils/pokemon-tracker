@@ -119,10 +119,10 @@ let crystal_fir = {
         		r28_gate: {x: 81, y: 44, name: "Route 28 (Newbark)"},
         		
         		it_mom: {x: 350, y: 40, item: "overworld" },
-        		it_aide_starter: {x: 283, y: 233, item: "overworld" },
-        		it_aide_mystery_egg: {x: 299, y: 233, item: "mystery_egg" },
-        		it_elm_rising_badge: {x: 268, y: 140, item: "rising_badge" },
-        		it_elm_e4: {x: 282, y: 140, item: "e4" }, 
+        		it_aide_starter: {x: 271, y: 233, item: "overworld" },
+        		it_aide_mystery_egg: {x: 307, y: 233, item: "mystery_egg" },
+        		it_elm_rising_badge: {x: 261, y: 140, item: "rising_badge" },
+        		it_elm_e4: {x: 285, y: 140, item: "e4" }, 
         		it_potion: {x: 215, y: 44, item: "overworld" },
         		it_berry: {x: 64, y: 184, item: "overworld" },
         		it_tuscany: {x: 155, y: 211, item: "zephyr_badge" },
@@ -395,8 +395,8 @@ let crystal_fir = {
 
 			
 			it_hidden: {x: 184, y: 388, item: "overworld" },
-			it_fanclub: {x: 92, y: 291, item: "overworld" },
-			it_lostitem: {x: 119, y: 290, item: "copy_cat" }, //req: talk to copy cat girl in saffron 
+			it_fanclub: {x: 92, y: 300, item: "overworld" },
+			it_lostitem: {x: 128, y: 300, item: "copy_cat" }, //req: talk to copy cat girl in saffron 
 			it_gym_badge: {x: 124, y: 394 , item: "overworld" },
 			it_port:{x: 184, y: 555, item: "surf_ticket" }, //req: ss-ticket and surf required TODO			
 			
@@ -509,9 +509,9 @@ let crystal_fir = {
 			it_tree_kenya: {x: 262, y: 88, item: "overworld" },
 			it_kenya_return: {x: 282, y: 88, item: "overworld" },
 			it_tree_lab:   {x: 492, y: 363, item: "overworld" },
-			it_mrpokemon:  {x: 576, y: 369, item: "overworld" },
-			it_oak: {x: 595, y: 369, item: "overworld" },
-			it_red_scale: {x: 616, y: 369, item: "red_scale" },
+			it_mrpokemon:  {x: 573, y: 380, item: "overworld" },
+			it_oak: {x: 590, y: 380, item: "overworld" },
+			it_red_scale: {x: 618, y: 380, item: "red_scale" },
 			
         },
         alphruins_r32: {
@@ -627,6 +627,7 @@ let crystal_fir = {
 			falls_left:  {x: 241, y: 485, corridor: "falls_right", name: "Tohjo Falls" },
 			falls_right: {x: 429, y: 485, corridor: "falls_left",  name: "Tohjo Falls" },
 			
+			it_tohjo_surf: {x: 84, y: 350 , item: "surf"},
 			it_sandstorm: {x: 191, y: 104, item: "overworld" }, //this route is kinda weird, you actually need waterfall to come from left (in non-warp-rando) TODO
 			it_surf: {x: 153, y: 251, item: "surf" },
 			it_whirl: {x: 315, y: 248, item: "whirl" }, //req: actually surf AND whirl, I didnt include surf for whirl and waterfall
@@ -1144,7 +1145,7 @@ let crystal_fir = {
 			it_hidden_right:  {x: 504, y: 220, item: "whirl" },
 			it_hidden_bottom: {x: 535, y: 447, item: "whirl" },
 			it_gym_badge:     {x: 336, y: 446, item: "whirl" }, //blackthorn gym badge and tm
-			it_gym_tm:        {x: 240, y: 491, item: "whirl" },	
+			it_gym_tm:        {x: 233, y: 488, item: "whirl" },	
 	},
   victoryroad_reception: {
 			reception_bot:   {x: 484, y: 580,                         name: "League Reception"  },
