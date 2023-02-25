@@ -8,7 +8,8 @@ function RegisterInputEvents() {
     html.canvas.addEventListener("mousedown",   OnMouseDown);
     html.canvas.addEventListener("mousemove",   OnMouseMove);
     html.canvas.addEventListener("mouseup",     OnMouseUp);
-    html.canvas.addEventListener("mouseout",    OnMouseUp);
+
+    html.canvas.addEventListener("mouseout",    OnMouseOut);
     html.canvas.addEventListener("contextmenu", OnContextMenu);
 
     document.addEventListener("keydown", OnKeyDown);
@@ -23,7 +24,17 @@ function BeforeUnload(event) {
         return event.returnValue = false;
     }
 }
+function OnMouseOut(event) {
+    // Avoid tooltips from rendering
+    current_hovering_location = null;
+    current_hovering_mark = null;
+    cooldown_tooltip = DEFAULT_COOLDOWN_TOOLTIP;
 
+    // Avoid line from rendering
+    if (current_state != STATE_DEFAULT) {
+        mouse_position = GetLineOrigin();
+    }
+}
 function OnResize(event) { SetCanvasDimensions(); }
 
 function OnKeyDown(event) {

@@ -695,26 +695,27 @@ function RenderProgress(context) {
 //      ██        ██      ██ ██  ██ ██ ██      
 // ███████ ██     ███████ ██ ██   ████ ███████ 
 
-function RenderLine(context) {
-    if (current_state == STATE_DEFAULT) { return; }
-    context.imageSmoothingEnabled = false;
-
-    let info;
+function GetLineOrigin() {
     if (current_state == STATE_LINK1 || current_state == STATE_ITEMLINK) {
-        //let location = game.locations[current_location];
         let warp = game.warps[current_location][link_warp];
-        info = {
+        return {
             x: rendered_location.x + warp.x*rendered_location.scale,
             y: rendered_location.y + warp.y*rendered_location.scale
         }
     }
     else {
         let location = game.locations[link_location];
-        info = {
+        return {
             x: (location.x + location.w/2) * MAP_SCALE,
             y: (location.y + location.h/2) * MAP_SCALE
         }
     }
+}
+function RenderLine(context) {
+    if (current_state == STATE_DEFAULT) { return; }
+    context.imageSmoothingEnabled = false;
+
+    info = GetLineOrigin();
     context.save(); {
         context.strokeStyle = line_color;
         context.lineWidth = LINE_THICKNESS;
