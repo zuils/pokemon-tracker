@@ -88,7 +88,12 @@ let crystal_fir = {
         mtsilver:              {x: 131, y: 40, w: 8, h: 8, name: "Mt. Silver"                      },
         celadonstore:          {x: 203, y: 32, w: 8, h: 8, name: "Celadon\nDepartment Store"       },
         rocktunnel:            {x: 251, y: 32, w: 8, h: 8, name: "Rock Tunnel"                     },
-        diglettcave_underpass: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path"   },
+        diglettcave_underpass: {x: 235, y: 48,  w: 8,  h: 8,  name: "Diglett Cave\nUnderground Path" },
+        
+        //for shopsanity
+        shop_johto:            {x: 137, y: 96,  w: 8, h: 8, name: "Shops Johto"                    },
+        shop_kanto:            {x: 145, y: 96,  w: 8, h: 8, name: "Shops Kanto"                    },
+        
     },
     
 
@@ -1253,6 +1258,201 @@ let crystal_fir = {
         		it_hidden_rock: {x: 125, y: 184, item: "overworld" }, //need to move snorlax //TODO
         		it_hidden_underground_top: {x: 214, y: 135, item: "overworld" }, //need to finish machine part quest to access this //TODO
         		it_hidden_underground_bottom: {x: 238, y: 385, item: "overworld" },
+        },
+        
+        shop_johto: { 
+			it_cherrygrove1: {x: 230, y: 112, item: "overworld" },
+			it_cherrygrove2: {x: 260, y: 112, item: "overworld" },
+			it_cherrygrove3: {x: 290, y: 112, item: "overworld" },
+			it_cherrygrove4: {x: 320, y: 112, item: "overworld" },
+			it_cherrygrove5: {x: 350, y: 112, item: "overworld" },
+
+			it_violet1: {x: 230, y: 158, item: "overworld" },
+			it_violet2: {x: 260, y: 158, item: "overworld" },
+			it_violet3: {x: 290, y: 158, item: "overworld" },
+			it_violet4: {x: 320, y: 158, item: "overworld" },
+			it_violet5: {x: 350, y: 158, item: "overworld" },
+
+			it_azalea1: {x: 230, y: 204, item: "overworld" },
+			it_azalea2: {x: 260, y: 204, item: "overworld" },
+			it_azalea3: {x: 290, y: 204, item: "overworld" },
+			it_azalea4: {x: 320, y: 204, item: "overworld" },
+			it_azalea5: {x: 350, y: 204, item: "overworld" },
+
+			it_ecruteak1: {x: 230, y: 250, item: "overworld" },
+			it_ecruteak2: {x: 260, y: 250, item: "overworld" },
+			it_ecruteak3: {x: 290, y: 250, item: "overworld" },
+			it_ecruteak4: {x: 320, y: 250, item: "overworld" },
+			it_ecruteak5: {x: 350, y: 250, item: "overworld" },
+
+			it_olivine1: {x: 230, y: 296, item: "overworld" },
+			it_olivine2: {x: 260, y: 296, item: "overworld" },
+			it_olivine3: {x: 290, y: 296, item: "overworld" },
+			it_olivine4: {x: 320, y: 296, item: "overworld" },
+			it_olivine5: {x: 350, y: 296, item: "overworld" },
+
+			it_cianwood1: {x: 230, y: 342, item: "overworld" },
+			it_cianwood2: {x: 260, y: 342, item: "overworld" },
+			it_cianwood3: {x: 290, y: 342, item: "overworld" },
+			it_cianwood4: {x: 320, y: 342, item: "overworld" },
+			it_cianwood5: {x: 350, y: 342, item: "overworld" },
+
+			it_mahagony_rocket1: {x: 230, y: 388, item: "overworld" },
+			it_mahagony_rocket2: {x: 260, y: 388, item: "overworld" },
+			it_mahagony_rocket3: {x: 290, y: 388, item: "overworld" },
+			it_mahagony_rocket4: {x: 320, y: 388, item: "overworld" },
+			it_mahagony_rocket5: {x: 350, y: 388, item: "overworld" },
+
+			it_mahagony1: {x: 230, y: 434, item: "overworld" },
+			it_mahagony2: {x: 260, y: 434, item: "overworld" },
+			it_mahagony3: {x: 290, y: 434, item: "overworld" },
+			it_mahagony4: {x: 320, y: 434, item: "overworld" },
+			it_mahagony5: {x: 350, y: 434, item: "overworld" },
+
+			it_blackthorn1: {x: 230, y: 480, item: "overworld" },
+			it_blackthorn2: {x: 260, y: 480, item: "overworld" },
+			it_blackthorn3: {x: 290, y: 480, item: "overworld" },
+			it_blackthorn4: {x: 320, y: 480, item: "overworld" },
+			it_blackthorn5: {x: 350, y: 480, item: "overworld" },
+			
+			it_gr_ug_top1: {x: 610, y: 158, item: "overworld" },
+			it_gr_ug_top2: {x: 640, y: 158, item: "overworld" },
+			it_gr_ug_top3: {x: 670, y: 158, item: "overworld" },
+			it_gr_ug_top4: {x: 700, y: 158, item: "overworld" },
+			it_gr_ug_top5: {x: 730, y: 158, item: "overworld" },
+			
+			it_gr_ug_bottom1: {x: 610, y: 204, item: "overworld" },
+			it_gr_ug_bottom2: {x: 640, y: 204, item: "overworld" },
+			it_gr_ug_bottom3: {x: 670, y: 204, item: "overworld" },
+			it_gr_ug_bottom4: {x: 700, y: 204, item: "overworld" },
+			it_gr_ug_bottom5: {x: 730, y: 204, item: "overworld" },
+			
+			it_gr_f2_top1: {x: 610, y: 250, item: "overworld" },
+			it_gr_f2_top2: {x: 640, y: 250, item: "overworld" },
+			it_gr_f2_top3: {x: 670, y: 250, item: "overworld" },
+			it_gr_f2_top4: {x: 700, y: 250, item: "overworld" },
+			it_gr_f2_top5: {x: 730, y: 250, item: "overworld" },
+			
+			it_gr_f2_bottom1: {x: 610, y: 296, item: "overworld" },
+			it_gr_f2_bottom2: {x: 640, y: 296, item: "overworld" },
+			it_gr_f2_bottom3: {x: 670, y: 296, item: "overworld" },
+			it_gr_f2_bottom4: {x: 700, y: 296, item: "overworld" },
+			it_gr_f2_bottom5: {x: 730, y: 296, item: "overworld" },
+			
+			it_gr_f3_1: {x: 610, y: 342, item: "overworld" },
+			it_gr_f3_2: {x: 640, y: 342, item: "overworld" },
+			it_gr_f3_3: {x: 670, y: 342, item: "overworld" },
+			it_gr_f3_4: {x: 700, y: 342, item: "overworld" },
+			it_gr_f3_5: {x: 730, y: 342, item: "overworld" },
+			
+			it_gr_f4_1: {x: 610, y: 388, item: "overworld" },
+			it_gr_f4_2: {x: 640, y: 388, item: "overworld" },
+			it_gr_f4_3: {x: 670, y: 388, item: "overworld" },
+			it_gr_f4_4: {x: 700, y: 388, item: "overworld" },
+			it_gr_f4_5: {x: 730, y: 388, item: "overworld" },
+			
+			it_gr_f5_1: {x: 610, y: 434, item: "overworld" },
+			it_gr_f5_2: {x: 640, y: 434, item: "overworld" },
+			it_gr_f5_3: {x: 670, y: 434, item: "overworld" },
+			it_gr_f5_4: {x: 700, y: 434, item: "overworld" },
+			it_gr_f5_5: {x: 730, y: 434, item: "overworld" },
+
+        
+        },
+        
+        shop_kanto: {
+        
+        		it_viridian1: {x: 230, y: 112, item: "overworld" },
+			it_viridian2: {x: 260, y: 112, item: "overworld" },
+			it_viridian3: {x: 290, y: 112, item: "overworld" },
+			it_viridian4: {x: 320, y: 112, item: "overworld" },
+			it_viridian5: {x: 350, y: 112, item: "overworld" },
+
+			it_mtmoon1: {x: 230, y: 158, item: "overworld" },
+			it_mtmoon2: {x: 260, y: 158, item: "overworld" },
+			it_mtmoon3: {x: 290, y: 158, item: "overworld" },
+			it_mtmoon4: {x: 320, y: 158, item: "overworld" },
+			it_mtmoon5: {x: 350, y: 158, item: "overworld" },
+
+			it_pewter1: {x: 230, y: 204, item: "overworld" },
+			it_pewter2: {x: 260, y: 204, item: "overworld" },
+			it_pewter3: {x: 290, y: 204, item: "overworld" },
+			it_pewter4: {x: 320, y: 204, item: "overworld" },
+			it_pewter5: {x: 350, y: 204, item: "overworld" },
+
+			it_cerulean1: {x: 230, y: 250, item: "overworld" },
+			it_cerulean2: {x: 260, y: 250, item: "overworld" },
+			it_cerulean3: {x: 290, y: 250, item: "overworld" },
+			it_cerulean4: {x: 320, y: 250, item: "overworld" },
+			it_cerulean5: {x: 350, y: 250, item: "overworld" },
+
+			it_vermilion1: {x: 230, y: 296, item: "overworld" },
+			it_vermilion2: {x: 260, y: 296, item: "overworld" },
+			it_vermilion3: {x: 290, y: 296, item: "overworld" },
+			it_vermilion4: {x: 320, y: 296, item: "overworld" },
+			it_vermilion5: {x: 350, y: 296, item: "overworld" },
+
+			it_lavender1: {x: 230, y: 342, item: "overworld" },
+			it_lavender2: {x: 260, y: 342, item: "overworld" },
+			it_lavender3: {x: 290, y: 342, item: "overworld" },
+			it_lavender4: {x: 320, y: 342, item: "overworld" },
+			it_lavender5: {x: 350, y: 342, item: "overworld" },
+
+			it_fuchsia1: {x: 230, y: 388, item: "overworld" },
+			it_fuchsia2: {x: 260, y: 388, item: "overworld" },
+			it_fuchsia3: {x: 290, y: 388, item: "overworld" },
+			it_fuchsia4: {x: 320, y: 388, item: "overworld" },
+			it_fuchsia5: {x: 350, y: 388, item: "overworld" },
+
+			it_saffron1: {x: 230, y: 434, item: "overworld" },
+			it_saffron2: {x: 260, y: 434, item: "overworld" },
+			it_saffron3: {x: 290, y: 434, item: "overworld" },
+			it_saffron4: {x: 320, y: 434, item: "overworld" },
+			it_saffron5: {x: 350, y: 434, item: "overworld" },
+
+			it_indigo_plateau1: {x: 230, y: 480, item: "overworld" },
+			it_indigo_plateau2: {x: 260, y: 480, item: "overworld" },
+			it_indigo_plateau3: {x: 290, y: 480, item: "overworld" },
+			it_indigo_plateau4: {x: 320, y: 480, item: "overworld" },
+			it_indigo_plateau5: {x: 350, y: 480, item: "overworld" },
+			
+			it_c_f2_top1: {x: 610, y: 158, item: "overworld" },
+			it_c_f2_top2: {x: 640, y: 158, item: "overworld" },
+			it_c_f2_top3: {x: 670, y: 158, item: "overworld" },
+			it_c_f2_top4: {x: 700, y: 158, item: "overworld" },
+			it_c_f2_top5: {x: 730, y: 158, item: "overworld" },
+			
+			it_c_f2_bottom1: {x: 610, y: 204, item: "overworld" },
+			it_c_f2_bottom2: {x: 640, y: 204, item: "overworld" },
+			it_c_f2_bottom3: {x: 670, y: 204, item: "overworld" },
+			it_c_f2_bottom4: {x: 700, y: 204, item: "overworld" },
+			it_c_f2_bottom5: {x: 730, y: 204, item: "overworld" },
+			
+			it_c_f3_1: {x: 610, y: 250, item: "overworld" },
+			it_c_f3_2: {x: 640, y: 250, item: "overworld" },
+			it_c_f3_3: {x: 670, y: 250, item: "overworld" },
+			it_c_f3_4: {x: 700, y: 250, item: "overworld" },
+			it_c_f3_5: {x: 730, y: 250, item: "overworld" },
+			
+			it_c_f4_1: {x: 610, y: 296, item: "overworld" },
+			it_c_f4_2: {x: 640, y: 296, item: "overworld" },
+			it_c_f4_3: {x: 670, y: 296, item: "overworld" },
+			it_c_f4_4: {x: 700, y: 296, item: "overworld" },
+			it_c_f4_5: {x: 730, y: 296, item: "overworld" },
+			
+			it_c_f5_left1: {x: 610, y: 342, item: "overworld" },
+			it_c_f5_left2: {x: 640, y: 342, item: "overworld" },
+			it_c_f5_left3: {x: 670, y: 342, item: "overworld" },
+			it_c_f5_left4: {x: 700, y: 342, item: "overworld" },
+			it_c_f5_left5: {x: 730, y: 342, item: "overworld" },
+			
+			it_c_f5_right1: {x: 610, y: 388, item: "overworld" },
+			it_c_f5_right2: {x: 640, y: 388, item: "overworld" },
+			it_c_f5_right3: {x: 670, y: 388, item: "overworld" },
+			it_c_f5_right4: {x: 700, y: 388, item: "overworld" },
+			it_c_f5_right5: {x: 730, y: 388, item: "overworld" },
+
+        
         },
 
     },
