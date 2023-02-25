@@ -241,4 +241,8 @@ const tooltips = {
         catlin:   "Elite 4\nCaitlin",
         champ:    "Champion\nIris",
     },
+
+    /* Item stuff */
+    item_overworld: "Item found in\nthe overworld",
+    item_checked:   "Item checked\nand not useful",
 }
