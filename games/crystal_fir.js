@@ -2,15 +2,15 @@ let crystal_fir = {
 	debug: false,
     name: "crystal_fir",
 	folder: "crystal_fir",
-    start_location: "cherrygrove",
+    start_location: "newbark_r29",
     font: "GameBoy_Font",
     font_size: "22px",
 
 	// Config texts
-	config_name: "Crystal FIR (WIP)",
+	config_name: "Crystal Full Item Randomizer",
 	//config_randomizer_author: "iFatRain",
 	//config_randomizer_link: "https://github.com/iFatRain/pokemon-crystal-map-randomizer",
-	//config_tracker_author: "",
+	config_tracker_author: "3nt0n",
 	//config_tracker_link: "",
 
 	// Tracker information
@@ -917,27 +917,26 @@ let crystal_fir = {
 			f9_w:  {x: 269, y: 88,  corridor: "f9_n",  name: "Tin Tower (9F top)" },
 			f9_n:  {x: 430, y: 57,  corridor: "f9_w",  name: "Tin Tower (9F top)" },
 			burned_tower:  {x: 132, y: 239,            name: "Burned Tower"       }, //deadend
-
 			
-			it_f1_sage:             {x: 617, y: 46,  item: "overworld" }, // TODO idk what he needs
-			it_f3:                  {x: 27,  y: 723, item: "overworld" }, 
-			it_f4_right:            {x: 500, y: 719, item: "overworld" },
-			it_f4_middle:           {x: 458, y: 657, item: "overworld" },
-			it_f4_hidden:           {x: 390, y: 623, item: "overworld" },
-			it_f4_left:             {x: 267, y: 689, item: "overworld" },
-			it_f5_candy:            {x: 660, y: 666, item: "overworld" },
-			it_f5_hidden_left:      {x: 564, y: 768, item: "overworld" },
-			it_f5_hidden_right:     {x: 725, y: 761, item: "overworld" },
-			it_f6:                  {x: 127, y: 394, item: "overworld" },
-			it_f7:                  {x: 468, y: 278, item: "overworld" },
-			it_f8_bottom:           {x: 626, y: 471, item: "overworld" },
-			it_f8_middle:           {x: 670, y: 384, item: "overworld" },
-			it_f8_top:              {x: 567, y: 280, item: "overworld" },
-			it_f9:                  {x: 355, y: 30,  item: "overworld" },
-			it_burned_rocksmash:    {x: 216, y: 37,  item: "rocksmash" },
-            it_burned_hidden_left:  {x: 123, y: 120, item: "overworld" },
-            it_burned_hidden_right: {x: 204, y: 184, item: "overworld" },
-            it_burned_b1f:          {x: 46,  y: 163, item: "strength"  },
+				it_f1_sage:             {x: 617, y: 46,  item: "overworld" }, // TODO idk what he needs
+				it_f3:                  {x: 27,  y: 723, item: "overworld" }, 
+				it_f4_right:            {x: 500, y: 719, item: "overworld" },
+				it_f4_middle:           {x: 458, y: 657, item: "overworld" },
+				it_f4_hidden:           {x: 390, y: 623, item: "overworld" },
+				it_f4_left:             {x: 267, y: 689, item: "overworld" },
+				it_f5_candy:            {x: 660, y: 666, item: "overworld" },
+				it_f5_hidden_left:      {x: 564, y: 768, item: "overworld" },
+				it_f5_hidden_right:     {x: 725, y: 761, item: "overworld" },
+				it_f6:                  {x: 127, y: 394, item: "overworld" },
+				it_f7:                  {x: 468, y: 278, item: "overworld" },
+				it_f8_bottom:           {x: 626, y: 471, item: "overworld" },
+				it_f8_middle:           {x: 670, y: 384, item: "overworld" },
+				it_f8_top:              {x: 567, y: 280, item: "overworld" },
+				it_f9:                  {x: 355, y: 30,  item: "overworld" },
+				it_burned_rocksmash:    {x: 216, y: 37,  item: "rocksmash" },
+				it_burned_hidden_left:  {x: 123, y: 120, item: "overworld" },
+				it_burned_hidden_right: {x: 204, y: 184, item: "overworld" },
+				it_burned_b1f:          {x: 46,  y: 163, item: "strength"  },
         },
         
         mtmortar_r42: {

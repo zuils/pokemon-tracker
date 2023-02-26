@@ -472,11 +472,15 @@ function OnMouseUp(event) {
                                 ChangeModifier(current_location, info.target, null);
                                 break;
                             }
-                            if (warp.link == "item_overworld") {
+                            if (warp.link.startsWith("item_") && warp.link != "item_checked") {
                                 ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_checked", null);
                             }
                             else {
-                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", "item_overworld", null);
+                                let name = "item_" + warp.item;
+                                if (!game.unknown_marks["item_" + warp.item]) {
+                                    name = "item_event";
+                                }
+                                ChangeWarp(game, current_location, info.target, LINKTYPE_MARK, "", name, null);
                             }
                         } break;
                     }

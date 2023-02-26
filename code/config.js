@@ -141,7 +141,7 @@ function ResetButton() {
 function InitTrackerToUnknowns() {
     for (let key_game in games) {
         // assuming these are always being tracked
-        let marks = {
+        games[key_game].unknown_marks = {
             unknown:           games[key_game].marks[0][0],
             corridor:          games[key_game].marks[0][1],
 
@@ -154,6 +154,7 @@ function InitTrackerToUnknowns() {
             item_whirl:        games[key_game].marks[1][7],
             item_basement_key: games[key_game].marks[1][8],
         }
+        let marks = games[key_game].unknown_marks;
         for (let key in marks) {
             marks[key][1] = 0;
         }
