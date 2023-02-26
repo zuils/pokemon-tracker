@@ -187,8 +187,8 @@ function OnMouseMove(event) {
     mouse_position = EventToPosition(event);
 
     current_hovering_location = null;
+    let old_hovering_mark = current_hovering_mark;
     current_hovering_mark = null;
-    cooldown_tooltip = DEFAULT_COOLDOWN_TOOLTIP;
 
     if (mouse_position.x < game.left_width) {
         let info = null;
@@ -207,6 +207,9 @@ function OnMouseMove(event) {
             }
             if (info && (info.type == TYPE_MARK || info.type == TYPE_PROGRESS || info.type == TYPE_MODIFIER)) {
                 current_hovering_mark = info;
+                if (!old_hovering_mark || old_hovering_mark.target != current_hovering_mark.target) {
+                    cooldown_tooltip = DEFAULT_COOLDOWN_TOOLTIP;
+                }
             }
         }
     }

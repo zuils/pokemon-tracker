@@ -243,6 +243,13 @@ const tooltips = {
     },
 
     /* Item stuff */
-    item_overworld: "Item found in\nthe overworld",
+    item_overworld: "Item found with \nno requirement",
     item_checked:   "Item checked\nand not useful",
+    item_event:        "Key Item / Event\nRequired",
+    item_surf:         "Surf\nRequired",
+    item_cut:          "Cut\nRequired",
+    item_strength:     "Strength\nRequired",
+    item_rocksmash:    "Rock Smash\nRequired",
+    item_whirlpool:    "Whirlpool\nRequired",
+    item_basement_key: "Basement Key\nRequired",
 }

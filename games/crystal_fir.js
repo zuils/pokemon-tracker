@@ -344,7 +344,7 @@ let crystal_fir = {
 			mart:   {x: 364, y: 281 },
 			centre: {x: 267, y: 371 },
         		
-			it_cut_guy:   {x: 90,  y: 259, item: "surf_cut"  }, // req: either surf OR cut
+			it_cut_guy:   {x: 90,  y: 259, item: "surf_or_cut"  }, // req: either surf OR cut
 			it_tree:      {x: 79,  y: 421, item: "overworld" },
 			it_gym_badge: {x: 366, y: 97,  item: "overworld" },
         },
@@ -629,13 +629,12 @@ let crystal_fir = {
 			falls_left:  {x: 241, y: 485, corridor: "falls_right", name: "Tohjo Falls" },
 			falls_right: {x: 429, y: 485, corridor: "falls_left",  name: "Tohjo Falls" },
 			
-			it_tohjo_surf: {x: 84, y: 350 , item: "surf"},
-			it_sandstorm: {x: 191, y: 104, item: "overworld" }, //this route is kinda weird, you actually need waterfall to come from left (in non-warp-rando) TODO
-			it_surf: {x: 153, y: 251, item: "surf" },
-			it_whirl: {x: 315, y: 248, item: "whirl" }, //req: actually surf AND whirl, I didnt include surf for whirl and waterfall
-			it_tree: {x: 451, y: 115, item: "overworld" },
-			it_elixer: {x: 475, y: 57, item: "overworld" },
-			
+				it_tohjo_surf: {x: 84,  y: 350, item: "surf"      },
+				it_sandstorm:  {x: 191, y: 104, item: "overworld" }, //this route is kinda weird, you actually need waterfall to come from left (in non-warp-rando) TODO
+				it_surf:       {x: 153, y: 251, item: "surf"      },
+				it_whirl:      {x: 315, y: 248, item: "whirl"     }, //req: actually surf AND whirl, I didnt include surf for whirl and waterfall
+				it_tree:       {x: 451, y: 115, item: "overworld" },
+				it_elixer:     {x: 475, y: 57,  item: "overworld" },
         },
 
         r2: {
@@ -1455,7 +1454,7 @@ let crystal_fir = {
     // if undefined, then we don't draw the mark
     marks: [
         [["unknown",     0], ["corridor",    0], ["dead_end", null], ["event",      0], ["center",      0], ["mart",         0], ["one_way",  null]],
-        [["item_overworld", 0], ["item_checked", null]],
+        [["item_overworld", 0], ["item_checked", null], ["item_event", 0], ["item_surf", 0], ["item_cut", 0], ["item_strength", 0], ["item_rocksmash", 0], ["item_whirl", 0],["item_basement_key", 0]],
         //[],
         [["normal",      0], ["fighting",    0], ["flying",      0], ["poison",     0], ["ground",      0], ["rock",         0], ["bug",         0], ["ghost",       0], ["fairy",     0]],
         [["steel",       0], ["fire",        0], ["water",       0], ["grass",      0], ["electric",    0], ["psychic",      0], ["ice",         0], ["dragon",      0], ["dark",      0]],

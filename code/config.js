@@ -140,9 +140,26 @@ function ResetButton() {
 
 function InitTrackerToUnknowns() {
     for (let key_game in games) {
-        games[key_game].marks[0][0][1] = 0; // assuming unknowns are always being tracked
-        games[key_game].marks[0][1][1] = 0;
-        games[key_game].marks[1][0][1] = 0;
+        // assuming these are always being tracked
+        let marks = {
+            unknown:           games[key_game].marks[0][0],
+            corridor:          games[key_game].marks[0][1],
+
+            item_overworld:    games[key_game].marks[1][0],
+            item_event:        games[key_game].marks[1][2],
+            item_surf:         games[key_game].marks[1][3],
+            item_cut:          games[key_game].marks[1][4],
+            item_strength:     games[key_game].marks[1][5],
+            item_rocksmash:    games[key_game].marks[1][6],
+            item_whirl:        games[key_game].marks[1][7],
+            item_basement_key: games[key_game].marks[1][8],
+        }
+        for (let key in marks) {
+            marks[key][1] = 0;
+        }
+        //games[key_game].marks[0][0][1] = 0; // assuming unknowns are always being tracked
+        //games[key_game].marks[0][1][1] = 0;
+        //games[key_game].marks[1][0][1] = 0;
         for (let key_location in games[key_game].warps) {
             for (let key_warp in games[key_game].warps[key_location]) {
                 let w = games[key_game].warps[key_location][key_warp];
@@ -151,16 +168,22 @@ function InitTrackerToUnknowns() {
 
                 if (w.corridor) {
                     w.link = "corridor";
-                    games[key_game].marks[0][1][1] += 1;
+                    marks.corridor[1] += 1;
+                    continue;
                 }
-                else if (w.item) {
-                    w.link = "item_overworld";
-                    games[key_game].marks[1][0][1] += 1;
+                
+                if (w.item) {
+                    let name = "item_" + w.item;
+                    if (!marks["item_" + w.item]) {
+                        name = "item_event";
+                    }
+                    w.link = name;
+                    marks[name][1] += 1;
+                    continue;
                 }
-                else {
-                    w.link = "unknown";
-                    games[key_game].marks[0][0][1] += 1;
-                }
+
+                w.link = "unknown";
+                marks.unknown[1] += 1;
             }
         }
     }
