@@ -258,7 +258,7 @@ let crystal_fir = {
 			it_rocksmash: {x: 5, y: 532, item: "rocksmash" },
 			it_gym_badge: {x: 150, y: 154, item: "overworld" },
 			it_gym_tm: {x: 173, y: 154, item: "overworld" },
-			it_port: {x: 453, y: 541, item: "overworld" },
+			it_port: {x: 453, y: 541, item: "surf_ticket" },
 
         },
         cianwood: {
@@ -942,6 +942,11 @@ let crystal_fir = {
 			it_f8_middle: {x: 670, y: 384, item: "overworld" },
 			it_f8_top: {x: 567, y: 280, item: "overworld" },
 			it_f9: {x: 355, y: 30, item: "overworld" },
+			it_burned_rocksmash: {x: 216, y: 37, item: "rocksmash" },
+			it_burned_hidden_left: {x: 123, y: 120, item: "overworld" },
+			it_burned_hidden_right: {x: 204, y: 184, item: "overworld" },
+			it_burned_b1f: {x: 46, y: 163, item: "strength" },
+
 			
         },
         
