@@ -258,7 +258,7 @@ let crystal_fir = {
 			it_rocksmash: {x: 5, y: 532, item: "rocksmash" },
 			it_gym_badge: {x: 150, y: 154, item: "overworld" },
 			it_gym_tm: {x: 173, y: 154, item: "overworld" },
-			it_port: {x: 453, y: 541, item: "overworld" },
+			it_port: {x: 453, y: 541, item: "surf_ticket" },
 
         },
         cianwood: {
