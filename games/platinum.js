@@ -311,7 +311,7 @@ let platinum = {
 			center_up:  {x: 544, y: 110, name: "Resort Area (Center)" },
 			center_mid: {x: 641, y: 182, name: "Resort Area (Center)" },
 			center_bot: {x: 686, y: 110, name: "Resort Area (Center)" },
-
+			villa:      {x: 360, y: 247                               },
         },
 
         // Routes
