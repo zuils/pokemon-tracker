@@ -157,6 +157,9 @@ const tooltips = {
 
     /* Platinum */
     regis: "Regice Regirock\nRegisteel",
+    p_legendary: "Palkia Dialga",
+    p_legendary2: "Giratina Arceus\nDarkrai",
+    p_guardians: "Uxie Azelf\nMesprit",
     p_trainer:   "Blocked by\nTrainer Fight",
     p_bush:      "Blocked by\nCut",
     p_surf:      "Blocked by\nSurf",

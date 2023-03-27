@@ -474,9 +474,9 @@ let platinum = {
 			f3_stairs3:  {x: 670, y: 290, name: "Galactic Eterna (F3)" },
         },
         coronet: {
-			f1_entrance: {x: 80,  y: 400, name: "Mt. Coronet (F1)"    },
-			f1_exit:     {x: 291, y: 490, name: "Mt. Coronet (F1)"    },
-			f1_stairs:   {x: 279, y: 340, name: "Mt. Coronet (F1)"    },
+			f1_entrance: {x: 80,  y: 370, name: "Mt. Coronet (F1)"    },
+			f1_exit:     {x: 291, y: 480, name: "Mt. Coronet (F1)"    },
+			f1_stairs:   {x: 279, y: 330, name: "Mt. Coronet (F1)"    },
 
 			f2_left:     {x: 80,  y: 270, name: "Mt. Coronet (F2)"    },
 			f2_top:      {x: 80,  y: 50,  name: "Mt. Coronet (F2)"    },
@@ -494,6 +494,11 @@ let platinum = {
 			upf12_left:  {x: 317, y: 50,  name: "Mt. Coronet (⊃)"     },
 			upf12_top:   {x: 446, y: 15,  name: "Mt. Coronet (⊃)"     },
 			upf12_bot:   {x: 372, y: 150, name: "Mt. Coronet (⊃)"     },
+
+			f4_left:  {x: 80,  y: 748, corridor: "f4_up",    name: "Mt. Coronet (RockClimb)" },
+			f4_up:    {x: 469, y: 562, corridor: "f4_left",  name: "Mt. Coronet (RockClimb)" },
+			f4_water: {x: 190, y: 601, corridor: "f4_right", name: "Mt. Coronet (Waterfall)" },
+			f4_right: {x: 428, y: 747, corridor: "f4_water", name: "Mt. Coronet (Waterfall)" },
         },
 
         solaceonruins: {
@@ -619,12 +624,12 @@ let platinum = {
     // if null, then we don't do tracking
     // if undefined, then we don't draw the mark
     marks: [
-        [["unknown",     0], ["corridor",    0], ["dead_end", null], ["event",         0], ["center", 0], ["mart",     0], ["one_way",  null]],
-        [["normal",      0], ["fighting",    0], ["flying",        0], ["poison", 0], ["ground",   0], ["rock",        0], ["bug",         0], ["ghost",  0], ["fairy", 0]],
-        [["steel",       0], ["fire",        0], ["water",         0], ["grass",  0], ["electric", 0], ["psychic",     0], ["ice",         0], ["dragon", 0], ["dark",  0]],
-        [["1",           0], ["2",           0], ["3",             0], ["4",      0], ["5",        0], ["6",           0], ["7",           0], ["8",      0]],
-		[["bike_needed", 0], ["p_trainer",   0], ["team_galactic", 0], ["regis",  0]],
-        [["p_bush",      0], ["p_surf",      0], ["p_boulder",     0], ["p_fog",  0], ["p_rock",   0], ["p_waterfall", 0], ["p_rockywall", 0]],
+        [["unknown",     0], ["corridor",    0], ["dead_end",   null], ["event",       0], ["center",       0], ["mart",        0], ["one_way",  null]],
+        [["normal",      0], ["fighting",    0], ["flying",        0], ["poison",      0], ["ground",       0], ["rock",        0], ["bug",         0], ["ghost",  0], ["fairy", 0]],
+        [["steel",       0], ["fire",        0], ["water",         0], ["grass",       0], ["electric",     0], ["psychic",     0], ["ice",         0], ["dragon", 0], ["dark",  0]],
+        [["1",           0], ["2",           0], ["3",             0], ["4",           0], ["5",            0], ["6",           0], ["7",           0], ["8",      0]],
+		[["bike_needed", 0], ["p_trainer",   0], ["team_galactic", 0], ["p_legendary", 0], ["p_legendary2", 0], ["p_guardians", 0], ["regis",       0]],
+        [["p_bush",      0], ["p_surf",      0], ["p_boulder",     0], ["p_fog",       0], ["p_rock",       0], ["p_waterfall", 0], ["p_rockywall", 0]],
     ],
     progress: [
         [["coal_badge", 0], ["forest_badge", 0], ["cobble_badge", 0], ["fen_badge",   0], ["relic_badge", 0], ["mine_badge",   0], ["icicle_badge", 0], ["beacon_badge", 0]],
