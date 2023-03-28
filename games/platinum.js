@@ -628,8 +628,8 @@ let platinum = {
         [["normal",      0], ["fighting",    0], ["flying",        0], ["poison",      0], ["ground",       0], ["rock",        0], ["bug",         0], ["ghost",  0], ["fairy", 0]],
         [["steel",       0], ["fire",        0], ["water",         0], ["grass",       0], ["electric",     0], ["psychic",     0], ["ice",         0], ["dragon", 0], ["dark",  0]],
         [["1",           0], ["2",           0], ["3",             0], ["4",           0], ["5",            0], ["6",           0], ["7",           0], ["8",      0]],
-		[["bike_needed", 0], ["p_trainer",   0], ["team_galactic", 0], ["p_legendary", 0], ["p_legendary2", 0], ["p_guardians", 0], ["regis",       0]],
-        [["p_bush",      0], ["p_surf",      0], ["p_boulder",     0], ["p_fog",       0], ["p_rock",       0], ["p_waterfall", 0], ["p_rockywall", 0]],
+		[["bike_needed", 0], ["p_trainer",   0], ["team_galactic", 0], ["",    undefined], ["p_legendary", 0], ["p_legendary2", 0], ["p_guardians", 0], ["regis",       0]],
+        [["p_bush",      0], ["p_surf",      0], ["p_boulder",     0], ["p_fog",       0], ["p_rock",       0], ["p_waterfall", 0], ["p_rockywall", 0], ["masterball",   0]],
     ],
     progress: [
         [["coal_badge", 0], ["forest_badge", 0], ["cobble_badge", 0], ["fen_badge",   0], ["relic_badge", 0], ["mine_badge",   0], ["icicle_badge", 0], ["beacon_badge", 0]],

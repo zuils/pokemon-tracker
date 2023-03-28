@@ -16,6 +16,8 @@ const tooltips = {
     "#ce4069": "Red",  "#ff9c54": "Orange", "#f3d23b": "Yellow", "#743683": "Purple", "#654321": "Brown", "#014f01": "Dark Green",
     "#4d90d5": "Blue", "#74cec0": "Cyan",   "#90c12c": "Green",  "#ec8fe6": "Pink",   "#5a5366": "Gray",  "#00146b": "Dark Blue",
 
+    masterball: "Master Ball",
+
     /* Crystal */
     team_rocket:  "Team\nRocket",
     c_rival:      "Silver\n(Rival)",
@@ -121,7 +123,6 @@ const tooltips = {
     /* Fire Red - Leaf Green */
     frlg_rival: "Blue\n(Rival)",
     safari:     "Safari Zone",
-    masterball: "Top Floor\nSilph Co.",
     frlg_trainer:   "Blocked by\nTrainer Fight",
     frlg_bush:      "Blocked by\nCut",
     frlg_surf:      "Blocked by\nSurf",
@@ -130,6 +131,7 @@ const tooltips = {
     frlg_rock:      "Blocked by\nRock Smash",
     frlg_waterfall: "Blocked by\nWaterfall",
     frlg: {
+        masterball: "Top Floor\nSilph Co.",
         boulder_badge: "Boulder Badge\n(Flash)",
         cascade_badge: "Cascade Badge\n(Cut)",
         thunder_badge: "Thunder Badge\n(Fly)",
@@ -186,6 +188,7 @@ const tooltips = {
     hm_rockclimb: "HM 08\n(Rock Climb)",
 
     /* Heart Gold - Soul Silver */
+    embedded_tower: "Embedded\nTower",
     hgss_surf:       "Blocked by\nSurf",
     hgss_whirlpool:  "Blocked by\nWhirlpool",
     hgss_darkness:   "Blocked by\nFlash",
@@ -204,7 +207,6 @@ const tooltips = {
     hgss_karen: "Elite 4\nKaren",
     hgss_lance: "Champion\nLance",
     hgss_red:   "Red\n(Post-Game)",
-
 
     /* Black 2 - White 2 */
     w2_n: "N",
