@@ -141,18 +141,28 @@ function ResetButton() {
 function InitTrackerToUnknowns() {
     for (let key_game in games) {
         // assuming these are always being tracked
-        games[key_game].unknown_marks = {
-            unknown:           games[key_game].marks[0][0],
-            corridor:          games[key_game].marks[0][1],
+        if (games[key_game].is_item_tracker) {
+            games[key_game].unknown_marks = {
+                unknown:           games[key_game].marks[0][0],
+                corridor:          games[key_game].marks[0][1],
+                
+                item_overworld:    games[key_game].marks[1][0],
+                item_event:        games[key_game].marks[1][2],
+                item_surf:         games[key_game].marks[1][3],
+                item_cut:          games[key_game].marks[1][4],
+                item_strength:     games[key_game].marks[1][5],
+                item_rocksmash:    games[key_game].marks[1][6],
+                item_whirl:        games[key_game].marks[1][7],
+                item_basement_key: games[key_game].marks[1][8],
+                item_phone:        games[key_game].marks[1][9],
+            }
+        }
+        else {
+            games[key_game].unknown_marks = {
+                unknown:           games[key_game].marks[0][0],
+                corridor:          games[key_game].marks[0][1],
+            }
 
-            item_overworld:    games[key_game].marks[1][0],
-            item_event:        games[key_game].marks[1][2],
-            item_surf:         games[key_game].marks[1][3],
-            item_cut:          games[key_game].marks[1][4],
-            item_strength:     games[key_game].marks[1][5],
-            item_rocksmash:    games[key_game].marks[1][6],
-            item_whirl:        games[key_game].marks[1][7],
-            item_basement_key: games[key_game].marks[1][8],
         }
         let marks = games[key_game].unknown_marks;
         for (let key in marks) {

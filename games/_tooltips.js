@@ -257,4 +257,5 @@ const tooltips = {
     item_rocksmash:    "Rock Smash\nRequired",
     item_whirlpool:    "Whirlpool\nRequired",
     item_basement_key: "Basement Key\nRequired",
+    item_phone:        "Phone Call\nRequired",
 }
