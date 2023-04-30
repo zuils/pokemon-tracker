@@ -396,8 +396,8 @@ let emerald_ex = {
             f4_stairsright: {x: 167, y: 360, name: "Mt. Pyre (4F)"       },
             f4_hole:        {x: 151, y: 463, name: "Mt. Pyre (4F)"       },
 
-            f5_holetop:     {x: 501, y: 381, name: "Mt. Pyre (5F)"       },
-            f5_holebot:     {x: 501, y: 459, name: "Mt. Pyre (5F)"       },
+            f5_holetop:     {x: 501, y: 381, name: "Mt. Pyre (5F)", corridor: "f5_holebot" },
+            f5_holebot:     {x: 501, y: 459, name: "Mt. Pyre (5F)", corridor: "f5_holetop" },
         },
         departmentstore: {
             f1_entrance: {x: 48,  y: 395},
