@@ -301,7 +301,7 @@ let emerald = {
             bf1_optional2:   {x: 428, y: 286, name: "Granite (1BF)" },
             bf1_optional3:   {x: 701, y: 323, name: "Granite (1BF)" },
             bf2_topstairs:   {x: 427, y: 721, name: "Granite (2BF)" },
-            bf2_botstairs:   {x: 364, y: 801, name: "Granite (2BF)" },
+            bf2_botstairs:   {x: 364, y: 795, name: "Granite (2BF)" },
         },
         abandonedship_r108: {
             r108_entrance:       {x: 365, y: 393, name: "Route 108 (Ship)"      },
@@ -313,7 +313,7 @@ let emerald = {
             line_stairs:         {x: 77,  y: 31 , name: "Abandoned Ship (Line)" },
             line_top:            {x: 54,  y: 64 , name: "Abandoned Ship (Line)" },
             line_bot:            {x: 54,  y: 113, name: "Abandoned Ship (Line)" },
-            line_exit:           {x: 52,  y: 170, name: "Abandoned Ship (Line)" },
+            line_exit:           {x: 21,  y: 170, name: "Abandoned Ship (Line)", text_offset: {x:.3, y:0} },
 
             block_stairs:        {x: 258, y: 20 , name: "Abandoned Ship (Block)"},
             block_topleft:       {x: 180, y: 45 , name: "Abandoned Ship (Block)"},
@@ -322,7 +322,7 @@ let emerald = {
             block_botright:      {x: 232, y: 137, name: "Abandoned Ship (Block)"},
             block_exit:          {x: 156, y: 170, name: "Abandoned Ship (Block)"},
 
-            hub_stairsleft:      {x: 52,  y: 230, name: "Abandoned Ship (Hub)"  },
+            hub_stairsleft:      {x: 26,  y: 230, name: "Abandoned Ship (Hub)", text_offset: {x:.25, y:0}   },
             hub_stairsright:     {x: 155, y: 230, name: "Abandoned Ship (Hub)"  },
             hub_top1:            {x: 55,  y: 282, name: "Abandoned Ship (Hub)"  },
             hub_top2:            {x: 104, y: 262, name: "Abandoned Ship (Hub)"  },
@@ -427,19 +427,19 @@ let emerald = {
             hub_entrance:     {x: 426, y: 116, name: "Aqua Hideout (Hub 1)"},
             hub_row1left:     {x: 358, y: 169, name: "Aqua Hideout (Hub 1)"},
             hub_row1mid:      {x: 426, y: 147, name: "Aqua Hideout (Hub 1)"},
-            hub_row1right:    {x: 462, y: 169, name: "Aqua Hideout (Hub 1)"},
+            hub_row1right:    {x: 495, y: 169, name: "Aqua Hideout (Hub 1)", text_offset: {x:-.32, y:0}},
 
             hub_row2left:     {x: 358, y: 233, name: "Aqua Hideout (Hub 2)"},
             hub_row2mid:      {x: 426, y: 211, name: "Aqua Hideout (Hub 2)"},
-            hub_row2right:    {x: 462, y: 233, name: "Aqua Hideout (Hub 2)"},
+            hub_row2right:    {x: 495, y: 233, name: "Aqua Hideout (Hub 2)", text_offset: {x:-.32, y:0}},
 
             hub_row3left:     {x: 358, y: 297, name: "Aqua Hideout (Hub 3)"},
             hub_row3mid:      {x: 426, y: 274, name: "Aqua Hideout (Hub 3)"},
-            hub_row3right:    {x: 462, y: 297, name: "Aqua Hideout (Hub 3)"},
+            hub_row3right:    {x: 495, y: 297, name: "Aqua Hideout (Hub 3)", text_offset: {x:-.32, y:0}},
 
             hub_row4left:     {x: 358, y: 361, name: "Aqua Hideout (Hub 4)"},
             hub_row4mid:      {x: 426, y: 339, name: "Aqua Hideout (Hub 4)"},
-            hub_row4right:    {x: 462, y: 361, name: "Aqua Hideout (Hub 4)"},
+            hub_row4right:    {x: 495, y: 361, name: "Aqua Hideout (Hub 4)", text_offset: {x:-.32, y:0}},
         },
         seafloor_underwater: {
             underwater_r126: {x: 151, y: 660, name: "Route 126"          },
