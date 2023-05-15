@@ -1,14 +1,14 @@
 # Pokémon Tracker
 https://sekii.gitlab.io/pokemon-tracker
 
-Project open to public so feel free to fork or add new maps for other game gens. If you want to use the project offline, download the source code and open the file called "index.html" with your browser.
+Project open to the public so feel free to fork or add new maps for other game gens. If you want to use the project offline, download the source code and open the file called "index.html" with your browser.
 
-## If you want to modify the tracker
-Check the issues open to contribute at modifying the code. **There's a chance I won't accept code modifications if they add dependencies or increase the complexity of the project too much.**
+## Merge requests
+I will accept any merge request to add new tracker maps for either new games or existing ones. The current maps are not meant to be 1 to 1 map of the seed randomization, so if you'd like to see more complete maps feel free to make and submit a new one and I'll most likely accept it.
 
-I will accept any merge request to add new trackers for either new games or existing ones. The way I design the trackers is by trying to keep the number of warps to a minimum. If you'd like to see more complete trackers, feel free to make and submit a new one and I'll most likely accept it.
+Check the [opened issues](https://gitlab.com/Sekii/pokemon-tracker/-/issues) to contribute code. I might not accept merge requests if they **needlessly** add dependencies or increase the complexity of the code.
 
-## If you're making your own tracker
+## Tips and tools to make your own map
 I recommend checking an existing tracker to use as a template. Each game has a .js file in the "games" folder detailing all the locations, warps, marks, etc. and a named folder in the "images" folder. You need to preserve the folder structure of images for it to work.
 
 There's also a debug mode available. To activate it, add "?debug" to the end of the url in the browser. This will enable:
