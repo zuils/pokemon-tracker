@@ -777,15 +777,21 @@ function AddToIcon (current_game, name, value, location, type) {
                     }
                 }
                 else { // Add it again in the correct position
-                    let new_i;
-                    for (new_i = i; new_i < current_markcycle.locations.length; ++new_i) {
-                        if (current_markcycle.locations[new_i].count <= mc_location.count) {
-                            current_markcycle.locations.splice(new_i, 0, mc_location);
-                            break;
-                        }
+                    if (current_markcycle.locations.length == 0) { // If the list is empty we don't need to figure out where it goes
+                        current_markcycle.locations.push(mc_location);
+                        current_markcycle.index = 0;
                     }
-                    if (i < current_markcycle.index && new_i >= current_markcycle.index) { // if it was above the index and now it's below
-                        current_markcycle.index -= 1;
+                    else {
+                        let new_i;
+                        for (new_i = i; new_i < current_markcycle.locations.length; ++new_i) {
+                            if (current_markcycle.locations[new_i].count <= mc_location.count) {
+                                current_markcycle.locations.splice(new_i, 0, mc_location);
+                                break;
+                            }
+                        }
+                        if (i < current_markcycle.index && new_i >= current_markcycle.index) { // if it was above the index and now it's below
+                            current_markcycle.index -= 1;
+                        }
                     }
                 }
 
