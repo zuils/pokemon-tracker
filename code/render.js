@@ -698,9 +698,14 @@ function RenderProgress(context) {
 function GetLineOrigin() {
     if (current_state == STATE_LINK1 || current_state == STATE_ITEMLINK) {
         let warp = game.warps[current_location][link_warp];
+        let offset = { x: 0, y: 0};
+        if (warp.link_type == LINKTYPE_WARP && warp.text_offset) {
+            if (warp.text_offset.x) { offset.x = game.frame.naturalWidth  * warp.text_offset.x; }
+            if (warp.text_offset.y) { offset.y = game.frame.naturalHeight * warp.text_offset.y; }
+        }
         return {
-            x: rendered_location.x + warp.x*rendered_location.scale,
-            y: rendered_location.y + warp.y*rendered_location.scale
+            x: rendered_location.x + warp.x*rendered_location.scale + offset.x,
+            y: rendered_location.y + warp.y*rendered_location.scale + offset.y
         }
     }
     else {
@@ -947,6 +952,20 @@ function GetWarpRenderInfo(warp) {
                 y: rendered_location.y + warp.y*rendered_location.scale + WARP_LINE_YOFFSET
             }
             info.text = game.locations[warp.link_location].name;
+
+            if (warp.text_offset) {
+                if (warp.text_offset.x) {
+                    let offset = game.frame.naturalWidth * warp.text_offset.x;
+                    info.text_position.x += offset;
+                    info.x               += offset;
+                }
+                if (warp.text_offset.y) {
+                    let offset = game.frame.naturalHeight * warp.text_offset.y;
+                    info.text_position.y += offset;
+                    info.y               += offset;
+                }
+            }
+
             if (game.warps[warp.link_location][warp.link].name) info.text = game.warps[warp.link_location][warp.link].name;
         }
     }
