@@ -631,11 +631,10 @@ let gen3crossover = {
             bar:        {x: 421, y: 451 , name: "Olivine City"       },
             lighthouse: {x: 884, y: 541 , name: "Olivine City"       },
             dock:       {x: 695, y: 635 , name: "Olivine City"       },
-            battle:     {x: 906, y: 42  , name: "Olivine City"       },
-            gate:       {x: 156, y: 270 , name: "Route 38 (Olivine)" },
+            battle:     {x: 906, y: 42  , name: "Route 38 (Olivine)" },
+            gate:       {x: 156, y: 270 , name: "Route 40 (Olivine)" },
             farm1:      {x: 152, y: 36  , name: "Route 39 (Olivine)" },
             farm2:      {x: 71, y:  37  , name: "Route 39 (Olivine)" },
-    
         },
         cianwood: {
             house1: {x: 45,  y: 17  },
