@@ -99,6 +99,7 @@ let gen3crossover = {
         mtmortarb1f:           {x: 110, y: 19, w: 8, h: 8,  name: "Mt. Mortar B1F"                 },
         lighthouse:            {x: 40,  y: 52, w: 8, h: 8,  name: "Olivine's Lighthouse"           },
         whirlislands:          {x: 19,  y: 80, w: 8, h: 8,  name: "Whirl Islands"                  },
+        rocket_hq:             {x: 136, y: 19, w: 8, h: 8,  name: "Rocket HQ"                      },
         icepath1:              {x: 167, y: 19, w: 8, h: 8,  name: "Ice Path"                       },
         victoryroad_reception: {x: 204, y: 29, w: 8, h: 8,  name: "Victory Road\nLeague Reception" },
 
@@ -612,7 +613,7 @@ let gen3crossover = {
         ecruteak: {
             burned:    {x: 120, y: 164                           },
             tin:       {x: 407, y: 283                           },
-            gateleft:  {x: 48,  y: 439                           },
+            gateleft:  {x: 52,  y: 439                           },
             topgym:    {x: 148, y: 506                           },
             kimono:    {x: 487, y: 508                           },
             mart:      {x: 616, y: 510                           },
@@ -656,14 +657,17 @@ let gen3crossover = {
             icepath:   {x: 530, y: 115, name: "Route44 (Mahogany)" },
         },
         blackthorn: {
-            den:         {x: 412, y: 26  },
-            gym:         {x: 323, y: 202 },
-            icepath:     {x: 658, y: 231 },
-            botgym:      {x: 195, y: 418 },
-            leftmart:    {x: 132, y: 627 },
-            mart:        {x: 259, y: 576 },
-            center:      {x: 371, y: 568 },
-            rightcenter: {x: 517, y: 464 }
+            gym:         {x: 551, y: 190                                                },
+            icepath:     {x: 870, y: 231                                                },
+            botgym:      {x: 428, y: 418                                                },
+            leftmart:    {x: 359, y: 627                                                },
+            mart:        {x: 476, y: 568                                                },
+            center:      {x: 605, y: 568                                                },
+            rightcenter: {x: 750, y: 464                                                },
+            den:         {x: 640, y: 12,                       name: "Blackthorn (Den)" },
+            
+			den_top:     {x: 184, y: 113, corridor: "den_bot", name: "Dragon's Den"     },
+			den_bot:     {x: 171, y: 527, corridor: "den_top", name: "Dragon's Den"     },
         },
         indigo_e4: {
             center_left:     {x: 19,  y: 561,                        name: "Indigo Plateau"    },
@@ -871,6 +875,20 @@ let gen3crossover = {
             main_botmid:             {x: 889, y: 650,                         name: "Whirl (Hub)"           },
             main_botright:           {x: 1069,y: 607,                         name: "Whirl (Hub)"           },
         },
+        rocket_hq: {
+            bf1_up:           {x: 478, y: 0,                                 name: "Rocket HQ BF1"                                  },
+			bf1_down:         {x: 34,  y: 360,                               name: "Rocket HQ BF1",        text_offset: {x:.3, y:0} },
+			bf1_pad:          {x: 117, y: 300,                               name: "Rocket HQ BF1"                                  },
+            bf2_lance_left:   {x: 559, y: 368, corridor: "bf2_lance_right",  name: "Rocket HQ BF2 (Lance)"                          },
+			bf2_lance_right:  {x: 957, y: 317, corridor: "bf2_lance_left",   name: "Rocket HQ BF2 (Lance)"                          },
+			bf2_thin_right:   {x: 957, y: 78,  corridor: "bf2_thin_left",    name: "Rocket HQ BF2 (Thin)"                           },
+			bf2_thin_left:    {x: 551, y: 81,  corridor: "bf2_thin_right",   name: "Rocket HQ BF2 (Thin)"                           },
+            bf3_pass_down:    {x: 743, y: 636, corridor: "bf3_pass_up",      name: "Rocket HQ BF3 (Pass)"                           },
+			bf3_pass_up:      {x: 761, y: 400, corridor: "bf3_pass_down",    name: "Rocket HQ BF3 (Pass)"                           },
+			bf3_murkrow_down: {x: 324, y: 546, corridor: "bf3_murkrow_up",   name: "Rocket HQ BF3 (Murk)"                           },
+			bf3_murkrow_up:   {x: 274, y: 402, corridor: "bf3_murkrow_down", name: "Rocket HQ BF3 (Murk)"                           },
+        },
+
         icepath1: {
             hub_stairsleft:   {x: 496, y: 823,                              name: "Ice Path (Holes)"      },
             hub_holebotleft:  {x: 526, y: 722,                              name: "Ice Path (Holes)"      },
