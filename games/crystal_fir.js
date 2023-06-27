@@ -284,6 +284,8 @@ let crystal_fir = {
 			center:     {x: 246, y: 412 },
 			mart:       {x: 392, y: 412 },
 			bike:       {x: 477, y: 500 },
+			center_stairs: {x: 15, y: 545, corridor: "center_doors",  name: "Goldenrod (Center)", text_offset: {x: .4, y: 0} },
+			center_door:   {x: 94, y: 593, corridor: "center_stairs", name: "Goldenrod (Center)", text_offset: {x: .4, y: 0} },
 			
 			it_bike:			{x: 495, y: 458, item: "overworld" 		},
 			it_gym_badge: 		{x: 368, y: 111, item: "overworld" 		},
@@ -1339,7 +1341,7 @@ let crystal_fir = {
         [["normal",      0], ["fighting",    0], ["flying",      0], ["poison",     0], ["ground",      0], ["rock",         0], ["bug",         0], ["ghost",       0], ["fairy",     0]],
         [["steel",       0], ["fire",        0], ["water",       0], ["grass",      0], ["electric",    0], ["psychic",      0], ["ice",         0], ["dragon",      0], ["dark",      0]],
         [["1",           0], ["2",           0], ["3",           0], ["4",          0], ["5",           0], ["6",            0], ["7",           0], ["8",           0]],
-		[["team_rocket", 0], ["c_rival",     0], ["c_gyarados",  0], ["",   undefined], ["c_legendary", 0], ["burned_tower", 0], ["c_kurt",      0], ["c_unown",     0], ["c_train",   0], ["dratini", 0]],
+		[["team_rocket", 0], ["c_rival",     0], ["c_gyarados",  0], ["",   undefined], ["c_legendary", 0], ["burned_tower", 0], ["c_kurt",      0], ["c_unown",     0], ["c_train",   0], ["dratini", 0], ["c_daycare" ,0]],
         [["c_bush",      0], ["c_surf",      0], ["c_boulder",   0], ["c_darkness", 0], ["c_whirlpool", 0], ["c_waterfall",  0], ["c_rock",      0], ["bike_needed", 0], ["c_trainer", 0]],
     ],
     progress: [

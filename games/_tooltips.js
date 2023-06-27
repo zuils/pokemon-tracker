@@ -37,6 +37,7 @@ const tooltips = {
     c_rock:       "Blocked by\nRock Smash",
     bike_needed:  "Blocked by\nBicycle Req.",
     c_trainer:    "Blocked by\nTrainer Fight",
+    c_daycare:    "Pokémon\nDay Care",
 
     zephyr_badge:  "Zephyr Badge\n(Flash)",
     hive_badge:    "Hive Badge\n(Cut)",
