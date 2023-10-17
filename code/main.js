@@ -1,5 +1,6 @@
 // Games will be shown in the settings in order
 let ordered_games = [
+    rb,
     crystal,
     crystalg,
     emerald,

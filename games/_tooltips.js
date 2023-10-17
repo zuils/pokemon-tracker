@@ -18,6 +18,8 @@ const tooltips = {
 
     masterball: "Master Ball",
 
+    /* RB */
+
     /* Crystal */
     team_rocket:  "Team\nRocket",
     c_rival:      "Silver\n(Rival)",
