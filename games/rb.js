@@ -190,10 +190,11 @@ let rb = {
             warden:                                                     {x: 396, y: 417 },
             fisherman:                                                  {x: 459, y: 417 },
             mart:                                                       {x: 43, y: 194 },
-            house:                                                      {x: 315, y: 192 },
+            house1:                                                     {x: 315, y: 192 },
             szone:                                                      {x: 252, y: 31 },
             r15_1:                                                      {x: 595, y: 249, name: "Rt. 15" },
 			r15_2:                                                      {x: 692, y: 249, name: "Rt. 15" },
+            house2:                                                     {x: 138, y: 421 },
         },
         gates: {
             r11_1:                                                      {x: 43, y: 85, name: "Rt. 11 Gate" },
@@ -496,6 +497,7 @@ let rb = {
             stair10:                                                     {x: 474, y: 630, name: "Silph Co. 11F" },
             elevator4:                                                   {x: 537, y: 629, name: "Silph Co. 11F" },
             warp13:                                                      {x: 376, y: 656, name: "Silph Co. 11F" },
+            elevator5:                                                   {x: 722, y: 323, name: "Silph Co. 10F" },
         },
         silph_elevator: {
             f1:                                                          {x: 37, y: 54, name: "Silph Elevator 1F" },
