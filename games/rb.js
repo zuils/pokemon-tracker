@@ -100,7 +100,8 @@ let rb = {
             gym:                                                       {x: 562, y: 238 },
             center:                                                    {x: 341, y: 199 },
             house1:                                                    {x: 223, y: 162 },
-            house2:                                                    {x: 142, y: 80 },
+            house2front:                                               {x: 142, y: 130 },
+            house2back:                                                {x: 141, y: 57 },
             house3front:                                               {x: 502, y: 130 },
             house3back:                                                {x: 502, y: 60 },
             bill:                                                      {x: 719, y: 79, name: "Rt. 25" },
@@ -108,6 +109,7 @@ let rb = {
             g:                                                         {x: 943, y: 314, name: "Rt. 5" },
             saffron1:                                                  {x: 792, y: 361, name: "Rt. 5" },
             saffron2:                                                  {x: 804, y: 433, name: "Rt. 5" },
+            cave:                                                      {x: 44, y: 80 },
         },
         cerulean_cave: {
             ladder1:                                                   {x: 25, y: 101, name: "Cerulean Cave 1F" },
@@ -190,6 +192,7 @@ let rb = {
 			center:                                                     {x: 266, y: 417 },
             warden:                                                     {x: 396, y: 417 },
             fisherman:                                                  {x: 459, y: 417 },
+            fisherman2:                                                 {x: 459, y: 382 },
             mart:                                                       {x: 43, y: 194 },
             house1:                                                     {x: 315, y: 192 },
             szone:                                                      {x: 252, y: 31 },
@@ -301,7 +304,8 @@ let rb = {
         },
         r2: {
             v_gate_s:                                                    {x: 47, y: 407 },
-            flash:                                                       {x: 216, y: 351 },
+            flash1:                                                      {x: 216, y: 351 },
+            flash2:                                                      {x: 233, y: 300 },
             trade:                                                       {x: 216, y: 202 },
             v_gate_n:                                                    {x: 47, y: 145 },
             d_cave:                                                      {x: 174, y: 61 },
@@ -370,7 +374,8 @@ let rb = {
             gym:                                                         {x: 552, y: 36 },
         },
         saffron_gym: {
-            entrance:                                                    {x: 186, y: 232 },
+            entrance:                                                    {x: 145, y: 266 },
+            entrancewarp:                                                {x: 186, y: 232 },
             blnw:                                                        {x: 26, y: 233 },
             blne:                                                        {x: 90, y: 233 },
             blsw:                                                        {x: 26, y: 265 },
@@ -470,6 +475,7 @@ let rb = {
             stair11:                                                     {x: 725, y: 611, name: "Silph Co. 6F" },
             warp19:                                                      {x: 572, y: 662, name: "Silph Co. 6F" },
             warp20:                                                      {x: 893, y: 659, name: "Silph Co. 6F" },
+            warp21:                                                      {x: 151, y: 809, name: "Silph Co. 5F" },
         },
         silph_2: {
             stair1:                                                      {x: 359, y: 26, name: "Silph Co. 7F" },
@@ -541,7 +547,7 @@ let rb = {
             door16:                                                      {x: 391, y: 743, name: "S.S. Anne B1F" },
 			door17:                                                      {x: 328, y: 732, name: "S.S. Anne B1F" },
             door18:                                                      {x: 264, y: 743, name: "S.S. Anne B1F" },
-            door10:                                                      {x: 54, y: 321, name: "S.S. Anne 1F" },
+            door19:                                                      {x: 54, y: 321, name: "S.S. Anne 1F" },
         },
         vermilion: {
             fisherman:                                                   {x: 66, y: 43 },
